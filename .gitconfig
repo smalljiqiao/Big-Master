@@ -1,4 +1,0 @@
-Host github.com                // 域名或者 IP
-User 18814180611@163.com
-PreferredAuthentications publickey
-IdentityFile ~/ssh  // 生成的非默认地址的公钥存放点

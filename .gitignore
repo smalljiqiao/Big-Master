@@ -1,0 +1,8 @@
+#忽略ssh文件
+ssh
+ssh.pub
+
+#忽略BM.WebApi/packages文件夹
+BM.WebApi/packages
+
+
