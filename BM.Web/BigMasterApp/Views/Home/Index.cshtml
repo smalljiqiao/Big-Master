@@ -1,5 +1,41 @@
 ﻿@{
-    ViewBag.Title = "算命大师";
+    ViewBag.Title = "测试";
 }
 
+@section styles{
+    <link href="@Url.Content("~/Content/BaseCss/swiper.min.css")" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .banner-box{width:100%}
+          .banner-box .banner-img{width:100%;height:7rem}
+    </style>
+}
+<div>
+   <!--banner-begin-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper banner-box" data-autoplay="3000" data-space-between="0" >
+            <div class="swiper-slide"><img class="banner-img" src="http://img.haibuo.com/UpLoadImgs/a6f653214f17496882098f84c64413c1.jpg" /></div>
+            <div class="swiper-slide"><img class="banner-img" src="http://localhost/UpLoadImgs/e0b77941497946149d118f532cbf20bf.jpg" /></div>
+            <div class="swiper-slide"><img class="banner-img" src="http://img.haibuo.com/UpLoadImgs/5bdc37cb080a4eb79696bfb3dbe78405.jpg" /></div>
+        </div>
+    </div>
+   <!--banner-end-->
+    <div class="flex-box">
+        <a></a>
+    </div>
 
+</div>
+@section scripts{
+    <script src="@Url.Content("~/Content/BaseJs/swiper.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: { delay: 4000},
+            speed:2000,
+            loop: true,
+            scrollbarHide: true,
+            slidesPerView: 'auto', //可以设置为number或者 'auto'则自动根据slides的宽度来设定数量。
+            centeredSlides: true, //设定为true时，活动块会居中，而不是默认状态下的居左。
+            grabCursor: true,
+        })
+
+    </script>
+}

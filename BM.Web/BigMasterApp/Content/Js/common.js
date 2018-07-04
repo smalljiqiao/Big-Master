@@ -24,21 +24,6 @@ var hb = {
             url = window.location.origin + "/" + path;
         }
         return url;
-    },
-    /*获取经纬度信息*/
-    getLocation_h5: function (callback,errorBack) {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                //console.log(position);
-                position.getSuccess = true;
-                if (typeof callback == 'function') {
-                    callback(position);
-                }                
-            }, errorBack);//获取位置信息
-        } else {            
-            console.log("不支持地理微信信息获取");
-            callback({ latitude:0, longitude:0, getSuccess: false });
-        }
     }
 }
 

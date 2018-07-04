@@ -17,7 +17,7 @@
     <AssemblyName>BigMasterApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -150,11 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BaseCss\layer.css" />
+    <Content Include="Content\BaseCss\swiper.min.css" />
+    <Content Include="Content\BaseJs\FlexReset.js" />
+    <Content Include="Content\BaseJs\swiper.min.js" />
+    <Content Include="Content\BaseJs\Utils.js" />
     <Content Include="Content\BaseJs\jquery.js" />
     <Content Include="Content\BaseJs\layer.js" />
     <Content Include="Content\BaseJs\vue2.js" />
     <Content Include="Content\Css\common.css" />
-    <Content Include="Content\Css\reset.css" />
+    <Content Include="Content\BaseCss\reset.css" />
     <Content Include="Content\Js\common.js" />
     <Content Include="Content\Js\reset.js" />
     <Content Include="favicon.ico" />
@@ -201,7 +205,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55765/</IISUrl>
+          <IISUrl>http://localhost/BigMasterApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
