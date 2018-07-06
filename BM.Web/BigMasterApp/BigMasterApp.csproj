@@ -159,6 +159,12 @@
     <Content Include="Content\BaseJs\vue2.js" />
     <Content Include="Content\Css\common.css" />
     <Content Include="Content\BaseCss\reset.css" />
+    <Content Include="Content\iconfont\iconfont.css" />
+    <Content Include="Content\iconfont\iconfont.svg" />
+    <Content Include="Content\images\太阳下山.png" />
+    <Content Include="Content\images\太阳雨-白天.png" />
+    <Content Include="Content\images\太阳雨.png" />
+    <Content Include="Content\images\首页_太阳_时间提醒.png" />
     <Content Include="Content\Js\common.js" />
     <Content Include="Content\Js\reset.js" />
     <Content Include="favicon.ico" />
@@ -177,15 +183,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\iconfont\iconfont.eot" />
+    <Content Include="Content\iconfont\iconfont.ttf" />
+    <Content Include="Content\iconfont\iconfont.woff" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\EightWord.cshtml" />
+    <Content Include="Views\Home\BabyName.cshtml" />
+    <Content Include="Views\Shared\_PartialBanner.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

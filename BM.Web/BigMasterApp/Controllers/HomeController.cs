@@ -13,9 +13,19 @@ namespace BigMasterApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        /// <summary>
+        /// 八字详批视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult EightWord() {
+
+            ViewBag.Title = "八字详批";
+            return View();
+        }
+
+        public ActionResult BabyName()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "宝宝取名";
 
             return View();
         }

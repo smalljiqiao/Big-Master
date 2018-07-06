@@ -92,7 +92,6 @@ F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\bin\zh-Hans\System.Web.Razor.reso
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.csprojResolveAssemblyReference.cache
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.csproj.CoreCompileInputs.cache
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.dll
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.pdb

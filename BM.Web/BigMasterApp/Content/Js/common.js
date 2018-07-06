@@ -27,7 +27,62 @@ var hb = {
     }
 }
 
-function is_weixn() {
+      function doGet(url, data, callback) {
+        $.request({
+            type: "GET",
+            dataType: "json",
+            url: url,
+            data: data,
+            xhrFields: {
+                "Access-Control-Allow-Origin": '*',
+                withCredentials: true
+            },
+            success: function (res) {
+                callback(res);
+            }
+        }, false, false);
+}
+      function doPost(url, data, callback) {
+    $.request({
+        type: "GET",
+        dataType: "json",
+        url: url,
+        data: JSON.stringify(data),
+        xhrFields: {
+            "Access-Control-Allow-Origin": '*',
+            withCredentials: true
+        },
+        success: function (res) {
+            callback(res);
+        }
+    }, false, false);
+}
+      (function ($) {
+        /**请求数据
+        *loding:是否遮罩
+        *checkLogin:是否认证登录
+        *ajax参数
+        **/
+        $.request = function (config, loding, checkLogin) {
+            if (config.xhrFields == undefined) {
+                config.xhrFields = {
+                    "Access-Control-Allow-Origin": '*',
+                    withCredentials: true,
+                };
+            }
+            if (config.contentType == undefined) {
+                config.contentType = "application/json";
+            }
+            var accessToken = getHbAccessToken();
+            if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
+                config.headers = {
+                    Authorization: 'Bearer ' + accessToken
+                };
+            }
+            $.ajax(config);
+        };
+    })(jQuery);
+      function is_weixn() {
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
         return true;
