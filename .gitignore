@@ -11,3 +11,6 @@ DevelopLog.txt
 #忽略.vs文件夹
 .vs
 
+#忽略.sln .csproj文件
+.sln
+.csproj
