@@ -5,4 +5,7 @@ ssh.pub
 #忽略BM.WebApi/packages文件夹
 BM.WebApi/packages
 
+#忽略开发日志文件
+DevelopLog.txt
+
 
