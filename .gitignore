@@ -1,4 +1,4 @@
-#忽略ssh文件
+﻿#忽略ssh文件
 ssh
 ssh.pub
 
@@ -8,4 +8,6 @@ BM.WebApi/packages
 #忽略开发日志文件
 DevelopLog.txt
 
+#忽略.vs文件夹
+.vs
 
