@@ -26,6 +26,10 @@ var hb = {
         return url;
     }
 }
+/*回到上一页*/
+function hist() {
+        history.go(-1);
+    }
 
       function doGet(url, data, callback) {
         $.request({

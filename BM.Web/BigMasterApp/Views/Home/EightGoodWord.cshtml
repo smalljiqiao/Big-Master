@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "八字详批";
+    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/dda8ec240f7543eb87c70e1b1c8b3644.jpg";
+}
+<style>
+     .userMess{background-color:#f5f2e6}
+    .teacherMess{text-align:center}
+     .teacherMess .teacherImg{width:2rem;height:2rem}
+     .customerMess{}
+     .customerMess .item{margin-top:0.31rem}
+     .customerMess .item .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem}
+     .customerMess .costomerInput{line-height:0.7rem;width:95%}
+     
+     .moreMess{background-color:#f5f2e6;min-height:2rem}
+     .forecastFun{background-color:#f5f2e6;min-height:2rem;}
+</style>
+@Html.Partial("_PartialHead")
+@Html.Partial("_PartialBanner")
+<div class="userMess mb10">
+    <!--老师信息Begin-->
+    <div class="flex-box teacherMess pd0x10">
+        <div class=" flex-wrap flex-cont ag-self">
+            <div><img class="teacherImg" src="~/Content/images/首页_太阳_时间提醒.png" /></div>
+            <div>黄大爷</div>
+        </div>
+        <div class="flex-wrap flex-cont ag-self">
+            <div class="tal">老师资料介绍</div>
+            <div>
+                展示老师头像、姓名、简介；
+                • 暂由开发上传，后期可搭建管理后台；
+                • 没配置内容则隐藏，下方元素上移
+            </div>
+        </div>
+    </div>
+    <!--老师信息end-->
+    <div class="customerMess pd0x10">
+        <div class="item">
+            <div class="rem20 mb5">姓名：</div>
+           <div><input class="rem14 pd5x10 mb3 costomerInput" value="" placeholder="请填写您的姓名" /></div>
+        </div>
+        <div class="item">
+            <div class="rem20">性别：</div>
+           <div class="rem16">
+               <input type="radio" name="sex" value="man"/>男
+                <input type="radio" name="sex" value="women"/>女
+           </div>
+        </div>
+        <div class="item">
+            <div class="rem20 mb5">生日：</div>
+           <div><input class="rem14 pd5x10 mb3 costomerInput" value="" placeholder="请选择出生日期" /></div>
+        </div>
+        <div class="item tac "><div class="rem15 mb10 tal">已经有1258人查看2018年八字详批</div>
+        <button class="rem16 submitBtn tac mb10 c-fff">立即预测</button></div>
+    </div>
+
+</div>
+
+<div class="moreMess mb10"></div>
+<div class="forecastFun"></div>
+
+

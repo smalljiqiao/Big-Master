@@ -95,3 +95,4 @@ F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\bin\zh-Hans\System.Web.WebPages.R
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.csproj.CoreCompileInputs.cache
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.dll
 F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.pdb
+F:\majiqiaofile\Big-Master\BM.Web\BigMasterApp\obj\Debug\BigMasterApp.csprojResolveAssemblyReference.cache

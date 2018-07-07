@@ -17,7 +17,7 @@ namespace BigMasterApp.Controllers
         /// 八字详批视图
         /// </summary>
         /// <returns></returns>
-        public ActionResult EightWord() {
+        public ActionResult EightGoodWord() {
 
             ViewBag.Title = "八字详批";
             return View();
@@ -30,9 +30,16 @@ namespace BigMasterApp.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult EightMarry()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "八字合婚";
+
+            return View();
+        }
+
+        public ActionResult ReadDream()
+        {
+            ViewBag.Message = "八字合婚";
 
             return View();
         }

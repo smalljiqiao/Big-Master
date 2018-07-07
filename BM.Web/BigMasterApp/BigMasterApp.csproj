@@ -193,9 +193,12 @@
     <Content Include="Content\iconfont\iconfont.ttf" />
     <Content Include="Content\iconfont\iconfont.woff" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\EightWord.cshtml" />
     <Content Include="Views\Home\BabyName.cshtml" />
     <Content Include="Views\Shared\_PartialBanner.cshtml" />
+    <Content Include="Views\Home\EightGoodWord.cshtml" />
+    <Content Include="Views\Home\ReadDream.cshtml" />
+    <Content Include="Views\Shared\_PartialHead.cshtml" />
+    <Content Include="Views\Home\EightMarry.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
