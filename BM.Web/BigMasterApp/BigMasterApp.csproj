@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PayFileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,6 +162,8 @@
     <Content Include="Content\BaseCss\reset.css" />
     <Content Include="Content\iconfont\iconfont.css" />
     <Content Include="Content\iconfont\iconfont.svg" />
+    <Content Include="Content\images\alipay.png" />
+    <Content Include="Content\images\lock.png" />
     <Content Include="Content\images\太阳下山.png" />
     <Content Include="Content\images\太阳雨-白天.png" />
     <Content Include="Content\images\太阳雨.png" />
@@ -199,6 +202,7 @@
     <Content Include="Views\Home\ReadDream.cshtml" />
     <Content Include="Views\Shared\_PartialHead.cshtml" />
     <Content Include="Views\Home\EightMarry.cshtml" />
+    <Content Include="Views\PayFile\EightGoodWordPay.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -214,7 +218,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>false</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
