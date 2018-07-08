@@ -6,6 +6,7 @@ ssh.pub
 BM.WebApi/packages
 
 #忽略BM.Web
+BM.Web/.vs
 BM.Web/packages
 BM.Web/BigMasterApp/obj
 BM.Web/BigMasterApp/Properties
