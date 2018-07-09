@@ -10,7 +10,6 @@ namespace BigMasterApp.Controllers
     {
         public ActionResult Index()
         {
-            string dd = "";
             return View();
         }
 
@@ -44,9 +43,5 @@ namespace BigMasterApp.Controllers
 
             return View();
         }
-     
-
-
-
     }
 }
