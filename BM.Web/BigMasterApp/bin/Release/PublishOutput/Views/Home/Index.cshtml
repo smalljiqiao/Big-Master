@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "测试";
+}
+
+@section styles{
+    <link href="@Url.Content("~/Content/BaseCss/swiper.min.css")" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .banner-box{width:100%}
+          .banner-box .banner-img{width:100%;height:5rem}
+        .functionShoose{}
+          .functionShoose .img{width:1.2rem}
+        .content{height:500px}
+        .gd-nav{position:fixed;bottom:-1px;text-align:center;width:100%;padding-bottom:0.1rem;background-color:red;color:white;padding-top:0.1rem}
+    </style>
+}
+<div>
+   <!--banner-begin-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper banner-box" data-autoplay="3000" data-space-between="0" >
+            <div class="swiper-slide"><img class="banner-img" src="http://img.haibuo.com/UpLoadImgs/fa4a4069f6fe414eb7086946f64b3c78.jpg" /></div>
+            <div class="swiper-slide"><img class="banner-img" src="http://img.haibuo.com/UpLoadImgs/f309c1e1829f49b797b84fb479134996.jpg" /></div>
+            <div class="swiper-slide"><img class="banner-img" src="http://img.haibuo.com/UpLoadImgs/fa4a4069f6fe414eb7086946f64b3c78.jpg" /></div>
+        </div>
+    </div>
+   <!--banner-end-->
+    <div class="flex-box mb10 functionShoose">
+        <a class="flex-cont" href="@Url.Content("~/Home/EightGoodWord")">
+            <img class="img" src="~/Content/images/首页_太阳_时间提醒.png" />
+            <div>八字详批</div>
+        </a>
+        <a class="flex-cont" href="@Url.Content("~/Home/BabyName")">
+            <img  class="img" src="~/Content/images/太阳雨.png" />
+            <div>宝宝取名</div>
+        </a>
+        <a class="flex-cont" href="@Url.Content("~/Home/EightMarry")">
+            <img class="img" src="~/Content/images/太阳下山.png" />
+            <div>八字合婚</div>
+        </a>
+        <a class="flex-cont" href="@Url.Content("~/Home/ReadDream")">
+            <img class="img" src="~/Content/images/太阳雨-白天.png" />
+            <div>周公解梦</div>
+        </a>
+    </div>
+    <div class="content"></div>
+    <!--nav-begin-->
+    <div class="flex-box gd-nav">
+        <a class="flex-cont">
+            <i class="icon iconfont icon-shouye c-fff"></i> <div class="c-fff">首页</div>
+       </a>
+        <a class="flex-cont"><i class="icon iconfont icon-wode c-fff"></i>
+            <div class="grayc c-fff">我的</div></a>
+    </div>
+    <!--nav-end-->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/Content/BaseJs/swiper.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: { delay: 4000},
+            speed:2000,
+            loop: true,
+            scrollbarHide: true,
+            slidesPerView: 'auto', //可以设置为number或者 'auto'则自动根据slides的宽度来设定数量。
+            centeredSlides: true, //设定为true时，活动块会居中，而不是默认状态下的居左。
+            grabCursor: true,
+        })
+
+    </script>
+}

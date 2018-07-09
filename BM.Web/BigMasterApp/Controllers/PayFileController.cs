@@ -15,5 +15,10 @@ namespace BigMasterApp.Controllers
 
             return View();
         }
+        public ActionResult BabyNamePay()
+        {
+            ViewBag.Message = "订单支付";
+            return View();
+        }
     }
 }

@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "预测支付";
+}
+@section styles{
+    <style type="text/css">
+        .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem}
+        .babyMess{}
+        .payMess{}
+        .alipay{width:7rem !important}
+        .alipay img{ width:1rem}
+            .alipay span {position:relative;top:0.2rem;vertical-align:top}
+             .alipay-button{background-color:red!important;border-radius:5px}
+    </style>
+    }
+@Html.Partial("_PartialHead")
+<div>
+    <div class="babyNameContent babyMess mb13">
+        <div class="rem20 ">宝宝信息</div>
+        <ul class="rem16 mt15">
+            <li class="flex-box mb5"><div class="flex-cont wd35 tal">宝宝姓氏</div><div class="flex-cont tal">陈</div></li>
+            <li class="flex-box mb5"><div class="flex-cont wd35 tal">性别</div><div class="flex-cont tal">男</div></li>
+            <li class="flex-box mb5"><div class="flex-cont wd35 tal">出生日期</div><div class="flex-cont tal">陈</div></li>
+            <li class="flex-box"><div class="flex-cont wd35 tal">备注信息</div><div class="flex-cont tal">陈</div></li>
+
+        </ul>
+    </div>
+    <div class="bg-390 mb10" style="height:0.25rem"></div>
+    <div class="payMess babyNameContent">
+        <div class="rem20 mb13  tal">支付价格</div>
+        <div class="flex-box rem16  payCount">
+            <div class="flex-cont tal ">
+                <div class="mb5">限时88元</div>
+                <div>原价150元</div>
+            </div>
+            <div class="flex-cont tar">
+                <div class="mb5">距优惠介绍还剩</div>
+                <div>12：21：55</div>
+            </div>
+        </div>
+        <div class="flex-box mt15">
+            <div class="flex-cont ag-self alipay">
+                <img src="~/Content/images/alipay.png" />
+                <span class="rem16">支付宝支付</span>
+            </div>
+            <div class="flex-cont tar ag-self"><button class="rem18 pd5x10 mr10 c-fff alipay-button ">立即支付</button></div>
+        </div>
+        <div class="tac rem14">支付后自动跳转测算成功页面</div>
+
+    </div>
+</div>
+

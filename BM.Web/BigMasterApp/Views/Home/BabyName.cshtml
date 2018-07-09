@@ -3,5 +3,38 @@
     ViewBag.Title = "宝宝取名";
     ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/774d955a88f54882b05d3de1f30144c3.jpg";
 }
+@section Styles{
+    <style type="text/css">
+        .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem}
+        .babyNameContent .userMess{border-bottom:1px solid;line-height:0.8rem}
+        .babyNameContent .userMess i{border:1px solid #d4d4d4;border-radius:50%;width:20px;height:20px;display:inline-block!important;position:relative;top:0.12rem}
+        .babyNameContent .userMess i:first-child{margin-right:1rem}
+        .check_on {background:url(../Content/images/roundRed.png) no-repeat center}
+        .babyNameContent .userMess div:first-child{width:3rem !important}
+        .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem;padding-top:0.10rem}
+    </style>
+    }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
+
+<div class="babyNameContent">
+    <div class="mb10">
+        <ul class="mt15">
+            <li class="flex-box pd5x0 rem18  userMess">
+                <div class="flex-cont tal">宝宝姓氏</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div> </li>
+
+            <li class="flex-box pd5x0 rem18 userMess">
+                <div class="flex-cont tal">性别</div><div class="flex-cont tal"><i class="check_on mr10">男</i><i>女</i></div>
+            </li>
+            <li class="flex-box pd5x0 rem18 userMess">
+                <div class="flex-cont tal">出生日期</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+            </li>
+            <li class="flex-box pd5x0 rem18 userMess">
+                <div class="flex-cont tal">备注信息</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+            </li>
+        </ul>
+        <div class="mt20"><button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/BabyNamePay")'">立即预测</button></div>
+        <div>已为1523位宝宝取名</div>
+    </div>
+
+</div>

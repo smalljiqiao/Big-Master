@@ -1,0 +1,66 @@
+ .dbk{display: block;}
+.shade,.loading {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.7);z-index: 5;}
+
+.statu-bg{height:1.2rem;line-height:1.2rem;text-align:center;font-size:0.4rem;background:#f2f2f2;color:#999;}
+.scrolltop {width:1rem;height:1rem;background:#008ed6;position:fixed;bottom:0.6rem;right:0.6rem;border-radius:50%;overflow:hidden;line-height:1rem;font-size:0.5rem;text-align:center;color:#fff;background-image:url(../../Content/images/scrolltop.png) ;background-position:center center;background-size:50%;background-repeat:no-repeat;z-index:99;}
+
+.guide-share{ background:url(../../Content/images/guide.png) no-repeat;background-size: 60% 60%;z-index: 7;display: block;height:8rem;position: absolute;width: 100%;background-position:right top;}
+.wait-icon{background:url(../../Content/images/wait.gif) no-repeat;width:0.5rem;height:0.5rem;background-size: 100% 100%;display:inline-block;vertical-align:middle;margin-right:0.1rem;}
+/*header start*/
+.wdshop-head-box {
+    position: relative;
+    height: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    text-align: center;
+    background: #008ed6;
+    font-size: 0.46875rem;
+}
+body .fkStatu1{display:block;}
+    .wdshop-head-icon{ width:0.65625rem;height:0.65625rem;display:inline-block;position:absolute;right:0.3125rem;top:0.15rem;background:url(../../Content/images/arrowShare.png) no-repeat;background-size:100%;}
+    .back-home-icon{ width:0.65625rem;height:0.65625rem;display:inline-block;position:absolute;left:0.3125rem;top:0.15rem;background:url(../../Content/images/icon-home.png) no-repeat;background-size:100%;}
+/*header end*/
+
+/*store-box start*/
+.store-link-box { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; text-align: center; }
+    .store-link-box .store-link { -webkit-box-pack: center;-moz-justify-content: center;-webkit-justify-content: center;justify-content: center; width: 100%;padding:0.45625rem 0;display:block;}
+        .store-link .store-link-img {width: 1.6875rem; height:1.6875rem;display:block;margin:0 auto 0.2rem;}
+            .store-link .store-link-title{font-size:0.375rem;font-weight:normal;}
+                .store-link .store-selected{color:#008fd7;}
+/*store-box end*/
+
+/* �����б� start*/
+.inform-list-line{margin-bottom:0.46875rem;padding-bottom:0.46875rem;border-bottom:1px solid #e9e9e9;overflow: hidden;}
+    .inform-list-a{}
+    .col-box{display: block;width:100%;overflow: hidden; position: relative;}
+        .col-image-box{width:1.71875rem;margin:0 0.2875rem;}
+            .col-image{width:1.71875rem;height:1.71875rem;object-fit:cover;border-radius:50%;}
+        .col-detail{width: 100%;overflow: hidden;-webkit-align-self: center;-ms-flex-item-align: center; align-self: center;font-size:0.3rem;text-align:left;}
+            .col-detail-a{position:relative;margin-bottom:0.2rem;}
+                .col-detail-name{font-size:0.4375rem;color:#474747;}
+                .col-distance-num{font-size:0.40625rem;color:#999;position:absolute;right:0.2rem;}
+            .col-detail-b{position:relative;}
+                .col-detail-introduce{font-size:0.3125rem;opacity:0.75;width:78%; overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-break: break-all;}
+                .col-detail-collection{position:absolute;right:0.2rem;height:0.575rem;line-height:0.375rem;display:inline-block;z-index:2;top:0;}
+                 .ipadFk    .col-detail-introduce{width:88% !important;}
+
+                    .collection-icon{width:0.375rem;height:0.375rem;margin-right:0.1rem;background:url(../../Content/images/collection.png) no-repeat;background-size:100%;display:inline-block;z-index:2;}
+                        .collection-selected{background-image:url(../../Content/images/collectionSelected.png);}
+    /* ͼ���б� ���� start*/
+.im-text-list{}    
+    .im-text-box{margin-right:0.15625rem;width:33.33% !important;}
+        .im-text-box:last-child{margin-right:0;}
+        .im-text-img{width:100%;height:4.0625rem;object-fit:cover;display:block;}
+            .ipadFk .im-text-img{height:6.0625rem;}
+
+            .im-text-version{width:3.2rem;color:#474747;font-size:0.28125rem;text-align:left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+            .im-present-price{font-size:0.25rem;color:#414141;}
+            .im-orginal-price{color:#d8d8d8;font-size:0.28125rem;line-height:0.6rem;margin-right :0.1rem;}
+    /* ͼ���б� ���� end*/
+/* �����б� end*/
+
+    /* 售罄状态 start*/
+    .sold-box{position:absolute;top:0;width:100%;height:4.0625rem;}
+        .sold-bg{background-color:#333;position:absolute;z-index:3;opacity:0.4;width:100%;height:4.0625rem;}
+            .sold-icon{width:100%;height:4.0625rem;position:absolute;top:0;z-index:4;background:url(../../Content/images/sold-out.png) no-repeat;background-size:90%;background-position:center center;}
+            .ipadFk  .sold-icon,.ipadFk .sold-bg{height:6.0625rem;} 
