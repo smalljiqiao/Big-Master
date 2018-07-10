@@ -3,29 +3,34 @@
     ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/dda8ec240f7543eb87c70e1b1c8b3644.jpg";
 }
 <style>
-     .userMess{background-color:#f5f2e6}
+     .userMess{background-color:#f5f2e6;}
     .teacherMess{text-align:center}
-     .teacherMess .teacherImg{width:2rem;height:2rem}
+    .teacherMess .name-Img{width:3.5rem !important;margin-left:0.8rem}
+     .teacherMess .teacherImg{width:2rem;height:2rem;border-radius:50%;object-fit:cover}
      .customerMess{}
      .customerMess .item{margin-top:0.31rem}
-     .customerMess .item .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem}
+     .customerMess .item .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem;padding-top:0.10rem}
      .customerMess .costomerInput{line-height:0.7rem;width:95%}
      
-     .moreMess{background-color:#f5f2e6;min-height:2rem}
-     .forecastFun{background-color:#f5f2e6;min-height:2rem;}
+     .moreMess{background-color:#f5f2e6;min-height:2rem;text-align:center;padding-top:0.1rem !important; padding-bottom:1rem !important}
+       .moreMess .MM-content{text-align:center}
+         .moreMess .MM-content .MM-item{flex-grow:1;text-align:center}
+     .moreMess .conText{width:0.5rem; margin:0 auto}
+     .forecastFun{background-color:#f5f2e6;min-height:2rem;padding-top:0.3rem}
+     .forecastFun .fun-img{max-width:3.5rem}
 </style>
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
-<div class="userMess mb10">
+<div class="userMess mb10 pd0x5">
     <!--老师信息Begin-->
-    <div class="flex-box teacherMess pd0x10">
-        <div class=" flex-wrap flex-cont ag-self">
-            <div><img class="teacherImg" src="~/Content/images/首页_太阳_时间提醒.png" /></div>
+    <div class="flex-box teacherMess pd12x0">
+        <div class=" flex-wrap flex-cont ag-self name-Img">
+            <div><img class="teacherImg" src="http://thirdwx.qlogo.cn/mmopen/383icd6wkx4TECUBUCjDtB7IQpIuVJ0DTcSRb0s8vK08ibGgXqC2uprC58cYWXwQM27pibFKvpohIllQyVQmnmgdAa3xZdWjtgJ/132" /></div>
             <div>黄大爷</div>
         </div>
         <div class="flex-wrap flex-cont ag-self">
-            <div class="tal">老师资料介绍</div>
-            <div>
+            <div class="tal rem16">老师资料介绍</div>
+            <div class="tal rem16">
                 展示老师头像、姓名、简介；
                 • 暂由开发上传，后期可搭建管理后台；
                 • 没配置内容则隐藏，下方元素上移
@@ -39,23 +44,47 @@
            <div><input class="rem14 pd5x10 mb3 costomerInput" value="" placeholder="请填写您的姓名" /></div>
         </div>
         <div class="item">
-            <div class="rem20">性别：</div>
-           <div class="rem16">
-               <input type="radio" name="sex" value="man"/>男
-                <input type="radio" name="sex" value="women"/>女
+            <div class="rem20 mb5">性别：</div>
+           <div class="rem16 ">
+               <input type="radio" class="mr5" checked="checked" name="sex" value="man"/>男
+                <input type="radio"  class="mr5 " style="margin-left:0.9rem" name="sex" value="women"/>女
            </div>
         </div>
         <div class="item">
             <div class="rem20 mb5">生日：</div>
            <div><input class="rem14 pd5x10 mb3 costomerInput" value="" placeholder="请选择出生日期" /></div>
         </div>
-        <div class="item tac "><div class="rem15 mb10 tal">已经有1258人查看2018年八字详批</div>
-        <button class="rem16 submitBtn tac mb10 c-fff">立即预测</button></div>
+        <div class="item tac mb5"><div class="rem15 mb10 tal">已经有1258人查看2018年八字详批</div>
+        <button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/EightGoodWordPay")'" >立即预测</button></div>
     </div>
 
 </div>
 
-<div class="moreMess mb10"></div>
-<div class="forecastFun"></div>
+<div class="moreMess mb10 pd12 pd0x5">
+    <div class="tac rem20 mb13 mt15">测算后你将了解以下信息</div>
+    <div class="flex-box MM-content">
+        <div class="flex-cont MM-item"><div class="rem20 pd20x10 bg-8bc conText">爱情</div></div>
+        <div class="flex-cont ag-self MM-item"><div class="pd20x10 rem20 bg-f009 conText">事业</div></div>
+        <div class="flex-cont ag-self MM-item"><div class="rem20 pd20x10 bg-8bc conText">财运</div></div>
+        <div class="flex-cont ag-self MM-item"><div class="rem20 bg-f009 pd20x10 conText">健康</div></div>
+
+    </div>
+</div>
+<div  class="forecastFun pd0x5">
+    <div class="tac rem20 mb13 mt15">测算内容对你有什么帮助</div>
+    <div  class="flex-box">
+        <div class="flex-cont mr10">
+            <div class="rem18 mb5">精准推断婚姻</div>
+<div class="rem15">如果所有项目的flex-grow属性都为1，，则前者占据的剩余空间将比其他项多一倍。</div>
+            <img class="fun-img" src="~/Content/images/太阳雨-白天.png" />
+        </div>
+        <div class="flex-cont">
+            <div class="rem18 mb5">精准推断婚姻</div>
+            <div class="rem15">如果所有项目的flex-grow属性都为1其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</div>
+            <img class="fun-img" src="~/Content/images/太阳雨.png" />
+        </div>
+    </div>
+
+</div>
 
 
