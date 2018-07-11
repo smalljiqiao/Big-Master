@@ -164,9 +164,27 @@
     <Content Include="Content\iconfont\iconfont.css" />
     <Content Include="Content\iconfont\iconfont.svg" />
     <Content Include="Content\images\alipay.png" />
+    <Content Include="Content\images\colMap.png" />
+    <Content Include="Content\images\couple.png" />
+    <Content Include="Content\images\dongwulei.png" />
+    <Content Include="Content\images\guishenlei.png" />
+    <Content Include="Content\images\huodonglei.png" />
+    <Content Include="Content\images\jianzhulei.png" />
     <Content Include="Content\images\lock.png" />
+    <Content Include="Content\images\qitalei.png" />
+    <Content Include="Content\images\RDBackGround.jpg" />
+    <Content Include="Content\images\readDreamItem.png" />
+    <Content Include="Content\images\redbox.png" />
+    <Content Include="Content\images\renwulei.png" />
     <Content Include="Content\images\roundGray.png" />
     <Content Include="Content\images\roundRed.png" />
+    <Content Include="Content\images\eightMarry_03.png" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\shenghuolei.png" />
+    <Content Include="Content\images\wupinlei.png" />
+    <Content Include="Content\images\yellowbox.png" />
+    <Content Include="Content\images\zhiwulei.png" />
+    <Content Include="Content\images\ziranlei.png" />
     <Content Include="Content\images\太阳下山.png" />
     <Content Include="Content\images\太阳雨-白天.png" />
     <Content Include="Content\images\太阳雨.png" />
@@ -209,6 +227,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\PayFile\BabyNamePay.cshtml" />
     <Content Include="Views\PayResult\BabyNameForecastResult.cshtml" />
+    <Content Include="Views\Home\ReadDreamItem.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

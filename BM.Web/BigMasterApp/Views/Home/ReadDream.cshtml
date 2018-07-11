@@ -1,9 +1,47 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "八字合婚";
+    ViewBag.Title = "周公解梦";
     ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/7ef43a5387b647a7ba2077fe564813ec.jpg";
 }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
+@section Styles{
+    <style type="text/css">
+        .readDreamContent{height:65vh; background:url(..//Content/images/RDBackGround.jpg);background-size:100% 100%}
+    .readDreamContent .Search{margin:0 auto;width:85%;border:1px solid #9a634a;border-radius:10px;padding-left:0.4rem }
+    .readDreamContent .Search .inputSearch{height:1.1rem;width:84%;}
+    .readDreamContent .Search .imgSearch{height:0.65rem;width:0.65rem;margin:7px}
+    .readDreamContent .chooseItem{}
+    </style>
+    }
+<div class="readDreamContent pd12x0">
+    <div class="Search tac bg-fff flex-box mt20">
+        <input class="rem16 flex-cont inputSearch" placeholder="请输入关键字" />
+        <img class="imgSearch flex-cont ag-self " src="~/Content/images/search.png" /></div>
+
+    <div class="mt20">
+        <div class="flex-box mt15">
+            <div class="flex-cont" onclick="window.location.href='ReadDreamItem?key=人物类'"><img src="~/Content/images/renwulei.png" /><div>人物类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/ziranlei.png" /><div>自然类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/dongwulei.png" /><div>动物类</div></div>
+        </div>
+        <div class="flex-box mt20">
+            <div class="flex-cont"><img src="~/Content/images/jianzhulei.png" /><div>人物类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/guishenlei.png" /><div>自然类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/huodonglei.png" /><div>动物类</div></div>
+        </div>
+        <div class="flex-box mt20">
+        <div class="flex-cont"><img src="~/Content/images/shenghuolei.png" /><div>人物类</div></div>
+        <div class="flex-cont"><img src="~/Content/images/zhiwulei.png" /><div>自然类</div></div>
+        <div class="flex-cont"><img src="~/Content/images/wupinlei.png" /><div>动物类</div></div>
+    </div>
+        <div class="flex-box mt20">
+            <div class="flex-cont"><img src="~/Content/images/qitalei.png" /> <div>其他类</div> </div>
+            <div class="flex-cont"></div>
+            <div class="flex-cont"></div>
+        </div>
+    </div>
+   
+</div>
 
 

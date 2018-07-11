@@ -3,7 +3,115 @@
     ViewBag.Title = "八字合婚";
     ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/5bdc37cb080a4eb79696bfb3dbe78405.jpg";
 }
+<style>
+    .eightGoodWordContent{background-color:#8c0a0d;}
+     .userMess{background-color:#8c0a0d;}
+    .teacherMess{text-align:center;background:url(../Content/images/eightMarry_03.png);background-size:100% 100%;background-color:#f4e2d1; }
+    .teacherMess .name-Img{width:3.5rem !important;margin-left:0.8rem}
+     .teacherMess .teacherImg{width:2rem;height:2rem;border-radius:50%;object-fit:cover}
+     .customerMess{background-color:#f4e2d1;margin-top:15px;border-radius:2%;padding-top:0.12rem;padding-bottom:0.3rem}
+     .customerMess .item{color:#5b0100;border-bottom:1px solid #ad5d57}
+     .customerMess .item div:first-child{width:3.5rem;align-self:center}
+     .submitBtn{line-height:0.9rem;width:100%;background-color:#ffd800;border-radius:1rem;margin-top:0.410rem}
+     .customerMess .costomerInput{line-height:0.7rem;background-color:#f4e2d1}
+     
+     .moreMess{background-color:#8c0a0d;min-height:2rem;text-align:center;padding-top:0.1rem !important; padding-bottom:1rem !important}
+     .colMap{height:1.3rem;align-self:center;line-height:1.3rem; background:url(..//Content/images/colMap.png);background-size:100% 100%}
+    .moreMess .redBox{margin:0 auto; background:url(..//Content/images/redbox.png);background-size:100% 100%}
+    .moreMess .yellowBox{margin:0 auto; background:url(..//Content/images/yellowbox.png);background-size:100% 100%}
+     .moreMess .MM-content{text-align:center}
+         .moreMess .MM-content .MM-item{text-align:center;flex-grow:1}
+          .moreMess .MM-content .MM-item div{width:1rem;height:3.65rem}
+     .moreMess .conText{width:0.5rem; margin:0 auto;position:relative;top:0.8rem}
+     .forecastFun{background-color:#8c0a0d;min-height:2rem;padding-top:0.3rem}
+     .forecastFun .item {}
+     .forecastFun .item .top{color:#fdf281}
+     .forecastFun .item .FFcontent{height:2.3rem}
+     .forecastFun .fun-img{max-width:3.5rem}
+</style>
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
+<div class="eightGoodWordContent pd20x10">
+    <div class="userMess mb10">
+        <!--老师信息Begin-->
+        <div class="flex-box teacherMess pd12x0">
+            <div class=" flex-wrap flex-cont ag-self name-Img">
+                <div><img class="teacherImg" src="http://thirdwx.qlogo.cn/mmopen/383icd6wkx4TECUBUCjDtB7IQpIuVJ0DTcSRb0s8vK08ibGgXqC2uprC58cYWXwQM27pibFKvpohIllQyVQmnmgdAa3xZdWjtgJ/132" /></div>
+                <div>黄大爷</div>
+            </div>
+            <div class="flex-wrap flex-cont ag-self">
+                <div class="tal rem14">老师资料介绍</div>
+                <div class="tal rem14">
+                    展示老师头像、姓名、简介；
+                    • 暂由开发上传，后期可搭建管理后台；
+                    • 没配置内容则隐藏，下方元素上移
+                </div>
+            </div>
+        </div>
+        <!--老师信息end-->
+        <div class="customerMess pd0x10">
+            <div class="item flex-box ">
+                <div class="flex-cont rem16 ">男方姓名：</div>
+                <div class="flex-cont tal"><input class="rem14 pd5x10 costomerInput" value="" placeholder="请填写您的姓名" /></div>
+            </div>
+            <div class="item flex-box ">
+                <div class="flex-cont rem16 ">出生日期：</div>
+                <div class="flex-cont tal "><input class="rem14 pd5x10  costomerInput" value="" placeholder="请填写您的姓名" /></div>
+            </div>
+            <div class="item flex-box ">
+                <div class="flex-cont rem16 ">女方姓名：</div>
+                <div class="flex-cont tal"><input class="rem14 pd5x10  costomerInput" value="" placeholder="请填写您的姓名" /></div>
+            </div>
+            <div class="item flex-box ">
+                <div class="flex-cont rem16 ">出生日期：</div>
+                <div class="flex-cont tal"><input class="rem14 pd5x10 costomerInput" value="" placeholder="请填写您的姓名" /></div>
+            </div>
+        </div>
+        <div class="item tac mb5">
+            <div class="rem12 c-fff tal" style="padding-top:4px">已经有1258人查看2018年八字详批</div>
+            <button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/EightGoodWordPay")'">立即预测</button>
+        </div>
+    </div>
+
+    <div class="moreMess mb10 pd12 pd0x5">
+        <div class="tac rem16 c-fff mb13 mt15 colMap">测算后你将了解以下信息</div>
+        <div class="flex-box MM-content">
+            <div class="flex-cont flex-box ag-self MM-item "><div class="yellowBox rem14 tac ag-self"><span class="conText">夫妻默契</span></div></div>
+            <div class="flex-cont ag-self MM-item c-fff "><div class=" redBox rem14  tac ag-self"><span class="conText">夫妻相旺</span></div></div>
+            <div class="flex-cont ag-self MM-item c-fff"><div class="yellowBox rem14 tac  ag-self"><span class="conText">夫妻情深</span></div></div>
+            <div class="flex-cont ag-self MM-item c-fff"><div class="redBox rem14  tac  ag-self"><span class="conText">子女同步</span></div></div>
+        </div>
+    </div>
+    <div class="forecastFun pd0x5">
+        <div class="tac rem16 mb13 c-fff mt15 colMap">测算内容对你有什么帮助</div>
+        <div class="flex-box item mb20">
+            <div class="flex-cont mr10 ">
+                <div class="rem18 mb5 top">精准推断默契</div>
+                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1，，则前者占据的剩余空间将比其他项多一倍。</div>
+                <img class="fun-img" src="~/Content/images/couple.png" />
+            </div>
+            <div class="flex-cont">
+                <div class="rem18 mb5 top">精准分析旺夫</div>
+                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1其他项目都为他项多一倍。</div>
+                <img class="fun-img" src="~/Content/images/couple.png" />
+            </div>
+            
+        </div>
+        <div class="flex-box item mt15">
+            <div class="flex-cont mr10 ">
+                <div class="rem18 mb5 top">精准测算情深</div>
+                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1，，则前者占据的剩余空间将比其他项多一倍。</div>
+                <img class="fun-img" src="~/Content/images/couple.png" />
+            </div>
+            <div class="flex-cont">
+                <div class="rem18 mb5 top">精准测算子女</div>
+                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1其他项目都为他项多一倍。</div>
+                <img class="fun-img" src="~/Content/images/couple.png" />
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 

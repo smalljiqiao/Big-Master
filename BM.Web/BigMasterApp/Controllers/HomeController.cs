@@ -43,5 +43,11 @@ namespace BigMasterApp.Controllers
 
             return View();
         }
+
+        public ActionResult ReadDreamItem()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
     }
 }

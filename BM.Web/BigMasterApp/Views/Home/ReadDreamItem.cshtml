@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var query = Request.QueryString["key"];
+    ViewBag.Title =query;
+}
+@Html.Partial("_PartialHead")
+@section Styles{
+    <style type="text/css">
+         .readDreamContentItem{height:90vh; background:url(..//Content/images/RDBackGround.jpg);background-size:100% 100%}
+         .conItem{width:90%;margin:0 auto}
+         .readDreamContentItem .item{height:1rem; width:50%!important; line-height:1rem; background:url(..//Content/images/readDreamItem.png);background-size:100% 100%}
+    </style>
+    }
+<div class="readDreamContentItem pd10x0">
+    <div class="flex-box flex-wrap tac conItem">
+    <div class="flex-cont ag-self item">前男友</div><div class="flex-cont ag-self item">新欢</div>
+        <div class="flex-cont ag-self item">前男友</div><div class="flex-cont ag-self item">新欢</div>
+    
+    </div>
+</div>
+
+

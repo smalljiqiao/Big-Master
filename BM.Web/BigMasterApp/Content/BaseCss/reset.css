@@ -120,8 +120,5 @@ body .bg-f009{background:#009688;}body .bg-f56d{background:#f56d02;}
 .cf-b::-moz-placeholder { color:    #fff;}
 .cf-b:-ms-input-placeholder { color:    #fff;}
 
-input {
-    -webkit-appearance: none; /* ·½·¨2 */
-}
 
  .triangle{position: absolute;right: 10px;top: 48%;width: 0;height: 0; border-left: 8px solid transparent;border-right: 8px solid transparent;border-top: 8px solid #b5b5b5;margin-top: -4px;}
