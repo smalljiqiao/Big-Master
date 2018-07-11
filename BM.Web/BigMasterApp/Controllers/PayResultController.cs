@@ -14,5 +14,10 @@ namespace BigMasterApp.Controllers
             ViewBag.Title = "测算结果";
             return View();
         }
+        public ActionResult ReadDreamResult()
+        {
+            ViewBag.Title = "";
+            return View();
+        }
     }
 }

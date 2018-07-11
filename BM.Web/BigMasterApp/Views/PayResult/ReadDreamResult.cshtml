@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var query = Request.QueryString["key"];
+    ViewBag.Title = query;
+}
+@Html.Partial("_PartialHead")
+@section Styles{
+    <style type="text/css">
+        .ReadDreamResult{min-height:90vh; background:url(..//Content/images/readDreamResult.jpg);background-size:100% 100%}
+        .ReadDreamResult .top{ width:90% ;margin:0 auto;line-height:1rem; height:1rem; background:url(..//Content/images/readDreamResult_Top.png);background-size:100% 100%}
+        .ReadDreamResult .content{width:90%;margin:0 auto  ;padding-top:0.6rem}
+    </style>
+    }
+<div class="ReadDreamResult pd20x10">
+    <div class="top rem18 tac mb20">@ViewBag.Title</div>
+    <div class="content ">
+        <div class="rem16" style="color:#5b0100;margin-bottom:0.15rem">解梦结果:</div>
+        <div class="rem15">
+            还是说你想用来实名注册的身份证提示被别人使用过了该怎么办？
+            你可以上网百度：身份证大全，然后随便复制几个号码碰下运气，实在不行我帮你注册
+        </div>
+    </div>
+</div>
+

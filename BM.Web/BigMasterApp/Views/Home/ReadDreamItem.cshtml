@@ -6,16 +6,20 @@
 @Html.Partial("_PartialHead")
 @section Styles{
     <style type="text/css">
-         .readDreamContentItem{height:90vh; background:url(..//Content/images/RDBackGround.jpg);background-size:100% 100%}
-         .conItem{width:90%;margin:0 auto}
-         .readDreamContentItem .item{height:1rem; width:50%!important; line-height:1rem; background:url(..//Content/images/readDreamItem.png);background-size:100% 100%}
+         .readDreamContentItem{min-height:90vh; background:url(..//Content/images/RDBackGround.jpg);background-size:100% 100%}
+         .conItem{width:95%;margin:0 auto}
+         .conItem .divClass{width:50% !important}
+         .conItem div:nth-child(2n){}
+         .readDreamContentItem .item{height:1rem; width:90%!important; margin:0 auto; line-height:1rem; background:url(..//Content/images/readDreamItem.png);background-size:100% 100%}
     </style>
     }
 <div class="readDreamContentItem pd10x0">
     <div class="flex-box flex-wrap tac conItem">
-    <div class="flex-cont ag-self item">前男友</div><div class="flex-cont ag-self item">新欢</div>
-        <div class="flex-cont ag-self item">前男友</div><div class="flex-cont ag-self item">新欢</div>
-    
+
+    <div class="flex-cont divClass ag-self mb20"><div class="item" onclick="window.location.href='../PayResult/ReadDreamResult?key=前男友'">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>
+        <div class="flex-cont divClass ag-self mb20"><div class="item">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>
+
+ 
     </div>
 </div>
 
