@@ -1,11 +1,8 @@
-namespace BM.Data.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
 
+namespace BM.Api.Models
+{
     public partial class Searchs
     {
         public Guid ID { get; set; }
@@ -29,7 +26,5 @@ namespace BM.Data.Domain
 
         [StringLength(50)]
         public string ZhouWord { get; set; }
-
-        public virtual Users Users { get; set; }
     }
 }

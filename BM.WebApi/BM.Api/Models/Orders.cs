@@ -1,19 +1,12 @@
-namespace BM.Data.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
 
+namespace BM.Api.Models
+{
     public partial class Orders
     {
-        [Key]
-        [Column(Order = 0)]
         public Guid ID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         [StringLength(16)]
         public string OrderID { get; set; }
 
@@ -28,9 +21,5 @@ namespace BM.Data.Domain
         public string PayState { get; set; }
 
         public DateTime CreateTime { get; set; }
-
-        public virtual OrderSearch OrderSearch { get; set; }
-
-        public virtual Users Users { get; set; }
     }
 }

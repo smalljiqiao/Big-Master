@@ -1,12 +1,8 @@
-namespace BM.Data.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-    [Table("WXUserInfo")]
+namespace BM.Api.Models
+{
     public partial class WXUserInfo
     {
         public Guid ID { get; set; }
@@ -35,7 +31,5 @@ namespace BM.Data.Domain
         public string HeadImgUrl { get; set; }
 
         public DateTime CreateTime { get; set; }
-
-        public virtual Users Users { get; set; }
     }
 }

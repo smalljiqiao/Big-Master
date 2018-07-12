@@ -1,15 +1,10 @@
-namespace BM.Data.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-    [Table("BurialPoint")]
+namespace BM.Api.Models
+{
     public partial class BurialPoint
     {
-        [Key]
         public Guid UUID { get; set; }
 
         [StringLength(50)]
