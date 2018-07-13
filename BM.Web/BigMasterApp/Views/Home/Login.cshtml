@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "账号登入";
+}
+@Html.Partial("_PartialHead")
+
+@section Styles{
+    <style type="text/css">
+        .mineContent{min-height:90vh; background:url(..//Content/images/readDreamResult.jpg);background-size:100% 100%}
+        .mineContent .inputContent{width:80%;margin:0 auto;padding-top:1.3rem;}
+        .mineContent .inputContent .divClass{margin-top:0.6rem; border-bottom:1px solid}
+        .mineContent .inputContent .divClass input{height:1rem;width:100%; line-height:1rem;BACKGROUND-COLOR: transparent;}
+        .mineContent .buttonContent{width:85%;margin:2rem auto;padding:0.3rem;}
+          .mineContent .buttonContent button{display:block;width:98%; background-color:red;height:1rem;-webkit-box-flex:1;line-height:1rem;margin:0 auto}
+        .mineContent .buttonContent .wordColor{color:#2877c9;margin-top:0.34rem}
+          .mineContent .foot{width:80%;margin:0 auto}
+          .mineContent .foot img{width:1.2rem;height:1.2rem}
+    </style>
+    }
+<div class="mineContent pd20x10">
+    <div class="inputContent rem18 ">
+        <div class="divClass flex-cont tac"><input placeholder="请输入手机号" /></div>
+        <div class="divClass flex-cont tac mt20"><input placeholder="请输入密码" /></div>
+    </div>
+    <div class="buttonContent">
+        <button class="rem18 c-fff mb10">登入</button>
+        <div class="rem16 flex-box wordColor"><div class="flex-cont tal" onclick="window.location.href='RegisterUpsetPwd?type=register'" >注册</div>
+        <div class="flex-cont tar" onclick="window.location.href='RegisterUpsetPwd?type=forgetPwd'">忘记密码</div></div>
+    </div>
+    <div class="foot">
+        <div class="rem18 tac mb20">第三方登入</div>
+        <div class="ag-self tac"><img src="~/Content/images/weixin.png" /></div>
+    </div>
+</div>
+
+
+
+

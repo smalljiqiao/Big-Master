@@ -183,6 +183,7 @@
     <Content Include="Content\images\eightMarry_03.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\shenghuolei.png" />
+    <Content Include="Content\images\weixin.png" />
     <Content Include="Content\images\wupinlei.png" />
     <Content Include="Content\images\yellowbox.png" />
     <Content Include="Content\images\zhiwulei.png" />
@@ -231,6 +232,9 @@
     <Content Include="Views\PayResult\BabyNameForecastResult.cshtml" />
     <Content Include="Views\Home\ReadDreamItem.cshtml" />
     <Content Include="Views\PayResult\ReadDreamResult.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Mine.cshtml" />
+    <Content Include="Views\Home\RegisterUpsetPwd.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

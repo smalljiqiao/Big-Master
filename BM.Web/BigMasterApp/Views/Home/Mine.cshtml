@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "个人中心";
+}
+@section Styles{
+    <style type="text/css">
+        .top-head-bar{padding:0.266rem}
+        .top-head-bar-ico {width:1rem !important}
+        .top-head-bar .top-head-bar-text{align-self:center}
+        .mineContent{min-height:90vh; background:url(..//Content/images/readDreamResult.jpg);background-size:100% 100%}
+        .mineContent .inputContent{width:90%;margin:0 auto;padding-top:0.3rem;}
+        .mineContent .inputContent .divImg{width:40%}
+        .mineContent .inputContent img{width:90%;border-radius:50%}
+        .mineContent .contentItem{margin-top:1rem}
+         .mineContent .contentItem .iconItembox{line-height:1rem}
+         .mineContent .contentItem .iconItem{width:28%}
+          .mineContent .contentItem .ItemContent{border-bottom:1px solid}
+         .mineContent .foot{width:80%;margin:0 auto;margin-top:2rem}
+          .mineContent .foot button{height:1rem;width:100%; line-height:1rem;background-color:#e3453d}
+    </style>
+    }
+<div class="flex-box  top-head-bar" style="background-color:#e3453d">
+    <div class="top-head-bar-ico tal" ><i class="icon iconfont icon-arrow-left" style="display:none"></i></div>
+    <div class="flex-cont rem18 c-fff top-head-bar-text">@ViewBag.Title</div>
+    <div class="top-head-bar-ico tal"><i class="icon iconfont icon-arrow-left" style="display:none"></i></div>
+</div>
+<div class="mineContent pd20x10">
+    <div class="flex-box inputContent rem18 mb20 ">
+        <div class="flex-cont tac divImg"><img  src="http://thirdwx.qlogo.cn/mmopen/383icd6wkx4TECUBUCjDtB7IQpIuVJ0DTcSRb0s8vK08ibGgXqC2uprC58cYWXwQM27pibFKvpohIllQyVQmnmgdAa3xZdWjtgJ/132"/></div>
+        <div class=" flex-cont tac pd0x10 mt20"><div class="tal rem16">马季奇</div></div>
+        <div class="flex-cont top-head-bar-ico tar ag-self"><i class="icon iconfont icon-right gray8"></i></div>
+    </div>
+    <div class="contentItem">
+        <div class="flex-box iconItembox">
+            <div class="flex-cont iconItem"><i class="icon iconfont icon-wode"></i></div>
+            <div class="flex-cont ItemContent tal">我的测算</div>
+        </div>
+        <div class="flex-box iconItembox">
+            <div class="flex-cont iconItem"><i class="icon iconfont icon-wode"></i></div>
+            <div class="flex-cont ItemContent tal">我的测算</div>
+        </div>
+        <div class="flex-box iconItembox">
+            <div class="flex-cont iconItem"><i class="icon iconfont icon-wode"></i></div>
+            <div class="flex-cont ItemContent tal">意见反馈</div>
+        </div>
+    </div>
+    <div class="foot">
+        <button class="tac rem18 c-fff">退出登入</button>
+    </div>
+</div>
+
+
+
+

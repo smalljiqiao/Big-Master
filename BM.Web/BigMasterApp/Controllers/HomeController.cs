@@ -40,11 +40,30 @@ namespace BigMasterApp.Controllers
         public ActionResult ReadDream()
         {
             ViewBag.Message = "八字合婚";
-
             return View();
         }
 
         public ActionResult ReadDreamItem()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
+        public ActionResult Mine()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
+        public ActionResult Login()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
+
+        /// <summary>
+        /// 注册页和修改密码页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult RegisterUpsetPwd()
         {
             ViewBag.Message = "";
             return View();
