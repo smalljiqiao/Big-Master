@@ -167,10 +167,17 @@
     <Content Include="Content\images\colMap.png" />
     <Content Include="Content\images\couple.png" />
     <Content Include="Content\images\dongwulei.png" />
+    <Content Include="Content\images\eightCon.png" />
+    <Content Include="Content\images\eightword1.png" />
+    <Content Include="Content\images\eightword2.png" />
+    <Content Include="Content\images\eightword3.png" />
+    <Content Include="Content\images\eightword4.png" />
     <Content Include="Content\images\guishenlei.png" />
     <Content Include="Content\images\huodonglei.png" />
     <Content Include="Content\images\jianzhulei.png" />
     <Content Include="Content\images\lock.png" />
+    <Content Include="Content\images\mineBack.jpg" />
+    <Content Include="Content\images\offerIDear.png" />
     <Content Include="Content\images\qitalei.png" />
     <Content Include="Content\images\RDBackGround.jpg" />
     <Content Include="Content\images\readDreamItem.png" />
@@ -235,6 +242,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Mine.cshtml" />
     <Content Include="Views\Home\RegisterUpsetPwd.cshtml" />
+    <Content Include="Views\Shared\_PartialBottom.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -250,7 +258,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

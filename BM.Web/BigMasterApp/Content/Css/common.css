@@ -3,7 +3,7 @@
 
 .statu-bg{height:1.2rem;line-height:1.2rem;text-align:center;font-size:0.4rem;background:#f2f2f2;color:#999;}
 .scrolltop {width:1rem;height:1rem;background:#008ed6;position:fixed;bottom:0.6rem;right:0.6rem;border-radius:50%;overflow:hidden;line-height:1rem;font-size:0.5rem;text-align:center;color:#fff;background-image:url(../../Content/images/scrolltop.png) ;background-position:center center;background-size:50%;background-repeat:no-repeat;z-index:99;}
-
+.fadeRed{color:#e3453d}
 .guide-share{ background:url(../../Content/images/guide.png) no-repeat;background-size: 60% 60%;z-index: 7;display: block;height:8rem;position: absolute;width: 100%;background-position:right top;}
 .wait-icon{background:url(../../Content/images/wait.gif) no-repeat;width:0.5rem;height:0.5rem;background-size: 100% 100%;display:inline-block;vertical-align:middle;margin-right:0.1rem;}
 /*header start*/
