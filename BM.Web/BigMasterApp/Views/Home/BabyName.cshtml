@@ -5,36 +5,40 @@
 }
 @section Styles{
     <style type="text/css">
-        .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem}
+         body{background-color:#fcf6f5 !important}
+        .babyNameColor{color:#b72948;font-weight:600}
+        .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem;background-color:#fcf6f5}
         .babyNameContent .userMess{border-bottom:1px solid;line-height:0.8rem}
-        .babyNameContent .userMess i{border:1px solid #d4d4d4;border-radius:50%;width:30px;height:30px; display:inline-block!important;}
+        .babyNameContent .userMess input {background-color:transparent}
+        ul li {line-height:1rem !important}
+        .babyNameContent .userMess i{border:1px solid #d4d4d4;border-radius:50%;line-height:0.85rem ;width:0.85rem;height:0.85rem; display:inline-block!important;}
         .babyNameContent .userMess i:first-child{margin-right:1rem}
-        .check_on {background:url(../Content/images/roundRed.png) no-repeat center}
+        .check_on {background-color:#fd7e98}
         .babyNameContent .userMess div:first-child{width:3rem !important}
-        .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem;}
+        .submitBtn{line-height:0.9rem;width:100%;background:url(../Content/images/babybtn.png) no-repeat center;border-radius:1rem;}
     </style>
     }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
 
-<div class="babyNameContent">
+<div class="babyNameContent pd20">
     <div class="mb10">
         <ul class="mt15">
             <li class="flex-box pd5x0 rem18  userMess">
-                <div class="flex-cont tal">宝宝姓氏</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div> </li>
+                <div class="flex-cont tal babyNameColor">宝宝姓氏</div><div class="flex-cont tal"><input value=""  placeholder="请输入姓氏" /></div> </li>
 
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal">性别</div><div class="flex-cont tal"><i class="check_on mr10 tac">男</i><i class="tac">女</i></div>
+                <div class="flex-cont tal babyNameColor">性别</div><div class="flex-cont tal"><i class="check_on mr10 tac">男</i><i class="tac">女</i></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal">出生日期</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+                <div class="flex-cont tal babyNameColor">出生日期</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal">备注信息</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+                <div class="flex-cont tal babyNameColor">备注信息</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
             </li>
         </ul>
         <div class="mt20"><button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/BabyNamePay")'">立即预测</button></div>
-        <div>已为1523位宝宝取名</div>
+        <div class="rem14">已为1523位宝宝取名</div>
     </div>
 
 </div>

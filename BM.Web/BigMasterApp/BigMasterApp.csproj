@@ -164,6 +164,7 @@
     <Content Include="Content\iconfont\iconfont.css" />
     <Content Include="Content\iconfont\iconfont.svg" />
     <Content Include="Content\images\alipay.png" />
+    <Content Include="Content\images\closeicon.png" />
     <Content Include="Content\images\colMap.png" />
     <Content Include="Content\images\couple.png" />
     <Content Include="Content\images\dongwulei.png" />
@@ -243,6 +244,8 @@
     <Content Include="Views\Home\Mine.cshtml" />
     <Content Include="Views\Home\RegisterUpsetPwd.cshtml" />
     <Content Include="Views\Shared\_PartialBottom.cshtml" />
+    <Content Include="Views\Layer\EightGoodWordPartReselt.cshtml" />
+    <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -258,7 +261,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
