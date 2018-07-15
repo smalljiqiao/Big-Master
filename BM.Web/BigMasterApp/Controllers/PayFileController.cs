@@ -11,13 +11,18 @@ namespace BigMasterApp.Controllers
         // GET: PayFile
         public ActionResult EightGoodWordPay()
         {
-            ViewBag.Message = "订单支付";
+            ViewBag.Message = "八字详批支付";
 
             return View();
         }
         public ActionResult BabyNamePay()
         {
-            ViewBag.Message = "订单支付";
+            ViewBag.Message = "宝宝取名支付";
+            return View();
+        }
+        public ActionResult EightMarryPay()
+        {
+            ViewBag.Message = "八字合婚支付";
             return View();
         }
     }

@@ -246,6 +246,7 @@
     <Content Include="Views\Shared\_PartialBottom.cshtml" />
     <Content Include="Views\Layer\EightGoodWordPartReselt.cshtml" />
     <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
+    <Content Include="Views\PayFile\EightMarryPay.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

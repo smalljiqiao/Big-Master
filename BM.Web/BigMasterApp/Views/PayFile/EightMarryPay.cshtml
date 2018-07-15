@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "八字详批支付";
+    ViewBag.Title = "八字合婚支付";
 }
 @Html.Partial("_PartialHead")
 @section Styles{
@@ -28,8 +28,8 @@
         .commLineHeight{line-height:0.7rem}
     </style>
 }
-<div class="payContent">
-    <div class="tal rem20 mt15 pd5x10 fadeRed">支付价格</div>
+<div class="payContent pt05">
+    <div class="tal rem20  pd5x10 fadeRed">支付价格</div>
     <div class="flex-box rem16 pd5x10 payCount">
         <div class="flex-cont tal pd5x0 ">
             <div class="mb5">限时88元</div>
@@ -51,29 +51,22 @@
     <div class="payback-know-content ">
         <ul>
             <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
+                <strong class="flex-cont ag-self  pd5x10 tal">男方命盘</strong>
                 <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
             </li>
             <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
+                <strong class="flex-cont ag-self pd5x10 tal">女方命盘</strong>
                 <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
             </li>
             <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
+                <strong class="flex-cont ag-self pd5x10 tal">男命八字爱情分析</strong>
                 <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
             </li>
             <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
+                <strong class="flex-cont ag-self pd5x10 tal">女命八字爱情分析</strong>
                 <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
             </li>
-            <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
-            </li>
-            <li class="flex-box gray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
-            </li>
+           
         </ul>
     </div>
     </div>
@@ -116,5 +109,4 @@
         customerStay.style.display = "none";
     }
 </script>
-
 
