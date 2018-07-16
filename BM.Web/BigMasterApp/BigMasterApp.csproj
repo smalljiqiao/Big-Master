@@ -145,6 +145,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PayFileController.cs" />
     <Compile Include="Controllers\PayResultController.cs" />
+    <Compile Include="Controllers\ResultPartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,33 +155,47 @@
     <Content Include="Content\BaseCss\layer.css" />
     <Content Include="Content\BaseCss\swiper.min.css" />
     <Content Include="Content\BaseJs\FlexReset.js" />
+    <Content Include="Content\BaseJs\layer\layer.js" />
+    <Content Include="Content\BaseJs\layer\mobile\layer.js" />
+    <Content Include="Content\BaseJs\layer\mobile\need\layer.css" />
+    <Content Include="Content\BaseJs\layer\theme\default\icon-ext.png" />
+    <Content Include="Content\BaseJs\layer\theme\default\icon.png" />
+    <Content Include="Content\BaseJs\layer\theme\default\layer.css" />
+    <Content Include="Content\BaseJs\layer\theme\default\loading-0.gif" />
+    <Content Include="Content\BaseJs\layer\theme\default\loading-1.gif" />
+    <Content Include="Content\BaseJs\layer\theme\default\loading-2.gif" />
     <Content Include="Content\BaseJs\swiper.min.js" />
     <Content Include="Content\BaseJs\Utils.js" />
     <Content Include="Content\BaseJs\jquery.js" />
-    <Content Include="Content\BaseJs\layer.js" />
     <Content Include="Content\BaseJs\vue2.js" />
     <Content Include="Content\Css\common.css" />
     <Content Include="Content\BaseCss\reset.css" />
     <Content Include="Content\iconfont\iconfont.css" />
     <Content Include="Content\iconfont\iconfont.svg" />
     <Content Include="Content\images\alipay.png" />
+    <Content Include="Content\images\baby.png" />
     <Content Include="Content\images\closeicon.png" />
     <Content Include="Content\images\colMap.png" />
     <Content Include="Content\images\couple.png" />
     <Content Include="Content\images\dongwulei.png" />
     <Content Include="Content\images\eightCon.png" />
+    <Content Include="Content\images\eightGood.png" />
+    <Content Include="Content\images\eightMarry.png" />
     <Content Include="Content\images\eightword1.png" />
     <Content Include="Content\images\eightword2.png" />
     <Content Include="Content\images\eightword3.png" />
     <Content Include="Content\images\eightword4.png" />
+    <Content Include="Content\images\fateResult.jpg" />
     <Content Include="Content\images\guishenlei.png" />
     <Content Include="Content\images\huodonglei.png" />
     <Content Include="Content\images\jianzhulei.png" />
     <Content Include="Content\images\lock.png" />
     <Content Include="Content\images\mineBack.jpg" />
+    <Content Include="Content\images\more.png" />
     <Content Include="Content\images\offerIDear.png" />
     <Content Include="Content\images\qitalei.png" />
     <Content Include="Content\images\RDBackGround.jpg" />
+    <Content Include="Content\images\readDream.png" />
     <Content Include="Content\images\readDreamItem.png" />
     <Content Include="Content\images\readDreamResult.jpg" />
     <Content Include="Content\images\readDreamResult_Top.png" />
@@ -196,10 +211,6 @@
     <Content Include="Content\images\yellowbox.png" />
     <Content Include="Content\images\zhiwulei.png" />
     <Content Include="Content\images\ziranlei.png" />
-    <Content Include="Content\images\太阳下山.png" />
-    <Content Include="Content\images\太阳雨-白天.png" />
-    <Content Include="Content\images\太阳雨.png" />
-    <Content Include="Content\images\首页_太阳_时间提醒.png" />
     <Content Include="Content\Js\common.js" />
     <Content Include="Content\Js\reset.js" />
     <Content Include="favicon.ico" />
@@ -247,6 +258,7 @@
     <Content Include="Views\Layer\EightGoodWordPartReselt.cshtml" />
     <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
     <Content Include="Views\PayFile\EightMarryPay.cshtml" />
+    <Content Include="Views\ResultPart\EightGoodFate.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -262,7 +274,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

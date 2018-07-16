@@ -19,5 +19,9 @@ namespace BigMasterApp.Controllers
             ViewBag.Title = "";
             return View();
         }
+        public ActionResult EightGoodWordResult() {
+            ViewBag.Title = "";
+            return View();
+        }
     }
 }
