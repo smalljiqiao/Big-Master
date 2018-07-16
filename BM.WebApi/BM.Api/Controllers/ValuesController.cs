@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BM.Services.Users;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -9,8 +9,6 @@ namespace BM.Api.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            Services.WebData.DetailedBatch.Handler.Get("测试", DateTime.Now);
-
             return new string[] { "value1", "value2" };
         }
 
