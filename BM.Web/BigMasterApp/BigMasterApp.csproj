@@ -139,8 +139,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AppHelper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\HttpContextExtend.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PayFileController.cs" />
@@ -152,7 +154,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\BaseCss\layer.css" />
     <Content Include="Content\BaseCss\swiper.min.css" />
     <Content Include="Content\BaseJs\FlexReset.js" />
     <Content Include="Content\BaseJs\layer\layer.js" />
@@ -174,6 +175,8 @@
     <Content Include="Content\iconfont\iconfont.svg" />
     <Content Include="Content\images\alipay.png" />
     <Content Include="Content\images\baby.png" />
+    <Content Include="Content\images\babybtn.png" />
+    <Content Include="Content\images\backMine.jpg" />
     <Content Include="Content\images\closeicon.png" />
     <Content Include="Content\images\colMap.png" />
     <Content Include="Content\images\couple.png" />
@@ -259,6 +262,8 @@
     <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
     <Content Include="Views\PayFile\EightMarryPay.cshtml" />
     <Content Include="Views\ResultPart\EightGoodFate.cshtml" />
+    <Content Include="Views\Home\EditUserMessage.cshtml" />
+    <Content Include="Views\Home\OrderList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

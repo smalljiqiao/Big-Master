@@ -68,5 +68,14 @@ namespace BigMasterApp.Controllers
             ViewBag.Message = "";
             return View();
         }
+        public ActionResult EditUserMessage(){
+            ViewBag.Message = "";
+            return View();
+        }
+        public ActionResult OrderList()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
     }
 }

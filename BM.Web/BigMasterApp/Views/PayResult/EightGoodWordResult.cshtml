@@ -33,53 +33,42 @@
         <ul>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
-                <div class="flex-cont ag-self tar"><img onclick="showDetail('ResultPart/EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img onclick="showDetail('八字命盘','EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
             </li>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('五行分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('八字分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命爱情','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命财运','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/more.png" /></div>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命健康','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
         </ul>
     </div>
 
 </div>
 <script type="text/javascript">
-    function showDetail(url) {
-        //询问框
-        layer.confirm('您是如何看待前端开发？', {
-            btn: ['重要', '奇葩'] //按钮
-        }, function () {
-            layer.msg('的确很重要', { icon: 1 });
-        }, function () {
-            layer.msg('也可以这样', {
-                time: 20000, //20s后自动关闭
-                btn: ['明白了', '知道了']
-            });
-        });
+    function showDetail(title,url) {
         //iframe层
         layer.open({
             type: 2,
-            title: 'layer mobile页',
+            title: title,
             shadeClose: true,
             shade: 0.8,
-            area: ['380px', '90%'],
-            content: "http://layer.layui.com/" //iframe的url
+            area: ['90%', '80%'],
+            content: global_site_root +"ResultPart/"+ url //iframe的url
         }); 
     }
 
