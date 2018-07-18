@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
 
 namespace BM.Data
 {
-    public class BMObjectContext:DbContext,IDbContext
+    public class BMObjectContext : DbContext, IDbContext
     {
         public BMObjectContext() : base("BigMaster.SqlEntities")
         {
@@ -24,8 +26,8 @@ namespace BM.Data
             int? previousTimeout = null;
             if (timeout.HasValue)
             {
-                previousTimeout = ((IObjectContextAdapter) this).ObjectContext.CommandTimeout;
-                ((IObjectContextAdapter) this).ObjectContext.CommandTimeout = timeout;
+                previousTimeout = ((IObjectContextAdapter)this).ObjectContext.CommandTimeout;
+                ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = timeout;
             }
 
             var transactionalBehavior = doNotEnsureTransaction
@@ -36,7 +38,7 @@ namespace BM.Data
 
             if (timeout.HasValue)
             {
-                ((IObjectContextAdapter) this).ObjectContext.CommandTimeout = previousTimeout;
+                ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = previousTimeout;
             }
 
             return result;

@@ -2,15 +2,11 @@
 
 namespace BM.Core.Domain.Users
 {
+    /// <summary>
+    /// 用户信息类
+    /// </summary>
     public class User : BaseEntity
     {
-        public User()
-        {
-            this.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-        }
-
-        public string Phone { get; set; }
-
         public string Nickname { get; set; }
 
         public string Email { get; set; }
