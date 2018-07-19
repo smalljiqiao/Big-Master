@@ -184,6 +184,7 @@
     <Content Include="Content\images\dongwulei.png" />
     <Content Include="Content\images\eightCon.png" />
     <Content Include="Content\images\eightGood.png" />
+    <Content Include="Content\images\eightGoodWordBack.jpg" />
     <Content Include="Content\images\eightMarry.png" />
     <Content Include="Content\images\eightword1.png" />
     <Content Include="Content\images\eightword2.png" />
@@ -281,7 +282,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
