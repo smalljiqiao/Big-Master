@@ -34,17 +34,43 @@
     }
 <div class="mineContent pd20x10">
     <div class="inputContent rem18 ">
-        <div class="divClass flex-cont tac"><input class="gray8" placeholder="请输入手机号" /></div>
+        <div class="divClass flex-cont tac"><input class="gray8" id="phone" type="tel" placeholder="请输入手机号" /></div>
         <div class="divClass flex-box flex-cont tac mt20">
         <div class="flex-cont">
-            <input class="rem18 gray8" placeholder="请输入验证码" /></div>
+            <input class="rem18 gray8" id="erCode" placeholder="请输入验证码" /></div>
         <div class="flex-cont"><button class="getCode rem16 c-fff">获取验证码</button></div>
         </div>
-            <div class="divClass flex-cont tac mt20"><input class="gray8" placeholder="请输入密码" /></div>
-            <div class="divClass flex-cont tac mt20"><input class="gray8" placeholder="请再次输入密码" /></div>
+            <div class="divClass flex-cont tac mt20"><input id="pwd" class="gray8" type="password" placeholder="请输入密码" /></div>
+            <div class="divClass flex-cont tac mt20"><input id="pwdAgian" class="gray8" type="password" placeholder="请再次输入密码" /></div>
      </div>
     <div class="buttonContent">
-        <button class="rem18 c-fff mb10">@handleTyle</button>
+        <button class="rem18 c-fff mb10" onclick="submitData()">@handleTyle</button>
     </div>
 </div>
+<script type="text/javascript">
+    function submitData() {
+        var type = getQueryString("type");
+        var query = {
+            phone : $.trim($("#phone").val()),
+            erCode :$.trim($("#erCode").val()),
+            pwd: $.trim($("#pwd").val()),
+            deviceId: bm_getCookie("deviceId"),
+            pwdAgian:$.trim($("#pwdAgian").val())
+        };
+        if (!query.phone) { layer.msg('电话号码不能为空！'); return; }
+        if (!query.erCode) { layer.msg("短信验证码不能为空！"); return; }
+        if (!query.pwd) { layer.msg("请输入密码"); return; }
+        if (!query.pwdAgian) { layer.msg("请再次输入密码"); return; }
+        if (query.pwdAgian != query.pwd) { layer.msg("两次输入密码不一致"); return; }
+        doPost(bmApI.user.register, query, function (data) {
+            if (data.code == 0) {
+                layer.msg("注册成功！");
+                setTimeout(function () {
+                    window.location.href = global_site_root +"Home/Login";
+                }, 2000);
+            }
+        });
+    }
+
+</script>
 

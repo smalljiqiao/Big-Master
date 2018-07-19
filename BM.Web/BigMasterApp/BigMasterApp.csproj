@@ -214,6 +214,7 @@
     <Content Include="Content\images\yellowbox.png" />
     <Content Include="Content\images\zhiwulei.png" />
     <Content Include="Content\images\ziranlei.png" />
+    <Content Include="Content\Js\bmAPI.js" />
     <Content Include="Content\Js\common.js" />
     <Content Include="Content\Js\reset.js" />
     <Content Include="favicon.ico" />
