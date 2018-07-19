@@ -1,0 +1,16 @@
+﻿#忽略ssh文件
+ssh
+ssh.pub
+.vs/
+
+#忽BM.WebApi/packages文件夹
+BM.WebApi/packages
+
+#忽略BM.Web
+BM.Web/BigMasterApp/obj/*
+BM.Web/BigMasterApp/bin/
+BM.Web/packages/
+BM.Web/BigMasterApp/obj/
+BM.Web/BigMasterApp/Properties/
+
+
