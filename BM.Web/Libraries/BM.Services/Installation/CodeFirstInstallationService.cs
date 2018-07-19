@@ -1,6 +1,10 @@
-﻿using BM.Core.Data;
+﻿using System.IO;
+using BM.Core;
+using BM.Core.Data;
 using BM.Core.Domain.Users;
+using BM.Core.Infrastructure;
 using BM.Core.Installation;
+using BM.Core.Localization;
 using BM.Data;
 
 namespace BM.Services.Installation
@@ -22,7 +26,21 @@ namespace BM.Services.Installation
             AddDefault();
             AddConstraint();
             AddDescrition();
+
+            InstallCodeMessage();
         }
+
+        protected virtual void InstallCodeMessage()
+        {
+            foreach (var filePath in Directory.EnumerateFiles(CommonHelper.MapPath("~/App_Data/CodeMessage/"), "*.xml",
+                SearchOption.TopDirectoryOnly))
+            {
+                var codeMessageXml = File.ReadAllText(filePath);
+                var localService = EngineContext.Current.Resolve<ILocalizationService>();
+                localService.ImportCodeMessageFromXml(codeMessageXml);
+            }
+        }
+
 
         /// <summary>
         /// 添加字段默认值
@@ -128,6 +146,11 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '二级类型', 'user', @CurrentUser, 'table', 'BurialPoint', 'column', 'SType'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '补充说明，当二类类型不能满足埋点操作时，将额外信息写入此列', 'user', @CurrentUser, 'table', 'BurialPoint', 'column', 'Remark'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'BurialPoint', 'column', 'CreateTime'; \r\n" +
+                      "-- CodeMessage Table \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '返回码信息表', 'user',@CurrentUser, 'table', 'CodeMessage'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '返回码ID', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'CmId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '返回码', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'Code'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '返回码说明', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'Message'; \r\n" +
                       "USE master; \r\n";
 
             _idbContext.ExecuteSqlCommand(cmd);

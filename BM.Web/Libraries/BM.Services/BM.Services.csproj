@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Installation\CodeFirstInstallationService.cs" />
     <Compile Include="Installation\InitDataStartUpTask.cs" />
+    <Compile Include="Localization\LocalizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

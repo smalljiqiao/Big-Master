@@ -13,13 +13,13 @@ AS
 BEGIN
 	CREATE TABLE #CodeMessageResourceTemp
 	(
-		[ResourceCode] [nvarchar](5) NOT NULL,
+		[ResourceCode] [char](4) NOT NULL,
 		[ResourceMessage] [nvarchar](200) NOT NULL
 	)
 
 INSERT INTO #CodeMessageResourceTemp(ResourceCode,ResourceMessage)
-SELECT nref.value('Code[1]','nvarchar(5)'),nref.value('Message[1]','nvarchar(200)')
-FROM @XmlPackage.nodes('//Language//LocaleResource') AS R(nref)
+SELECT nref.value('Code[1]','char(4)'),nref.value('Message[1]','nvarchar(200)')
+FROM @XmlPackage.nodes('//Language//CodeMessage') AS R(nref)
 
 DECLARE @ResourceCode nvarchar(5)
 DECLARE @ResourceMessage nvarchar(200)
