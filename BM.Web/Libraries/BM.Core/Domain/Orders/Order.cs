@@ -1,19 +1,26 @@
-﻿using BM.Core.Description;
-using BM.Core.Domain.Users;
+﻿using BM.Core.Domain.Users;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BM.Core.Domain.Orders
 {
     /// <summary>
     /// 订单类
     /// </summary>
-    [Description("订单类")]
     public class Order : BaseEntity
     {
         /// <summary>
+        /// 手机号码
+        /// </summary>
+        [Phone]
+        [Column("Phone", Order = 1)]
+        public string Phone { get; set; }
+
+        /// <summary>
         /// 订单ID
         /// </summary>
-        [Description("订单ID")]
+        [Display(Name = "Description here")]
         public Guid OrderId { get; set; }
 
         /// <summary>

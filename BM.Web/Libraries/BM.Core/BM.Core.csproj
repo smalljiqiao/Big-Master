@@ -75,16 +75,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Description\DescriptionAttribute.cs" />
-    <Compile Include="Description\DescriptionExtension.cs" />
-    <Compile Include="Description\DescriptionUpdater.cs" />
-    <Compile Include="Description\TypeExtension.cs" />
     <Compile Include="Domain\Business\BType.cs" />
+    <Compile Include="Domain\Logs\BurialPoint.cs" />
     <Compile Include="Domain\Logs\Log.cs" />
-    <Compile Include="Domain\Logs\SearchLog.cs" />
+    <Compile Include="Domain\Logs\Search.cs" />
     <Compile Include="Domain\Orders\Order.cs" />
     <Compile Include="Domain\Orders\OrderSearch.cs" />
     <Compile Include="Domain\Business\BPrice.cs" />

@@ -49,6 +49,10 @@
       <Project>{2cd35ab3-c586-4d9c-b8a7-be539d2c992d}</Project>
       <Name>BM.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BM.Data\BM.Data.csproj">
+      <Project>{7d8c6b1f-de90-46ab-84b5-88be3feaa624}</Project>
+      <Name>BM.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -53,17 +53,13 @@
     <Compile Include="IDbContext.cs" />
     <Compile Include="Mapping\Business\BPriceMap.cs" />
     <Compile Include="Mapping\Business\BTypeMap.cs" />
+    <Compile Include="Mapping\Logs\BurialPointMap.cs" />
     <Compile Include="Mapping\Logs\LogMap.cs" />
-    <Compile Include="Mapping\Logs\SearchLogMap.cs" />
+    <Compile Include="Mapping\Logs\SearchMap.cs" />
     <Compile Include="Mapping\Orders\OrderMap.cs" />
     <Compile Include="Mapping\Orders\OrderSearchMap.cs" />
     <Compile Include="Mapping\Users\AndroidInfoMap.cs" />
     <Compile Include="Mapping\Users\UserMap.cs" />
-    <Compile Include="Migrations\201807181159591_fdsafd.cs" />
-    <Compile Include="Migrations\201807181159591_fdsafd.Designer.cs">
-      <DependentUpon>201807181159591_fdsafd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerDataProvider.cs" />
   </ItemGroup>
@@ -76,11 +72,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807181159591_fdsafd.resx">
-      <DependentUpon>201807181159591_fdsafd.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

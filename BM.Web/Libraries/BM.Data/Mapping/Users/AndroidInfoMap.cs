@@ -9,8 +9,8 @@ namespace BM.Data.Mapping.Users
         {
             this.ToTable("AndroidInfo");
             this.HasKey(c => new { c.Phone, c.AndroidId });
-            this.Property(p => p.Phone).HasMaxLength(20);
-            this.Property(p => p.AndroidId).HasColumnType("varchar").HasMaxLength(50);  
+            this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20).IsRequired();
+            this.Property(p => p.AndroidId).HasColumnType("varchar").HasMaxLength(50);
             this.Property(p => p.CreateTime).HasColumnType("datetime").IsRequired();
 
             this.HasRequired(android => android.User)

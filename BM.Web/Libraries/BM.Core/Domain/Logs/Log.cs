@@ -5,17 +5,17 @@ namespace BM.Core.Domain.Logs
     /// <summary>
     /// 错误日志类
     /// </summary>
-    public class Log
+    public class Log : BaseEntity
     {
-       /// <summary>
-       /// 日志ID
-       /// </summary>
+        /// <summary>
+        /// 日志ID
+        /// </summary>
         public Guid LogId { get; set; }
 
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string Meg { get; set; }
+        public string Mes { get; set; }
 
         /// <summary>
         /// 堆栈轨迹

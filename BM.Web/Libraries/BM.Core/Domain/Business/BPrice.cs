@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace BM.Core.Domain.Business
+﻿namespace BM.Core.Domain.Business
 {
     /// <summary>
     /// 业务价格类
     /// </summary>
-    public class BPrice
+    public class BPrice : BaseEntity
     {
         /// <summary>
         /// 业务价格类ID

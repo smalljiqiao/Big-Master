@@ -1,14 +1,22 @@
-﻿using System;
+﻿using BM.Core.Domain.Users;
+using System;
 using System.ComponentModel.DataAnnotations;
-using BM.Core.Domain.Users;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BM.Core.Domain.Logs
 {
     /// <summary>
     /// 搜索记录表
     /// </summary>
-    public class SearchLog : BaseEntity
+    public class Search : BaseEntity
     {
+        /// <summary>
+        /// 手机号码
+        /// </summary>
+        [Phone]
+        [Column("Phone", Order = 1)]
+        public string Phone { get; set; }
+
         /// <summary>
         /// 搜索ID，和Phone为联合主键
         /// </summary>
@@ -23,7 +31,6 @@ namespace BM.Core.Domain.Logs
         /// 性别 值为1时是男性，为2时是女性，为0时是未知 对应八字详批和宝宝取名
         /// </summary>
 
-        [Range(0, 2)]
         public byte Sex { get; set; }
 
         /// <summary>
@@ -44,12 +51,12 @@ namespace BM.Core.Domain.Logs
         /// <summary>
         /// 八字合婚女方姓名
         /// </summary>
-        public string WoManName { get; set; }
+        public string WomanName { get; set; }
 
         /// <summary>
         /// 八字合婚女方出生日期
         /// </summary>
-        public DateTime WoManBirthDay { get; set; }
+        public DateTime WomanBirthDay { get; set; }
 
         /// <summary>
         /// 周公解梦搜索词
