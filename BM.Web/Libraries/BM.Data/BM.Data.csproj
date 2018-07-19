@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +52,7 @@
     <Compile Include="EfRepository.cs" />
     <Compile Include="EfStartupTask.cs" />
     <Compile Include="IDbContext.cs" />
+    <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Mapping\Business\BPriceMap.cs" />
     <Compile Include="Mapping\Business\BTypeMap.cs" />
     <Compile Include="Mapping\Logs\BurialPointMap.cs" />

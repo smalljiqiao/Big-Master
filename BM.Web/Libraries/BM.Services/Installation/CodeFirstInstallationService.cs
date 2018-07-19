@@ -132,10 +132,5 @@ namespace BM.Services.Installation
 
             _idbContext.ExecuteSqlCommand(cmd);
         }
-
-        protected virtual void GetFullScript()
-        {
-            ((IObjectContextAdapter)_idbContext).ObjectContext.CreateDatabaseScript();
-        }
     }
 }
