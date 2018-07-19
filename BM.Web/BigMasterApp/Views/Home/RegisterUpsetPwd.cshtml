@@ -62,14 +62,31 @@
         if (!query.pwd) { layer.msg("请输入密码"); return; }
         if (!query.pwdAgian) { layer.msg("请再次输入密码"); return; }
         if (query.pwdAgian != query.pwd) { layer.msg("两次输入密码不一致"); return; }
+        if (type == "forgetPwd") {
+            doPost(bmApI.user.updatePwd, query, function (data) {
+                if (data.code == 0) {
+                    layer.msg("修改密码成功！");
+                    setTimeout(function () {
+                        window.location.href = global_site_root + "Home/Login";
+                    }, 2000);
+                }
+                else {
+                    layer.msg(data.Message);
+                }
+            });
+        } else { 
         doPost(bmApI.user.register, query, function (data) {
             if (data.code == 0) {
                 layer.msg("注册成功！");
                 setTimeout(function () {
-                    window.location.href = global_site_root +"Home/Login";
+                    window.location.href = global_site_root + "Home/Login";
                 }, 2000);
             }
-        });
+            else {
+                layer.msg(data.Message);
+            }
+            });
+        }
     }
 
 </script>

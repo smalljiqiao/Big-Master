@@ -76,7 +76,7 @@ var hb = {
             if (config.contentType == undefined) {
                 config.contentType = "application/json";
             }
-            var accessToken = getHbAccessToken();
+            var accessToken = "";
             if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
                 config.headers = {
                     Authorization: 'Bearer ' + accessToken

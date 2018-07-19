@@ -17,6 +17,8 @@
              .comlineHeight{line-height: 0.6rem}
              .fontColor{color:#737373;font-family:"Microsoft YaHei"}
              .payCount{color:#474747}
+
+      
     </style>
     }
 @Html.Partial("_PartialHead")
@@ -48,10 +50,57 @@
                 <img src="~/Content/images/alipay.png" />
                 <span class="rem16 fontColor" style="color:#474747">支付宝支付</span>
             </div>
-            <div class="flex-cont tar ag-self"><button class="rem18 pd10x20 c-fff alipay-button ">立即支付</button></div>
+            <div class="flex-cont tar ag-self"><button class="rem18 pd10x20 c-fff alipay-button " onclick="stayCustomer()">立即支付</button></div>
         </div>
         <div class="tar rem14 fontColor" style="padding-right:0rem">支付后自动跳转测算成功页面</div>
 
     </div>
 </div>
+<!--挽留用户弹出层begin-->
+<style type="text/css">
+      #cover { position: absolute;left: 0px;top: 0px; background: rgba(0, 0, 0, 0.4);width: 100%;  height: 100%; filter: alpha(opacity=60);opacity: 0.6;  display: none;z-Index: 999;}
+        #customerStay {position: absolute;width: 80%; border-radius:0.12rem;left:10%;top: 20%; background-color: #fff; display: none; cursor: pointer;z-Index: 9999;}
+        .customerStayTop{padding:0.445rem;background:url(../Content/images/babyStay.png);background-size:100% 100%; }
+        .customerStayContentTop{}
+        .customerStayContentContent{}
+        .customerStayContentButton{width:80%;background-color:#e4625b;border-radius:0.12rem;margin:auto}
+        .commLineHeight{line-height:0.7rem}
+</style>
+<div id="cover"></div>
+
+<div id="customerStay">
+    <div class="flex-box  top-head-bar" style="border-top-left-radius:0.12rem;border-bottom-right-radius:0.12rem">
+        <div class="top-head-bar-ico tal"><i class="icon iconfont c-fff icon-arrow-left" style="display:none"></i></div>
+        <div class="flex-cont top-head-bar-text c-fff rem16">您测算的结果</div>
+        <div class="top-head-bar-ico tal"><img style="width:0.6rem" onclick="hideCustomer()" src="~/Content/images/closeicon.png" /></div>
+    </div>
+
+    <div class="prContent pd10x20">
+        <div class="customerStayTop mb10">
+            <div class="flex-box commLineHeight"><div class="flex-cont">姓名：马季奇</div><div class="flex-cont">性别：男</div></div>
+            <div class="tal rem14 commLineHeight" style="padding-left:0.4rem">1992年05月02</div>
+        </div>
+        <div class="mt05 tac">
+            <div class="customerStayContentTop rem16 tal">五行分析：</div>
+            <div class="customerStayContentContent rem15 mb20 tal">
+                在css3之前，要实现圆角的效果可以通过图片或者用margin属性实现(可以参考这里
+                程很繁琐，但CSS3的到来简化了实现圆角的方式。
+            </div>
+            <button class="customerStayContentButton c-fff pd10x20 mb20 rem16 " onclick="hideCustomer()">付费后查看更多</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function stayCustomer() {
+        cover.style.display = "block";   //显示遮罩层
+        customerStay.style.display = "block";
+    }
+    function hideCustomer() {
+        cover.style.display = "none";   //显示遮罩层
+        customerStay.style.display = "none";
+        window.location.href = "../PayResult/EightGoodWordResult";
+    }
+</script>
+<!--挽留用户弹出层end-->
+
 

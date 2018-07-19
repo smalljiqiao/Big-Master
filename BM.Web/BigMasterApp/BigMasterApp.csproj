@@ -176,6 +176,7 @@
     <Content Include="Content\images\alipay.png" />
     <Content Include="Content\images\baby.png" />
     <Content Include="Content\images\babybtn.png" />
+    <Content Include="Content\images\babyStay.png" />
     <Content Include="Content\images\backMine.jpg" />
     <Content Include="Content\images\closeicon.png" />
     <Content Include="Content\images\colMap.png" />

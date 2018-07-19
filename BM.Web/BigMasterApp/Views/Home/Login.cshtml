@@ -19,8 +19,8 @@
     }
 <div class="mineContent pd20x10">
     <div class="inputContent rem18 ">
-        <div class="divClass flex-cont tac"><input class="gray8" placeholder="请输入手机号" /></div>
-        <div class="divClass flex-cont tac mt20"><input class="gray8" placeholder="请输入密码" /></div>
+        <div class="divClass flex-cont tac"><input class="gray8" id="phone" placeholder="请输入手机号" /></div>
+        <div class="divClass flex-cont tac mt20"><input class="gray8" id="pwd" placeholder="请输入密码" /></div>
     </div>
     <div class="buttonContent">
         <button class="rem18 c-fff mb10" onclick="window.location.href='Mine'">登入</button>
@@ -32,6 +32,29 @@
         <div class="ag-self tac"><img src="~/Content/images/weixin.png" /></div>
     </div>
 </div>
+<script type="text/javascript">
+    function submitData() {
+        var type = getQueryString("type");
+        var query = {
+            phone: $.trim($("#phone").val()),
+            pwd: $.trim($("#pwd").val())
+        };
+        if (!query.phone) { layer.msg('电话号码不能为空！'); return; }
+        if (!query.pwd) { layer.msg("请输入密码"); return; }
+        doPost(bmApI.user.login, query, function (data) {
+            if (data.code == 0) {
+                layer.msg("登入成功！");
+                setTimeout(function () {
+                    window.location.href = global_site_root + "Home/Index";
+                }, 2000);
+            }
+            else {
+                layer.msg(data.Message);
+            }
+        });
+    }
+
+</script>
 
 
 
