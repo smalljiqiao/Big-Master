@@ -3,30 +3,15 @@
     ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/dda8ec240f7543eb87c70e1b1c8b3644.jpg";
 }
 <style>
-    .eightGoodWordContent{}
-     .userMess{background-color:#f5f2e6;}
-    .teacherMess{text-align:center;margin:auto ;background:url(../Content/images/EightGoodWordBack.jpg);background-size:100% 100%;background-color:#f4e2d1 }
-    .teacherMess .name-Img{width:3.5rem !important;}
-     .teacherMess .teacherImg{width:2rem;height:2rem;border-radius:50%;object-fit:cover}
      .customerMess{border:1px solid #cccccc;border-radius:0.12rem;margin-top:0.5rem;padding:0.32rem 0.52666rem}
-     .customerMess .item{border-bottom:1px solid #5f2f23;line-height:1.2rem}
+     .customerMess .item{color:#5b0100;border-bottom:1px solid #ad5d57;line-height:1.2rem}
      .submitBtn{line-height:0.9rem;width:100%;background-color:#e3453d;border-radius:1rem;}
      .customerMess .costomerInput{line-height:0.7rem;width:95%; background-color:transparent}
      
       .moreMess{background-color:#f5f2e6;min-height:2rem;text-align:center;padding-top:0.1rem !important; padding-bottom:1rem !important}
-     .colMap{height:1.3rem;align-self:center;line-height:1.3rem;color:#81514a; background:url(..//Content/images/eightCon.png);background-size:100% 100%}
-    .moreMess .redBox{margin:0 auto; background:url(..//Content/images/redbox.png);background-size:100% 100%}
-    .moreMess .yellowBox{margin:0 auto; background:url(..//Content/images/yellowbox.png);background-size:100% 100%}
-     .moreMess .MM-content{text-align:center}
-         .moreMess .MM-content .MM-item{text-align:center;flex-grow:1}
-          .moreMess .MM-content .MM-item div{width:1rem ;height:3.65rem}
+     .colMap{height:1.43rem;align-self:center;line-height:1.43rem;color:#81514a; background:url(..//Content/images/eightCon.png);background-size:100% 100%}
+      .moreMess .MM-content .MM-item div{width:1rem ;height:3.65rem}
      .moreMess .conText{width:0.5rem; margin:0 auto;position:relative;top:1.3rem}
-    .forecastFun{background-color:#f5f2e6;min-height:2rem;padding-top:0.3rem;padding-bottom:0.5rem}
-     .forecastFun .item {text-align:left !important}
-     .forecastFun .item .top{color:#81514a}
-     .forecastFun .item .FFcontent{height:2.3rem;color:#c0b6ac}
-     .forecastFun .fun-img{max-width:3.5rem;margin:auto;display:block }
-     .newFont{font-family:'楷体';color:#5f2f23;}
 </style>
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
@@ -36,10 +21,10 @@
         <div class="flex-box teacherMess pd20x10 mr5  ">
             <div class=" flex-wrap flex-cont ag-self name-Img">
                 <div><img class="teacherImg" src="http://thirdwx.qlogo.cn/mmopen/383icd6wkx4TECUBUCjDtB7IQpIuVJ0DTcSRb0s8vK08ibGgXqC2uprC58cYWXwQM27pibFKvpohIllQyVQmnmgdAa3xZdWjtgJ/132" /></div>
-                <div style="font-weight:600" class="rem20 newFont">黄大爷</div>
+                <div  class="rem20 teacherName">黄大爷</div>
             </div>
             <div class="flex-wrap flex-cont ag-self">
-                <div  class="tal newFont rem18">老师资料介绍
+                <div  class="tal teacherDescFont rem18">老师资料介绍
                     展示老师头像、姓名、简介；
                     暂由开发上传，后期可搭建管理后台；
                     没配置内容则隐藏，下方元素上移
@@ -49,18 +34,18 @@
         <!--老师信息end-->
         <div class="customerMess  mt15 mb10">
             <div class="item flex-box">
-                <div class="rem20  flex-cont tal ag-self newFont" style="width:25%" >姓名：</div>
+                <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%" >姓名：</div>
                 <div class="rem16  flex-cont"><input class="rem18 pd5x10 mb3 costomerInput" value="" placeholder="请填写您的姓名" /></div>
             </div>
             <div class="item flex-box">
-                <div class="rem20  flex-cont tal ag-self newFont" style="width:25%">性别：</div>
+                <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%">性别：</div>
                 <div class="rem16  flex-cont tal ">
                     <input type="radio" class="mr5" checked="checked" name="sex" style="margin-left:0.5rem" value="man" />男
                     <input type="radio" class="mr5 " style="margin-left:0.5rem" name="sex" value="women" />女
                 </div>
             </div>
             <div class="item flex-box" >
-                <div class="rem20  flex-cont tal ag-self newFont" style="width:25%" >生日：</div>
+                <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%" >生日：</div>
                 <div class="flex-cont"><input class="rem16 pd5x10 mb3 costomerInput" value="" placeholder="请选择出生日期" /></div>
             </div>
         </div>

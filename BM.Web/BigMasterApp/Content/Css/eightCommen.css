@@ -1,0 +1,19 @@
+﻿.eightGoodWordContent{background-color:#f5f2e6;}
+  .eightGoodWordContent .userMess{background-color:#f5f2e6;}
+.teacherName{font-family:'楷体';color:#5f2f23;font-weight:600}
+ .teacherMess{text-align:center;margin:auto ;background:url(../images/EightGoodWordBack.jpg);background-size:100% 100%;background-color:#f4e2d1 }
+     .teacherMess .name-Img{width:3.5rem !important}
+     .teacherMess .teacherImg{width:2rem;height:2rem;border-radius:50%;object-fit:cover}
+     .teacherDescFont{font-family:'楷体';color:#5f2f23;}
+    
+      .moreMess .redBox{margin:0 auto; background:url(../images/redbox.png);background-size:100% 100%}
+    .moreMess .yellowBox{margin:0 auto; background:url(../images/yellowbox.png);background-size:100% 100%}
+     .moreMess .MM-content{text-align:center}
+         .moreMess .MM-content .MM-item{text-align:center;flex-grow:1}
+        
+
+     .forecastFun{background-color:#f5f2e6;min-height:2rem;padding-top:0.3rem;padding-bottom:0.8rem}
+     .forecastFun .item {}
+     .forecastFun .item .top{color:#81514a;font-weight:600}
+     .forecastFun .item .FFcontent{height:2.3rem;color:#81514a}
+     .forecastFun .fun-img{max-width:3.5rem;margin:auto;display:block }

@@ -8,7 +8,7 @@
          body{background-color:#fcf6f5 !important}
         .babyNameColor{color:#b72948;font-weight:600;font-family:"Microsoft YaHei"}
         .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem;background-color:#fcf6f5}
-        .babyNameContent .userMess{border-bottom:1px solid #fdcecf;line-height:0.8rem}
+        .babyNameContent .userMess{border-bottom:1px solid #fdcecf;line-height:0.8rem;ba}
         .babyNameContent .userMess input {background-color:transparent}
         ul li {line-height:1rem !important}
         .babyNameContent .userMess i{border:1px solid #d4d4d4;border-radius:50%;line-height:0.85rem ;width:0.85rem;height:0.85rem; display:inline-block!important;}
@@ -42,3 +42,14 @@
     </div>
 
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $("i").bind("click", function () {
+            $(this).addClass("check_on");
+            $(this).siblings().removeClass("check_on");
+        });
+
+
+    </script>
+    }

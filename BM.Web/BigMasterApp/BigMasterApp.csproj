@@ -156,6 +156,10 @@
   <ItemGroup>
     <Content Include="Content\BaseCss\swiper.min.css" />
     <Content Include="Content\BaseJs\FlexReset.js" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedate.css" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedate.png" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.svg" />
+    <Content Include="Content\BaseJs\jeDate\jedate.js" />
     <Content Include="Content\BaseJs\layer\layer.js" />
     <Content Include="Content\BaseJs\layer\mobile\layer.js" />
     <Content Include="Content\BaseJs\layer\mobile\need\layer.css" />
@@ -171,9 +175,11 @@
     <Content Include="Content\BaseJs\vue2.js" />
     <Content Include="Content\Css\common.css" />
     <Content Include="Content\BaseCss\reset.css" />
+    <Content Include="Content\Css\eightCommen.css" />
     <Content Include="Content\iconfont\iconfont.css" />
     <Content Include="Content\iconfont\iconfont.svg" />
     <Content Include="Content\images\alipay.png" />
+    <Content Include="Content\images\applogo.jpg" />
     <Content Include="Content\images\baby.png" />
     <Content Include="Content\images\babybtn.png" />
     <Content Include="Content\images\babyStay.png" />
@@ -244,6 +250,9 @@
     <Content Include="Content\iconfont\iconfont.eot" />
     <Content Include="Content\iconfont\iconfont.ttf" />
     <Content Include="Content\iconfont\iconfont.woff" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.eot" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.ttf" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Home\BabyName.cshtml" />
     <Content Include="Views\Shared\_PartialBanner.cshtml" />
@@ -282,7 +291,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

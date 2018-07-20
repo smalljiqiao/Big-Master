@@ -10,6 +10,8 @@
     @RenderSection("styles",required:false)
     <link href="@Url.Content("~/Content/Css/common.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/BaseCss/reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Css/eightCommen.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/BaseJs/jeDate/skin/jedate.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/iconfont/iconfont.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -19,6 +21,7 @@
     @Scripts.Render("~/bundles/BaseJs")
     <script src="@Url.Content("~/Content/BaseJs/Utils.js")"></script>
     <script src="@Url.Content("~/Content/Js/bmAPI.js")"></script>
+    <script src="@Url.Content("~/Content/BaseJs/jeDate/jedate.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
