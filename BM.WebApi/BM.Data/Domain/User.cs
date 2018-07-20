@@ -40,8 +40,7 @@ namespace BM.Data.Domain
         [StringLength(50)]
         public string SaltPassword { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AndroidInfo> AndroidInfo { get; set; }
