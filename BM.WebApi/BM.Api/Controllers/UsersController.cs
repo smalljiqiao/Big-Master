@@ -95,6 +95,7 @@ namespace BM.Api.Controllers
             }
 
             //忽略敏感信息
+            userInfo.Password = "";
             userInfo.SaltPassword = "";
             userInfo.Salt = "";
 
@@ -140,6 +141,7 @@ namespace BM.Api.Controllers
             }
 
             //忽略敏感信息
+            userInfo.Password = "";
             userInfo.SaltPassword = "";
             userInfo.Salt = "";
 
@@ -185,6 +187,7 @@ namespace BM.Api.Controllers
             }
 
             //忽略敏感信息
+            userInfo.Password = "";
             userInfo.SaltPassword = "";
             userInfo.Salt = "";
 

@@ -18,7 +18,7 @@ namespace BM.Services.Localization
             var key = string.Format(LOCALSTRINGRESOURCES_ALL_KEY);
             return cacheManager.Get(key, () =>
             {
-                var query = from l in db.CodeMessages
+                var query = from l in db.CodeMessage
                             orderby l.Code
                             select l;
                 var locales = query.ToList();
@@ -27,7 +27,7 @@ namespace BM.Services.Localization
                 {
                     var code = locale.Code.ToLowerInvariant();
                     if (!dictionary.ContainsKey(code))
-                        dictionary.Add(code, new KeyValuePair<int, string>(locale.Id, locale.Message));
+                        dictionary.Add(code, new KeyValuePair<int, string>(locale.CmId, locale.Message));
                 }
                 return dictionary;
             });
