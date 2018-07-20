@@ -44,6 +44,6 @@ namespace BM.Core.Domain.Users
         /// <summary>
         /// 注册时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
     }
 }

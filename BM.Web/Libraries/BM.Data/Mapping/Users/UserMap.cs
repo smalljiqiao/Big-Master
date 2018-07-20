@@ -1,4 +1,5 @@
-﻿using BM.Core.Domain.Users;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using BM.Core.Domain.Users;
 using System.Data.Entity.ModelConfiguration;
 
 namespace BM.Data.Mapping.Users
