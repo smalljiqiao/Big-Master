@@ -25,9 +25,9 @@ namespace BM.Api.Controllers
 
             if (!ModelState.IsValid)
             {
-                returnCode.Code = 1999;
+                returnCode.Code = 9999;
                 //获取所有不合法的字段说明
-                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
+                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage + "; ");
                 return returnCode;
             }
 
@@ -72,7 +72,7 @@ namespace BM.Api.Controllers
 
             if (!ModelState.IsValid)
             {
-                returnCode.Code = 1999;
+                returnCode.Code = 9999;
                 //获取所有不合法的字段说明
                 returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
                 return returnCode;
@@ -126,7 +126,7 @@ namespace BM.Api.Controllers
 
             if (!ModelState.IsValid)
             {
-                returnCode.Code = 1999;
+                returnCode.Code = 9999;
                 //获取所有不合法的字段说明
                 returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
                 return returnCode;
@@ -173,7 +173,7 @@ namespace BM.Api.Controllers
 
             if (!ModelState.IsValid)
             {
-                returnCode.Code = 1999;
+                returnCode.Code = 9999;
                 //获取所有不合法的字段说明
                 returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
                 return returnCode;
