@@ -24,7 +24,7 @@ namespace BM.Core.Domain.Users
         /// <summary>
         /// 生成时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         //外键关联User表
         public virtual User User { get; set; }
