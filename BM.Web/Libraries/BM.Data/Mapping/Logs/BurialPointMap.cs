@@ -14,7 +14,7 @@ namespace BM.Data.Mapping.Logs
             this.Property(p => p.FType).HasColumnType("nvarchar").HasMaxLength(10);
             this.Property(p => p.SType).HasColumnType("nvarchar").HasMaxLength(10);
             this.Property(p => p.Remark).HasColumnType("nvarchar").HasMaxLength(200);
-            this.Property(p => p.CreateTime).HasColumnType("datetime").IsRequired();
+            this.Property(p => p.CreateTime).HasColumnType("datetime");;
 
             this.HasRequired(bp => bp.User)
                 .WithMany()

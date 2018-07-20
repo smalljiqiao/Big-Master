@@ -14,7 +14,7 @@ namespace BM.Data.Mapping.Orders
             this.Property(p => p.OrderType).HasColumnType("varchar").HasMaxLength(20);
             this.Property(p => p.Price).HasColumnType("decimal").HasPrecision(2, 2).IsRequired(); //两精度和保留两位小数
             this.Property(p => p.PayState).HasColumnType("varchar").HasMaxLength(10);
-            this.Property(p => p.CreateTime).HasColumnType("datetime").IsRequired();
+            this.Property(p => p.CreateTime).HasColumnType("datetime");;
 
             this.HasRequired(order => order.User)
                 .WithMany()

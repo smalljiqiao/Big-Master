@@ -19,7 +19,7 @@ namespace BM.Data.Mapping.Logs
             this.Property(p => p.WomanName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.WomanBirthDay).HasColumnType("datetime");
             this.Property(p => p.ZhouWord).HasColumnType("nvarchar").HasMaxLength(100);
-            this.Property(p => p.CreateTime).HasColumnType("datetime").IsRequired();
+            this.Property(p => p.CreateTime).HasColumnType("datetime");;
 
 
             this.HasRequired(search => search.User)
