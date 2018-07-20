@@ -7,6 +7,9 @@ using System.Web.Http;
 
 namespace BM.Api.Controllers
 {
+    /// <summary>
+    /// 用户信息接口
+    /// </summary>
     public class UsersController : ApiController
     {
         /// <summary>
@@ -14,6 +17,7 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
+        [HttpPost]
         [Route("api/user/register")]
         public object Register(User userModel)
         {
@@ -60,6 +64,7 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
+        [HttpPost]
         [Route("api/user/login")]
         public object Login(User userModel)
         {
@@ -111,8 +116,9 @@ namespace BM.Api.Controllers
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="userModel"></param>
-        /// <returns></returns>
+        /// <param name="userModel">用户对象</param>
+        /// <returns>用户对象或返回码对象</returns>
+        [HttpPost]
         [Route("api/user/changepassword")]
         public object ChangePassword(User userModel)
         {
@@ -157,8 +163,9 @@ namespace BM.Api.Controllers
         /// <summary>
         /// 修改用户昵称和邮箱
         /// </summary>
-        /// <param name="userModel"></param>
-        /// <returns></returns>
+        /// <param name="userModel">用户对象</param>
+        /// <returns>用户对象或返回码对象</returns>
+        [HttpPost]
         [Route("api/user/changenameoemail")]
         public object ChangeNameOEmail(User userModel)
         {
