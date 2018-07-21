@@ -52,6 +52,14 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
+            if (string.IsNullOrEmpty(userModel.VCode))
+            {
+                returnCode.Code = 1994;
+                return returnCode;
+            }
+
+            //TODO Check VCode is valid
+
             var userInfo = UserService.Register(userModel.Phone, userModel.Password, returnCode);
 
             //注册过程中出现错误
