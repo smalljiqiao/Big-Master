@@ -15,6 +15,12 @@ namespace BM.Api.Models
         public string Phone { get; set; }
 
         /// <summary>
+        /// 安卓ID
+        /// </summary>
+        [StringLength(50)]
+        public string Android { get; set; }
+
+        /// <summary>
         /// 昵称
         /// </summary>
         [StringLength(20,ErrorMessage = "昵称长度限制为20个字符")]
@@ -25,6 +31,11 @@ namespace BM.Api.Models
         /// </summary>
         [EmailAddress(ErrorMessage = "不合法的邮箱地址")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// 短信验证码
+        /// </summary>
+        public string VCode { get; set; }
 
         /// <summary>
         /// 密码
