@@ -52,7 +52,9 @@ namespace BM.Services.Installation
                       "ALTER TABLE [Order] ADD CONSTRAINT DF_CreateTime_Order DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [User] ADD CONSTRAINT DF_CreateTime_User DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [AndroidInfo] ADD CONSTRAINT DF_CreateTime_AndroidInfo DEFAULT(GETDATE()) FOR CreateTime;" +
-                      "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;";
+                      "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [DreamTitle] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [DreamDetail] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;";
 
             _idbContext.ExecuteSqlCommand(cmd);
         }

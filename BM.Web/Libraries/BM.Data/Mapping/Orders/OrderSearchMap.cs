@@ -20,7 +20,6 @@ namespace BM.Data.Mapping.Orders
             this.Property(p => p.WomanBirthDay).HasColumnType("datetime");
 
             this.HasRequired(orderSearch => orderSearch.Order).WithOptional(orderSearch => orderSearch.OrderSearch);
-
         }
     }
 }

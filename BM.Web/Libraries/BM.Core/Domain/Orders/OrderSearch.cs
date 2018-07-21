@@ -57,7 +57,9 @@ namespace BM.Core.Domain.Orders
         /// </summary>
         public DateTime WomanBirthDay { get; set; }
 
-        //外键关联Order表
+        /// <summary>
+        /// 外键关联Order表
+        /// </summary>
         public Order Order { get; set; }
     }
 }

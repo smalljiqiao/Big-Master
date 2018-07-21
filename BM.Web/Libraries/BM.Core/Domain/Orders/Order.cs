@@ -46,7 +46,9 @@ namespace BM.Core.Domain.Orders
         //外键关联User表
         public virtual User User { get; set; }
 
-        //一对一关系外键关联OrderSearch表
+        /// <summary>
+        /// 一对一关系外键关联OrderSearch表
+        /// </summary>
         public virtual OrderSearch OrderSearch { get; set; }
     }
 }
