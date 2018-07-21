@@ -13,6 +13,20 @@ namespace BM.Api.Controllers
     public class UsersController : ApiController
     {
         /// <summary>
+        /// 获取短信验证码
+        /// </summary>
+        /// <param name="phone">手机号码</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/user/vcode")]
+        public string VCode(string phone)
+        {
+            //需要添加Session
+            return "";
+        }
+
+
+        /// <summary>
         /// 用户注册
         /// </summary>
         /// <param name="userModel">用户对象</param>
