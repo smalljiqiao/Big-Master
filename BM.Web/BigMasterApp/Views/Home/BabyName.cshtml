@@ -1,21 +1,22 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "宝宝取名";
-    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/774d955a88f54882b05d3de1f30144c3.jpg";
+    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetAbsoluteUriSite(this.Context.Request)+":55765/Content/images/babybanner.jpg";
 }
 @section Styles{
     <style type="text/css">
          body{background-color:#fcf6f5 !important}
         .babyNameColor{color:#b72948;font-weight:600;font-family:"Microsoft YaHei"}
         .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem;background-color:#fcf6f5}
-        .babyNameContent .userMess{border-bottom:1px solid #fdcecf;line-height:0.8rem;ba}
+        .babyNameContent .userMess{border-bottom:1px solid #fdcecf;line-height:0.8rem;}
         .babyNameContent .userMess input {background-color:transparent}
         ul li {line-height:1rem !important}
-        .babyNameContent .userMess i{border:1px solid #d4d4d4;border-radius:50%;line-height:0.85rem ;width:0.85rem;height:0.85rem; display:inline-block!important;}
-        .babyNameContent .userMess i:first-child{margin-right:1rem}
+        .babyNameContent .userMess .iMan{border:1px solid #d4d4d4;border-radius:50%;line-height:0.93rem ;width:0.85rem;height:0.85rem; display:inline-block!important;}
+       .emI{}
         .check_on {background-color:#fd7e98}
-        .babyNameContent .userMess div:first-child{width:3rem !important}
+        .babyNameContent .userMess .topdiv{width:3rem !important}
         .submitBtn{line-height:0.9rem;width:100%;background:url(../Content/images/babybtn.png) no-repeat center;border-radius:1rem;}
+        .masterTop{ background:url(..//Content/images/babymastertop.png);background-size:100% 100%;margin:auto;height:0.8rem;line-height:0.8rem}
     </style>
     }
 @Html.Partial("_PartialHead")
@@ -25,31 +26,79 @@
     <div class="mb10">
         <ul class="mt15">
             <li class="flex-box pd5x0 rem18  userMess">
-                <div class="flex-cont tal babyNameColor">宝宝姓氏</div><div class="flex-cont tal"><input value=""  placeholder="请输入姓氏" /></div> </li>
+                <div class="flex-cont tal babyNameColor topdiv">宝宝姓氏</div><div class="flex-cont tal"><input value=""  placeholder="请输入姓氏" /></div> </li>
 
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal babyNameColor">性别</div><div class="flex-cont tal"><i class="check_on mr10 tac">男</i><i class="tac">女</i></div>
+                <div class="flex-cont tal babyNameColor topdiv">性别</div><div class="flex-cont tal emI"><i class="check_on mr10 tac iMan">男</i><i style="margin-left:0.8rem" class="tac iMan">女</i></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal babyNameColor">出生日期</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+                <div class="flex-cont tal babyNameColor topdiv">出生日期</div><div class="flex-cont tal"><input id="manDate" class="rem14 pd5x10  costomerInput" value="" data-toid-date="date" name="input_date" placeholder="日期选择不带时辰" readonly="readonly" data-type="1" data-date="1983-6-3" />
+      <input type="hidden" id="date" name="date"></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
-                <div class="flex-cont tal babyNameColor">备注信息</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
+                <div class="flex-cont tal babyNameColor topdiv">出生时辰</div>
+                <div class="flex-cont tal">
+                   <form class="layui-form">
+                      <select name="city" lay-verify="required">
+                                                                               <option value="0" selected="">时辰不详</option>
+                                                                               <option value="24">子 00:00-00:59</option>
+                                                                               <option value="1">丑 01:00-01:59</option>
+                                                                               <option value="2">丑 02:00-02:59</option>
+                                                                               <option value="3">寅 03:00-03:59</option>
+                                                                               <option value="4">寅 04:00-04:59</option>
+                                                                               <option value="5">卯 05:00-05:59</option>
+                                                                               <option value="6">卯 06:00-06:59</option>
+                                                                               <option value="7">辰 07:00-07:59</option>
+                                                                               <option value="8">辰 08:00-08:59</option>
+                                                                               <option value="9">巳 09:00-09:59</option>
+                                                                               <option value="10">巳 10:00-10:59</option>
+                                                                               <option value="11">午 11:00-11:59</option>
+                                                                               <option value="12">午 12:00-12:59</option>
+                                                                               <option value="13">未 13:00-13:59</option>
+                                                                               <option value="14">未 14:00-14:59</option>
+                                                                               <option value="15">申 15:00-15:59</option>
+                                                                               <option value="16">申 16:00-16:59</option>
+                                                                               <option value="17">酉 17:00-17:59</option>
+                                                                               <option value="18">酉 18:00-18:59</option>
+                                                                               <option value="19">戌 19:00-19:59</option>
+                                                                               <option value="20">戌 20:00-20:59</option>
+                                                                               <option value="21">亥 21:00-21:59</option>
+                                                                               <option value="22">亥 22:00-22:59</option>
+                                                                               <option value="23">子 23:00-23:59</option>
+
+                                                                           </select>
+                    </form></div>
+            </li>
+            <li class="flex-box pd5x0 rem18 userMess">
+                <div class="flex-cont tal babyNameColor topdiv">备注信息</div><div class="flex-cont tal"><input value="" placeholder="请输入姓氏" /></div>
             </li>
         </ul>
-        <div class="mt20"><button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/BabyNamePay")'">申请起名</button></div>
         <div class="rem14">已为1523位宝宝取名</div>
+        <div class="mt20"><button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/BabyNamePay")'">申请起名</button></div>
+       
+
+        <div class="mt20">
+            <div class="masterTop c-fff rem15 pd0x10">大师取名</div>
+            <ul>
+                <li>
+
+
+                </li>
+
+            </ul>
+
+        </div>
     </div>
 
 </div>
 
 @section scripts{
     <script type="text/javascript">
-        $("i").bind("click", function () {
+        $(".emI i").bind("click", function () {
             $(this).addClass("check_on");
             $(this).siblings().removeClass("check_on");
         });
 
-
+        var date = new ruiDatepicker().init('#manDate');
     </script>
     }

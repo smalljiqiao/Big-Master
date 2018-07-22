@@ -17,3 +17,5 @@
      .forecastFun .item .top{color:#81514a;font-weight:600}
      .forecastFun .item .FFcontent{height:2.3rem;color:#81514a}
      .forecastFun .fun-img{max-width:3.5rem;margin:auto;display:block }
+
+    form input{background:transparent!important;border:0px !important;}

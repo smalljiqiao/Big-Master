@@ -7,9 +7,14 @@
     <style type="text/css">
         .banner-box{width:100%}
           .banner-box .banner-img{width:100%;height:5rem}
-        .functionShoose{}
-          .functionShoose .img{width:1.2rem}
-        .content{height:500px}
+
+          .indexContent{background:url(..//Content/images/indexBack.jpg);background-size:100% 100%;}
+        .functionShoose{ padding:0.651rem 0rem}
+          .functionShoose .img{width:1.42rem}
+        .content{height:60vh}
+        .content ul {width:90%;margin:auto}
+        .content ul li{margin-bottom:0.4rem}
+        .content ul li img {max-width:100%}
     </style>
 }
 <div>
@@ -22,25 +27,34 @@
         </div>
     </div>
    <!--banner-end-->
-    <div class="flex-box mb10 mt20 functionShoose">
-        <a class="flex-cont" href="@Url.Content("~/Home/EightGoodWord")">
-            <img class="img" src="~/Content/images/eightGood.png" />
-            <div>八字详批</div>
-        </a>
-        <a class="flex-cont" href="@Url.Content("~/Home/BabyName")">
-            <img  class="img" src="~/Content/images/baby.png" />
-            <div>宝宝取名</div>
-        </a>
-        <a class="flex-cont" href="@Url.Content("~/Home/EightMarry")">
-            <img class="img" src="~/Content/images/eightMarry.png" />
-            <div>八字合婚</div>
-        </a>
-        <a class="flex-cont" href="@Url.Content("~/Home/ReadDream")">
-            <img class="img" src="~/Content/images/readDream.png" />
-            <div>周公解梦</div>
-        </a>
+    <div class="indexContent">
+        <div class="flex-box mb10  functionShoose">
+            <a class="flex-cont" href="@Url.Content("~/Home/EightGoodWord")">
+                <img class="img" src="~/Content/images/eightGood.png" />
+                <div>八字详批</div>
+            </a>
+            <a class="flex-cont" href="@Url.Content("~/Home/BabyName")">
+                <img class="img" src="~/Content/images/baby.png" />
+                <div>宝宝取名</div>
+            </a>
+            <a class="flex-cont" href="@Url.Content("~/Home/EightMarry")">
+                <img class="img" src="~/Content/images/eightMarry.png" />
+                <div>八字合婚</div>
+            </a>
+            <a class="flex-cont" href="@Url.Content("~/Home/ReadDream")">
+                <img class="img" src="~/Content/images/readDream.png" />
+                <div>周公解梦</div>
+            </a>
+        </div>
+        <div class="content">
+            <ul>
+                <li><img src="~/Content/images/indexItem1.png" /> </li>
+                <li><img src="~/Content/images/indexItem2.png" /></li>
+                <li><img src="~/Content/images/indexItem3.png" /></li>
+            </ul>
+
+        </div>
     </div>
-    <div class="content"></div>
  @Html.Partial("_PartialBottom")
 </div>
 @section scripts{
