@@ -2,6 +2,7 @@
 using BM.Api.Models;
 using BM.Services.Common;
 using System.Web.Http;
+using BM.Api.Attributes;
 
 namespace BM.Api.Controllers
 {
@@ -15,30 +16,11 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="detBaModel">八字详批对象</param>
         /// <returns></returns>
+        [ModelValid]
         [Route("api/fortun/detailbatch")]
         public object DetailedBatch(DetailedBatch detBaModel)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                //returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage + "; ");
-
-                foreach (var item in ModelState.Values)
-                {
-                    foreach (var e in item.Errors)
-                    {
-                        if (string.IsNullOrEmpty(e.ErrorMessage))
-                            returnCode.Remark += e.Exception.Message;
-                        else
-                            returnCode.Remark += e.ErrorMessage;
-                    }
-                }
-
-                return returnCode;
-            }
 
             //var userInfo = UserService.GetUserByPhone(detBaModel.Phone, returnCode);
 
@@ -60,30 +42,11 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="babyName">宝宝对象</param>
         /// <returns></returns>
+        [ModelValid]
         [Route("api/fortun/babyname")]
         public object BabyName(BabyName babyName)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                //returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage + "; ");
-
-                foreach (var item in ModelState.Values)
-                {
-                    foreach (var e in item.Errors)
-                    {
-                        if (string.IsNullOrEmpty(e.ErrorMessage))
-                            returnCode.Remark += e.Exception.Message;
-                        else
-                            returnCode.Remark += e.ErrorMessage;
-                    }
-                }
-
-                return returnCode;
-            }
 
             return returnCode;
         }
@@ -93,30 +56,11 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="marriage">合婚对象</param>
         /// <returns></returns>
+        [ModelValid]
         [Route("api/fortun/marriage")]
         public object Marriage(Marriage marriage)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                //returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage + "; ");
-
-                foreach (var item in ModelState.Values)
-                {
-                    foreach (var e in item.Errors)
-                    {
-                        if (string.IsNullOrEmpty(e.ErrorMessage))
-                            returnCode.Remark += e.Exception.Message;
-                        else
-                            returnCode.Remark += e.ErrorMessage;
-                    }
-                }
-
-                return returnCode;
-            }
 
             return returnCode;
         }

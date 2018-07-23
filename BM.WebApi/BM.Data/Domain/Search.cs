@@ -38,7 +38,8 @@ namespace BM.Data.Domain
         [StringLength(100)]
         public string ZhouWord { get; set; }
 
-        public DateTime CreateTime { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? CreateTime { get; set; }
 
         public virtual User User { get; set; }
     }

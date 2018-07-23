@@ -1,15 +1,17 @@
-﻿using BM.Api.Models;
+﻿using BM.Api.Attributes;
+using BM.Api.Models;
 using BM.Services.Common;
 using BM.Services.Users;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 
 namespace BM.Api.Controllers
 {
+
     /// <summary>
     /// 用户信息接口
     /// </summary>
+
     public class UsersController : ApiController
     {
         /// <summary>
@@ -32,19 +34,11 @@ namespace BM.Api.Controllers
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
         [HttpPost]
+        [ModelValid]
         [Route("api/user/register")]
         public object Register(User userModel)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage + "; ");
-                return returnCode;
-            }
-
 
             if (string.IsNullOrEmpty(userModel.Password))
             {
@@ -87,18 +81,11 @@ namespace BM.Api.Controllers
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
         [HttpPost]
+        [ModelValid]
         [Route("api/user/login")]
         public object Login(User userModel)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
-                return returnCode;
-            }
 
             if (string.IsNullOrEmpty(userModel.Password))
             {
@@ -141,18 +128,11 @@ namespace BM.Api.Controllers
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
         [HttpPost]
+        [ModelValid]
         [Route("api/user/changepassword")]
         public object ChangePassword(User userModel)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
-                return returnCode;
-            }
 
             if (string.IsNullOrEmpty(userModel.Password))
             {
@@ -188,18 +168,11 @@ namespace BM.Api.Controllers
         /// <param name="userModel">用户对象</param>
         /// <returns>用户对象或返回码对象</returns>
         [HttpPost]
+        [ModelValid]
         [Route("api/user/changenameoemail")]
         public object ChangeNameOEmail(User userModel)
         {
             var returnCode = new ReturnCode();
-
-            if (!ModelState.IsValid)
-            {
-                returnCode.Code = 9999;
-                //获取所有不合法的字段说明
-                returnCode.Remark = ModelState.Values.SelectMany(error => error.Errors).Aggregate("", (current, e) => current + e.ErrorMessage);
-                return returnCode;
-            }
 
             if (userModel.Nickname == "" && userModel.Email == "")
             {

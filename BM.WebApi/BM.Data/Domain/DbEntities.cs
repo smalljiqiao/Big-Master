@@ -17,6 +17,8 @@ namespace BM.Data.Domain
         public virtual DbSet<BType> BType { get; set; }
         public virtual DbSet<BurialPoint> BurialPoint { get; set; }
         public virtual DbSet<CodeMessage> CodeMessage { get; set; }
+        public virtual DbSet<DreamDetail> DreamDetail { get; set; }
+        public virtual DbSet<DreamTitle> DreamTitle { get; set; }
         public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderSearch> OrderSearch { get; set; }
@@ -49,6 +51,14 @@ namespace BM.Data.Domain
                 .Property(e => e.Code)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<DreamTitle>()
+                .Property(e => e.Url)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DreamTitle>()
+                .HasOptional(e => e.DreamDetail)
+                .WithRequired(e => e.DreamTitle);
 
             modelBuilder.Entity<Order>()
                 .Property(e => e.Phone)

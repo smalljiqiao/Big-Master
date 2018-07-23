@@ -56,6 +56,8 @@
     <Compile Include="Domain\BurialPoint.cs" />
     <Compile Include="Domain\CodeMessage.cs" />
     <Compile Include="Domain\DbEntities.cs" />
+    <Compile Include="Domain\DreamDetail.cs" />
+    <Compile Include="Domain\DreamTitle.cs" />
     <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderSearch.cs" />

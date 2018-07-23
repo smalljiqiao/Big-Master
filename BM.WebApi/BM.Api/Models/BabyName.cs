@@ -7,7 +7,7 @@ namespace BM.Api.Models
     /// <summary>
     /// 宝宝取名模型类
     /// </summary>
-    public class BabyName
+    public class BabyName : BaseModel
     {
         /// <summary>
         /// 手机号码
@@ -38,7 +38,7 @@ namespace BM.Api.Models
         /// </summary>
         [Required]
         public string City { get; set; }
-        
+
         /// <summary>
         /// 名字形式 0:单字 1:双子 2:叠字
         /// </summary>

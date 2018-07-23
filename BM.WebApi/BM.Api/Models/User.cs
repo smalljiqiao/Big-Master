@@ -5,7 +5,7 @@ namespace BM.Api.Models
     /// <summary>
     /// 用户信息模型类
     /// </summary>
-    public partial class User
+    public partial class User: BaseModel
     {
         /// <summary>
         /// 手机号码

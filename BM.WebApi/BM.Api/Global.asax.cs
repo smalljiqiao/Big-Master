@@ -1,5 +1,4 @@
-﻿using BM.Api.BMModelBinders;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -10,9 +9,6 @@ namespace BM.Api
     {
         protected void Application_Start()
         {
-            //为string类型指定stringTrimBinder
-            ModelBinders.Binders.Add(typeof(string), new StringTrimModelBinder());
-
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
