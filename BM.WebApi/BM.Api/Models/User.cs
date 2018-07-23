@@ -5,7 +5,7 @@ namespace BM.Api.Models
     /// <summary>
     /// 用户信息模型类
     /// </summary>
-    public partial class User: BaseModel
+    public partial class User : BaseModel
     {
         /// <summary>
         /// 手机号码
@@ -23,7 +23,7 @@ namespace BM.Api.Models
         /// <summary>
         /// 昵称
         /// </summary>
-        [StringLength(20,ErrorMessage = "昵称长度限制为20个字符")]
+        [StringLength(20, ErrorMessage = "昵称长度限制为20个字符")]
         public string Nickname { get; set; }
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace BM.Api.Models
     /// <summary>
     /// 八字合婚模型类
     /// </summary>
-    public class Marriage
+    public class Marriage: BaseModel
     {
         /// <summary>
         /// 手机号码

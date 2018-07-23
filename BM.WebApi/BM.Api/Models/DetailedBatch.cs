@@ -7,7 +7,7 @@ namespace BM.Api.Models
     /// <summary>
     /// 八字详批模型类
     /// </summary>
-    public class DetailedBatch
+    public class DetailedBatch: BaseModel
     {
         /// <summary>
         /// 手机号码
