@@ -3,7 +3,6 @@ using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.ModelBinding;
-using System.Web.Mvc;
 using IModelBinder = System.Web.Http.ModelBinding.IModelBinder;
 using ModelBindingContext = System.Web.Http.ModelBinding.ModelBindingContext;
 
@@ -15,7 +14,7 @@ namespace BM.Api.BMModelBinders
     /// </summary>
     public sealed class ModelValidationBinder : ModelBinderProvider
     {
-        readonly DateTimeModelBinder _binder = new DateTimeModelBinder();
+        readonly ModelBinder _binder = new ModelBinder();
 
         /// <summary>
         /// 
@@ -32,7 +31,7 @@ namespace BM.Api.BMModelBinders
     /// <summary>
     /// 模型验证类
     /// </summary>
-    public class DateTimeModelBinder : IModelBinder
+    public class ModelBinder : IModelBinder
     {
         /// <summary>
         /// 

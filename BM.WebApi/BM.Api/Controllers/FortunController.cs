@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BM.Api.Attributes;
 using BM.Api.Models;
 using BM.Services.Common;
+using System;
+using System.Collections.Generic;
 using System.Web.Http;
-using BM.Api.Attributes;
 
 namespace BM.Api.Controllers
 {
@@ -22,17 +23,7 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
-            //var userInfo = UserService.GetUserByPhone(detBaModel.Phone, returnCode);
-
-            ////获取用户信息过程中系统错误
-            //if (returnCode.Code != default(int))
-            //    return returnCode;
-
-            //if (userInfo == null)
-            //{ returnCode.Code = 1996; return returnCode; }
-
-            //var html = Services.WebData.DetailedBatch.Handler.Get(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
-
+            var html = Services.WebData.DetailedBatch.Handler.Get(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
 
             return returnCode;
         }

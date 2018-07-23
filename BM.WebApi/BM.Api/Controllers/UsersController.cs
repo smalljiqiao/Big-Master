@@ -62,17 +62,7 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            //忽略敏感信息
-            userInfo.SaltPassword = "";
-            userInfo.Salt = "";
-
-            var returnLis = new List<object>
-            {
-                returnCode,
-                userInfo
-            };
-
-            return returnLis;
+            return IgnoreNReturn(returnCode, userInfo);
         }
 
         /// <summary>
@@ -108,18 +98,7 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            //忽略敏感信息
-            userInfo.Password = "";
-            userInfo.SaltPassword = "";
-            userInfo.Salt = "";
-
-            var returnLis = new List<object>
-            {
-                returnCode,
-                userInfo
-            };
-
-            return returnLis;
+            return IgnoreNReturn(returnCode, userInfo);
         }
 
         /// <summary>
@@ -148,18 +127,7 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            //忽略敏感信息
-            userInfo.Password = "";
-            userInfo.SaltPassword = "";
-            userInfo.Salt = "";
-
-            var returnLis = new List<object>
-            {
-                returnCode,
-                userInfo
-            };
-
-            return returnLis;
+            return IgnoreNReturn(returnCode, userInfo);
         }
 
         /// <summary>
@@ -188,10 +156,14 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
+            return IgnoreNReturn(returnCode, userInfo);
+        }
+
+
+        private object IgnoreNReturn(ReturnCode returnCode, Data.Domain.User userInfo = null)
+        {
             //忽略敏感信息
             userInfo.Password = "";
-            userInfo.SaltPassword = "";
-            userInfo.Salt = "";
 
             var returnLis = new List<object>
             {
