@@ -10,7 +10,6 @@ namespace BM.Api
     {
         protected void Application_Start()
         {
-
             //为string类型指定stringTrimBinder
             ModelBinders.Binders.Add(typeof(string), new StringTrimModelBinder());
 

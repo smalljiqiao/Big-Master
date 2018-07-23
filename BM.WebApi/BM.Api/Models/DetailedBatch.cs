@@ -12,12 +12,12 @@ namespace BM.Api.Models
         /// <summary>
         /// 手机号码
         /// </summary>
-       
         public string Phone { get; set; }
 
         /// <summary>
         /// 姓名 长度限制为2-8
         /// </summary>
+        [RegularExpression(@"[\u4e00-\u9fa5]{2,8}", ErrorMessage = "姓名限制为中文，且长度为2-8位字符")]
         [DisplayName("姓名")]
         public string UserName { get; set; }
 
@@ -25,8 +25,6 @@ namespace BM.Api.Models
         /// 出生日期 格式 yyyy-MM-dd
         /// </summary>
         [Required]
-        //[RegularExpression(@"[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])", ErrorMessage = "日期格式限制为yyyy-MM-dd")]
-        
         public DateTime BirthDay { get; set; }
 
         /// <summary>
