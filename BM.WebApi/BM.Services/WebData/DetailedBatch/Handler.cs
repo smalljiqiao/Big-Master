@@ -1,11 +1,9 @@
 ﻿using BM.Services.Common;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
-using System.Web.UI.WebControls;
-using HtmlAgilityPack;
 
 namespace BM.Services.WebData.DetailedBatch
 {
@@ -95,6 +93,15 @@ namespace BM.Services.WebData.DetailedBatch
             var FList4 = new List<string>(); //八字命盘流年
 
             var SList = new List<string>(); //八字论命内容数组
+
+            var THtml = ""; //五行分析HTML
+
+            var TList = new List<string>(); //五行个性分析
+
+            var FuType = ""; //八行命卦分析类型
+            var FuImgUrl = ""; //八行命卦分析图片链接
+            var FuDic = new List<List<string>>(); //八行命卦分析凶吉
+            var FuDic2 = new List<KeyValuePair<string, string>>(); //八行命卦分析吉位选择
 
             var boxConArr = doc.DocumentNode.SelectNodes("//div[@class='boxcon']");
             if (boxConArr != null)
@@ -245,7 +252,7 @@ namespace BM.Services.WebData.DetailedBatch
                             }
                             else
                             {
-                                imgUrl2 = "" + img1.Attributes["src"].Value?.Split('/').LastOrDefault();
+                                imgUrl2 = "http://47.106.183.2:8887/Images/" + img1.Attributes["src"].Value?.Split('/').LastOrDefault();
                                 FList4.Add(imgUrl2);
                             }
                         }
@@ -264,20 +271,117 @@ namespace BM.Services.WebData.DetailedBatch
                     }
 
                     #endregion
+
+                    #region 五行分析
+
+                    if (title.IndexOf("八字论命", StringComparison.Ordinal) != -1)
+                    {
+                        var tableArr = box.ChildNodes.Where(node => node.Name == "table");
+                        if (!tableArr.Any())
+                            continue; //TODO LOG
+
+                        //IN NORMAL CASE:tableArr.Count = 2
+
+                        if (tableArr.Count() < 2)
+                        {
+                            //TODO LOG INNORMAL 
+                            continue;
+                        }
+
+                        if (tableArr.Count() > 2)
+                        {
+                            //TODO LOG INNORMAL
+                        }
+
+                        THtml = tableArr.Aggregate(THtml, (current, table) => current + table.OuterHtml.Trim());
+                    }
+
+                    #endregion
+
+                    #region 五行个性分析
+
+                    if (title.IndexOf("五行个性分析", StringComparison.Ordinal) != -1)
+                    {
+                        var childText = string.Empty;
+                        var childNodes = box.ChildNodes;
+
+                        foreach (var node in childNodes)
+                        {
+                            if (node.Name == "br")
+                            {
+                                TList.Add(childText);
+                                childText = "";
+                            }
+                            else
+                                childText += node.InnerText.Replace("&nbsp;", "").Trim();
+                        }
+
+                        if (childText != "")
+                            TList.Add(childText);
+                    }
+
+                    #endregion
+
+                    #region 八字命卦分析
+
+                    if (title.IndexOf("八字命卦分析", StringComparison.Ordinal) != -1)
+                    {
+                        var type = box.SelectSingleNode("b//font")?.InnerText.Trim();
+                        var imgUrl = box.SelectSingleNode("img[@class='imgs']")?.Attributes["src"].Value.Trim();
+
+                        FuType = type;
+                        FuImgUrl = imgUrl;
+
+                        var trArr = box.SelectNodes("table//tr");
+
+                        if (trArr == null)
+                            continue;
+                        //&darr;
+                        FuDic.AddRange(trArr.Select(tr => new List<string>
+                        {
+                            tr.SelectNodes("td").ElementAt(0)?.InnerText.Replace("&darr;","").Trim(),
+                            tr.SelectNodes("td").ElementAt(1)?.InnerText.Replace("&darr;","").Trim()
+                        }));
+
+                        var flag = true;
+                        var childNodes = box.ChildNodes;
+
+                        foreach (var child in childNodes)
+                        {
+                            if (child.Name == "hr")
+                                flag = false;
+
+                            if (flag)
+                                continue;
+
+                            if (child.Name == "img")
+                            {
+                                var img = child.Attributes["src"].Value.Trim();
+                                if (img != "")
+                                    FuDic2.Add(new KeyValuePair<string, string>("img", img));
+                            }
+                            else
+                            {
+                                if (child.InnerText.Trim() != "")
+                                    FuDic2.Add(new KeyValuePair<string, string>("text", child.InnerText.Trim()));
+                            }
+
+                        }
+                    }
+
+                    #endregion
                 }
             }
 
-            var dic1 = new Dictionary<String, object>()
+            var dic1 = new Dictionary<string, object>
             {
-                { "PersonalInfo",FDic},
-                { "Life",FHtml},
-                {"ByGone",new List<object>{FList1,FList2,FList3,FList4} }
+                {"PersonalInfo", FDic},
+                {"Life", FHtml},
+                {"ByGone", new List<object> {FList1, FList2, FList3, FList4}}
             };
 
-            var resultDic = new Dictionary<String, object>();
+            var resultDic = new Dictionary<string, object> { { "Natal", dic1 }, { "Fate", SList } };
 
-            resultDic.Add("Natal", dic1);
-            resultDic.Add("Fate", SList);
 
 
             return resultDic;

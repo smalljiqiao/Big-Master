@@ -3,11 +3,6 @@ using Aliyun.Acs.Core.Exceptions;
 using Aliyun.Acs.Core.Profile;
 using Aliyun.Acs.Dysmsapi.Model.V20170525;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Web;
-using Aliyun.Acs.Core.Exceptions;
 
 namespace BM.Api.AliSMS
 {

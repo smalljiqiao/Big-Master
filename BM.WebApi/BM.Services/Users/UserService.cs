@@ -106,7 +106,7 @@ namespace BM.Services.Users
                 }
 
                 userInfo.Email = email;
-                userInfo.Nickname = nickname;
+                userInfo.NickName = nickname;
                 var db = new DbEntities();
                 db.Entry<User>(userInfo).State = EntityState.Modified;
                 db.SaveChanges();

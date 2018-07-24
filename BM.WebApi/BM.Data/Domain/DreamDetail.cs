@@ -16,7 +16,6 @@ namespace BM.Data.Domain
         [Required]
         public string Html { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
 
         public virtual DreamTitle DreamTitle { get; set; }

@@ -17,7 +17,6 @@ namespace BM.Data.Domain
         [StringLength(4000)]
         public string StackTrace { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
     }
 }

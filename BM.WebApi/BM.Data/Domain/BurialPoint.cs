@@ -27,7 +27,6 @@ namespace BM.Data.Domain
         [StringLength(200)]
         public string Remark { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
 
         public virtual User User { get; set; }
