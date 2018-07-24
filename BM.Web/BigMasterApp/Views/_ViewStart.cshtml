@@ -1,9 +1,9 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var url = BigMasterApp.App_Start.AppHelper.GetAbsoluteUriSite(this.Context.Request);
+    var url = "http://47.106.183.2:8887/";// BigMasterApp.App_Start.AppHelper.GetAbsoluteUriSite(this.Context.Request);
 }
 <script type="text/javascript">
     var global_site_root = "@url" +"/BigMasterApp/";
-    var global_api_root = "@url" +"/BM.Api/api/"
+    var global_api_root = "@url" +"api/"
 </script>
 
