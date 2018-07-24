@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -9,6 +10,8 @@ namespace BM.Api
     {
         protected void Application_Start()
         {
+            //BM.Services.WebData.DetailedBatch.Handler.Get("测试", DateTime.Now.AddYears(-1), true);
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

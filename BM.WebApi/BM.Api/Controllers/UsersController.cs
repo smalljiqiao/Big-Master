@@ -159,7 +159,7 @@ namespace BM.Api.Controllers
             return IgnoreNReturn(returnCode, userInfo);
         }
 
-
+        
         private object IgnoreNReturn(ReturnCode returnCode, Data.Domain.User userInfo = null)
         {
             //忽略敏感信息
