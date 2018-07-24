@@ -1,4 +1,4 @@
-﻿using BM.Api.Attributes;
+using BM.Api.Attributes;
 using BM.Api.Models;
 using BM.Services.Common;
 using System;

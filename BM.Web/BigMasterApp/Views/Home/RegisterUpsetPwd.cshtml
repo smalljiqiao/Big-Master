@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var inType = Request.QueryString["type"];
+    var handleTyle = "注册";
+    if (string.IsNullOrEmpty(inType))
+    {
+        ViewBag.Title = "账号注册";
+        handleTyle = "注册";
+    }
+    else if (inType == "forgetPwd")
+    {
+        ViewBag.Title = "忘记密码"; handleTyle = "修改密码";
+    }
+    else {
+        ViewBag.Title = "账号注册"; handleTyle = "注册";
+    }
+
+}
+@Html.Partial("_PartialHead")
+
+@section Styles{
+    <style type="text/css">
+        .mineContent{min-height:90vh; background:url(..//Content/images/readDreamResult.jpg);background-size:100% 100%}
+        .mineContent .inputContent{width:80%;margin:0 auto;padding-top:1.3rem;}
+        .mineContent .inputContent .divClass{margin-top:0.6rem; border-bottom:1px solid}
+        .mineContent .inputContent .divClass input{height:1rem;width:100%; line-height:1rem;BACKGROUND-COLOR: transparent;}
+      .mineContent .inputContent .getCode{height:90%;width:90%;  background-color:#e4625b;border-radius:0.12rem}
+        .mineContent .buttonContent{width:85%;margin:2rem auto;padding:0.3rem;}
+          .mineContent .buttonContent button{display:block;width:98%;border-radius:0.12rem; background-color:#e4625b;height:1rem;-webkit-box-flex:1;line-height:1rem;margin:0 auto}
+        .mineContent .buttonContent .wordColor{color:#2877c9;margin-top:0.34rem}
+          .mineContent .foot{width:80%;margin:0 auto}
+          .mineContent .foot img{width:1.2rem;height:1.2rem}
+    </style>
+    }
+<div class="mineContent pd20x10">
+    <div class="inputContent rem18 ">
+        <div class="divClass flex-cont tac"><input class="gray8" id="phone" type="tel" placeholder="请输入手机号" /></div>
+        <div class="divClass flex-box flex-cont tac mt20">
+        <div class="flex-cont">
+            <input class="rem18 gray8" id="erCode" placeholder="请输入验证码" /></div>
+        <div class="flex-cont"><button class="getCode rem16 c-fff">获取验证码</button></div>
+        </div>
+            <div class="divClass flex-cont tac mt20"><input id="pwd" class="gray8" type="password" placeholder="请输入密码" /></div>
+            <div class="divClass flex-cont tac mt20"><input id="pwdAgian" class="gray8" type="password" placeholder="请再次输入密码" /></div>
+     </div>
+    <div class="buttonContent">
+        <button class="rem18 c-fff mb10" onclick="submitData()">@handleTyle</button>
+    </div>
+</div>
+<script type="text/javascript">
+    function submitData() {
+        var type = getQueryString("type");
+        var query = {
+            phone : $.trim($("#phone").val()),
+            erCode :$.trim($("#erCode").val()),
+            pwd: $.trim($("#pwd").val()),
+            deviceId: bm_getCookie("deviceId"),
+            pwdAgian:$.trim($("#pwdAgian").val())
+        };
+        if (!query.phone) { layer.msg('电话号码不能为空！'); return; }
+        if (!query.erCode) { layer.msg("短信验证码不能为空！"); return; }
+        if (!query.pwd) { layer.msg("请输入密码"); return; }
+        if (!query.pwdAgian) { layer.msg("请再次输入密码"); return; }
+        if (query.pwdAgian != query.pwd) { layer.msg("两次输入密码不一致"); return; }
+        if (type == "forgetPwd") {
+            doPost(bmApI.user.updatePwd, query, function (data) {
+                if (data.code == 0) {
+                    layer.msg("修改密码成功！");
+                    setTimeout(function () {
+                        window.location.href = global_site_root + "Home/Login";
+                    }, 2000);
+                }
+                else {
+                    layer.msg(data.Message);
+                }
+            });
+        } else { 
+        doPost(bmApI.user.register, query, function (data) {
+            if (data.code == 0) {
+                layer.msg("注册成功！");
+                setTimeout(function () {
+                    window.location.href = global_site_root + "Home/Login";
+                }, 2000);
+            }
+            else {
+                layer.msg(data.Message);
+            }
+            });
+        }
+    }
+
+</script>
+

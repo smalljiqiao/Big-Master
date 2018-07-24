@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "八字详批测算结果";
+}
+@Html.Partial("_PartialHead")
+@section Styles{
+    <style type="text/css">
+        .payContent{background-color:#f5f2e6;min-height:88vh;padding-bottom:1rem}
+        .payContent .payCount{border-bottom:2px solid #eaeaea}
+        .mt05{margin-top:0.5rem}
+        .pt05{padding-top:0.5rem}
+        .payback-know-top{width:3rem;height:1rem;line-height:1rem}
+        .payback-know-content{}
+        .payback-know-content .item{line-height:1rem;width:93%;margin:0px auto;border-radius:0.12rem;margin-top:0.31rem}
+            .payback-know-content .item img{width:0.75rem;line-height:1rem;position:relative;top:0.152rem}
+            .gray{background-color:#e2dfd3}
+            strong{font-weight:400;font-size:0.25rem}
+        #cover { position: absolute;left: 0px;top: 0px; background: rgba(0, 0, 0, 0.4);width: 100%;  height: 100%; filter: alpha(opacity=60);opacity: 0.6;  display: none;z-Index: 999;}
+        #customerStay {position: absolute;width: 80%; border-radius:0.12rem;left:10%;top: 20%; background-color: #fff; display: none; cursor: pointer;z-Index: 9999;}
+        .customerStayTop{padding:0.445rem;background:url(../Content/images/eightMarry_03.png);background-size:100% 100%;background-color:#f4e2d1 }
+        .customerStayContentTop{}
+        .customerStayContentContent{}
+        .customerStayContentButton{width:80%;background-color:#e4625b;border-radius:0.12rem;margin:auto}
+        .commLineHeight{line-height:0.7rem}
+        .backGray{background-color:#EAEAEA}
+    </style>
+}
+<link href="~/Content/BaseJs/layer/mobile/need/layer.css" rel="stylesheet" />
+<script src="~/Content/BaseJs/jquery.js"></script>
+<script src="~/Content/BaseJs/layer/layer.js"></script>
+<div>
+    <div class="payback-know-content ">
+        <ul>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
+                <div class="flex-cont ag-self tar"><img onclick="showDetail('八字命盘','EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
+            </li>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('五行分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
+            </li>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('八字分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
+            </li>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命爱情','EightGoodFate')" src="~/Content/images/more.png" /></div>
+            </li>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命财运','EightGoodFate')" src="~/Content/images/more.png" /></div>
+            </li>
+            <li class="flex-box backGray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命健康','EightGoodFate')" src="~/Content/images/more.png" /></div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<script type="text/javascript">
+    function showDetail(title,url) {
+        //iframe层
+        layer.open({
+            type: 2,
+            title: title,
+            shadeClose: true,
+            shade: 0.8,
+            area: ['90%', '80%'],
+            content: global_site_root +"ResultPart/"+ url //iframe的url
+        }); 
+    }
+
+</script>
+
+

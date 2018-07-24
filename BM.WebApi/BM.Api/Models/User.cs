@@ -1,46 +1,32 @@
+using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BM.Api.Models
 {
-    /// <summary>
-    /// 用户信息模型类
-    /// </summary>
-    public partial class User : BaseModel
+    public partial class User
     {
-        /// <summary>
-        /// 手机号码
-        /// </summary>
+        public Guid Id { get; set; }
+
         [Required]
-        [Phone(ErrorMessage = "不合法的手机号码")]
+        [StringLength(20)]
+        [DisplayName("用户手机号码")]
         public string Phone { get; set; }
 
-        /// <summary>
-        /// 安卓ID
-        /// </summary>
-        [StringLength(50)]
-        public string Android { get; set; }
-
-        /// <summary>
-        /// 昵称
-        /// </summary>
-        [StringLength(20, ErrorMessage = "昵称长度限制为20个字符")]
+        [StringLength(20)]
         public string Nickname { get; set; }
 
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        [EmailAddress(ErrorMessage = "不合法的邮箱地址")]
+        [StringLength(50)]
         public string Email { get; set; }
 
-        /// <summary>
-        /// 短信验证码
-        /// </summary>
-        public string VCode { get; set; }
-
-        /// <summary>
-        /// 密码
-        /// </summary>
-        [RegularExpression(@"[a-zA-Z0-9]{6,16}", ErrorMessage = "密码限制为英文和数字组合，且长度为6-16位字符")]
+        [StringLength(20)]
         public string Password { get; set; }
+
+        [StringLength(8)]
+        public string Salt { get; set; }
+
+        public string SaltPassword { get; set; }
+
+        public DateTime CreateTime { get; set; }
     }
 }

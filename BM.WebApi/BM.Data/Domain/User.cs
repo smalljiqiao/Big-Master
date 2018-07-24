@@ -1,29 +1,31 @@
 namespace BM.Data.Domain
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("User")]
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            AndroidInfo = new HashSet<AndroidInfo>();
-            BurialPoint = new HashSet<BurialPoint>();
-            Order = new HashSet<Order>();
-            Search = new HashSet<Search>();
+            this.Id = Guid.NewGuid();
+            //注意将字符串的毫秒转换为时间格式是.f,:f是会报错的。
+            //注意就算你格式设置了yyyy/MM/dd 转换为时间格式之后还会是yyyy-MM-dd。
+            this.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
         }
 
         [Key]
+        [Column(Order = 0)]
+        public Guid Id { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
         [StringLength(20)]
         public string Phone { get; set; }
 
         [StringLength(20)]
-        public string NickName { get; set; }
+        public string Nickname { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
@@ -37,22 +39,8 @@ namespace BM.Data.Domain
         public string Salt { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string SaltPassword { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? CreateTime { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AndroidInfo> AndroidInfo { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BurialPoint> BurialPoint { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Search> Search { get; set; }
+        public DateTime CreateTime { get; set; }
     }
 }

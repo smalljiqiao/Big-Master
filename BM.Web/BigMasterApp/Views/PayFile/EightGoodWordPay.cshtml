@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "八字详批支付";
+}
+@Html.Partial("_PartialHead")
+@section Styles{
+    <style type="text/css">
+        .payContent{background-color:#f5f2e6;min-height:88vh;padding-bottom:1rem}
+        .payContent .payCount{border-bottom:2px solid #eaeaea}
+        .mt05{margin-top:0.5rem}
+        .pt05{padding-top:0.5rem}
+        .alipay{width:7rem !important}
+        .alipay img{ width:1rem}
+            .alipay span {position:relative;top:0.32rem;vertical-align:top}
+        .alipay-button{background-color:#e3453d!important;border-radius:5px}
+        .payback-know-top{width:3rem;height:1rem;line-height:1rem}
+        .payback-know-content{}
+        .payback-know-content .item{line-height:1rem;width:93%;margin:0px auto;border-radius:0.12rem;margin-top:0.31rem}
+            .payback-know-content .item img{width:0.75rem;line-height:1rem;position:relative;top:0.152rem}
+            .gray{background-color:#e2dfd3}
+            strong{font-weight:400;font-size:0.25rem}
+        #cover { position: absolute;left: 0px;top: 0px; background: rgba(0, 0, 0, 0.4);width: 100%;  height: 100%; filter: alpha(opacity=60);opacity: 0.6;  display: none;z-Index: 999;}
+        #customerStay {position: absolute;width: 80%; border-radius:0.12rem;left:10%;top: 20%; background-color: #fff; display: none; cursor: pointer;z-Index: 9999;}
+        .customerStayTop{padding:0.445rem;background:url(../Content/images/eightMarry_03.png);background-size:100% 100%;background-color:#f4e2d1 }
+        .customerStayContentTop{}
+        .customerStayContentContent{}
+        .customerStayContentButton{width:80%;background-color:#e4625b;border-radius:0.12rem;margin:auto}
+        .commLineHeight{line-height:0.7rem}
+    </style>
+}
+<div class="payContent">
+    <div class="tal rem20 mt15 pd5x10 fadeRed">支付价格</div>
+    <div class="flex-box rem16 pd5x10 payCount">
+        <div class="flex-cont tal pd5x0 ">
+            <div class="mb5">限时88元</div>
+            <div>原价150元</div>
+        </div>
+        <div class="flex-cont tar pd5x0">
+            <div class="mb5">距优惠介绍还剩</div>
+            <div>12：21：55</div>
+        </div>
+    </div>
+    <div class="flex-box mt05">
+    <div class="flex-cont ag-self alipay"><img   src="~/Content/images/alipay.png" />
+        <span class="rem16" >支付宝支付</span></div>
+    <div class="flex-cont tar ag-self"><button class="rem16 pd10x20 mr10 c-fff alipay-button "onclick="stayCustomer()">立即支付</button></div>
+    </div>
+    <div class="rem14 tar c-" style="margin-top:0.21rem;padding-right:0.2rem;color:#888">支付成功后自动跳转测算结果页面</div>
+
+    <div class="rem16 tal pd5x10 mt15 mb10"><span class="payback-know-top">获取内容</span></div>
+    <div class="payback-know-content ">
+        <ul>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+            <li class="flex-box gray item tac">
+                <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
+                <div class="flex-cont ag-self tar"><img class="pd0x10" src="~/Content/images/lock.png" /></div>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+<div id="cover"></div>
+
+
+<!--挽留用户弹出层begin-->
+<div id="customerStay">
+    <div class="flex-box  top-head-bar"style="border-top-left-radius:0.12rem;border-bottom-right-radius:0.12rem">
+        <div class="top-head-bar-ico tal"><i class="icon iconfont c-fff icon-arrow-left" style="display:none"></i></div>
+        <div class="flex-cont top-head-bar-text c-fff rem16">您测算的结果</div>
+        <div class="top-head-bar-ico tal"><img style="width:0.6rem"onclick="hideCustomer()" src="~/Content/images/closeicon.png" /></div>
+    </div>
+
+    <div class="prContent pd10x20">
+        <div class="customerStayTop">
+            <div class="flex-box commLineHeight"><div class="flex-cont">姓名：马季奇</div><div class="flex-cont">性别：男</div></div>
+            <div class="tal rem14 commLineHeight" style="padding-left:0.4rem">1992年05月02</div>
+        </div>
+        <div class="mt05 tac">
+            <div class="customerStayContentTop rem16 tal">五行分析：</div>
+            <div class="customerStayContentContent rem15 mb20 tal">
+                在css3之前，要实现圆角的效果可以通过图片或者用margin属性实现(可以参考这里
+                程很繁琐，但CSS3的到来简化了实现圆角的方式。
+            </div>
+            <button class="customerStayContentButton c-fff pd10x20 mb20 rem16 " onclick="hideCustomer()" >付费后查看更多</button>
+        </div>
+    </div>
+</div>
+
+<!--挽留用户弹出层end-->
+<script type="text/javascript">
+    function stayCustomer() {
+        cover.style.display = "block";   //显示遮罩层
+        customerStay.style.display = "block";
+    }
+    function hideCustomer() {
+        cover.style.display = "none";   //显示遮罩层
+        customerStay.style.display = "none";
+        window.location.href = "../PayResult/EightGoodWordResult";
+    }
+</script>
+
+
