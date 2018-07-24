@@ -13,6 +13,7 @@ namespace BM.Data.Mapping.Data.DreamData
             this.Property(p => p.DreamId).HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(p => p.Title).HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             this.Property(p=>p.SubTitle).HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
+            this.Property(p => p.Url).HasColumnType("varchar").HasMaxLength(500).IsRequired();
             this.Property(p => p.CreateTime).HasColumnType("datetime");
         }
     }

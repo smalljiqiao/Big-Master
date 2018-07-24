@@ -56,6 +56,8 @@
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Mapping\Business\BPriceMap.cs" />
     <Compile Include="Mapping\Business\BTypeMap.cs" />
+    <Compile Include="Mapping\Data\DreamData\DreamDetailMap.cs" />
+    <Compile Include="Mapping\Data\DreamData\DreamTitleMap.cs" />
     <Compile Include="Mapping\Localization\CodeMessageMap.cs" />
     <Compile Include="Mapping\Logs\BurialPointMap.cs" />
     <Compile Include="Mapping\Logs\LogMap.cs" />

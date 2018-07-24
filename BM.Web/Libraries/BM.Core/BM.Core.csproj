@@ -81,6 +81,8 @@
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\Business\BType.cs" />
+    <Compile Include="Domain\Data\Dream\DreamDetail.cs" />
+    <Compile Include="Domain\Data\Dream\DreamTitle.cs" />
     <Compile Include="Domain\Localization\CodeMessage.cs" />
     <Compile Include="Domain\Logs\BurialPoint.cs" />
     <Compile Include="Domain\Logs\Log.cs" />

@@ -1,0 +1,64 @@
+------------------  开发日志  ------------------
+2018/07/18
+1.启用EF的数据库迁移，就仅仅是为了完成默认值的设置。。为什么不能在配置映射文件中设置呢。真奇怪。
+  网上也有为此进行特性设置的方法，这里就不采用了。
+
+  迁移步骤: Enable-Migrations -ContextTypeName "BMObjectContext" -ProjectName "BM.Data"
+		   Add-Migration -ProjectName "BM.Data" <迁移文件名称>
+           Update-Database -ProjectName "BM.Data" -Verbose
+
+
+ 使用建议，当没有修改配置映射文件时，可以重命名迁移文件（包括Design）_后名称使当前迁移文件生效（默认只使用一次，类似于git的暂存库）
+
+
+2.EF不支持范围约束吗？
+
+stackoverflow 解答
+
+1.
+What you need is CHECK CONSTRAINT. In SQL you would alter table this way
+
+ALTER TABLE Position
+   ADD CONSTRAINT CK_Position_Status CHECK (Status IN (1, 2, 3))
+It's not currently supported by EF directly. I.e. there is no some attribute or configuration which allows you generate table with check constraint or alter existing table. But you can add such constraint manually in migration:
+
+migrationBuilder.Sql(@"ALTER TABLE Position
+     ADD CONSTRAINT CK_Position_Status CHECK (Status IN (1, 2, 3))");
+Also I would recommend you to use enum instead of integer for Status field (if it is possible). Thus nobody will 'guess' which values supposed to be valid and which are not.
+
+2.
+EF does not currently support Check constraints.
+
+That is, you cannot apply an attribute to an entity, and expect it to generate the appropriate SQL to create the Check constrint in the underlying database.
+
+One way around this when using Code First Data Migrations (http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx) is to generate a migration and add an Sql() line in the Up() function override that is generated
+
+e.g.
+
+public override void Up()
+{
+    // Auto generated code here
+    // ...
+
+    // YOUR CUSTOM SQL GOES HERE
+    Sql("ALTER TABLE foo ADD CONSTRAINT CK_Some_Check CHECK (SomeDate > '20121110 00:00:00.000'");**
+}
+
+
+
+2018/07/19
+1.不用EF的数据迁移啦，烦死我了。。
+2.EF不支持的东西我统统用语句帮你写进去算了。
+3.数据说明 EF也不支持，可以自己写特性，然后利用发射获取在执行语句写进数据库，但这太麻烦了，现在不做了。
+4.字段约束和默认值 也不支持。
+
+5.EF好像也可以生成建库的脚本，但是要在BM.Services里引入EF，想想还是算了。
+  所以现在靠人手在Code First 之后再SSMS手动生成脚本。。
+
+
+
+  2018/07/20
+  1.将数据模型的datetime字段全部定义为可空类型(避免插入数据时数据转换错误 datetime2 => datetime)
+  2.datetime设置为可空之后就不能将其设置为不允许为空。这样数据库中这些字段就变成允许为空了，有点不太好。
+  2.字段设置DatabaseGeneratedOption，Code First From Database 不起作用，移植不过去。
+    在BM.Api项目里只能手动添加了。。

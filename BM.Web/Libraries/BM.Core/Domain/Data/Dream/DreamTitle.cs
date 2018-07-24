@@ -23,6 +23,11 @@ namespace BM.Core.Domain.Data.Dream
         public string SubTitle { get; set; }
 
         /// <summary>
+        /// 链接
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 生成时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
