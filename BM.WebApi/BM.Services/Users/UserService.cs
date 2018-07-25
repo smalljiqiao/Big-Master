@@ -3,7 +3,7 @@ using BM.Services.Common;
 using System;
 using System.Data.Entity;
 using System.Linq;
-using EncryptionService = BM.Services.Security.EncryptionService;
+using BM.Services.Security;
 
 namespace BM.Services.Users
 {
@@ -18,7 +18,9 @@ namespace BM.Services.Users
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
         public static User Register(string phone, string password, ReturnCode returnCode)
         {
-            var userInfo = GetUserByPhone(phone, returnCode);
+            var db = new DbEntities();
+
+            var userInfo = GetUserByPhone(phone, returnCode, db);
             if (returnCode.Code != default(int))
             {
                 return null;
@@ -37,7 +39,6 @@ namespace BM.Services.Users
 
                 userInfo = new User { Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword };
 
-                var db = new DbEntities();
                 db.User.Add(userInfo);
                 db.SaveChanges();
             }
@@ -54,7 +55,9 @@ namespace BM.Services.Users
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
         public static User ChangePassword(string phone, string password, ReturnCode returnCode)
         {
-            var userInfo = GetUserByPhone(phone, returnCode);
+            var db = new DbEntities();
+
+            var userInfo = GetUserByPhone(phone, returnCode, db);
             if (returnCode.Code != default(int))
             {
                 return null;
@@ -74,7 +77,6 @@ namespace BM.Services.Users
                 userInfo.SaltPassword = saltPassword;
                 userInfo.Salt = salt;
 
-                var db = new DbEntities();
                 db.Entry<User>(userInfo).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -92,7 +94,9 @@ namespace BM.Services.Users
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
         public static User ChangeN0E(string phone, string email, string nickname, ReturnCode returnCode)
         {
-            var userInfo = GetUserByPhone(phone, returnCode);
+            var db = new DbEntities();
+
+            var userInfo = GetUserByPhone(phone, returnCode, db);
             if (returnCode.Code != default(int))
             {
                 return null;
@@ -107,7 +111,6 @@ namespace BM.Services.Users
 
                 userInfo.Email = email;
                 userInfo.NickName = nickname;
-                var db = new DbEntities();
                 db.Entry<User>(userInfo).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -121,14 +124,12 @@ namespace BM.Services.Users
         /// <param name="phone">手机号码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>User对象，根据returnCode是否为空判断系统是否出错</returns>
-        public static User GetUserByPhone(string phone, ReturnCode returnCode)
+        public static User GetUserByPhone(string phone, ReturnCode returnCode, DbEntities db)
         {
             User user;
 
             try
             {
-                var db = new DbEntities();
-
                 var query = from d in db.User
                             where d.Phone == phone
                             select d;
@@ -142,6 +143,23 @@ namespace BM.Services.Users
             }
 
             return user;
+        }
+
+        /// <summary>
+        /// 获取短信验证码
+        /// </summary>
+        /// <param name="phone">手机号码</param>
+        /// <param name="returnCode">返回码对象</param>
+        /// <returns></returns>
+        public static Sms GetSmsByPhone(string phone, ReturnCode returnCode)
+        {
+            var db = new DbEntities();
+
+            var query = from d in db.Sms
+                        where d.Phone == phone
+                        select d;
+
+            return query.FirstOrDefault();
         }
     }
 }

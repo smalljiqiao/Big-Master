@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using BM.Api.Attributes;
-using BM.Api.Models;
 using BM.Services.Common;
 using BM.Services.ReturnServices;
 using BM.Services.Users;
 using System.Web.Http;
+using System.Web.UI;
+using BM.Data.Domain;
 using BM.Services.BurialPoint;
+using BM.Services.ModelTransfer;
 using BM.Services.ShortMessages;
+using Sms = BM.Services.ShortMessages.Sms;
+using User = BM.Api.Models.User;
 
 namespace BM.Api.Controllers
 {
@@ -29,7 +33,6 @@ namespace BM.Api.Controllers
         public object Sms(User userModel)
         {
             var returnCode = new ReturnCode();
-            var vCodeInfo = new object();
 
             var vCode = CommonHelper.CreateCode();
             var sms = new Sms(vCode);
@@ -38,7 +41,6 @@ namespace BM.Api.Controllers
 
             if (smsResponse?.Code != null && smsResponse.Code == "OK")
             {
-                vCodeInfo = new KeyValuePair<string, string>("VCode", vCode);
 
                 var smsModel = new Data.Domain.Sms
                 {
@@ -57,8 +59,7 @@ namespace BM.Api.Controllers
 
             return new Return
             {
-                ReturnCode = returnCode,
-                Content = vCodeInfo
+                ReturnCode = returnCode
             };
         }
 
@@ -78,29 +79,56 @@ namespace BM.Api.Controllers
             if (string.IsNullOrEmpty(userModel.Password))
             {
                 returnCode.Code = 1997;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
             if (string.IsNullOrEmpty(userModel.VCode))
             {
                 returnCode.Code = 1994;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
-            //TODO Check VCode is valid
+            var sms = UserService.GetSmsByPhone(userModel.Phone, returnCode);
+
+            //还没发送短信
+            if (sms == null)
+            {
+                returnCode.Code = 1991;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            if (Convert.ToDateTime(sms.UpdateTime).AddMinutes(5) > DateTime.Now)
+            {
+                //验证码已过期
+                returnCode.Code = 1990;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //TODO CHECK IS USE
+
+            //验证码不正确
+            if (sms.Code != userModel.VCode)
+            {
+                returnCode.Code = 1889;
+                return new Return { ReturnCode = returnCode };
+            }
+
 
             var userInfo = UserService.Register(userModel.Phone, userModel.Password, returnCode);
 
             //注册过程中出现错误
             if (returnCode.Code != default(int))
             {
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
+
+            //将User数据库模型类转换为页面模型类
+            var user = ModelTransfer.Mapper(userInfo, new User());
 
             return new Return
             {
                 ReturnCode = returnCode,
-                Content = userInfo
+                Content = user
             };
         }
 
@@ -119,28 +147,31 @@ namespace BM.Api.Controllers
             if (string.IsNullOrEmpty(userModel.Password))
             {
                 returnCode.Code = 1997;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
-            var userInfo = UserService.GetUserByPhone(userModel.Phone, returnCode);
+            var userInfo = UserService.GetUserByPhone(userModel.Phone, returnCode, new DbEntities());
 
             //注册过程中出现错误
             if (returnCode.Code != default(int))
             {
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
             //该手机号码还没有注册
             if (userInfo == null)
             {
                 returnCode.Code = 1996;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
+
+            //将User数据库模型类转换为页面模型类
+            var user = ModelTransfer.Mapper(userInfo, new User());
 
             return new Return
             {
                 ReturnCode = returnCode,
-                Content = userInfo
+                Content = user
             };
         }
 
@@ -159,7 +190,7 @@ namespace BM.Api.Controllers
             if (string.IsNullOrEmpty(userModel.Password))
             {
                 returnCode.Code = 1997;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
             var userInfo = UserService.ChangePassword(userModel.Phone, userModel.Password, returnCode);
@@ -167,13 +198,16 @@ namespace BM.Api.Controllers
             //修改密码过程中出现错误
             if (returnCode.Code != default(int))
             {
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
+
+            //将User数据库模型类转换为页面模型类
+            var user = ModelTransfer.Mapper(userInfo, new User());
 
             return new Return
             {
                 ReturnCode = returnCode,
-                Content = userInfo
+                Content = user
             };
         }
 
@@ -192,7 +226,7 @@ namespace BM.Api.Controllers
             if (userModel.Nickname == "" && userModel.Email == "")
             {
                 returnCode.Code = 1995;
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
 
             var userInfo = UserService.ChangeN0E(userModel.Phone, userModel.Email, userModel.Nickname, returnCode);
@@ -200,13 +234,16 @@ namespace BM.Api.Controllers
             //修改密码过程中出现错误
             if (returnCode.Code != default(int))
             {
-                return returnCode;
+                return new Return { ReturnCode = returnCode };
             }
+
+            //将User数据库模型类转换为页面模型类
+            var user = ModelTransfer.Mapper(userInfo, new User());
 
             return new Return
             {
                 ReturnCode = returnCode,
-                Content = userInfo
+                Content = user
             };
         }
     }
