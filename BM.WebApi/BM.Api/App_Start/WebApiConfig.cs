@@ -10,13 +10,13 @@ namespace BM.Api
         {
             // Web API configuration and services
 
-            ////跨域配置
-            //config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            //跨域配置
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
-            ////默认返回 json
-            //GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
-            //GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(
-            //    new QueryStringMapping("datatype", "json", "application/json"));
+            //默认返回 json
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(
+                new QueryStringMapping("datatype", "json", "application/json"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
