@@ -115,7 +115,7 @@ namespace BM.Services.Installation
                       "-- Log Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '错误日志类', 'user',@CurrentUser, 'table', 'Log'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '日志ID', 'user', @CurrentUser, 'table', 'Log', 'column', 'LogId'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '错误信息', 'user', @CurrentUser, 'table', 'Log', 'column', 'Mes'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '错误信息', 'user', @CurrentUser, 'table', 'Log', 'column', 'Msg'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '堆栈轨迹', 'user', @CurrentUser, 'table', 'Log', 'column', 'StackTrace'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'Log', 'column', 'CreateTime'; \r\n" +
                       "-- Search Table \r\n" +
