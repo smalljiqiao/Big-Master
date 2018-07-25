@@ -153,6 +153,24 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '返回码ID', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'CmId'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '返回码', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'Code'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '返回码说明', 'user', @CurrentUser, 'table', 'CodeMessage', 'column', 'Message'; \r\n" +
+                      "-- DreamTitle Table \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '周公解梦标题类', 'user',@CurrentUser, 'table', 'DreamTitle'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '周公解梦类ID', 'user', @CurrentUser, 'table', 'DreamTitle', 'column', 'DreamId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '一级标题', 'user', @CurrentUser, 'table', 'DreamTitle', 'column', 'Title'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '二级标题', 'user', @CurrentUser, 'table', 'DreamTitle', 'column', 'SubTitle'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '链接', 'user', @CurrentUser, 'table', 'DreamTitle', 'column', 'Url'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'DreamTitle', 'column', 'CreateTime'; \r\n" +
+                      "-- DreamDetail Table \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '周公解梦详情类', 'user',@CurrentUser, 'table', 'DreamDetail'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '周公解梦详情ID', 'user', @CurrentUser, 'table', 'DreamDetail', 'column', 'DreamId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', 'HTML', 'user', @CurrentUser, 'table', 'DreamDetail', 'column', 'Html'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'DreamDetail', 'column', 'CreateTime'; \r\n" +
+                      "-- Sms Table \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '短信类', 'user',@CurrentUser, 'table', 'Sms'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Sms', 'column', 'Phone'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '验证码', 'user', @CurrentUser, 'table', 'Sms', 'column', 'Code'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '更新时间', 'user', @CurrentUser, 'table', 'Sms', 'column', 'UpdateTime'; \r\n" +
+
                       "USE master; \r\n";
 
             _idbContext.ExecuteSqlCommand(cmd);
