@@ -240,7 +240,7 @@ namespace BM.Services.WebData.Dream
             var db = new DbEntities();
 
             var titleEn = from d in db.DreamTitle
-                          orderby d.Title
+                          orderby d.DreamId ascending 
                           select d;
 
             var dic = new Dictionary<string, Dictionary<int, string>>();
@@ -252,7 +252,8 @@ namespace BM.Services.WebData.Dream
                 if (t.Title != title && title != "")
                 {
                     dic.Add(title, dicList);
-                    dicList.Clear();
+                    //dicList.Clear(); //WRONG : OBJECT REFERENCE TODO TO KNOW MORE
+                    dicList = new Dictionary<int, string>();
                 }
 
                 title = t.Title;

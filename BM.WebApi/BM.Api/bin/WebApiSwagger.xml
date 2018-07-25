@@ -4,6 +4,33 @@
         <name>BM.Api</name>
     </assembly>
     <members>
+        <member name="M:BM.Api.AliSMS.SendSMS.SendSMSToPhone(System.String,System.String)">
+            <summary>
+            发送短信验证码到指定的手机
+            </summary>
+            <param name="code">验证码</param>
+            <param name="phone">手机号</param>
+            <returns></returns>
+        </member>
+        <member name="M:BM.Api.AliSMS.SendSMS.querySendDetails(System.String,System.String)">
+            <summary>
+            查询发送情况
+            </summary>
+            <param name="bizId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BM.Api.AliSMS.SendSMS.RequestSendFromApi(System.String,System.String)">
+            <summary>
+            发送短信验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BM.Api.AliSMS.SendSMS.CreateCode">
+            <summary>
+            随机创建六位的验证码
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:BM.Api.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
