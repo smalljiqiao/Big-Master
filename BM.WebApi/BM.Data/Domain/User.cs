@@ -53,5 +53,7 @@ namespace BM.Data.Domain
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Search> Search { get; set; }
+
+        public virtual Sms Sms { get; set; }
     }
 }

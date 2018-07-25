@@ -32,6 +32,7 @@ namespace BM.Data.Domain
         [StringLength(10)]
         public string PayState { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
 
         public virtual User User { get; set; }

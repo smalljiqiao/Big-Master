@@ -4,6 +4,7 @@ using BM.Services.Common;
 using BM.Services.ReturnServices;
 using BM.Services.Users;
 using System.Web.Http;
+using BM.Api.AliSMS;
 
 namespace BM.Api.Controllers
 {
@@ -17,14 +18,16 @@ namespace BM.Api.Controllers
         /// <summary>
         /// 获取短信验证码
         /// </summary>
-        /// <param name="phone">手机号码</param>
+        /// <param name="userModel">用户对象</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/user/vcode")]
-        public string VCode(string phone)
+        //[ModelValid]
+        [Route("api/user/sms")]
+        public object Sms()
         {
-            //需要添加Session
-            return "";
+            SendSms.SendSmsToPhone("18814180611");
+
+            return null;
         }
 
 

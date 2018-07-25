@@ -4,28 +4,33 @@
         <name>BM.Api</name>
     </assembly>
     <members>
-        <member name="M:BM.Api.AliSMS.SendSMS.SendSMSToPhone(System.String,System.String)">
+        <member name="T:BM.Api.AliSMS.SendSms">
+            <summary>
+            阿里云短信类
+            </summary>
+        </member>
+        <member name="M:BM.Api.AliSMS.SendSms.SendSmsToPhone(System.String)">
             <summary>
             发送短信验证码到指定的手机
             </summary>
-            <param name="code">验证码</param>
             <param name="phone">手机号</param>
             <returns></returns>
         </member>
-        <member name="M:BM.Api.AliSMS.SendSMS.querySendDetails(System.String,System.String)">
+        <member name="M:BM.Api.AliSMS.SendSms.QuerySendDetails(System.String,System.String)">
             <summary>
             查询发送情况
             </summary>
+            <param name="phone"></param>
             <param name="bizId"></param>
             <returns></returns>
         </member>
-        <member name="M:BM.Api.AliSMS.SendSMS.RequestSendFromApi(System.String,System.String)">
+        <member name="M:BM.Api.AliSMS.SendSms.RequestSendFromApi(System.String)">
             <summary>
             发送短信验证码
             </summary>
             <returns></returns>
         </member>
-        <member name="M:BM.Api.AliSMS.SendSMS.CreateCode">
+        <member name="M:BM.Api.AliSMS.SendSms.CreateCode">
             <summary>
             随机创建六位的验证码
             </summary>
@@ -590,11 +595,11 @@
             用户信息接口
             </summary>
         </member>
-        <member name="M:BM.Api.Controllers.UsersController.VCode(System.String)">
+        <member name="M:BM.Api.Controllers.UsersController.Sms">
             <summary>
             获取短信验证码
             </summary>
-            <param name="phone">手机号码</param>
+            <param name="userModel">用户对象</param>
             <returns></returns>
         </member>
         <member name="M:BM.Api.Controllers.UsersController.Register(BM.Api.Models.User)">

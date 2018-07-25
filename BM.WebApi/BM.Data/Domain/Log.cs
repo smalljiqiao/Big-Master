@@ -12,11 +12,11 @@ namespace BM.Data.Domain
         public Guid LogId { get; set; }
 
         [StringLength(2000)]
-        public string Mes { get; set; }
+        public string Msg { get; set; }
 
-        [StringLength(4000)]
         public string StackTrace { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
     }
 }

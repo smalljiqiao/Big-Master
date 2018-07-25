@@ -6,21 +6,17 @@ namespace BM.Data.Domain
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("AndroidInfo")]
-    public partial class AndroidInfo
+    public partial class Sms
     {
         [Key]
-        [Column(Order = 0)]
         [StringLength(20)]
         public string Phone { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [StringLength(50)]
-        public string AndroidId { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Code { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? CreateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
 
         public virtual User User { get; set; }
     }

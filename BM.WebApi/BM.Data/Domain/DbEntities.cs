@@ -23,6 +23,7 @@ namespace BM.Data.Domain
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderSearch> OrderSearch { get; set; }
         public virtual DbSet<Search> Search { get; set; }
+        public virtual DbSet<Sms> Sms { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -94,6 +95,15 @@ namespace BM.Data.Domain
                 .Property(e => e.Phone)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Sms>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sms>()
+                .Property(e => e.Code)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<User>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
@@ -115,6 +125,10 @@ namespace BM.Data.Domain
                 .Property(e => e.SaltPassword)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.Sms)
+                .WithRequired(e => e.User);
         }
     }
 }

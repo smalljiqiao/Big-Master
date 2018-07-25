@@ -24,6 +24,7 @@ namespace BM.Data.Domain
         [StringLength(500)]
         public string Url { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
 
         public virtual DreamDetail DreamDetail { get; set; }

@@ -109,10 +109,10 @@
       <publishTime>07/02/2018 19:40:25</publishTime>
     </File>
     <File Include="bin/BM.Api.dll">
-      <publishTime>07/25/2018 10:46:29</publishTime>
+      <publishTime>07/25/2018 10:54:42</publishTime>
     </File>
     <File Include="bin/BM.Api.pdb">
-      <publishTime>07/25/2018 10:46:29</publishTime>
+      <publishTime>07/25/2018 10:54:42</publishTime>
     </File>
     <File Include="bin/BM.Data.dll">
       <publishTime>07/25/2018 10:45:17</publishTime>
