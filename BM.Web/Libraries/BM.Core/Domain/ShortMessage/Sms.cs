@@ -26,10 +26,5 @@ namespace BM.Core.Domain.ShortMessage
         /// 更新时间 由代码生成
         /// </summary>
         public DateTime? UpdateTime { get; set; }
-
-        /// <summary>
-        /// 外键关联User表
-        /// </summary>
-        public User User { get; set; }
     }
 }
