@@ -226,3 +226,6 @@ D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\obj\Release\BM.Api.csproj
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\obj\Release\BM.Api.csproj.CopyComplete
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\obj\Release\BM.Api.dll
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\obj\Release\BM.Api.pdb
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\bin\System.Web.Cors.dll
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\bin\System.Web.Http.Cors.dll
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Api\bin\System.Web.Http.Cors.xml

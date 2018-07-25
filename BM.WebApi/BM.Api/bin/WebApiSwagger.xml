@@ -4,38 +4,6 @@
         <name>BM.Api</name>
     </assembly>
     <members>
-        <member name="T:BM.Api.AliSMS.SendSms">
-            <summary>
-            阿里云短信类
-            </summary>
-        </member>
-        <member name="M:BM.Api.AliSMS.SendSms.SendSmsToPhone(System.String)">
-            <summary>
-            发送短信验证码到指定的手机
-            </summary>
-            <param name="phone">手机号</param>
-            <returns></returns>
-        </member>
-        <member name="M:BM.Api.AliSMS.SendSms.QuerySendDetails(System.String,System.String)">
-            <summary>
-            查询发送情况
-            </summary>
-            <param name="phone"></param>
-            <param name="bizId"></param>
-            <returns></returns>
-        </member>
-        <member name="M:BM.Api.AliSMS.SendSms.RequestSendFromApi(System.String)">
-            <summary>
-            发送短信验证码
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:BM.Api.AliSMS.SendSms.CreateCode">
-            <summary>
-            随机创建六位的验证码
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:BM.Api.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
@@ -595,7 +563,7 @@
             用户信息接口
             </summary>
         </member>
-        <member name="M:BM.Api.Controllers.UsersController.Sms">
+        <member name="M:BM.Api.Controllers.UsersController.Sms(BM.Api.Models.User)">
             <summary>
             获取短信验证码
             </summary>

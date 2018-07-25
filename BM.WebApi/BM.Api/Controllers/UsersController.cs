@@ -1,10 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
 using BM.Api.Attributes;
 using BM.Api.Models;
 using BM.Services.Common;
 using BM.Services.ReturnServices;
 using BM.Services.Users;
 using System.Web.Http;
-using BM.Api.AliSMS;
+using BM.Services.BurialPoint;
+using BM.Services.ShortMessages;
 
 namespace BM.Api.Controllers
 {
@@ -20,14 +23,43 @@ namespace BM.Api.Controllers
         /// </summary>
         /// <param name="userModel">用户对象</param>
         /// <returns></returns>
-        [HttpGet]
-        //[ModelValid]
+        [HttpPost]
+        [ModelValid]
         [Route("api/user/sms")]
-        public object Sms()
+        public object Sms(User userModel)
         {
-            SendSms.SendSmsToPhone("18814180611");
+            var returnCode = new ReturnCode();
+            var vCodeInfo = new object();
 
-            return null;
+            var vCode = CommonHelper.CreateCode();
+            var sms = new Sms(vCode);
+            var smsResponse = sms.SendSmsToPhone(userModel.Phone);
+
+
+            if (smsResponse?.Code != null && smsResponse.Code == "OK")
+            {
+                vCodeInfo = new KeyValuePair<string, string>("VCode", vCode);
+
+                var smsModel = new Data.Domain.Sms
+                {
+                    Code = vCode,
+                    Phone = userModel.Phone,
+                    UpdateTime = DateTime.Now
+                };
+
+                SmsService.InsertOrUpdate(smsModel);
+            }
+            else
+            {
+                returnCode.Code = 1992;
+                BpService.Use(returnCode.Message);
+            }
+
+            return new Return
+            {
+                ReturnCode = returnCode,
+                Content = vCodeInfo
+            };
         }
 
 

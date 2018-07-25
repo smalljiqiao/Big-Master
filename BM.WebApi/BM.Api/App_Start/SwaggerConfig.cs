@@ -1,7 +1,7 @@
-using BM.Api;
-using Swashbuckle.Application;
 using System.Web.Http;
 using WebActivatorEx;
+using BM.Api;
+using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -104,6 +104,7 @@ namespace BM.Api
                         //c.IncludeXmlComments(GetXmlCommentsPath());
                         c.IncludeXmlComments(string.Format("{0}/bin/WebApiSwagger.XML",
                             System.AppDomain.CurrentDomain.BaseDirectory));
+
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.

@@ -31,6 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aliyun-net-sdk-core">
+      <HintPath>..\..\..\..\Documents\AliSMS\dll\aliyun-net-sdk-core.dll</HintPath>
+    </Reference>
+    <Reference Include="aliyun-net-sdk-dybaseapi">
+      <HintPath>..\..\..\..\Documents\AliSMS\dll\aliyun-net-sdk-dybaseapi.dll</HintPath>
+    </Reference>
+    <Reference Include="aliyun-net-sdk-dysmsapi">
+      <HintPath>..\..\..\..\Documents\AliSMS\dll\aliyun-net-sdk-dysmsapi.dll</HintPath>
+    </Reference>
+    <Reference Include="Aliyun.MNS">
+      <HintPath>..\..\..\..\Documents\AliSMS\dll\Aliyun.MNS.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,14 +68,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BurialPoint\BpService.cs" />
     <Compile Include="Caching\Extension.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />
+    <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\HttpHelper.cs" />
     <Compile Include="Common\ReturnCode.cs" />
     <Compile Include="Localization\LocalizationService.cs" />
+    <Compile Include="Logs\LogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnServices\Return.cs" />
     <Compile Include="Security\EncryptionService.cs" />
+    <Compile Include="ShortMessages\Sms.cs" />
+    <Compile Include="ShortMessages\SmsService.cs" />
     <Compile Include="Users\UserService.cs" />
     <Compile Include="WebData\BabyName\Handler.cs" />
     <Compile Include="WebData\DetailedBatch\Handler.cs" />

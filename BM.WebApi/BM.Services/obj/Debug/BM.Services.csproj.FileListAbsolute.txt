@@ -34,3 +34,7 @@ D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\obj\Debug\BM.Service
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\obj\Debug\BM.Services.csproj.CopyComplete
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\obj\Debug\BM.Services.dll
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\obj\Debug\BM.Services.pdb
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\bin\Debug\aliyun-net-sdk-core.dll
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\bin\Debug\aliyun-net-sdk-dybaseapi.dll
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\bin\Debug\aliyun-net-sdk-dysmsapi.dll
+D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Services\bin\Debug\Aliyun.MNS.dll

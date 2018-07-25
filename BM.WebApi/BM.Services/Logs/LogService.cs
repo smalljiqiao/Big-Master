@@ -1,4 +1,5 @@
 ﻿using System;
+using BM.Data.Domain;
 
 namespace BM.Services.Logs
 {
@@ -12,7 +13,11 @@ namespace BM.Services.Logs
         /// </summary>
         public static void InsertLog(Exception ex)
         {
+            var logInfo = new Log { Msg = ex.Message, StackTrace = ex.StackTrace };
 
+            var db = new DbEntities();
+            db.Log.Add(logInfo);
+            db.SaveChanges();
         }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderSearch.cs" />
     <Compile Include="Domain\Search.cs" />
+    <Compile Include="Domain\Sms.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
