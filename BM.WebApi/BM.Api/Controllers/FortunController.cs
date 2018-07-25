@@ -26,7 +26,11 @@ namespace BM.Api.Controllers
 
             var obj = Services.WebData.DetailedBatch.Handler.Get(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
 
-            return obj;
+            return new Return
+            {
+                ReturnCode = returnCode,
+                Content = obj
+            };
         }
 
         /// <summary>
@@ -69,10 +73,10 @@ namespace BM.Api.Controllers
 
             var dic = Services.WebData.Dream.Handler.Title();
 
-            return new List<object>
+            return new Return
             {
-                returnCode,
-                dic
+                ReturnCode = returnCode,
+                Content = dic
             };
         }
 
@@ -95,19 +99,10 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-           
-
-            return (object)new Return
+            return new Return
             {
                 ReturnCode = returnCode,
                 Content = detail
-            };
-
-
-            return new List<object>
-            {
-                returnCode,
-                detail
             };
         }
     }

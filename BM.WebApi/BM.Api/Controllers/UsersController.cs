@@ -1,8 +1,8 @@
 using BM.Api.Attributes;
 using BM.Api.Models;
 using BM.Services.Common;
+using BM.Services.ReturnServices;
 using BM.Services.Users;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace BM.Api.Controllers
@@ -62,7 +62,11 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            return IgnoreNReturn(returnCode, userInfo);
+            return new Return
+            {
+                ReturnCode = returnCode,
+                Content = userInfo
+            };
         }
 
         /// <summary>
@@ -98,7 +102,11 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            return IgnoreNReturn(returnCode, userInfo);
+            return new Return
+            {
+                ReturnCode = returnCode,
+                Content = userInfo
+            };
         }
 
         /// <summary>
@@ -127,7 +135,11 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            return IgnoreNReturn(returnCode, userInfo);
+            return new Return
+            {
+                ReturnCode = returnCode,
+                Content = userInfo
+            };
         }
 
         /// <summary>
@@ -156,22 +168,11 @@ namespace BM.Api.Controllers
                 return returnCode;
             }
 
-            return IgnoreNReturn(returnCode, userInfo);
-        }
-
-        
-        private object IgnoreNReturn(ReturnCode returnCode, Data.Domain.User userInfo = null)
-        {
-            //忽略敏感信息
-            userInfo.Password = "";
-
-            var returnLis = new List<object>
+            return new Return
             {
-                returnCode,
-                userInfo
+                ReturnCode = returnCode,
+                Content = userInfo
             };
-
-            return returnLis;
         }
     }
 }
