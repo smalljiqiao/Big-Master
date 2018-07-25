@@ -15,7 +15,7 @@ namespace BM.Core.Domain.Logs
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string Mes { get; set; }
+        public string Msg { get; set; }
 
         /// <summary>
         /// 堆栈轨迹
