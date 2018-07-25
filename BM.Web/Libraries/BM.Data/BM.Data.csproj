@@ -64,6 +64,7 @@
     <Compile Include="Mapping\Logs\SearchMap.cs" />
     <Compile Include="Mapping\Orders\OrderMap.cs" />
     <Compile Include="Mapping\Orders\OrderSearchMap.cs" />
+    <Compile Include="Mapping\ShortMessage\SmsMap.cs" />
     <Compile Include="Mapping\Users\AndroidInfoMap.cs" />
     <Compile Include="Mapping\Users\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

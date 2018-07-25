@@ -26,3 +26,4 @@ D:\NETProject\BigMaster\Dev\BigMaster\BM.Web\Libraries\BM.Core\bin\Debug\System.
 D:\NETProject\BigMaster\Dev\BigMaster\BM.Web\Libraries\BM.Core\obj\Debug\BM.Core.csproj.CopyComplete
 D:\NETProject\BigMaster\Dev\BigMaster\BM.Web\Libraries\BM.Core\obj\Debug\BM.Core.dll
 D:\NETProject\BigMaster\Dev\BigMaster\BM.Web\Libraries\BM.Core\obj\Debug\BM.Core.pdb
+D:\NETProject\BigMaster\Dev\BigMaster\BM.Web\Libraries\BM.Core\obj\Debug\BM.Core.csprojAssemblyReference.cache

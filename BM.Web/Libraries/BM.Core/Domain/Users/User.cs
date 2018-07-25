@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BM.Core.Domain.ShortMessage;
 
 namespace BM.Core.Domain.Users
 {
@@ -45,5 +46,10 @@ namespace BM.Core.Domain.Users
         /// 注册时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// 外键关联Sms表，一对一关系
+        /// </summary>
+        public Sms Sms { get; set; }
     }
 }

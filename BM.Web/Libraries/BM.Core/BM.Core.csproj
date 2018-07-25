@@ -90,6 +90,7 @@
     <Compile Include="Domain\Orders\Order.cs" />
     <Compile Include="Domain\Orders\OrderSearch.cs" />
     <Compile Include="Domain\Business\BPrice.cs" />
+    <Compile Include="Domain\ShortMessage\Sms.cs" />
     <Compile Include="Domain\Users\AndroidInfo.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />

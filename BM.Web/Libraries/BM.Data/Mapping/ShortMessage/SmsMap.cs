@@ -13,9 +13,8 @@ namespace BM.Data.Mapping.ShortMessage
             this.Property(p => p.Code).HasColumnType("char").HasMaxLength(6).IsFixedLength().IsRequired();
             this.Property(p => p.UpdateTime).HasColumnType("datetime");
 
-            this.HasRequired(sms => sms.User)
-                .WithMany()
-                .HasForeignKey(sms => sms.Phone);
+            //一对一关系
+            this.HasRequired(sms => sms.User).WithOptional(sms => sms.Sms);
         }
     }
 }

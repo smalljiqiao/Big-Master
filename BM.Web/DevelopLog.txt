@@ -57,8 +57,12 @@ public override void Up()
 
 
 
-  2018/07/20
-  1.将数据模型的datetime字段全部定义为可空类型(避免插入数据时数据转换错误 datetime2 => datetime)
-  2.datetime设置为可空之后就不能将其设置为不允许为空。这样数据库中这些字段就变成允许为空了，有点不太好。
-  2.字段设置DatabaseGeneratedOption，Code First From Database 不起作用，移植不过去。
-    在BM.Api项目里只能手动添加了。。
+2018/07/20
+1.将数据模型的datetime字段全部定义为可空类型(避免插入数据时数据转换错误 datetime2 => datetime)
+2.datetime设置为可空之后就不能将其设置为不允许为空。这样数据库中这些字段就变成允许为空了，有点不太好。
+2.字段设置DatabaseGeneratedOption，Code First From Database 不起作用，移植不过去。
+  在BM.Api项目里只能手动添加了。。
+
+
+2018/07/25
+1.Sms Table 应该添加定时任务清理过期数据
