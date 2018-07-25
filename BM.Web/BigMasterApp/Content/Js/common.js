@@ -36,25 +36,17 @@ var hb = {
             dataType: "json",
             url: url,
             data: data,
-            xhrFields: {
-                "Access-Control-Allow-Origin": '*',
-                withCredentials: true
-            },
             success: function (res) {
                 callback(res);
             }
         }, false, false);
 }
       function doPost(url, data, callback) {
-        $.request({
-            type: "GET",
+          $.request({
+            type: "post",
             dataType: "json",
             url: url,
             data: JSON.stringify(data),
-            xhrFields: {
-                "Access-Control-Allow-Origin": '*',
-                withCredentials: true
-            },
             success: function (res) {
                 callback(res);
             }
@@ -67,21 +59,21 @@ var hb = {
         *ajax参数
         **/
         $.request = function (config, loding, checkLogin) {
-            if (config.xhrFields == undefined) {
-                config.xhrFields = {
-                    "Access-Control-Allow-Origin": '*',
-                    withCredentials: true,
-                };
-            }
+            //if (config.xhrFields == undefined) {
+            //    config.xhrFields = {
+            //        "Access-Control-Allow-Origin": '*',
+            //        withCredentials: true,
+            //    };
+            //}
             if (config.contentType == undefined) {
                 config.contentType = "application/json";
             }
-            var accessToken = "";
-            if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
-                config.headers = {
-                    Authorization: 'Bearer ' + accessToken
-                };
-            }
+            //var accessToken = "";
+            //if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
+            //    config.headers = {
+            //        Authorization: 'Bearer ' + accessToken
+            //    };
+            //}
             $.ajax(config);
         };
     })(jQuery);

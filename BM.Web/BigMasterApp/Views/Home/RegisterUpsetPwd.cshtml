@@ -38,7 +38,8 @@
         <div class="divClass flex-box flex-cont tac mt20">
         <div class="flex-cont">
             <input class="rem18 gray8" id="erCode" placeholder="请输入验证码" /></div>
-        <div class="flex-cont"><button class="getCode rem16 c-fff">获取验证码</button></div>
+        <div class="flex-cont"><button class="getCode rem16 c-fff" id="smsCode" onclick="getSMS()"> <span id="second"></span> 获取验证码</button>
+            <button style="display:none" class="getCode rem16 c-fff" id="smsCodeRunning"> <span id="second"></span> 秒后重发</button></div>
         </div>
             <div class="divClass flex-cont tac mt20"><input id="pwd" class="gray8" type="password" placeholder="请输入密码" /></div>
             <div class="divClass flex-cont tac mt20"><input id="pwdAgian" class="gray8" type="password" placeholder="请再次输入密码" /></div>
@@ -47,15 +48,16 @@
         <button class="rem18 c-fff mb10" onclick="submitData()">@handleTyle</button>
     </div>
 </div>
+@section scripts{
 <script type="text/javascript">
     function submitData() {
         var type = getQueryString("type");
         var query = {
-            phone : $.trim($("#phone").val()),
-            erCode :$.trim($("#erCode").val()),
+            phone: $.trim($("#phone").val()),
+            erCode: $.trim($("#erCode").val()),
             pwd: $.trim($("#pwd").val()),
             deviceId: bm_getCookie("deviceId"),
-            pwdAgian:$.trim($("#pwdAgian").val())
+            pwdAgian: $.trim($("#pwdAgian").val())
         };
         if (!query.phone) { layer.msg('电话号码不能为空！'); return; }
         if (!query.erCode) { layer.msg("短信验证码不能为空！"); return; }
@@ -74,20 +76,55 @@
                     layer.msg(data.Message);
                 }
             });
-        } else { 
-        doPost(bmApI.user.register, query, function (data) {
+        } else {
+            doPost(bmApI.user.register, query, function (data) {
+                if (data.returnCode.code == 0) {
+                    layer.msg("注册成功！");
+                    setTimeout(function () {
+                        window.location.href = global_site_root + "Home/Login";
+                    }, 2000);
+                }
+                else {
+                    layer.msg(data.returnCode.Remark);
+                }
+            });
+        }
+    }
+    var currentSecond = 0;
+    function dormCount() {
+        setTimeout(function () {
+            $this.smsCooling = currentSecond - 1;
+            if (currentSecond > 0) {
+                $("#second").text(currentSecond);
+                dormCount();
+            } else if (currentSecond == 0) {
+                $("#smsCodeRunning").attr("display", "none");
+                $("#smsCode").attr("display", "block");
+            }
+        }, 1000);
+    }
+    function getSMS() {
+        var phone = $.trim($("#phone").val());
+        if (!phone) {
+            layer.msg("手机号码不能为空");
+            return;
+        }
+        var query = {
+            phone: phone
+        };
+        doGet(bmApI.user.getSms, query, function (data) {
             if (data.code == 0) {
-                layer.msg("注册成功！");
-                setTimeout(function () {
-                    window.location.href = global_site_root + "Home/Login";
-                }, 2000);
+                currentSecond = 60;
+                $("#smsCodeRunning").attr("display", "block");
+                $("#smsCode").attr("display", "none");
+                dormCount();
             }
             else {
                 layer.msg(data.Message);
             }
-            });
-        }
+        });
     }
 
 </script>
+}
 
