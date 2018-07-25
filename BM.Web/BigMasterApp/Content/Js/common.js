@@ -50,8 +50,8 @@ var hb = {
             success: function (res) {
                 callback(res);
             }
-        }, false, false);
-}
+          }, false, false);
+      }
       (function ($) {
         /**请求数据
         *loding:是否遮罩
@@ -59,21 +59,10 @@ var hb = {
         *ajax参数
         **/
         $.request = function (config, loding, checkLogin) {
-            //if (config.xhrFields == undefined) {
-            //    config.xhrFields = {
-            //        "Access-Control-Allow-Origin": '*',
-            //        withCredentials: true,
-            //    };
-            //}
+           
             if (config.contentType == undefined) {
                 config.contentType = "application/json";
             }
-            //var accessToken = "";
-            //if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
-            //    config.headers = {
-            //        Authorization: 'Bearer ' + accessToken
-            //    };
-            //}
             $.ajax(config);
         };
     })(jQuery);
@@ -95,11 +84,11 @@ var hb = {
 
       //读取cookies 
       function bm_getCookie(name) {
-          var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-          if (arr = document.cookie.match(reg))
-              return unescape(arr[2]);
-          else
-              return null;
+          //var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+          //if (arr = document.cookie.match(reg))
+          //    return unescape(arr[2]);
+          //else
+          //    return null;
       }
 
       //删除cookies 

@@ -38,7 +38,7 @@
         <div class="divClass flex-box flex-cont tac mt20">
         <div class="flex-cont">
             <input class="rem18 gray8" id="erCode" placeholder="请输入验证码" /></div>
-        <div class="flex-cont"><button class="getCode rem16 c-fff" id="smsCode" onclick="getSMS()"> <span id="second"></span> 获取验证码</button>
+        <div class="flex-cont"><button class="getCode rem16 c-fff" id="smsCode" onclick="getSMS()"> 获取验证码</button>
             <button style="display:none" class="getCode rem16 c-fff" id="smsCodeRunning"> <span id="second"></span> 秒后重发</button></div>
         </div>
             <div class="divClass flex-cont tac mt20"><input id="pwd" class="gray8" type="password" placeholder="请输入密码" /></div>
@@ -52,40 +52,42 @@
 <script type="text/javascript">
     function submitData() {
         var type = getQueryString("type");
+        var android = bm_getCookie("deviceId");
         var query = {
             phone: $.trim($("#phone").val()),
-            erCode: $.trim($("#erCode").val()),
-            pwd: $.trim($("#pwd").val()),
-            deviceId: bm_getCookie("deviceId"),
-            pwdAgian: $.trim($("#pwdAgian").val())
+            VCode: $.trim($("#erCode").val()),
+            Password: $.trim($("#pwd").val()),
+            Android: android
+          
         };
+        var pwdA = $.trim($("#pwdAgian").val());
         if (!query.phone) { layer.msg('电话号码不能为空！'); return; }
-        if (!query.erCode) { layer.msg("短信验证码不能为空！"); return; }
-        if (!query.pwd) { layer.msg("请输入密码"); return; }
-        if (!query.pwdAgian) { layer.msg("请再次输入密码"); return; }
-        if (query.pwdAgian != query.pwd) { layer.msg("两次输入密码不一致"); return; }
+        if (!query.VCode) { layer.msg("短信验证码不能为空！"); return; }
+        if (!query.Password) { layer.msg("请输入密码"); return; }
+        if (!pwdA) { layer.msg("请再次输入密码"); return; }
+        if (pwdA != query.Password) { layer.msg("两次输入密码不一致"); return; }
         if (type == "forgetPwd") {
             doPost(bmApI.user.updatePwd, query, function (data) {
-                if (data.code == 0) {
+                if (data.ReturnCode.Code == 0) {
                     layer.msg("修改密码成功！");
                     setTimeout(function () {
                         window.location.href = global_site_root + "Home/Login";
                     }, 2000);
                 }
                 else {
-                    layer.msg(data.Message);
+                    layer.msg(data.ReturnCode.Message);
                 }
             });
         } else {
             doPost(bmApI.user.register, query, function (data) {
-                if (data.returnCode.code == 0) {
+                if (data.ReturnCode.Code == 0) {
                     layer.msg("注册成功！");
                     setTimeout(function () {
                         window.location.href = global_site_root + "Home/Login";
                     }, 2000);
                 }
                 else {
-                    layer.msg(data.returnCode.Remark);
+                    layer.msg(data.ReturnCode.Remark);
                 }
             });
         }
@@ -93,13 +95,13 @@
     var currentSecond = 0;
     function dormCount() {
         setTimeout(function () {
-            $this.smsCooling = currentSecond - 1;
+            currentSecond = currentSecond - 1;
             if (currentSecond > 0) {
                 $("#second").text(currentSecond);
                 dormCount();
             } else if (currentSecond == 0) {
-                $("#smsCodeRunning").attr("display", "none");
-                $("#smsCode").attr("display", "block");
+                $("#smsCodeRunning").css("display", "none");
+                $("#smsCode").css("display", "block");
             }
         }, 1000);
     }
@@ -112,15 +114,16 @@
         var query = {
             phone: phone
         };
-        doGet(bmApI.user.getSms, query, function (data) {
-            if (data.code == 0) {
+      
+        doPost(bmApI.user.getSms, query, function (data) {
+            if (data.ReturnCode.Code == 0) {
                 currentSecond = 60;
-                $("#smsCodeRunning").attr("display", "block");
-                $("#smsCode").attr("display", "none");
+                $("#smsCodeRunning").css("display", "block");
+                $("#smsCode").css("display", "none");
                 dormCount();
             }
             else {
-                layer.msg(data.Message);
+                layer.msg(data.ReturnCode.Message);
             }
         });
     }
