@@ -47,7 +47,8 @@ namespace BM.Services.Installation
         /// </summary>
         protected virtual void AddDefault()
         {
-            var cmd = "ALTER TABLE [Log] ADD CONSTRAINT DF_CreateTime_Log DEFAULT(GETDATE()) FOR CreateTime;" +
+            var cmd = "ALTER TABLE [Log] ADD CONSTRAINT DF_LogId_Log DEFAULT(NEWID()) FOR LogId;" +
+                      "ALTER TABLE [Log] ADD CONSTRAINT DF_CreateTime_Log DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [Search] ADD CONSTRAINT DF_CreateTime_Search DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [Order] ADD CONSTRAINT DF_CreateTime_Order DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [User] ADD CONSTRAINT DF_CreateTime_User DEFAULT(GETDATE()) FOR CreateTime;" +
