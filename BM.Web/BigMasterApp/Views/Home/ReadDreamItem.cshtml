@@ -23,4 +23,23 @@
     </div>
 </div>
 
+@section scripts{
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var key = getQueryString_Chenese("key");
+        doGet(bmApI.fortunDream.getTitle, "", function (data) {
+            if(data[0].code == 0) {
+               
+            }
+            else {
+                layer.msg(data.Message);
+            }
+        });
+    })
+
+
+    </script>    
+}
+
 
