@@ -1,6 +1,7 @@
 using BM.Api.Attributes;
 using BM.Api.Models;
 using BM.Services.Common;
+using BM.Services.ReturnServices;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -93,6 +94,15 @@ namespace BM.Api.Controllers
                 returnCode.Code = 2999;
                 return returnCode;
             }
+
+           
+
+            return (object)new Return
+            {
+                ReturnCode = returnCode,
+                Content = detail
+            };
+
 
             return new List<object>
             {
