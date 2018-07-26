@@ -32,7 +32,7 @@ namespace BM.Services.Security
                 throw new ArgumentException("Unrecognized hash name");
 
             var hashByteArray = algorithm.ComputeHash(data);
-            return BitConverter.ToString(hashByteArray).Replace("-", String.Empty);
+            return BitConverter.ToString(hashByteArray).Replace("-", string.Empty);
         }
     }
 }

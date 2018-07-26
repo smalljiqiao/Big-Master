@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BM.Data.Domain;
 using BM.Services.Common;
+using BM.Services.Logs;
 using HtmlAgilityPack;
 
 namespace BM.Services.WebData.Dream
@@ -237,28 +238,36 @@ namespace BM.Services.WebData.Dream
         /// <returns>JSON格式</returns>
         public static Dictionary<string, Dictionary<int, string>> Title()
         {
-            var db = new DbEntities();
-
-            var titleEn = from d in db.DreamTitle
-                          orderby d.DreamId ascending 
-                          select d;
-
             var dic = new Dictionary<string, Dictionary<int, string>>();
             var dicList = new Dictionary<int, string>();
             var title = string.Empty;
 
-            foreach (var t in titleEn)
+            try
             {
-                if (t.Title != title && title != "")
+                var db = new DbEntities();
+
+                var titleEn = from d in db.DreamTitle
+                              orderby d.DreamId ascending
+                              select d;
+
+                foreach (var t in titleEn)
                 {
-                    dic.Add(title, dicList);
-                    //dicList.Clear(); //WRONG : OBJECT REFERENCE TODO TO KNOW MORE
-                    dicList = new Dictionary<int, string>();
+                    if (t.Title != title && title != "")
+                    {
+                        dic.Add(title, dicList);
+                        //dicList.Clear(); //WRONG : OBJECT REFERENCE TODO TO KNOW MORE
+                        dicList = new Dictionary<int, string>();
+                    }
+
+                    title = t.Title;
+
+                    dicList.Add(t.DreamId, t.SubTitle);
                 }
-
-                title = t.Title;
-
-                dicList.Add(t.DreamId, t.SubTitle);
+            }
+            catch (Exception ex)
+            {
+                dic = new Dictionary<string, Dictionary<int, string>>();
+                LogService.InsertLog(ex);
             }
 
             return dic;
@@ -271,18 +280,25 @@ namespace BM.Services.WebData.Dream
         /// <returns>HTML</returns>
         public static string Detail(int dreamId)
         {
-            var db = new DbEntities();
-
-            var detail = from d in db.DreamDetail
-                         where d.DreamId == dreamId
-                         select d;
-
-            if (detail.Any())
+            try
             {
-                return detail.First().Html;
+                var db = new DbEntities();
+
+                var detail = from d in db.DreamDetail
+                             where d.DreamId == dreamId
+                             select d;
+
+                if (detail.Any())
+                {
+                    return detail.First().Html;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
             }
 
-            return "";
+            return string.Empty;
         }
     }
 }

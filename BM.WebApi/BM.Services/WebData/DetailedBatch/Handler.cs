@@ -3,8 +3,9 @@ using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using System.Text;
+using BM.Services.BurialPoint;
+using BM.Services.Logs;
 
 namespace BM.Services.WebData.DetailedBatch
 {
@@ -62,7 +63,7 @@ namespace BM.Services.WebData.DetailedBatch
             }
             catch (Exception ex)
             {
-                //TODO Log Exception
+                LogService.InsertLog(ex);
             }
 
             return html;
@@ -86,28 +87,28 @@ namespace BM.Services.WebData.DetailedBatch
 
             var title = string.Empty; //标题
 
-            var FDic = new List<KeyValuePair<string, string>>(); //八字命盘个人信息
-            var FHtml = ""; //八字命盘 命柱HTML
-            var FList1 = new List<string>(); //八字命盘流年
-            var FList2 = new List<string>(); //八字命盘流年
-            var FList3 = new List<string>(); //八字命盘流年
-            var FList4 = new List<string>(); //八字命盘流年
+            var fDic = new List<KeyValuePair<string, string>>(); //八字命盘个人信息
+            var fHtml = ""; //八字命盘 命柱HTML
+            var fList1 = new List<string>(); //八字命盘流年
+            var fList2 = new List<string>(); //八字命盘流年
+            var fList3 = new List<string>(); //八字命盘流年
+            var fList4 = new List<string>(); //八字命盘流年
 
-            var SList = new List<string>(); //八字论命内容数组
+            var sList = new List<string>(); //八字论命内容数组
 
-            var THtml = ""; //五行分析HTML
-            var TList = new List<string>(); //五行个性分析
+            var tHtml = ""; //五行分析HTML
+            var tList = new List<string>(); //五行个性分析
 
-            var FuType = ""; //八行命卦分析类型
-            var FuImgUrl = ""; //八行命卦分析图片链接
-            var FuDic = new List<List<string>>(); //八行命卦分析凶吉
-            var FuHtml = ""; //八行命卦分析吉位选择HTML
+            var fuType = ""; //八行命卦分析类型
+            var fuImgUrl = ""; //八行命卦分析图片链接
+            var fuDic = new List<List<string>>(); //八行命卦分析凶吉
+            var fuHtml = ""; //八行命卦分析吉位选择HTML
 
-            var FiList = new List<string>(); //八字算命爱情内容
+            var fiList = new List<string>(); //八字算命爱情内容
 
-            var SiList = new List<string>(); //八字算命财运事业
+            var siList = new List<string>(); //八字算命财运事业
 
-            var SeList = new List<string>(); //八字算命健康
+            var seList = new List<string>(); //八字算命健康
 
             var boxConArr = doc.DocumentNode.SelectNodes("//div[@class='boxcon']");
             if (boxConArr != null)
@@ -142,12 +143,14 @@ namespace BM.Services.WebData.DetailedBatch
                         if (tableArr.Count < 4)
                         {
                             //TODO LOG INNORMAL
+                            BpService.Use(html);
                             continue;
                         }
 
                         if (tableArr.Count > 4)
                         {
                             //TODO LOG INNORMAL
+                            BpService.Use(html);
                         }
 
                         #region 个人信息
@@ -161,17 +164,19 @@ namespace BM.Services.WebData.DetailedBatch
                         if (fTableArr.Count < 3)
                         {
                             //TODO LOG INNORMAL
+                            BpService.Use(html);
                             continue;
                         }
 
                         if (fTableArr.Count > 3)
                         {
                             //TODO LOG INNORMAL
+                            BpService.Use(html);
                         }
 
                         var imgUrl = fTableArr[0].Attributes["background"].Value;
 
-                        FDic.Add(new KeyValuePair<string, string>("imgUrl", imgUrl));
+                        fDic.Add(new KeyValuePair<string, string>("imgUrl", imgUrl));
 
                         var contentTrArr = fTableArr[2].SelectNodes("tr");
                         if (contentTrArr != null)
@@ -187,7 +192,7 @@ namespace BM.Services.WebData.DetailedBatch
                                         var value = contentTdArr[i + 1].InnerText.Replace("&nbsp;", "")
                                             .Replace("\r", "").Replace("\n", "").Trim();
 
-                                        FDic.Add(new KeyValuePair<string, string>(key, value));
+                                        fDic.Add(new KeyValuePair<string, string>(key, value));
 
                                         i += 1;
                                     }
@@ -199,7 +204,7 @@ namespace BM.Services.WebData.DetailedBatch
 
                         #region 命柱
 
-                        FHtml = tableArr[1].OuterHtml;
+                        fHtml = tableArr[1].OuterHtml;
 
                         #endregion
 
@@ -228,22 +233,22 @@ namespace BM.Services.WebData.DetailedBatch
 
                         for (var i = 0; i < tdCount; i++)
                         {
-                            FList1.Add(tdArr1.ElementAt(i).InnerText.Trim());
-                            FList2.Add(tdArr2.ElementAt(i).InnerText.Trim());
+                            fList1.Add(tdArr1.ElementAt(i).InnerText.Trim());
+                            fList2.Add(tdArr2.ElementAt(i).InnerText.Trim());
 
                             var img1 = tdArr3.ElementAt(i).SelectSingleNode("img");
                             var imgUrl1 = "";
                             if (img1 == null)
                             {
                                 if (i == 0)
-                                    FList3.Add(tdArr3.ElementAt(i).InnerText.Trim());
+                                    fList3.Add(tdArr3.ElementAt(i).InnerText.Trim());
 
                                 //TODO SET DEFAULT IMG URL
                             }
                             else
                             {
                                 imgUrl1 = "" + img1.Attributes["src"].Value?.Split('/').LastOrDefault();
-                                FList3.Add(imgUrl1);
+                                fList3.Add(imgUrl1);
                             }
 
 
@@ -253,7 +258,7 @@ namespace BM.Services.WebData.DetailedBatch
                             if (img2 == null)
                             {
                                 if (i == 0)
-                                    FList4.Add(tdArr4.ElementAt(i).InnerText.Trim());
+                                    fList4.Add(tdArr4.ElementAt(i).InnerText.Trim());
 
                                 //TODO SET DEFAULT IMG URL
                             }
@@ -261,7 +266,7 @@ namespace BM.Services.WebData.DetailedBatch
                             {
                                 imgUrl2 = "http://47.106.183.2:8887/Images/" +
                                           img1.Attributes["src"].Value?.Split('/').LastOrDefault();
-                                FList4.Add(imgUrl2);
+                                fList4.Add(imgUrl2);
                             }
                         }
 
@@ -275,7 +280,7 @@ namespace BM.Services.WebData.DetailedBatch
 
                     if (title.IndexOf("八字论命", StringComparison.Ordinal) != -1)
                     {
-                        SList.AddRange(box.ChildNodes.Select(p => p.InnerText.Trim())
+                        sList.AddRange(box.ChildNodes.Select(p => p.InnerText.Trim())
                             .Where(text => text.Replace("\r", "").Replace("\n", "").Trim() != ""));
                     }
 
@@ -287,22 +292,27 @@ namespace BM.Services.WebData.DetailedBatch
                     {
                         var tableArr = box.ChildNodes.Where(node => node.Name == "table");
                         if (!tableArr.Any())
+                        {
+                            BpService.Use(html);
                             continue; //TODO LOG
+                        }
 
                         //IN NORMAL CASE:tableArr.Count = 2
 
                         if (tableArr.Count() < 2)
                         {
                             //TODO LOG INNORMAL 
+                            BpService.Use(html);
                             continue;
                         }
 
                         if (tableArr.Count() > 2)
                         {
                             //TODO LOG INNORMAL
+                            BpService.Use(html);
                         }
 
-                        THtml = tableArr.Aggregate(THtml, (current, table) => current + table.OuterHtml.Trim());
+                        tHtml = tableArr.Aggregate(tHtml, (current, table) => current + table.OuterHtml.Trim());
                     }
 
                     #endregion
@@ -318,7 +328,7 @@ namespace BM.Services.WebData.DetailedBatch
                         {
                             if (node.Name == "br")
                             {
-                                TList.Add(childText);
+                                tList.Add(childText);
                                 childText = "";
                             }
                             else
@@ -326,7 +336,7 @@ namespace BM.Services.WebData.DetailedBatch
                         }
 
                         if (childText != "")
-                            TList.Add(childText);
+                            tList.Add(childText);
                     }
 
                     #endregion
@@ -338,15 +348,15 @@ namespace BM.Services.WebData.DetailedBatch
                         var type = box.SelectSingleNode("b//font")?.InnerText.Trim();
                         var imgUrl = box.SelectSingleNode("img[@class='imgs']")?.Attributes["src"].Value.Trim();
 
-                        FuType = type;
-                        FuImgUrl = imgUrl;
+                        fuType = type;
+                        fuImgUrl = imgUrl;
 
                         var trArr = box.SelectNodes("table//tr");
 
                         if (trArr == null)
                             continue;
 
-                        FuDic.AddRange(trArr.Select(tr => new List<string>
+                        fuDic.AddRange(trArr.Select(tr => new List<string>
                         {
                             tr.SelectNodes("td").ElementAt(0)?.InnerText.Replace("&darr;", "").Trim(),
                             tr.SelectNodes("td").ElementAt(1)?.InnerText.Replace("&darr;", "").Trim()
@@ -379,7 +389,7 @@ namespace BM.Services.WebData.DetailedBatch
 
                             if (child.Name == "br")
                             {
-                                FuHtml += "<p>" + childHtml + "</p>";
+                                fuHtml += "<p>" + childHtml + "</p>";
                                 childHtml = "";
                             }
                         }
@@ -414,7 +424,7 @@ namespace BM.Services.WebData.DetailedBatch
                                                     break;
                                                 case "br":
                                                     if (text != "")
-                                                        FiList.Add(text);
+                                                        fiList.Add(text);
                                                     text = "";
                                                     break;
                                             }
@@ -425,7 +435,7 @@ namespace BM.Services.WebData.DetailedBatch
                                         var rText = child.InnerText.Replace("&nbsp;", "").Trim();
 
                                         if (rText != "")
-                                            FiList.Add(rText);
+                                            fiList.Add(rText);
                                     }
                                 }
                             }
@@ -462,7 +472,7 @@ namespace BM.Services.WebData.DetailedBatch
                                                     break;
                                                 case "br":
                                                     if (text != "")
-                                                        SiList.Add(text);
+                                                        siList.Add(text);
                                                     text = "";
                                                     break;
                                             }
@@ -473,7 +483,7 @@ namespace BM.Services.WebData.DetailedBatch
                                         var rText = child.InnerText.Replace("&nbsp;", "").Trim();
 
                                         if (rText != "")
-                                            SiList.Add(rText);
+                                            siList.Add(rText);
                                     }
                                 }
                             }
@@ -510,7 +520,7 @@ namespace BM.Services.WebData.DetailedBatch
                                                     break;
                                                 case "br":
                                                     if (text != "")
-                                                        SeList.Add(text);
+                                                        seList.Add(text);
                                                     text = "";
                                                     break;
                                             }
@@ -521,7 +531,7 @@ namespace BM.Services.WebData.DetailedBatch
                                         var rText = child.InnerText.Replace("&nbsp;", "").Trim();
 
                                         if (rText != "")
-                                            SeList.Add(rText);
+                                            seList.Add(rText);
                                     }
                                 }
                             }
@@ -535,35 +545,35 @@ namespace BM.Services.WebData.DetailedBatch
 
             var dic1 = new Dictionary<string, object>
             {
-                {"PersonalInfo", FDic},
-                {"Life", FHtml},
-                {"ByGone", new List<object> {FList1, FList2, FList3, FList4}},
+                {"PersonalInfo", fDic},
+                {"Life", fHtml},
+                {"ByGone", new List<object> {fList1, fList2, fList3, fList4}},
             };
 
             var dic2 = new Dictionary<string, object>
             {
-                {"Html", THtml},
-                {"Personality", TList}
+                {"Html", tHtml},
+                {"Personality", tList}
             };
 
             var dic3 = new Dictionary<string, object>
             {
-                { "Type",FuType},
-                { "ImgUrl",FuImgUrl},
-                { "Komo",FuDic},
-                { "LuckySite",FuHtml}
+                { "Type",fuType},
+                { "ImgUrl",fuImgUrl},
+                { "Komo",fuDic},
+                { "LuckySite",fuHtml}
             };
 
             var resultDic =
                 new Dictionary<string, object>
                 {
                     {"Natal", dic1},
-                    {"Fate", SList},
+                    {"Fate", sList},
                     {"Five", dic2},
                     {"Destiny", dic3},
-                    {"Love", FiList},
-                    {"Money", SiList},
-                    {"Healthy", SeList}
+                    {"Love", fiList},
+                    {"Money", siList},
+                    {"Healthy", seList}
                 };
 
             return resultDic;

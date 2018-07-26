@@ -3,6 +3,7 @@ using BM.Services.Common;
 using System;
 using System.Data.Entity;
 using System.Linq;
+using BM.Services.Logs;
 using BM.Services.Security;
 
 namespace BM.Services.Users
@@ -34,13 +35,20 @@ namespace BM.Services.Users
                     return null;
                 }
 
-                var salt = EncryptionService.CreateSaltKey(6);
-                var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
+                try
+                {
+                    var salt = EncryptionService.CreateSaltKey(6);
+                    var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                userInfo = new User { Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword };
+                    userInfo = new User {Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword};
 
-                db.User.Add(userInfo);
-                db.SaveChanges();
+                    db.User.Add(userInfo);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    LogService.InsertLog(ex);
+                }
             }
 
             return userInfo;
@@ -70,15 +78,22 @@ namespace BM.Services.Users
                     return null;
                 }
 
-                var salt = EncryptionService.CreateSaltKey(6);
-                var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
+                try
+                {
+                    var salt = EncryptionService.CreateSaltKey(6);
+                    var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                userInfo.Password = password;
-                userInfo.SaltPassword = saltPassword;
-                userInfo.Salt = salt;
+                    userInfo.Password = password;
+                    userInfo.SaltPassword = saltPassword;
+                    userInfo.Salt = salt;
 
-                db.Entry<User>(userInfo).State = EntityState.Modified;
-                db.SaveChanges();
+                    db.Entry<User>(userInfo).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    LogService.InsertLog(ex);
+                }
             }
 
             return userInfo;
@@ -109,10 +124,17 @@ namespace BM.Services.Users
                     return null;
                 }
 
-                userInfo.Email = email;
-                userInfo.NickName = nickname;
-                db.Entry<User>(userInfo).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    userInfo.Email = email;
+                    userInfo.NickName = nickname;
+                    db.Entry<User>(userInfo).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    LogService.InsertLog(ex);
+                }
             }
 
             return userInfo;
@@ -140,6 +162,7 @@ namespace BM.Services.Users
             catch (Exception ex)
             {
                 returnCode.Code = -1;
+                LogService.InsertLog(ex);
                 return null;
             }
 
@@ -154,13 +177,21 @@ namespace BM.Services.Users
         /// <returns></returns>
         public static Sms GetSmsByPhone(string phone, ReturnCode returnCode)
         {
-            var db = new DbEntities();
+            try
+            {
+                var db = new DbEntities();
 
-            var query = from d in db.Sms
-                        where d.Phone == phone
-                        select d;
+                var query = from d in db.Sms
+                    where d.Phone == phone
+                    select d;
 
-            return query.FirstOrDefault();
+                return query.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                return null;
+            }
         }
     }
 }

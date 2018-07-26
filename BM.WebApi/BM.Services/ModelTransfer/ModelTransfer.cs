@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Reflection;
+using BM.Services.Logs;
 
 namespace BM.Services.ModelTransfer
 {
-    public static class ModelTransfer 
+    public static class ModelTransfer
     {
         /// <summary>
         /// 将S转换为D（新实例）
@@ -34,6 +35,7 @@ namespace BM.Services.ModelTransfer
             }
             catch (Exception ex)
             {
+                LogService.InsertLog(ex);
                 return default(D);
             }
         }
@@ -67,6 +69,7 @@ namespace BM.Services.ModelTransfer
             }
             catch (Exception ex)
             {
+                LogService.InsertLog(ex);
                 return default(D);
             }
         }

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using BM.Api.Attributes;
-using BM.Services.Common;
-using BM.Services.ReturnServices;
-using BM.Services.Users;
-using System.Web.Http;
-using System.Web.UI;
+﻿using BM.Api.Attributes;
 using BM.Data.Domain;
 using BM.Services.BurialPoint;
+using BM.Services.Common;
 using BM.Services.ModelTransfer;
+using BM.Services.ReturnServices;
 using BM.Services.ShortMessages;
+using BM.Services.Users;
+using System;
+using System.Web.Http;
 using Sms = BM.Services.ShortMessages.Sms;
 using User = BM.Api.Models.User;
 
@@ -38,10 +36,8 @@ namespace BM.Api.Controllers
             var sms = new Sms(vCode);
             var smsResponse = sms.SendSmsToPhone(userModel.Phone);
 
-
             if (smsResponse?.Code != null && smsResponse.Code == "OK")
             {
-
                 var smsModel = new Data.Domain.Sms
                 {
                     Code = vCode,
@@ -53,11 +49,16 @@ namespace BM.Api.Controllers
             }
             else
             {
-                //短信验证码 ：使用同一个签名，对同一个手机号码发送短信验证码，支持1条/分钟，5条/小时 ，累计10条/天。
-                if (smsResponse != null && smsResponse.Message.IndexOf("触发天级流控", StringComparison.Ordinal) != -1)
-                    returnCode.Code = 1887;
-                else
-                    returnCode.Code = 1992;
+                if (smsResponse != null)
+                {
+                    //短信验证码 ：使用同一个签名，对同一个手机号码发送短信验证码，支持1条/分钟，5条/小时 ，累计10条/天。
+                    if (smsResponse.Message.IndexOf("触发天级流控", StringComparison.Ordinal) != -1)
+                        returnCode.Code = 1887;
+                    else
+                        returnCode.Code = 1992;
+
+                    BpService.Use(smsResponse.Message);
+                }
 
                 BpService.Use(returnCode.Message);
             }
@@ -81,12 +82,14 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
+            //密码为空
             if (string.IsNullOrEmpty(userModel.Password))
             {
                 returnCode.Code = 1997;
                 return new Return { ReturnCode = returnCode };
             }
 
+            //验证码为空
             if (string.IsNullOrEmpty(userModel.VCode))
             {
                 returnCode.Code = 1994;

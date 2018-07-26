@@ -1,5 +1,7 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 using BM.Data.Domain;
+using BM.Services.Logs;
 
 namespace BM.Services.ShortMessages
 {
@@ -14,9 +16,16 @@ namespace BM.Services.ShortMessages
         /// <param name="sms"></param>
         public static void InsertOrUpdate(Data.Domain.Sms sms)
         {
-            var db = new DbEntities();
-            db.Sms.AddOrUpdate(sms);
-            db.SaveChanges();
+            try
+            {
+                var db = new DbEntities();
+                db.Sms.AddOrUpdate(sms);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+            }
         }
     }
 }

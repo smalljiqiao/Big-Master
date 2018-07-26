@@ -25,8 +25,6 @@ namespace BM.Api.Models
         /// 出生日期 格式 yyyy-MM-dd
         /// </summary>
         [Required]
-        //[RegularExpression(@"[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])", ErrorMessage = "日期格式限制为yyyy-MM-dd")]
-        
         public DateTime BirthDay { get; set; }
 
         /// <summary>

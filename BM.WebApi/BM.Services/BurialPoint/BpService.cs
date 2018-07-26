@@ -1,4 +1,6 @@
-﻿using BM.Data.Domain;
+﻿using System;
+using BM.Data.Domain;
+using BM.Services.Logs;
 
 namespace BM.Services.BurialPoint
 {
@@ -13,11 +15,18 @@ namespace BM.Services.BurialPoint
         /// <param name="remark"></param>
         public static void Use(string remark)
         {
-            var bPModel = new BM.Data.Domain.BurialPoint {Remark = remark};
+            try
+            {
+                var bPModel = new BM.Data.Domain.BurialPoint { Remark = remark };
 
-            var db = new DbEntities();
-            db.BurialPoint.Add(bPModel);
-            db.SaveChanges();
+                var db = new DbEntities();
+                db.BurialPoint.Add(bPModel);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+            }
         }
     }
 }
