@@ -22,6 +22,11 @@ namespace BM.Core.Domain.ShortMessage
         public string Code { get; set; }
 
         /// <summary>
+        /// 是否已使用
+        /// </summary>
+        public bool IsUse { get; set; }
+
+        /// <summary>
         /// 更新时间 由代码生成
         /// </summary>
         public DateTime? UpdateTime { get; set; }

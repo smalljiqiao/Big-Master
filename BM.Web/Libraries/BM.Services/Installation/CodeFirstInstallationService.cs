@@ -49,13 +49,18 @@ namespace BM.Services.Installation
         {
             var cmd = "ALTER TABLE [Log] ADD CONSTRAINT DF_LogId_Log DEFAULT(NEWID()) FOR LogId;" +
                       "ALTER TABLE [Log] ADD CONSTRAINT DF_CreateTime_Log DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [Search] ADD CONSTRAINT DF_SearchId_Search DEFAULT(NEWID()) FOR SearchId;" +
                       "ALTER TABLE [Search] ADD CONSTRAINT DF_CreateTime_Search DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [Order] ADD CONSTRAINT DF_OrderId_Order DEFAULT(NEWID()) FOR OrderId;" +
                       "ALTER TABLE [Order] ADD CONSTRAINT DF_CreateTime_Order DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [OrderSearch] ADD CONSTRAINT DF_OrderId_OrderSearch DEFAULT(NEWID()) FOR OrderId;" +
                       "ALTER TABLE [User] ADD CONSTRAINT DF_CreateTime_User DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [AndroidInfo] ADD CONSTRAINT DF_CreateTime_AndroidInfo DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_BpId_BurialPoint DEFAULT(NEWID()) FOR BpId;" +
                       "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [DreamTitle] ADD CONSTRAINT DF_CreateTime_DreamTitle DEFAULT(GETDATE()) FOR CreateTime;" +
-                      "ALTER TABLE [DreamDetail] ADD CONSTRAINT DF_CreateTime_DreamDetail DEFAULT(GETDATE()) FOR CreateTime;";
+                      "ALTER TABLE [DreamDetail] ADD CONSTRAINT DF_CreateTime_DreamDetail DEFAULT(GETDATE()) FOR CreateTime;" +
+                      "ALTER TABLE [Sms] ADD CONSTRAINT DF_IsUse_Sms DEFAULT(0) FOR IsUse;";
 
             _idbContext.ExecuteSqlCommand(cmd);
         }

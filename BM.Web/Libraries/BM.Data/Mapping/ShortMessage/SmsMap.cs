@@ -11,6 +11,7 @@ namespace BM.Data.Mapping.ShortMessage
             this.HasKey(k => k.Phone);
             this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20).IsRequired();
             this.Property(p => p.Code).HasColumnType("char").HasMaxLength(6).IsFixedLength().IsRequired();
+            this.Property(p => p.IsUse).HasColumnType("bit").IsRequired();
             this.Property(p => p.UpdateTime).HasColumnType("datetime");
         }
     }

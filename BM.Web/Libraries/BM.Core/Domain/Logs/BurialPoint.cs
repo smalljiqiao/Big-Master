@@ -16,7 +16,6 @@ namespace BM.Core.Domain.Logs
         /// 手机号码
         /// </summary>
         [Phone]
-        [Column("Phone", Order = 1)]
         public string Phone { get; set; }
 
         /// <summary>
