@@ -20,7 +20,6 @@ namespace BM.Core.Domain.Orders
         /// <summary>
         /// 订单ID
         /// </summary>
-        [Display(Name = "Description here")]
         public Guid OrderId { get; set; }
 
         /// <summary>

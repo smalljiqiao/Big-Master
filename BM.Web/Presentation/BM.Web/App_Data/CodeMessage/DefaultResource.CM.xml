@@ -9,6 +9,14 @@
     <Message>请求成功</Message>
   </CodeMessage>
   <CodeMessage>
+    <Code>1887</Code>
+    <Message>目前短信验证码一次1条/分钟，5条/小时 ，累计10条/天，请检查你是否超过发送限制</Message>
+  </CodeMessage>
+  <CodeMessage>
+    <Code>1888</Code>
+    <Message>该验证码已被使用，请重新获取验证码</Message>
+  </CodeMessage>
+  <CodeMessage>
     <Code>1889</Code>
     <Message>验证码输入错误</Message>
   </CodeMessage>

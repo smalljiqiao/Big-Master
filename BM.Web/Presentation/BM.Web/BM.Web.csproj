@@ -161,7 +161,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CodeMessage\DefaultResource.CM.xml" />
+    <Content Include="App_Data\CodeMessage\DefaultResource.CM.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\Install\SqlServer.StoredProcedures.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

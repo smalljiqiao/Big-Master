@@ -70,8 +70,10 @@ namespace BM.Services.Installation
         /// </summary>
         protected virtual void AddConstraint()
         {
-            var cmd = "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_Sex] CHECK (Sex = 0 OR Sex = 1 OR Sex = 2);" +
-                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_Sex] CHECK (Sex = 0 OR Sex = 1 OR Sex = 2);";
+            var cmd = "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
+                      "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_BSex] CHECK (BSex = 0 OR BSex = 1 OR BSex = 2);" +
+                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
+                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_BSex] CHECK (BSex = 0 OR DSex = 1 OR BSex = 2);";
 
             _idbContext.ExecuteSqlCommand(cmd);
         }
@@ -110,13 +112,20 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单查询类<br/>记录订单所有查询的关键字信息', 'user',@CurrentUser, 'table', 'OrderSearch'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单ID', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'OrderId'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '查询姓名 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'UserName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '性别 值为1时是男性，为2时是女性，为0时是未知 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'Sex'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '出生日期 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BirthDay'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'ManName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'ManBirthDay'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'WomanName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'WomanBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批查询姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批性别 值为1时是男性，为2时是女性，为0时是未知', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DSex'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名姓氏', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BSurname'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名性别', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BSex'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名省份', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BProvince'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名城市', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'BCity'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MManName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MManBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生时辰', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MManTime'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MWomanName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MWomanBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生时辰', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'MWomanTime'; \r\n" +
                       "-- Log Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '错误日志类', 'user',@CurrentUser, 'table', 'Log'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '日志ID', 'user', @CurrentUser, 'table', 'Log', 'column', 'LogId'; \r\n" +
@@ -127,13 +136,20 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '搜索记录类', 'user',@CurrentUser, 'table', 'Search'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Search', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '搜索ID', 'user', @CurrentUser, 'table', 'Search', 'column', 'SearchId'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '查询姓名 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'Search', 'column', 'UserName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '性别 值为1时是男性，为2时是女性，为0时是未知 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'Search', 'column', 'Sex'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '出生日期 对应八字详批和宝宝取名', 'user', @CurrentUser, 'table', 'Search', 'column', 'BirthDay'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'ManName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'ManBirthDay'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'WomanName'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'WomanBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批查询姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'DName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批性别 值为1时是男性，为2时是女性，为0时是未知', 'user', @CurrentUser, 'table', 'Search', 'column', 'DSex'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'DBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名姓氏', 'user', @CurrentUser, 'table', 'Search', 'column', 'BSurname'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名性别', 'user', @CurrentUser, 'table', 'Search', 'column', 'BSex'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'BBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名省份', 'user', @CurrentUser, 'table', 'Search', 'column', 'BProvince'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '宝宝取名城市', 'user', @CurrentUser, 'table', 'Search', 'column', 'BCity'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'MManName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'MManBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚男方出生时辰', 'user', @CurrentUser, 'table', 'Search', 'column', 'MManTime'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'MWomanName'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'MWomanBirthDay'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '八字合婚女方出生时辰', 'user', @CurrentUser, 'table', 'Search', 'column', 'MWomanTime'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '周公解梦搜索词', 'user', @CurrentUser, 'table', 'Search', 'column', 'ZhouWord'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'Search', 'column', 'CreateTime'; \r\n" +
                       "-- BPrice Table \r\n" +
