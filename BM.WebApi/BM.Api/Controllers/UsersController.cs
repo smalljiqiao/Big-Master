@@ -97,7 +97,7 @@ namespace BM.Api.Controllers
                 return new Return { ReturnCode = returnCode };
             }
 
-            if (Convert.ToDateTime(sms.UpdateTime).AddMinutes(5) > DateTime.Now)
+            if (Convert.ToDateTime(sms.UpdateTime).AddMinutes(5) < DateTime.Now)
             {
                 //验证码已过期
                 returnCode.Code = 1990;
@@ -162,6 +162,13 @@ namespace BM.Api.Controllers
             if (userInfo == null)
             {
                 returnCode.Code = 1996;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //密码错误
+            if (userInfo.Password != userModel.Password)
+            {
+                returnCode.Code = 1999;
                 return new Return { ReturnCode = returnCode };
             }
 

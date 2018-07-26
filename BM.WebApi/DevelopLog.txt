@@ -24,3 +24,6 @@
 1.Code First From DataBase 不能移植 DatabaseGenerated 特性，所以需要自己手动设置。
 2.字段约束属性 Phone 和 Email 只能简单过滤部分数据 
 3.字段属性 DisplayFormat不能添加ErrorMessage
+
+2018/07/25
+1.验证码数据表需要添加是否使用字段

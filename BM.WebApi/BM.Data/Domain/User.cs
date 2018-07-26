@@ -13,7 +13,6 @@ namespace BM.Data.Domain
         public User()
         {
             AndroidInfo = new HashSet<AndroidInfo>();
-            BurialPoint = new HashSet<BurialPoint>();
             Order = new HashSet<Order>();
             Search = new HashSet<Search>();
         }
@@ -47,14 +46,9 @@ namespace BM.Data.Domain
         public virtual ICollection<AndroidInfo> AndroidInfo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BurialPoint> BurialPoint { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Search> Search { get; set; }
-
-        public virtual Sms Sms { get; set; }
     }
 }

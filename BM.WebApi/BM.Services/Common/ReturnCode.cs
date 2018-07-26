@@ -20,6 +20,10 @@ namespace BM.Services.Common
             {
                 _code = value;
                 Message = Local.GetResource(Code.ToString());
+
+                //记录异常信息
+                if (_code != default(int))
+                    BurialPoint.BpService.Use(Message);
             }
         }
 

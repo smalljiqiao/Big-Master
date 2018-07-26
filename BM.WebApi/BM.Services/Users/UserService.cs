@@ -138,7 +138,7 @@ namespace BM.Services.Users
             }
             catch (Exception ex)
             {
-                returnCode.Code = 99999;
+                returnCode.Code = -1;
                 return null;
             }
 

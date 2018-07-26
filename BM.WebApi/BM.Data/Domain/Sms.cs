@@ -17,7 +17,5 @@ namespace BM.Data.Domain
         public string Code { get; set; }
 
         public DateTime? UpdateTime { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

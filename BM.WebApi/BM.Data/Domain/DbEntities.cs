@@ -125,10 +125,6 @@ namespace BM.Data.Domain
                 .Property(e => e.SaltPassword)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .HasOptional(e => e.Sms)
-                .WithRequired(e => e.User);
         }
     }
 }
