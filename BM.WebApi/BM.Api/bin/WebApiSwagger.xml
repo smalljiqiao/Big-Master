@@ -655,7 +655,7 @@
         </member>
         <member name="P:BM.Api.Models.DetailedBatch.BirthDay">
             <summary>
-            出生日期 格式 yyyy-MM-dd
+            出生日期 格式 yyyy-MM-dd HH
             </summary>
         </member>
         <member name="P:BM.Api.Models.DetailedBatch.IsMan">

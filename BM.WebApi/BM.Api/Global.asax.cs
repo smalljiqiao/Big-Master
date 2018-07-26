@@ -11,8 +11,8 @@ namespace BM.Api
         {
             //BM.Services.WebData.DetailedBatch.Handler.Get("测试", DateTime.Now.AddYears(-1), true);
 
-            //BM.Services.WebData.Dream.Handler.InsertTitleToDb();
-            //BM.Services.WebData.Dream.Handler.InsertDetailToDb();
+            BM.Services.WebData.Dream.Handler.InsertTitleToDb();
+            BM.Services.WebData.Dream.Handler.InsertDetailToDb();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);

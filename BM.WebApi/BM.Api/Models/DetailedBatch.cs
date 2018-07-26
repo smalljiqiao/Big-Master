@@ -22,7 +22,7 @@ namespace BM.Api.Models
         public string UserName { get; set; }
 
         /// <summary>
-        /// 出生日期 格式 yyyy-MM-dd
+        /// 出生日期 格式 yyyy-MM-dd HH
         /// </summary>
         [Required]
         public DateTime BirthDay { get; set; }
