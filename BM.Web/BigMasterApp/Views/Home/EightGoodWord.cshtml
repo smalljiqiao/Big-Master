@@ -35,7 +35,7 @@
         <div class="customerMess  mt15 mb10">
             <div class="item flex-box">
                 <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%" >姓名：</div>
-                <div class="rem16  flex-cont"><input class="rem18 pd5x10 mb3 costomerInput" value="" placeholder="请填写您的姓名" /></div>
+                <div class="rem16  flex-cont"><input class="rem18 pd5x10 mb3 costomerInput" id="name" value="" placeholder="请填写您的姓名" /></div>
             </div>
             <div class="item flex-box">
                 <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%">性别：</div>
@@ -46,12 +46,14 @@
             </div>
             <div class="item flex-box" >
                 <div class="rem20  flex-cont tal ag-self teacherDescFont" style="width:25%" >生日：</div>
-                <div class="flex-cont"><input class="rem16 pd5x10 mb3 costomerInput" value="" placeholder="请选择出生日期" /></div>
+                <div class="flex-cont"><input class="rem16 pd5x10 mb3 costomerInput" value="" id="manDate" type="text" data-toid-date="date" data-toid-hour="hour" name="input_date" data-hour="2" readonly="readonly" placeholder="请选择出生日期" />
+                    <input type="hidden" id="date" name="date">
+                    <input type="hidden" id="hour" name="hour"></div>
             </div>
         </div>
         <div class="tac  mb5">
             <div class="rem15 mt15 mb10 tal">已经有1258人查看2018年八字详批</div>
-            <button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/EightGoodWordPay")'">立即预测</button>
+            <button class="rem16 submitBtn tac mb10 c-fff" onclick="submitData()">立即预测</button>
         </div>
 
     </div>
@@ -95,6 +97,36 @@
     </div>
 
 </div>
+@section scripts{
+    <script type="text/javascript">
+        $(".emI i").bind("click", function () {
+            $(this).addClass("check_on");
+            $(this).siblings().removeClass("check_on");
+        });
+
+        $(document).ready(function () {
+            var date = new ruiDatepicker().init('#manDate');
+
+        })
+        function submitData() {
+
+            var query = {
+                UserName: $.trim($("#name").val()),
+                IsMan: $('input[name="sex"]:checked').val() == 'man' ? true : false,
+                BirthDay: chooseGongliTime
+            };
+            if (!query.UserName) {
+                layer.msg('名字不能为空！'); return;
+            }
+            if (!query.BirthDay) {
+                layer.msg('出生日期不能为空！'); return;
+            }
+            var data = query.BirthDay.replace("年", "-").replace("月", "-").replace("日","").replace("时", ":00");
+
+           window.location.href = '@Url.Content("~/PayFile/EightGoodWordPay")';
+        }
+    </script>
+}
 
 
 

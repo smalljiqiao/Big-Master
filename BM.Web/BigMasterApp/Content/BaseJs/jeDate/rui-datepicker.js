@@ -5,6 +5,8 @@
  * 邮箱：410232098@qq.com
  * 创建于：2016-12-31
  */
+
+var chooseGongliTime = "";
 window.ruiDatepicker = (function() {
 	// 兼容IE-classList处理
 	if (!("classList" in document.documentElement)) {
@@ -1154,7 +1156,8 @@ window.ruiDatepicker = (function() {
 						}
 					}
 					// 设置公历选择时间
-					confirmGongli.innerHTML=d.yy+ "年" + d.mm + "月" +d.dd+'日 '+gongliHourStr;
+                    confirmGongli.innerHTML = d.yy + "年" + d.mm + "月" + d.dd + '日 ' + gongliHourStr;
+                    chooseGongliTime = d.yy + "年" + d.mm + "月" + d.dd + '日 ' + gongliHourStr;
 					// 设置农历选择时间
 					var mmChina=d._mm<0?getChinese('rm',-d._mm):getChinese('mm',d._mm);
 					confirmNongli.innerHTML=d._yy+'年'+mmChina+''+getChinese('dd',d._dd)+' '+nongliHourStr;

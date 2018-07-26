@@ -158,10 +158,6 @@
     <Content Include="Content\BaseJs\FlexReset.js" />
     <Content Include="Content\BaseJs\jeDate\rui-datepicker.css" />
     <Content Include="Content\BaseJs\jeDate\rui-datepicker.js" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedate.css" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedate.png" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.svg" />
-    <Content Include="Content\BaseJs\jeDate\jedate.js" />
     <Content Include="Content\BaseJs\layer\layer.js" />
     <Content Include="Content\BaseJs\layer\layui\css\layui.css" />
     <Content Include="Content\BaseJs\layer\layui\css\layui.mobile.css" />
@@ -361,9 +357,6 @@
     <Content Include="Content\iconfont\iconfont.eot" />
     <Content Include="Content\iconfont\iconfont.ttf" />
     <Content Include="Content\iconfont\iconfont.woff" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.eot" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.ttf" />
-    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.woff" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.eot" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.ttf" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.woff" />

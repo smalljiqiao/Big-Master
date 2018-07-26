@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "周公解梦";
-    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/7ef43a5387b647a7ba2077fe564813ec.jpg";
+    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetImgPathRoot() + "images/readDreamBanner.jpg";
 }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
