@@ -38,10 +38,5 @@ namespace BM.Core.Domain.Logs
         /// 生成时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
-
-        /// <summary>
-        /// 外键关联User表
-        /// </summary>
-        public virtual User User { get; set; }
     }
 }

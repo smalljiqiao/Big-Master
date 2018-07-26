@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BM.Core.Domain.Users;
 
 namespace BM.Core.Domain.ShortMessage
 {
