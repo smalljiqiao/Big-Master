@@ -9,6 +9,7 @@ namespace BM.Data.Domain
     [Table("Log")]
     public partial class Log
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid LogId { get; set; }
 
         [StringLength(2000)]

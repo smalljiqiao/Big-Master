@@ -10,13 +10,11 @@ namespace BM.Data.Domain
     public partial class BurialPoint
     {
         [Key]
-        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid BpId { get; set; }
+
         [StringLength(20)]
         public string Phone { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        public Guid BpId { get; set; }
 
         [StringLength(10)]
         public string FType { get; set; }

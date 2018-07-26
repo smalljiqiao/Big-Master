@@ -27,3 +27,6 @@
 
 2018/07/25
 1.验证码数据表需要添加是否使用字段
+
+2018/07/26
+1.Code First From Dababase 需要手动添加 DataGeneration 列包括datetime(computed) 和 guid(identity)

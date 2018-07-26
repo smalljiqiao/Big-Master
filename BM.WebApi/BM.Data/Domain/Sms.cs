@@ -16,6 +16,8 @@ namespace BM.Data.Domain
         [StringLength(6)]
         public string Code { get; set; }
 
+        public bool IsUse { get; set; }
+
         public DateTime? UpdateTime { get; set; }
     }
 }

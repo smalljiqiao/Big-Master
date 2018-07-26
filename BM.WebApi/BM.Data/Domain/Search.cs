@@ -16,6 +16,7 @@ namespace BM.Data.Domain
 
         [Key]
         [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid SearchId { get; set; }
 
         [StringLength(40)]

@@ -14,6 +14,7 @@ namespace BM.Data.Domain
         public string Phone { get; set; }
 
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderId { get; set; }
 
         [StringLength(40)]

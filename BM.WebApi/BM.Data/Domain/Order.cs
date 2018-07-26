@@ -22,6 +22,7 @@ namespace BM.Data.Domain
 
         [Key]
         [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderId { get; set; }
 
         [StringLength(20)]
