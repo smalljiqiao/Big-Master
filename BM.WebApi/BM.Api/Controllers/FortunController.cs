@@ -3,6 +3,7 @@ using BM.Api.Models;
 using BM.Services.Common;
 using BM.Services.ReturnServices;
 using System;
+using System.IO;
 using System.Web.Http;
 
 namespace BM.Api.Controllers
@@ -90,13 +91,21 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
+            var sw = new StreamWriter(@"D:\test.txt", true);
+            sw.WriteLine("Start:" + DateTime.Now);
+
             var detail = Services.WebData.Dream.Handler.Detail(dreamId);
+
+            sw.WriteLine("End:" + DateTime.Now);
+            sw.Dispose();
+            sw.Close();
 
             if (detail == "")
             {
                 returnCode.Code = 2999;
                 return returnCode;
             }
+
 
             return new Return
             {

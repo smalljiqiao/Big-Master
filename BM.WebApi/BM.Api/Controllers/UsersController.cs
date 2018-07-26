@@ -139,6 +139,7 @@ namespace BM.Api.Controllers
 
             //将User数据库模型类转换为页面模型类
             var user = ModelTransfer.Mapper(userInfo, new User());
+            user.Password = "";
 
             return new Return
             {
@@ -189,6 +190,7 @@ namespace BM.Api.Controllers
 
             //将User数据库模型类转换为页面模型类
             var user = ModelTransfer.Mapper(userInfo, new User());
+            user.Password = "";
 
             return new Return
             {
@@ -225,6 +227,7 @@ namespace BM.Api.Controllers
 
             //将User数据库模型类转换为页面模型类
             var user = ModelTransfer.Mapper(userInfo, new User());
+            user.Password = "";
 
             return new Return
             {
@@ -261,6 +264,7 @@ namespace BM.Api.Controllers
 
             //将User数据库模型类转换为页面模型类
             var user = ModelTransfer.Mapper(userInfo, new User());
+            user.Password = "";
 
             return new Return
             {
