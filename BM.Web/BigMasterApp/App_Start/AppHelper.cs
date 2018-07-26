@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -20,6 +21,9 @@ namespace BigMasterApp.App_Start
               .Append("://")
               .Append(request.Url.Host)
               .ToString();
+        }
+        public static string GetImgPathRoot() {
+          return  ConfigurationManager.AppSettings["imgRoot"];
         }
     }
 

@@ -24,7 +24,7 @@
     </div>
     <div class="buttonContent">
         <button class="rem18 c-fff mb10" onclick="submitData()">登入</button>
-        <div class="rem16 flex-box wordColor"><div class="flex-cont tal" onclick="window.location.href='RegisterUpsetPwd?type=register'" >注册</div>
+        <div class="rem16 flex-box wordColor"><div class="flex-cont tal" onclick="window.location.href='RegisterUpsetPwd?type=register'" >绑定手机</div>
         <div class="flex-cont tar" onclick="window.location.href='RegisterUpsetPwd?type=forgetPwd'">忘记密码</div></div>
     </div>
     <div class="foot">
@@ -45,6 +45,7 @@
             doPost(bmApI.user.login, query, function (data) {
                 if (data.ReturnCode.Code == 0) {
                     layer.msg("登入成功！");
+                    bm_setCookie("")
                     setTimeout(function () {
                         window.location.href = global_site_root + "Home/Index";
                     }, 2000);

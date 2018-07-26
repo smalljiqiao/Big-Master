@@ -14,10 +14,10 @@
     </style>
     }
 <div class="readDreamContentItem pd10x0">
-    <div class="flex-box flex-wrap tac conItem">
+    <div class="flex-box flex-wrap tac conItem" id="databox">
 
-    <div class="flex-cont divClass ag-self mb20"><div class="item" onclick="window.location.href='../PayResult/ReadDreamResult?key=前男友'">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>
-        <div class="flex-cont divClass ag-self mb20"><div class="item">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>
+    @*<div class="flex-cont divClass ag-self mb20"><div class="item" onclick="window.location.href='../PayResult/ReadDreamResult?key=前男友'">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>
+        <div class="flex-cont divClass ag-self mb20"><div class="item">前男友</div></div><div class="flex-cont ag-self divClass  mb20"><div class="item">新欢</div></div>*@
 
  
     </div>
@@ -29,11 +29,21 @@
     $(document).ready(function () {
         var key = getQueryString_Chenese("key");
         doGet(bmApI.fortunDream.getTitle, "", function (data) {
-            if(data[0].code == 0) {
-               
+            if (data.ReturnCode.Code == 0) {
+                var content = data.Content;
+                for (var p in content) {
+                    if (p == key) {
+                        for (var item in content[p]) {
+                            var itemValue = content[p][item];
+                            var result = '<div class="flex-cont divClass ag-self mb20">' +
+                                '<div class="item" onclick= "window.location.href=\'../PayResult/ReadDreamResult?key=' + item + '&keyValue=' + itemValue+'\'">'+ itemValue+'</div></div> ';
+                            $("#databox").append(result);
+                        }
+                    }
+                }
             }
             else {
-                layer.msg(data.Message);
+                layer.msg(data.ReturnCode.Message);
             }
         });
     })
