@@ -30,3 +30,5 @@
 
 2018/07/26
 1.Code First From Dababase 需要手动添加 DataGeneration 列包括datetime(computed) 和 guid(identity)
+2.短信验证码发送限制
+3.需要测试重新发送验证码是否会修改IsUse字段。

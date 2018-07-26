@@ -123,6 +123,7 @@ namespace BM.Services.Users
         /// </summary>
         /// <param name="phone">手机号码</param>
         /// <param name="returnCode">返回码对象</param>
+        /// <param name="db">数据库上下文，因为使用不同数据库上下文操作会出错，所以增加这个参数</param>
         /// <returns>User对象，根据returnCode是否为空判断系统是否出错</returns>
         public static User GetUserByPhone(string phone, ReturnCode returnCode, DbEntities db)
         {

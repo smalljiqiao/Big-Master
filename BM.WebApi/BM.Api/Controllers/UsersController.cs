@@ -53,7 +53,12 @@ namespace BM.Api.Controllers
             }
             else
             {
-                returnCode.Code = 1992;
+                //短信验证码 ：使用同一个签名，对同一个手机号码发送短信验证码，支持1条/分钟，5条/小时 ，累计10条/天。
+                if (smsResponse != null && smsResponse.Message.IndexOf("触发天级流控", StringComparison.Ordinal) != -1)
+                    returnCode.Code = 1887;
+                else
+                    returnCode.Code = 1992;
+
                 BpService.Use(returnCode.Message);
             }
 
@@ -97,14 +102,19 @@ namespace BM.Api.Controllers
                 return new Return { ReturnCode = returnCode };
             }
 
+            //验证码已过期
             if (Convert.ToDateTime(sms.UpdateTime).AddMinutes(5) < DateTime.Now)
             {
-                //验证码已过期
                 returnCode.Code = 1990;
                 return new Return { ReturnCode = returnCode };
             }
 
-            //TODO CHECK IS USE
+            //已使用
+            if (sms.IsUse)
+            {
+                returnCode.Code = 1888;
+                return new Return { ReturnCode = returnCode };
+            }
 
             //验证码不正确
             if (sms.Code != userModel.VCode)
@@ -113,6 +123,11 @@ namespace BM.Api.Controllers
                 return new Return { ReturnCode = returnCode };
             }
 
+            //避免不同数据库上下文操作出现的错误
+            var newSms = new Data.Domain.Sms { Code = sms.Code, IsUse = true, Phone = sms.Phone, UpdateTime = DateTime.Now };
+
+            //更新Sms IsUse 为 true
+            SmsService.InsertOrUpdate(newSms);
 
             var userInfo = UserService.Register(userModel.Phone, userModel.Password, returnCode);
 
