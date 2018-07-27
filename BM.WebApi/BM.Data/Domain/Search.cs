@@ -9,15 +9,14 @@ namespace BM.Data.Domain
     [Table("Search")]
     public partial class Search
     {
-        [Key]
-        [Column(Order = 0)]
         [StringLength(20)]
         public string Phone { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid SearchId { get; set; }
+
+        [StringLength(50)]
+        public string AndroidId { get; set; }
 
         [StringLength(40)]
         public string DName { get; set; }
@@ -60,7 +59,5 @@ namespace BM.Data.Domain
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

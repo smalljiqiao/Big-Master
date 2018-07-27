@@ -26,7 +26,5 @@ namespace BM.Data.Domain
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
-
-        public virtual DreamDetail DreamDetail { get; set; }
     }
 }

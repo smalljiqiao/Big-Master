@@ -29,10 +29,6 @@ namespace BM.Data.Domain
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AndroidInfo>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<AndroidInfo>()
                 .Property(e => e.AndroidId)
                 .IsUnicode(false);
 
@@ -57,12 +53,12 @@ namespace BM.Data.Domain
                 .Property(e => e.Url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DreamTitle>()
-                .HasOptional(e => e.DreamDetail)
-                .WithRequired(e => e.DreamTitle);
-
             modelBuilder.Entity<Order>()
                 .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.AndroidId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order>()
@@ -77,22 +73,20 @@ namespace BM.Data.Domain
                 .Property(e => e.PayState)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderSearch)
-                .WithRequired(e => e.Order)
-                .HasForeignKey(e => new { e.Order_Phone, e.Order_OrderId })
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<OrderSearch>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<OrderSearch>()
-                .Property(e => e.Order_Phone)
+                .Property(e => e.AndroidId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Search>()
                 .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Search>()
+                .Property(e => e.AndroidId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Sms>()

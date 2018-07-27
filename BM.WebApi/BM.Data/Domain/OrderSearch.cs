@@ -9,13 +9,15 @@ namespace BM.Data.Domain
     [Table("OrderSearch")]
     public partial class OrderSearch
     {
-        [Required]
-        [StringLength(20)]
-        public string Phone { get; set; }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderId { get; set; }
+
+        [StringLength(20)]
+        public string Phone { get; set; }
+
+        [StringLength(20)]
+        public string AndroidId { get; set; }
 
         [StringLength(40)]
         public string DName { get; set; }
@@ -52,13 +54,5 @@ namespace BM.Data.Domain
 
         [StringLength(20)]
         public string MWomanTime { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string Order_Phone { get; set; }
-
-        public Guid Order_OrderId { get; set; }
-
-        public virtual Order Order { get; set; }
     }
 }

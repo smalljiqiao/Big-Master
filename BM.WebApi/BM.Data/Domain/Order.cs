@@ -9,21 +9,14 @@ namespace BM.Data.Domain
     [Table("Order")]
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            OrderSearch = new HashSet<OrderSearch>();
-        }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid OrderId { get; set; }
 
-        [Key]
-        [Column(Order = 0)]
         [StringLength(20)]
         public string Phone { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid OrderId { get; set; }
+        [StringLength(50)]
+        public string AndroidId { get; set; }
 
         [StringLength(20)]
         public string OrderType { get; set; }
@@ -35,10 +28,5 @@ namespace BM.Data.Domain
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
-
-        public virtual User User { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderSearch> OrderSearch { get; set; }
     }
 }
