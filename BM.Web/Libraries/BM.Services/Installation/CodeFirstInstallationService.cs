@@ -70,12 +70,12 @@ namespace BM.Services.Installation
         /// </summary>
         protected virtual void AddConstraint()
         {
-            var cmd = "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
-                      "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_BSex] CHECK (BSex = 0 OR BSex = 1 OR BSex = 2);" +
-                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
-                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_BSex] CHECK (BSex = 0 OR DSex = 1 OR BSex = 2);";
+            //var cmd = "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
+            //          "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_BSex] CHECK (BSex = 0 OR BSex = 1 OR BSex = 2);" +
+            //          "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
+            //          "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_BSex] CHECK (BSex = 0 OR DSex = 1 OR BSex = 2);";
 
-            _idbContext.ExecuteSqlCommand(cmd);
+            //_idbContext.ExecuteSqlCommand(cmd);
         }
 
         /// <summary>
@@ -97,21 +97,22 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '注册时间', 'user', @CurrentUser, 'table', 'User', 'column', 'CreateTime'; \r\n" +
                       "-- AndroidInfo Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '用户安卓信息类', 'user',@CurrentUser, 'table', 'AndroidInfo'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'AndroidInfo', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '安卓ID', 'user', @CurrentUser, 'table', 'AndroidInfo', 'column', 'AndroidId'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'AndroidInfo', 'column', 'CreateTime'; \r\n" +
                       "-- Order Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单类', 'user',@CurrentUser, 'table', 'Order'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Order', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单ID', 'user', @CurrentUser, 'table', 'Order', 'column', 'OrderId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Order', 'column', 'Phone'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '安卓ID', 'user', @CurrentUser, 'table', 'Order', 'column', 'AndroidId'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单类型', 'user', @CurrentUser, 'table', 'Order', 'column', 'OrderType'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单价格，精确两位小数', 'user', @CurrentUser, 'table', 'Order', 'column', 'Price'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单支付状态', 'user', @CurrentUser, 'table', 'Order', 'column', 'PayState'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'Order', 'column', 'CreateTime'; \r\n" +
                       "-- OrderSearch Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单查询类<br/>记录订单所有查询的关键字信息', 'user',@CurrentUser, 'table', 'OrderSearch'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '订单ID', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'OrderId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'Phone'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '安卓ID', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'AndroidId'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批查询姓名', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DName'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批性别 值为1时是男性，为2时是女性，为0时是未知', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DSex'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批出生日期', 'user', @CurrentUser, 'table', 'OrderSearch', 'column', 'DBirthDay'; \r\n" +
@@ -134,8 +135,9 @@ namespace BM.Services.Installation
                       "EXECUTE sp_addextendedproperty 'MS_Description', '生成时间', 'user', @CurrentUser, 'table', 'Log', 'column', 'CreateTime'; \r\n" +
                       "-- Search Table \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '搜索记录类', 'user',@CurrentUser, 'table', 'Search'; \r\n" +
-                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Search', 'column', 'Phone'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '搜索ID', 'user', @CurrentUser, 'table', 'Search', 'column', 'SearchId'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '手机号码', 'user', @CurrentUser, 'table', 'Search', 'column', 'Phone'; \r\n" +
+                      "EXECUTE sp_addextendedproperty 'MS_Description', '安卓ID', 'user', @CurrentUser, 'table', 'Search', 'column', 'AndroidId'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批查询姓名', 'user', @CurrentUser, 'table', 'Search', 'column', 'DName'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批性别 值为1时是男性，为2时是女性，为0时是未知', 'user', @CurrentUser, 'table', 'Search', 'column', 'DSex'; \r\n" +
                       "EXECUTE sp_addextendedproperty 'MS_Description', '八字详批出生日期', 'user', @CurrentUser, 'table', 'Search', 'column', 'DBirthDay'; \r\n" +

@@ -9,8 +9,9 @@ namespace BM.Data.Mapping.Orders
         {
             this.ToTable("OrderSearch");
             this.HasKey(k => k.OrderId);
-            this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20).IsRequired();
             this.Property(p => p.OrderId).HasColumnType("uniqueidentifier").IsRequired();
+            this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20);
+            this.Property(p => p.AndroidId).HasColumnType("varchar").HasMaxLength(20);
             this.Property(p => p.DName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.DSex).HasColumnType("tinyint");
             this.Property(p => p.DBirthDay).HasColumnType("datetime");
@@ -25,8 +26,6 @@ namespace BM.Data.Mapping.Orders
             this.Property(p => p.MWomanName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.MWomanBirthDay).HasColumnType("datetime");
             this.Property(p => p.MWomanTime).HasColumnType("nvarchar").HasMaxLength(20);
-
-            this.HasRequired(orderSearch => orderSearch.Order).WithOptional(orderSearch => orderSearch.OrderSearch);
         }
     }
 }

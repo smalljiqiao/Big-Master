@@ -31,10 +31,5 @@ namespace BM.Core.Domain.Data.Dream
         /// 生成时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
-
-        /// <summary>
-        /// 外键关联DreamDetail表
-        /// </summary>
-        public DreamDetail DreamDetail { get; set; }
     }
 }

@@ -11,6 +11,11 @@ namespace BM.Core.Domain.Logs
     public class Search : BaseEntity
     {
         /// <summary>
+        /// 搜索ID，和Phone为联合主键
+        /// </summary>
+        public Guid SearchId { get; set; }
+
+        /// <summary>
         /// 手机号码
         /// </summary>
         [Phone]
@@ -18,9 +23,9 @@ namespace BM.Core.Domain.Logs
         public string Phone { get; set; }
 
         /// <summary>
-        /// 搜索ID，和Phone为联合主键
+        /// 安卓ID
         /// </summary>
-        public Guid SearchId { get; set; }
+        public string AndroidId { get; set; }
 
         #region 八字详批
 
@@ -36,7 +41,7 @@ namespace BM.Core.Domain.Logs
         public byte DSex { get; set; }
 
         /// <summary>
-        /// 出生日期
+        /// 出生日期 yyyy-MM-dd HH
         /// </summary>
         public DateTime DBirthDay { get; set; }
 
@@ -114,10 +119,5 @@ namespace BM.Core.Domain.Logs
        /// 生成时间
        /// </summary>
         public DateTime? CreateTime { get; set; }
-
-        /// <summary>
-       /// 外键关联User表
-       /// </summary>
-        public User User { get; set; }
     }
 }

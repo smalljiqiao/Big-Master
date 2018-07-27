@@ -22,7 +22,7 @@ namespace BM.Core.Domain.ShortMessage
         public string Code { get; set; }
 
         /// <summary>
-        /// 是否已使用
+        /// 是否已使用 0:未使用; 1:已使用
         /// </summary>
         public bool IsUse { get; set; }
 

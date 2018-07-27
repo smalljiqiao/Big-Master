@@ -1,7 +1,5 @@
-﻿using BM.Core.Domain.Users;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BM.Core.Domain.Logs
 {
