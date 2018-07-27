@@ -68,7 +68,7 @@ namespace BM.Services.Users
                     var salt = EncryptionService.CreateSaltKey(6);
                     var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                    userInfo = new User {Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword};
+                    userInfo = new User { Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword };
 
                     db.User.Add(userInfo);
                     db.SaveChanges();
@@ -76,6 +76,8 @@ namespace BM.Services.Users
                 catch (Exception ex)
                 {
                     LogService.InsertLog(ex);
+                    returnCode.Code = -1;
+                    return null;
                 }
             }
 
@@ -121,6 +123,8 @@ namespace BM.Services.Users
                 catch (Exception ex)
                 {
                     LogService.InsertLog(ex);
+                    returnCode.Code = -1;
+                    return null;
                 }
             }
 
@@ -162,6 +166,8 @@ namespace BM.Services.Users
                 catch (Exception ex)
                 {
                     LogService.InsertLog(ex);
+                    returnCode.Code = -1;
+                    return null;
                 }
             }
 
@@ -210,13 +216,14 @@ namespace BM.Services.Users
                 var db = new DbEntities();
 
                 var query = from d in db.Sms
-                    where d.Phone == phone
-                    select d;
+                            where d.Phone == phone
+                            select d;
 
                 return query.FirstOrDefault();
             }
             catch (Exception ex)
             {
+                returnCode.Code = -1;
                 LogService.InsertLog(ex);
                 return null;
             }

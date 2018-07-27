@@ -13,8 +13,9 @@ namespace BM.Services.ShortMessages
         /// <summary>
         /// 更新Sms Table
         /// </summary>
-        /// <param name="sms"></param>
-        public static void InsertOrUpdate(Data.Domain.Sms sms)
+        /// <param name="sms">Sms模型</param>
+        /// <returns>true:success;false:failure</returns>
+        public static bool InsertOrUpdate(Data.Domain.Sms sms)
         {
             try
             {
@@ -25,7 +26,10 @@ namespace BM.Services.ShortMessages
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
+                return false;
             }
+
+            return true;
         }
     }
 }

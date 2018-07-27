@@ -7,6 +7,7 @@ using BM.Services.ReturnServices;
 using BM.Services.ShortMessages;
 using BM.Services.Users;
 using System;
+using System.Runtime.InteropServices;
 using System.Web.Http;
 using BM.Api.Models;
 using Sms = BM.Services.ShortMessages.Sms;
@@ -36,12 +37,9 @@ namespace BM.Api.Controllers
             var androidInfo = UserService.AndroidIdInsertOrUpdate(android.AndroidId);
 
             if (androidInfo == null)
-            {
-                returnCode.Code = 1886;
-                return new Return { ReturnCode = returnCode };
-            }
+                returnCode.Code = -1;
 
-            return new Return {ReturnCode = returnCode};
+            return new Return { ReturnCode = returnCode };
         }
 
         /// <summary>
@@ -69,7 +67,10 @@ namespace BM.Api.Controllers
                     UpdateTime = DateTime.Now
                 };
 
-                SmsService.InsertOrUpdate(smsModel);
+                var flag = SmsService.InsertOrUpdate(smsModel);
+
+                if (!flag)
+                    returnCode.Code = -1;
             }
             else
             {
@@ -92,7 +93,6 @@ namespace BM.Api.Controllers
                 ReturnCode = returnCode
             };
         }
-
 
         /// <summary>
         /// 用户注册
@@ -121,6 +121,12 @@ namespace BM.Api.Controllers
             }
 
             var sms = UserService.GetSmsByPhone(userModel.Phone, returnCode);
+
+            //数据库执行出错
+            if (returnCode.Code != default(int))
+            {
+                return new Return { ReturnCode = returnCode };
+            }
 
             //还没发送短信
             if (sms == null)
@@ -154,7 +160,14 @@ namespace BM.Api.Controllers
             var newSms = new Data.Domain.Sms { Code = sms.Code, IsUse = true, Phone = sms.Phone, UpdateTime = DateTime.Now };
 
             //更新Sms IsUse 为 true
-            SmsService.InsertOrUpdate(newSms);
+            var flag = SmsService.InsertOrUpdate(newSms);
+
+            //数据库执行错误
+            if (!flag)
+            {
+                returnCode.Code = -1;
+                return new Return { ReturnCode = returnCode };
+            }
 
             var userInfo = UserService.Register(userModel.Phone, userModel.Password, returnCode);
 
