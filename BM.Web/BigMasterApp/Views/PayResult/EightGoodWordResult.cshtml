@@ -30,7 +30,66 @@
 <script src="~/Content/BaseJs/layer/layer.js"></script>
 <div>
     <div class="payback-know-content ">
-        <ul>
+        <div class="layui-tab layui-tab-card" style="margin:0px">
+            <ul class="layui-tab-title">
+                <li class="layui-this">八字命盘</li>
+                <li>五行分析</li>
+                <li>八字分析</li>
+                <li>八字算命爱情</li>
+                <li>八字算命财运</li>
+                <li>八字算命健康</li>
+            </ul>
+            <div class="layui-tab-content" style="min-height:100vh">
+                <div class="layui-tab-item layui-show" id="eightfate">
+                    <table width="300" height="220" border="1" align="center" cellpadding="0" cellspacing="0" class="small" style="font-size :12px; line-height:normal;">
+                        <tbody>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC"> 姓　名</td>
+                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;机机就</td>
+                            </tr>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC">性　别</td>
+                                <td width="95" bgcolor="#FFFFFF">&nbsp;男</td>
+                                <td align="center" width="55" bgcolor="#FFFFCC">命　卦</td>
+                                <td width="95" bgcolor="#FFFFFF">&nbsp;震</td>
+                            </tr>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC">生　日</td>
+                                <td colspan="3" bgcolor="#FFFFFF">
+                                    &nbsp;公元历：1980 年 01 月 01 日&nbsp;吉时<br>
+                                    &nbsp;农　历：己未年11月14日&nbsp;吉时
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC">事　由</td>
+                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;生辰八字算命报告</td>
+                            </tr>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC">日　元</td>
+                                <td bgcolor="#FFFFFF">&nbsp;癸水</td>
+                                <td align="center" bgcolor="#FFFFCC" width="55">生　态</td>
+                                <td bgcolor="#FFFFFF">&nbsp;癸水生于子月</td>
+                            </tr>
+                            <tr>
+                                <td align="center" bgcolor="#FFFFCC">格　局</td>
+                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;比肩格</td>
+                            </tr>
+                            <tr>
+                                <td width="55" align="center" bgcolor="#FFFFCC">鉴定日期</td>
+                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;公元 2018年7月27日</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-tab-item">2</div>
+                <div class="layui-tab-item">3</div>
+                <div class="layui-tab-item">4</div>
+                <div class="layui-tab-item">5</div>
+                <div class="layui-tab-item">6</div>
+                <div class="layui-tab-item">7</div>
+            </div>
+        </div>
+        @*<ul>
             <li class="flex-box backGray item tac">
                 <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
                 <div class="flex-cont ag-self tar"><img onclick="showDetail('八字命盘','EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
@@ -55,23 +114,46 @@
                 <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
                 <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命健康','EightGoodFate')" src="~/Content/images/more.png" /></div>
             </li>
-        </ul>
+        </ul>*@
     </div>
 
 </div>
-<script type="text/javascript">
-    function showDetail(title,url) {
-        //iframe层
-        layer.open({
-            type: 2,
-            title: title,
-            shadeClose: true,
-            shade: 0.8,
-            area: ['90%', '80%'],
-            content: global_site_root +"ResultPart/"+ url //iframe的url
-        }); 
-    }
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function (){
+            init();
+        })
+
+        function init() {
+            var key = getQueryString("orderId");
+            var query = {
+                UserName: "大傻逼",
+                BirthDay: "2018-07-27T02:06:03.236Z",
+                IsMan: true
+            };
+            doPost(bmApI.fortunEightGoodWord.forecast, query, function (data) {
+                if (data.ReturnCode.Code == 0) {
+                    var content = data.Content;
+                }
+                else {
+                    layer.msg(data.ReturnCode.Message);
+                }
+            });
+        }
+
+        function showDetail(title, url) {
+            //iframe层
+            layer.open({
+                type: 2,
+                title: title,
+                shadeClose: true,
+                shade: 0.8,
+                area: ['90%', '80%'],
+                content: global_site_root + "ResultPart/" + url //iframe的url
+            });
+        }
 
 </script>
+    }
 
 

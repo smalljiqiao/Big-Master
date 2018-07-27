@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "八字详批";
-    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/dda8ec240f7543eb87c70e1b1c8b3644.jpg";
+    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot() + "images/eightGoodWordBanner.jpg";
 }
 <style>
      .customerMess{border:1px solid #cccccc;border-radius:0.12rem;margin-top:0.5rem;padding:0.32rem 0.52666rem}
@@ -106,10 +106,8 @@
 
         $(document).ready(function () {
             var date = new ruiDatepicker().init('#manDate');
-
         })
         function submitData() {
-
             var query = {
                 UserName: $.trim($("#name").val()),
                 IsMan: $('input[name="sex"]:checked').val() == 'man' ? true : false,
@@ -122,7 +120,6 @@
                 layer.msg('出生日期不能为空！'); return;
             }
             var data = query.BirthDay.replace("年", "-").replace("月", "-").replace("日","").replace("时", ":00");
-
            window.location.href = '@Url.Content("~/PayFile/EightGoodWordPay")';
         }
     </script>

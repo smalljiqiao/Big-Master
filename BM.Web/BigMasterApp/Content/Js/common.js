@@ -82,6 +82,15 @@ var hb = {
           document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
       }
 
+      function bm_setlocalStorage(key, keyValue) {
+          localStorage.setItem(key, keyValue);
+      }
+      function bm_getlocalStorage(key) {
+          return localStorage.getItem(key);
+      }
+
+
+
       //读取cookies 
       function bm_getCookie(name) {
           //var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");

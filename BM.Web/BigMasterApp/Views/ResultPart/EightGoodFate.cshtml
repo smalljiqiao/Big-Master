@@ -6,5 +6,24 @@
 
 <div class="fate pd10x20">
     <div class="rem16 fadeRed mb10">八字论命结果</div>
-    <div class="rem15">积极是一个汉语词汇，拼音是jī jí，意思是肯定的；正面的；促进发展的；努力进取的；热心的。语出郭沫若《洪波曲》第五章三：“从积极方面来说，歌咏可以团结自己的力量。”</div>
+    <div class="rem15">
+
+
+
+    </div>
 </div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var data = JSON.parse(bm_getlocalStorage("forecastData"));
+            var code = data.ReturnCode.Code;
+            if (code == 0) {
+                alert(code);
+            }
+
+        })
+
+
+    </script>
+    
+    }

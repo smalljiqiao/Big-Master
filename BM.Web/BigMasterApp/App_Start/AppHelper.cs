@@ -22,8 +22,20 @@ namespace BigMasterApp.App_Start
               .Append(request.Url.Host)
               .ToString();
         }
-        public static string GetImgPathRoot() {
-          return  ConfigurationManager.AppSettings["imgRoot"];
+        /// <summary>
+        /// 图片服务器地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetImgServiceRoot() {
+          return  ConfigurationManager.AppSettings["imgServiceRoot"];
+        }
+        /// <summary>
+        /// 接口地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetApiServiceRoot()
+        {
+            return ConfigurationManager.AppSettings["apiServiceRoot"];
         }
     }
 

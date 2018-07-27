@@ -1,9 +1,13 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var url = BigMasterApp.App_Start.AppHelper.GetAbsoluteUriSite(this.Context.Request);
+    var imgServicePath = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot();
+    var apiServicePath= BigMasterApp.App_Start.AppHelper.GetApiServiceRoot();
 }
 <script type="text/javascript">
     var global_site_root = "@url" +"/BigMasterApp/";
-    var global_api_root = "http://47.106.183.2:8887/" +"api/"
+    var global_api_root = "@apiServicePath" + "api/";
+    var global_img_service = "@imgServicePath";
+
 </script>
 

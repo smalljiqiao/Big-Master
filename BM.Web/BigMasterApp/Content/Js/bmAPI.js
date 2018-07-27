@@ -10,7 +10,9 @@ var bmApI = {
     fortunDream: {
         getTitle: global_api_root + "fortun/dream/title",//
         itemDetail: global_api_root + "fortun/dream/detail",
-       
+    },
+    fortunEightGoodWord: {
+        forecast: global_api_root +"fortun/detailbatch",
     }
 
 }
