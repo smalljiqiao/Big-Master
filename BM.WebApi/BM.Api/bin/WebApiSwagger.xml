@@ -558,10 +558,35 @@
             <param name="dreamId">解梦ID，来源于 api/fortun/dream/title 里</param>
             <returns></returns>
         </member>
+        <member name="T:BM.Api.Controllers.OrdersController">
+            <summary>
+            订单接口
+            </summary>
+        </member>
+        <member name="M:BM.Api.Controllers.OrdersController.DetailedBatch(BM.Api.Models.DetailedBatch)">
+            <summary>
+            八字详批
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BM.Api.Controllers.OrdersController.TransferToOrderModel(System.Object)">
+            <summary>
+            将前端Model转换为OrderModel
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:BM.Api.Controllers.UsersController">
             <summary>
             用户信息接口
             </summary>
+        </member>
+        <member name="M:BM.Api.Controllers.UsersController.AndroidId(BM.Api.Models.Android)">
+            <summary>
+            更新安卓ID
+            </summary>
+            <param name="android">安卓信息对象</param>
+            <returns></returns>
         </member>
         <member name="M:BM.Api.Controllers.UsersController.Sms(BM.Api.Models.User)">
             <summary>
@@ -597,6 +622,16 @@
             </summary>
             <param name="userModel">用户对象</param>
             <returns>用户对象或返回码对象</returns>
+        </member>
+        <member name="T:BM.Api.Models.Android">
+            <summary>
+            安卓信息类
+            </summary>
+        </member>
+        <member name="P:BM.Api.Models.Android.AndroidId">
+            <summary>
+            安卓ID
+            </summary>
         </member>
         <member name="T:BM.Api.Models.BabyName">
             <summary>
@@ -648,6 +683,11 @@
             手机号码
             </summary>
         </member>
+        <member name="P:BM.Api.Models.DetailedBatch.AndroidId">
+            <summary>
+            安卓ID
+            </summary>
+        </member>
         <member name="P:BM.Api.Models.DetailedBatch.UserName">
             <summary>
             姓名 长度限制为2-8
@@ -661,6 +701,11 @@
         <member name="P:BM.Api.Models.DetailedBatch.IsMan">
             <summary>
             是否为男性 true:yes false:women
+            </summary>
+        </member>
+        <member name="P:BM.Api.Models.DetailedBatch.Price">
+            <summary>
+            价格，精确到小数点后两位
             </summary>
         </member>
         <member name="T:BM.Api.Models.Marriage">

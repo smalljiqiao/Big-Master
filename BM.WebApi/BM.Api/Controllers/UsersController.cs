@@ -1,4 +1,5 @@
 ﻿using BM.Api.Attributes;
+using BM.Api.Models;
 using BM.Data.Domain;
 using BM.Services.BurialPoint;
 using BM.Services.Common;
@@ -7,9 +8,7 @@ using BM.Services.ReturnServices;
 using BM.Services.ShortMessages;
 using BM.Services.Users;
 using System;
-using System.Runtime.InteropServices;
 using System.Web.Http;
-using BM.Api.Models;
 using Sms = BM.Services.ShortMessages.Sms;
 using User = BM.Api.Models.User;
 

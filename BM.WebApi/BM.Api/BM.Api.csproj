@@ -226,10 +226,12 @@
     <Compile Include="BMModelBinders\StringTrimModelBinder.cs" />
     <Compile Include="Controllers\FortunController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Android.cs" />
     <Compile Include="Models\BabyName.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DetailedBatch.cs" />

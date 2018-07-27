@@ -16,9 +16,14 @@ namespace BM.Api.Models
         public string Phone { get; set; }
 
         /// <summary>
+        /// 安卓ID
+        /// </summary>
+        public string AndroidId { get; set; }
+
+        /// <summary>
         /// 姓名 长度限制为2-8
         /// </summary>
-        [DisplayName("姓名")]
+        [Required]
         public string UserName { get; set; }
 
         /// <summary>
@@ -32,5 +37,10 @@ namespace BM.Api.Models
         /// </summary>
         [Required]
         public bool IsMan { get; set; }
+
+        /// <summary>
+        /// 价格，精确到小数点后两位
+        /// </summary>
+        public decimal Price { get; set; }
     }
 }
