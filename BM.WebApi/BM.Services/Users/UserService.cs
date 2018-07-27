@@ -2,6 +2,7 @@
 using BM.Services.Common;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using BM.Services.Logs;
 using BM.Services.Security;
@@ -10,6 +11,33 @@ namespace BM.Services.Users
 {
     public static class UserService
     {
+        /// <summary>
+        /// 插入或更新Android信息，更新时间
+        /// </summary>
+        /// <param name="androidId">安卓ID</param>
+        /// <returns>安卓信息对象或null</returns>
+        public static AndroidInfo AndroidIdInsertOrUpdate(string androidId)
+        {
+            var androidInfo = new AndroidInfo
+            {
+                AndroidId = androidId
+            };
+
+            try
+            {
+                var db = new DbEntities();
+                db.AndroidInfo.AddOrUpdate(androidInfo);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                return null;
+            }
+
+            return androidInfo;
+        }
+
         /// <summary>
         /// 用户注册
         /// </summary>

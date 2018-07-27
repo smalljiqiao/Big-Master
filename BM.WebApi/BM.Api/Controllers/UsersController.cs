@@ -8,6 +8,7 @@ using BM.Services.ShortMessages;
 using BM.Services.Users;
 using System;
 using System.Web.Http;
+using BM.Api.Models;
 using Sms = BM.Services.ShortMessages.Sms;
 using User = BM.Api.Models.User;
 
@@ -20,6 +21,29 @@ namespace BM.Api.Controllers
 
     public class UsersController : ApiController
     {
+        /// <summary>
+        /// 更新安卓ID
+        /// </summary>
+        /// <param name="android">安卓信息对象</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ModelValid]
+        [Route("api/user/android/id")]
+        public object AndroidId(Android android)
+        {
+            var returnCode = new ReturnCode();
+
+            var androidInfo = UserService.AndroidIdInsertOrUpdate(android.AndroidId);
+
+            if (androidInfo == null)
+            {
+                returnCode.Code = 1886;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            return new Return {ReturnCode = returnCode};
+        }
+
         /// <summary>
         /// 获取短信验证码
         /// </summary>
