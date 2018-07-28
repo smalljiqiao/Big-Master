@@ -1,0 +1,16 @@
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Services.dll.config
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Services.dll
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Services.pdb
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Data.dll
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\EntityFramework.dll
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\EntityFramework.SqlServer.dll
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\Newtonsoft.Json.dll
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Data.pdb
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\BM.Data.dll.config
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\EntityFramework.xml
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\EntityFramework.SqlServer.xml
+G:\BigMaster\BM.WebApi\BM.Services\bin\Release\Newtonsoft.Json.xml
+G:\BigMaster\BM.WebApi\BM.Services\obj\Release\BM.Services.csprojResolveAssemblyReference.cache
+G:\BigMaster\BM.WebApi\BM.Services\obj\Release\BM.Services.csproj.CoreCompileInputs.cache
+G:\BigMaster\BM.WebApi\BM.Services\obj\Release\BM.Services.dll
+G:\BigMaster\BM.WebApi\BM.Services\obj\Release\BM.Services.pdb

@@ -377,7 +377,6 @@
     <Content Include="Views\Home\Mine.cshtml" />
     <Content Include="Views\Home\RegisterUpsetPwd.cshtml" />
     <Content Include="Views\Shared\_PartialBottom.cshtml" />
-    <Content Include="Views\Layer\EightGoodWordPartReselt.cshtml" />
     <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
     <Content Include="Views\PayFile\EightMarryPay.cshtml" />
     <Content Include="Views\ResultPart\EightGoodFate.cshtml" />

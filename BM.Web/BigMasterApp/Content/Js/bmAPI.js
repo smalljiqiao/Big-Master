@@ -5,7 +5,8 @@ var bmApI = {
         login: global_api_root + "user/login",
         updatePwd: global_api_root + "user/changepassword",
         getSms: global_api_root + "user/sms",
-        bindPhone: global_api_root+"user/bindPhone"
+        bindPhone: global_api_root + "user/bindPhone",
+        recordAndrodid: global_api_root +"user/android/id"
     },
     fortunDream: {
         getTitle: global_api_root + "fortun/dream/title",//

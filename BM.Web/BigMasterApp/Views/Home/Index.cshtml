@@ -60,15 +60,36 @@
 @section scripts{
     <script src="@Url.Content("~/Content/BaseJs/swiper.min.js")" type="text/javascript"></script>
     <script type="text/javascript">
-        var mySwiper = new Swiper('.swiper-container', {
-            autoplay: { delay: 4000},
-            speed:2000,
-            loop: true,
-            scrollbarHide: true,
-            slidesPerView: 'auto', //可以设置为number或者 'auto'则自动根据slides的宽度来设定数量。
-            centeredSlides: true, //设定为true时，活动块会居中，而不是默认状态下的居左。
-            grabCursor: true,
+      
+        $(document).ready(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: { delay: 4000 },
+                speed: 2000,
+                loop: true,
+                scrollbarHide: true,
+                slidesPerView: 'auto', //可以设置为number或者 'auto'则自动根据slides的宽度来设定数量。
+                centeredSlides: true, //设定为true时，活动块会居中，而不是默认状态下的居左。
+                grabCursor: true,
+            })
+            recordAndroidId();
         })
 
+        function recordAndroidId() {
+            var androidId = bm_getCookie("androidId");
+            androidId = androidId == null || androidId == undefined ? "18814184025" : androidId;
+            var query = {
+                AndroidId: androidId
+            };
+            doPost(bmApI.user.recordAndrodid, query, function (data) {
+                if (data.ReturnCode.Code == 0) {
+                   
+                }
+                else {
+                    layer.msg(data.ReturnCode.Message);
+                }
+            });
+
+
+        }
     </script>
 }
