@@ -23,6 +23,12 @@
         .customerStayContentButton{width:80%;background-color:#e4625b;border-radius:0.12rem;margin:auto}
         .commLineHeight{line-height:0.7rem}
         .backGray{background-color:#EAEAEA}
+        img{width:20px !important }
+        #eightLove img {display:none}
+        #eightMoney img{display:none}
+        #eightHealth img{display:none}
+        #eightHealth p:last-child{display:none}
+        
     </style>
 }
 <link href="~/Content/BaseJs/layer/mobile/need/layer.css" rel="stylesheet" />
@@ -41,80 +47,15 @@
             </ul>
             <div class="layui-tab-content" style="min-height:100vh">
                 <div class="layui-tab-item layui-show" id="eightfate">
-                    <table width="300" height="220" border="1" align="center" cellpadding="0" cellspacing="0" class="small" style="font-size :12px; line-height:normal;">
-                        <tbody>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC"> 姓　名</td>
-                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;机机就</td>
-                            </tr>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC">性　别</td>
-                                <td width="95" bgcolor="#FFFFFF">&nbsp;男</td>
-                                <td align="center" width="55" bgcolor="#FFFFCC">命　卦</td>
-                                <td width="95" bgcolor="#FFFFFF">&nbsp;震</td>
-                            </tr>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC">生　日</td>
-                                <td colspan="3" bgcolor="#FFFFFF">
-                                    &nbsp;公元历：1980 年 01 月 01 日&nbsp;吉时<br>
-                                    &nbsp;农　历：己未年11月14日&nbsp;吉时
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC">事　由</td>
-                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;生辰八字算命报告</td>
-                            </tr>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC">日　元</td>
-                                <td bgcolor="#FFFFFF">&nbsp;癸水</td>
-                                <td align="center" bgcolor="#FFFFCC" width="55">生　态</td>
-                                <td bgcolor="#FFFFFF">&nbsp;癸水生于子月</td>
-                            </tr>
-                            <tr>
-                                <td align="center" bgcolor="#FFFFCC">格　局</td>
-                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;比肩格</td>
-                            </tr>
-                            <tr>
-                                <td width="55" align="center" bgcolor="#FFFFCC">鉴定日期</td>
-                                <td colspan="3" bgcolor="#FFFFFF">&nbsp;公元 2018年7月27日</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
                 </div>
-                <div class="layui-tab-item">2</div>
-                <div class="layui-tab-item">3</div>
-                <div class="layui-tab-item">4</div>
-                <div class="layui-tab-item">5</div>
-                <div class="layui-tab-item">6</div>
-                <div class="layui-tab-item">7</div>
+                <div class="layui-tab-item" id="fiveXing">2</div>
+                <div class="layui-tab-item" id="eightWord">3</div>
+                <div class="layui-tab-item" id="eightLove">4</div>
+                <div class="layui-tab-item" id="eightMoney">5</div>
+                <div class="layui-tab-item" id="eightHealth">6</div>
             </div>
         </div>
-        @*<ul>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
-                <div class="flex-cont ag-self tar"><img onclick="showDetail('八字命盘','EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('五行分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('八字分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命爱情','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命财运','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命健康','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-        </ul>*@
     </div>
 
 </div>
@@ -134,6 +75,14 @@
             doPost(bmApI.fortunEightGoodWord.forecast, query, function (data) {
                 if (data.ReturnCode.Code == 0) {
                     var content = data.Content;
+                    $("#eightfate").html(content.Natal);
+                    $("#fiveXing").html(content.Five);
+                    $("#eightWord").html(content.Destiny);
+                    $("#eightLove").html(content.Love);
+                    $("#eightMoney").html(content.Money);
+                    $("#eightHealth").html(content.Healthy);
+                    $("#eightLove table").removeAttr("width");
+                    $("#eightMoney table").removeAttr("width");
                 }
                 else {
                     layer.msg(data.ReturnCode.Message);
