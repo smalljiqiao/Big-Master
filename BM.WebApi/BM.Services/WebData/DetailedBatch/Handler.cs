@@ -3,6 +3,7 @@ using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using BM.Services.BurialPoint;
 using BM.Services.Logs;
@@ -574,6 +575,192 @@ namespace BM.Services.WebData.DetailedBatch
                     {"Love", fiList},
                     {"Money", siList},
                     {"Healthy", seList}
+                };
+
+            return resultDic;
+        }
+
+
+        /// <summary>
+        /// 解析HTML,返回Html
+        /// </summary>
+        /// <param name="userName">用户姓名</param>
+        /// <param name="birthDay">出生日期</param>
+        /// <param name="isMan">是否为男性</param>
+        /// <returns></returns>
+        public static object GetHtml(string userName, DateTime birthDay, bool isMan = true)
+        {
+            var html = Html(userName, birthDay, isMan);
+            if (string.IsNullOrEmpty(html))
+                return null;
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+
+            var title = string.Empty; //标题
+
+
+            var fHtml = ""; //八字命盘HTML
+
+            var sHtml = ""; //八字论命HTML
+           
+
+            var tHtml = ""; //五行分析
+            var tScript = ""; //五行分析Script
+
+            var fuHtml = ""; //五行个性分析
+
+            var fiHtml = ""; //八字命卦分析
+
+            var siHtml = ""; //八字算命爱情
+
+            var seHtml = ""; //八字算命财运
+
+            var eiHtml = ""; //八字算命健康
+
+            var boxConArr = doc.DocumentNode.SelectNodes("//div[@class='boxcon']");
+            if (boxConArr != null)
+            {
+                foreach (var box in boxConArr)
+                {
+                    var pre = box.PreviousSibling;
+
+                    while (true)
+                    {
+                        if (pre.Name != "div")
+                            pre = pre.PreviousSibling;
+                        else
+                            break;
+                    }
+
+                    title = pre.InnerText.Trim();
+
+                    if (title.IndexOf("强烈推荐", StringComparison.Ordinal) != -1)
+                        break;
+
+                    #region 八字命盘
+
+                    if (title.IndexOf("八字命盘", StringComparison.Ordinal) != -1)
+                    {
+                        var tableArr = box.SelectNodes("table");
+                        if (tableArr == null)
+                            continue;
+
+                        //IN THE NORMAL CASE:tableArr.Count = 4
+
+                        if (tableArr.Count < 4)
+                        {
+                            //TODO LOG INNORMAL
+                            BpService.Use(html);
+                            continue;
+                        }
+
+                        if (tableArr.Count > 4)
+                        {
+                            //TODO LOG INNORMAL
+                            BpService.Use(html);
+                        }
+
+                        fHtml += tableArr[0].OuterHtml.Trim() + tableArr[1].OuterHtml.Trim() +
+                                 tableArr[2].OuterHtml.Trim() +
+                                 tableArr[3].OuterHtml.Trim();
+                    }
+
+
+                    #endregion
+
+                    #region 八字论命
+
+                    if (title.IndexOf("八字论命", StringComparison.Ordinal) != -1)
+                    {
+                        sHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+
+                    #region 五行分析
+
+                    if (title.IndexOf("五行分析", StringComparison.Ordinal) != -1)
+                    {
+                        tHtml = box.ChildNodes.Where(child => child.Name.ToLower() == "table").Aggregate(tHtml, (current, child) => current + child.OuterHtml);
+
+                        var scriptNode = box.NextSibling;
+
+                        while (true)
+                        {
+                            if (scriptNode.Name != "script" && scriptNode.Name != "div")
+                                scriptNode = scriptNode.NextSibling;
+                            else
+                                break;
+                        }
+
+                        if (scriptNode.Name == "script")
+                        {
+                            tScript = scriptNode.InnerHtml;
+                        }
+                    }
+
+                    #endregion
+
+                    #region 五行个性分析
+
+                    if (title.IndexOf("五行个性分析", StringComparison.Ordinal) != -1)
+                    {
+                        fuHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+
+                    #region 八字命卦分析
+
+                    if (title.IndexOf("八字命卦分析", StringComparison.Ordinal) != -1)
+                    {
+                        fiHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+
+                    #region 八字算命爱情
+
+                    if (title.IndexOf("八字算命爱情", StringComparison.Ordinal) != -1)
+                    {
+                        siHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+
+                    #region 八字算命财运事业
+
+                    if (title.IndexOf("八字算命财运事业", StringComparison.Ordinal) != -1)
+                    {
+                        seHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+
+                    #region 八字算命健康
+
+                    if (title.IndexOf("八字算命健康", StringComparison.Ordinal) != -1)
+                    {
+                        eiHtml = box.OuterHtml.Trim();
+                    }
+
+                    #endregion
+                }
+            }
+
+            var resultDic =
+                new Dictionary<string, object>
+                {
+                    {"Natal", fHtml},  //八字命盘
+                    {"Fate", sHtml}, //八字论命
+                    {"Five", tHtml}, //五行分析
+                    {"FivecScript", tScript}, //五行分析Script
+                    {"FivePersonality", fuHtml}, //五行个性分析
+                    {"Destiny", fiHtml}, //八字命卦
+                    {"Love", siHtml}, //爱情
+                    {"Money", seHtml}, //财运
+                    {"Healthy", eiHtml} //八字算命健康
                 };
 
             return resultDic;

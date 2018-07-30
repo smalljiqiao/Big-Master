@@ -24,7 +24,7 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
-            var obj = Services.WebData.DetailedBatch.Handler.Get(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
+            var obj = Services.WebData.DetailedBatch.Handler.GetHtml(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
 
             return new Return
             {
