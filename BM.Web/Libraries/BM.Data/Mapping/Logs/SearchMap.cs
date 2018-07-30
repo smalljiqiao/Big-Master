@@ -10,8 +10,7 @@ namespace BM.Data.Mapping.Logs
             this.ToTable("Search");
             this.HasKey(p => new { p.SearchId });
             this.Property(p => p.SearchId).HasColumnType("uniqueidentifier").IsRequired();
-            this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20);
-            this.Property(p => p.AndroidId).HasColumnType("varchar").HasMaxLength(50);
+            this.Property(p => p.UserId).HasColumnType("uniqueidentifier").IsRequired();
             this.Property(p => p.DName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.DSex).HasColumnType("tinyint");
             this.Property(p => p.DBirthDay).HasColumnType("datetime");
@@ -27,7 +26,10 @@ namespace BM.Data.Mapping.Logs
             this.Property(p => p.MWomanBirthDay).HasColumnType("datetime");
             this.Property(p => p.MWomanTime).HasColumnType("nvarchar").HasMaxLength(20);
             this.Property(p => p.ZhouWord).HasColumnType("nvarchar").HasMaxLength(100);
-            this.Property(p => p.CreateTime).HasColumnType("datetime"); 
+            this.Property(p => p.CreateTime).HasColumnType("datetime");
+
+            //外键关联User表，一对多关系
+            this.HasRequired(search => search.User).WithMany().HasForeignKey(search => search.UserId);
         }
     }
 }

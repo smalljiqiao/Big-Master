@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BM.Core.Domain.Users
 {
@@ -10,11 +9,20 @@ namespace BM.Core.Domain.Users
     public class User : BaseEntity
     {
         /// <summary>
+        /// 用户ID
+        /// </summary>
+        public Guid UserId { get; set; }
+
+        /// <summary>
         /// 手机号码
         /// </summary>
         [Phone]
-        [Column("Phone", Order = 1)]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// 用户默认名称，六位纯数字
+        /// </summary>
+        public string DefaultName { get; set; }
 
         /// <summary>
         /// 昵称
@@ -42,8 +50,8 @@ namespace BM.Core.Domain.Users
         public string SaltPassword { get; set; }
 
         /// <summary>
-        /// 注册时间
+        /// 注册时间 代码生成
         /// </summary>
-        public DateTime? CreateTime { get; set; }
+        public DateTime? RegisterTime { get; set; }
     }
 }

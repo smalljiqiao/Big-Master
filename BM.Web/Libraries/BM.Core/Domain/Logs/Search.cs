@@ -1,7 +1,7 @@
-﻿using BM.Core.Domain.Users;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BM.Core.Domain.Users;
 
 namespace BM.Core.Domain.Logs
 {
@@ -16,16 +16,9 @@ namespace BM.Core.Domain.Logs
         public Guid SearchId { get; set; }
 
         /// <summary>
-        /// 手机号码
+        /// 用户ID
         /// </summary>
-        [Phone]
-        [Column("Phone", Order = 1)]
-        public string Phone { get; set; }
-
-        /// <summary>
-        /// 安卓ID
-        /// </summary>
-        public string AndroidId { get; set; }
+        public Guid UserId { get; set; }
 
         #region 八字详批
 
@@ -119,5 +112,10 @@ namespace BM.Core.Domain.Logs
        /// 生成时间
        /// </summary>
         public DateTime? CreateTime { get; set; }
+
+        /// <summary>
+        /// 外键关联User表
+        /// </summary>
+        public User User { get; set; }
     }
 }

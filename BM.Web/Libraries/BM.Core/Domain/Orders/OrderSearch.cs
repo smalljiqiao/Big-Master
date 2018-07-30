@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace BM.Core.Domain.Orders
 {
@@ -13,17 +12,6 @@ namespace BM.Core.Domain.Orders
         /// 订单ID
         /// </summary>
         public Guid OrderId { get; set; }
-
-        /// <summary>
-        /// 手机号码
-        /// </summary>
-        [Phone]
-        public string Phone { get; set; }
-
-        /// <summary>
-        /// 安卓ID
-        /// </summary>
-        public string AndroidId { get; set; }
 
         #region 八字详批
 
@@ -107,5 +95,10 @@ namespace BM.Core.Domain.Orders
         public string MWomanTime { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// 外键关联Order表
+        /// </summary>
+        public Order Order { get; set; }
     }
 }

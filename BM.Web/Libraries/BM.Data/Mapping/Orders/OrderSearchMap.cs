@@ -10,8 +10,6 @@ namespace BM.Data.Mapping.Orders
             this.ToTable("OrderSearch");
             this.HasKey(k => k.OrderId);
             this.Property(p => p.OrderId).HasColumnType("uniqueidentifier").IsRequired();
-            this.Property(p => p.Phone).HasColumnType("varchar").HasMaxLength(20);
-            this.Property(p => p.AndroidId).HasColumnType("varchar").HasMaxLength(20);
             this.Property(p => p.DName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.DSex).HasColumnType("tinyint");
             this.Property(p => p.DBirthDay).HasColumnType("datetime");
@@ -26,6 +24,9 @@ namespace BM.Data.Mapping.Orders
             this.Property(p => p.MWomanName).HasColumnType("nvarchar").HasMaxLength(40);
             this.Property(p => p.MWomanBirthDay).HasColumnType("datetime");
             this.Property(p => p.MWomanTime).HasColumnType("nvarchar").HasMaxLength(20);
+
+            //外键关联Order表 一对一关系
+            this.HasRequired(orderSearch => orderSearch.Order).WithOptional(order => order.OrderSearch);
         }
     }
 }
