@@ -16,7 +16,6 @@ namespace BM.Data.Domain
             Search = new HashSet<Search>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
         [StringLength(20)]
@@ -32,15 +31,12 @@ namespace BM.Data.Domain
         [StringLength(50)]
         public string Email { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string Password { get; set; }
 
-        [Required]
         [StringLength(8)]
         public string Salt { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string SaltPassword { get; set; }
 

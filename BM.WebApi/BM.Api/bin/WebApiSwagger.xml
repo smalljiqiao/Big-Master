@@ -633,6 +633,11 @@
             安卓ID
             </summary>
         </member>
+        <member name="P:BM.Api.Models.Android.UserId">
+             <summary>
+            用户ID
+             </summary>
+        </member>
         <member name="T:BM.Api.Models.BabyName">
             <summary>
             宝宝取名模型类
@@ -751,6 +756,11 @@
         <member name="T:BM.Api.Models.User">
             <summary>
             用户信息模型类
+            </summary>
+        </member>
+        <member name="P:BM.Api.Models.User.UserId">
+            <summary>
+            用户ID
             </summary>
         </member>
         <member name="P:BM.Api.Models.User.Phone">

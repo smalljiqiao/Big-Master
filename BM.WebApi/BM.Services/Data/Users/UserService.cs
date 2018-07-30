@@ -12,30 +12,32 @@ namespace BM.Services.Data.Users
     public static class UserService
     {
         /// <summary>
-        /// 插入或更新Android信息，更新时间
+        /// 初次更新用户表
         /// </summary>
-        /// <param name="androidId">安卓ID</param>
-        /// <returns>安卓信息对象或null</returns>
-        public static Android AndroidIdInsertOrUpdate(string androidId)
+        /// <param name="userId">用户ID</param>
+        /// <param name="returnCode">返回码对象</param>
+        /// <returns></returns>
+        public static User Insert(string userId, ReturnCode returnCode)
         {
-            var androidInfo = new Android
-            {
-                AndroidId = androidId
-            };
+            //用户默认名称
+            var defaultBame = CommonHelper.CreateCode();
 
             try
             {
                 var db = new DbEntities();
-                db.Android.AddOrUpdate(androidInfo);
+                var userInfo = new User { UserId = Guid.Parse(userId), DefaultName = defaultBame };
+
+                db.User.Add(userInfo);
                 db.SaveChanges();
+
+                return userInfo;
             }
             catch (Exception ex)
             {
+                returnCode.Code = -1;
                 LogService.InsertLog(ex);
                 return null;
             }
-
-            return androidInfo;
         }
 
         /// <summary>
@@ -190,6 +192,38 @@ namespace BM.Services.Data.Users
                 var query = from d in db.User
                             where d.Phone == phone
                             select d;
+
+                user = query.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                returnCode.Code = -1;
+                LogService.InsertLog(ex);
+                return null;
+            }
+
+            return user;
+        }
+
+        /// <summary>
+        /// 根据用户ID获取用户信息
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="returnCode"></param>
+        /// <returns></returns>
+        public static User GetUserByUserId(string userId, ReturnCode returnCode)
+        {
+            User user;
+
+            try
+            {
+                var userIdGuid = Guid.Parse(userId);
+
+                var db = new DbEntities();
+
+                var query = from d in db.User
+                    where d.UserId == userIdGuid
+                    select d;
 
                 user = query.FirstOrDefault();
             }

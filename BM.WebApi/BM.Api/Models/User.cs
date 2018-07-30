@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BM.Api.Models
@@ -7,6 +8,11 @@ namespace BM.Api.Models
     /// </summary>
     public partial class User : BaseModel
     {
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public Guid UserId { get; set; }
+
         /// <summary>
         /// 手机号码
         /// </summary>

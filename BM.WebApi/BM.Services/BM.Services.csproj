@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Androids\AndroidService.cs" />
     <Compile Include="Data\BurialPoint\BpService.cs" />
     <Compile Include="Caching\Extension.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />

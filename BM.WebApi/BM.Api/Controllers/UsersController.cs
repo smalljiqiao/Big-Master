@@ -4,7 +4,9 @@ using BM.Services.Common;
 using BM.Services.ModelTransfer;
 using BM.Services.ReturnServices;
 using System;
+using System.Collections.Generic;
 using System.Web.Http;
+using BM.Services.Data.Androids;
 using BM.Services.Data.BurialPoint;
 using BM.Services.Data.ShortMessages;
 using BM.Services.Data.Users;
@@ -23,7 +25,7 @@ namespace BM.Api.Controllers
     public class UsersController : ApiController
     {
         /// <summary>
-        /// 更新安卓ID
+        /// 写入安卓ID
         /// </summary>
         /// <param name="android">安卓信息对象</param>
         /// <returns></returns>
@@ -32,14 +34,89 @@ namespace BM.Api.Controllers
         [Route("api/user/android/id")]
         public object AndroidId(Android android)
         {
+            Data.Domain.User userInfo = null; //返回的UserModel
+            var isBind = false; //是否绑定手机号码
+            User userInfoMap = null; //返回的前端UserModel
+            Dictionary<string, object> returnDic = null; //返回的键值数组
+
             var returnCode = new ReturnCode();
 
-            var androidInfo = UserService.AndroidIdInsertOrUpdate(android.AndroidId);
+            //查找Android Table 是否存在该Android
+            var oldAndroid = AndroidService.GetByAndroidId(android.AndroidId, returnCode);
 
-            if (androidInfo == null)
+            //数据库执行过程中出错
+            if (returnCode.Code != default(int))
+            {
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //如果UserId已存在Android Table，则直接返回UserInfo
+            if (oldAndroid != null)
+            {
+                userInfo = UserService.GetUserByUserId(oldAndroid.UserId.ToString(), returnCode);
+
+                //模型转换
+                userInfoMap = ModelTransfer.Mapper(userInfo, new User());
+
+                isBind = !string.IsNullOrEmpty(userInfoMap.Phone);
+
+                //忽略密码
+                userInfoMap.Password = null;
+
+                returnDic = new Dictionary<string, object> { { "IsBind", isBind }, { "User", userInfoMap } };
+
+                return new Return { ReturnCode = returnCode, Content = returnDic };
+            }
+
+            //写入Android Table
+            var flag = AndroidService.Insert(android.AndroidId);
+
+            //数据库执行过程中出错
+            if (!flag)
+            {
                 returnCode.Code = -1;
+                return new Return { ReturnCode = returnCode };
+            }
 
-            return new Return { ReturnCode = returnCode };
+            //重新获取安卓信息
+            var newAndroid = AndroidService.GetByAndroidId(android.AndroidId, returnCode);
+
+            //数据库执行过程中出错 || 数据库并没有写入新数据
+            if (returnCode.Code != default(int) || newAndroid == null)
+            {
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //用户表的UserID为空，因为后续操作需要该ID，所以判定为系统错误。
+            //其实这个应该不会触发的吧，因为数据库UserId设置为主键，如果写入过程中写入空值也是会报错的。
+            if (string.IsNullOrEmpty(newAndroid.UserId.ToString()))
+            {
+                returnCode.Code = -1;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //写入User Table
+            //不检测User Table是否存在该UserId，因为这里都是将Android的UserId写入到User Table里。
+            userInfo = UserService.Insert(newAndroid.UserId.ToString(), returnCode);
+
+            //数据库执行过程中出错 当userInfo为null时也触发下面判断
+            if (returnCode.Code != default(int))
+            {
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //模型转换
+            userInfoMap = ModelTransfer.Mapper(userInfo, new User());
+
+            //是否绑定手机号码
+            isBind = !string.IsNullOrEmpty(userInfoMap.Phone);
+
+            //忽略密码
+            userInfoMap.Password = null;
+
+            returnDic = new Dictionary<string, object> { { "IsBind", isBind }, { "User", userInfoMap } };
+
+            return new Return { ReturnCode = returnCode, Content = returnDic };
         }
 
         /// <summary>
