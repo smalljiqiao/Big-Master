@@ -13,25 +13,19 @@ namespace BM.Data.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid OrderId { get; set; }
 
-        [StringLength(20)]
-        public string Phone { get; set; }
-
-        [StringLength(20)]
-        public string AndroidId { get; set; }
-
         [StringLength(40)]
         public string DName { get; set; }
 
-        public byte DSex { get; set; }
+        public byte? DSex { get; set; }
 
         public DateTime DBirthDay { get; set; }
 
         [StringLength(10)]
         public string BSurname { get; set; }
 
-        public byte BSex { get; set; }
+        public byte? BSex { get; set; }
 
-        public DateTime BBirthDay { get; set; }
+        public DateTime? BBirthDay { get; set; }
 
         [StringLength(20)]
         public string BProvince { get; set; }
@@ -42,7 +36,7 @@ namespace BM.Data.Domain
         [StringLength(40)]
         public string MManName { get; set; }
 
-        public DateTime MManBirthDay { get; set; }
+        public DateTime? MManBirthDay { get; set; }
 
         [StringLength(20)]
         public string MManTime { get; set; }
@@ -50,9 +44,11 @@ namespace BM.Data.Domain
         [StringLength(40)]
         public string MWomanName { get; set; }
 
-        public DateTime MWomanBirthDay { get; set; }
+        public DateTime? MWomanBirthDay { get; set; }
 
         [StringLength(20)]
         public string MWomanTime { get; set; }
+
+        public virtual Order Order { get; set; }
     }
 }

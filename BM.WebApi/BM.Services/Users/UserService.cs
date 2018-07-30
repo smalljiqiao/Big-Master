@@ -16,9 +16,9 @@ namespace BM.Services.Users
         /// </summary>
         /// <param name="androidId">安卓ID</param>
         /// <returns>安卓信息对象或null</returns>
-        public static AndroidInfo AndroidIdInsertOrUpdate(string androidId)
+        public static Android AndroidIdInsertOrUpdate(string androidId)
         {
-            var androidInfo = new AndroidInfo
+            var androidInfo = new Android
             {
                 AndroidId = androidId
             };
@@ -26,7 +26,7 @@ namespace BM.Services.Users
             try
             {
                 var db = new DbEntities();
-                db.AndroidInfo.AddOrUpdate(androidInfo);
+                db.Android.AddOrUpdate(androidInfo);
                 db.SaveChanges();
             }
             catch (Exception ex)

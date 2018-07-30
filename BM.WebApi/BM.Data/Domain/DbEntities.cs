@@ -12,7 +12,7 @@ namespace BM.Data.Domain
         {
         }
 
-        public virtual DbSet<AndroidInfo> AndroidInfo { get; set; }
+        public virtual DbSet<Android> Android { get; set; }
         public virtual DbSet<BPrice> BPrice { get; set; }
         public virtual DbSet<BType> BType { get; set; }
         public virtual DbSet<BurialPoint> BurialPoint { get; set; }
@@ -28,8 +28,12 @@ namespace BM.Data.Domain
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AndroidInfo>()
+            modelBuilder.Entity<Android>()
                 .Property(e => e.AndroidId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Android>()
+                .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<BPrice>()
@@ -53,9 +57,9 @@ namespace BM.Data.Domain
                 .Property(e => e.Url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Order>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
+            modelBuilder.Entity<DreamTitle>()
+                .HasOptional(e => e.DreamDetail)
+                .WithRequired(e => e.DreamTitle);
 
             modelBuilder.Entity<Order>()
                 .Property(e => e.AndroidId)
@@ -73,21 +77,9 @@ namespace BM.Data.Domain
                 .Property(e => e.PayState)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<OrderSearch>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<OrderSearch>()
-                .Property(e => e.AndroidId)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Search>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Search>()
-                .Property(e => e.AndroidId)
-                .IsUnicode(false);
+            modelBuilder.Entity<Order>()
+                .HasOptional(e => e.OrderSearch)
+                .WithRequired(e => e.Order);
 
             modelBuilder.Entity<Sms>()
                 .Property(e => e.Phone)
@@ -100,6 +92,11 @@ namespace BM.Data.Domain
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.DefaultName)
+                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()

@@ -9,9 +9,22 @@ namespace BM.Data.Domain
     [Table("User")]
     public partial class User
     {
-        [Key]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            Order = new HashSet<Order>();
+            Search = new HashSet<Search>();
+        }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid UserId { get; set; }
+
         [StringLength(20)]
         public string Phone { get; set; }
+
+        [Required]
+        [StringLength(6)]
+        public string DefaultName { get; set; }
 
         [StringLength(20)]
         public string NickName { get; set; }
@@ -31,7 +44,12 @@ namespace BM.Data.Domain
         [StringLength(50)]
         public string SaltPassword { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? CreateTime { get; set; }
+        public DateTime? RegisterTime { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Search> Search { get; set; }
     }
 }

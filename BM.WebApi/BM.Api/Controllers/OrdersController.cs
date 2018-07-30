@@ -65,7 +65,7 @@ namespace BM.Api.Controllers
             {
                 case DetailedBatch _:
                     var dBModel = (DetailedBatch)model;
-                    order = new Order { Phone = dBModel.Phone, AndroidId = dBModel.AndroidId, OrderType = "DetailedBatch", Price = dBModel.Price,PayState = "UnPay"};
+                   
                     break;
             }
 

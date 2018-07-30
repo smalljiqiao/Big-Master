@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AndroidInfo.cs" />
+    <Compile Include="Domain\Android.cs" />
     <Compile Include="Domain\BPrice.cs" />
     <Compile Include="Domain\BType.cs" />
     <Compile Include="Domain\BurialPoint.cs" />
