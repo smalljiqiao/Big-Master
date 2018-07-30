@@ -1,4 +1,6 @@
-﻿namespace BM.Api.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BM.Api.Models
 {
     /// <summary>
     /// 安卓信息类
@@ -8,6 +10,7 @@
         /// <summary>
         /// 安卓ID
         /// </summary>
+        [Required]
         public string AndroidId { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using BM.Services.Logs;
+using BM.Services.Data.Logs;
 
 namespace BM.Services.ModelTransfer
 {

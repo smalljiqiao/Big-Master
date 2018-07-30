@@ -1,7 +1,7 @@
 ﻿using System;
 using BM.Data.Domain;
 
-namespace BM.Services.Logs
+namespace BM.Services.Data.Logs
 {
     /// <summary>
     /// 日记记录类

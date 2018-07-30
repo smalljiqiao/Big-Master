@@ -1,26 +1,27 @@
 ﻿using System;
-using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Data.Entity.Migrations;
 using BM.Data.Domain;
-using BM.Services.Logs;
+using BM.Services.Data.Logs;
 
-namespace BM.Services.Orders
+
+namespace BM.Services.Data.ShortMessages
 {
     /// <summary>
-    /// 订单服务类
+    /// 短信服务类，主要用于数据库记录
     /// </summary>
-    public static class OrderService
+    public static class SmsService
     {
         /// <summary>
-        /// 新增订单
+        /// 更新Sms Table
         /// </summary>
-        /// <param name="orderModel"></param>
-        /// <returns></returns>
-        public static bool Insert(Order orderModel)
+        /// <param name="sms">Sms模型</param>
+        /// <returns>true:success;false:failure</returns>
+        public static bool InsertOrUpdate(BM.Data.Domain.Sms sms)
         {
             try
             {
                 var db = new DbEntities();
-                db.Order.Add(orderModel);
+                db.Sms.AddOrUpdate(sms);
                 db.SaveChanges();
             }
             catch (Exception ex)

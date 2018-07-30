@@ -1,4 +1,5 @@
-﻿using BM.Services.Localization;
+﻿using BM.Services.Data.BurialPoint;
+using BM.Services.Localization;
 
 namespace BM.Services.Common
 {
@@ -23,7 +24,7 @@ namespace BM.Services.Common
 
                 //记录异常信息
                 if (_code != default(int))
-                    BurialPoint.BpService.Use(Message);
+                    BpService.Use(Message);
             }
         }
 

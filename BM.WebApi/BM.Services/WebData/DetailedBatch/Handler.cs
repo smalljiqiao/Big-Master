@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using BM.Services.BurialPoint;
-using BM.Services.Logs;
+using BM.Services.Data.BurialPoint;
+using BM.Services.Data.Logs;
 
 namespace BM.Services.WebData.DetailedBatch
 {

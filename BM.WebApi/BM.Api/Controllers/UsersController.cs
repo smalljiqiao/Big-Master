@@ -1,15 +1,15 @@
 ﻿using BM.Api.Attributes;
 using BM.Data.Domain;
-using BM.Services.BurialPoint;
 using BM.Services.Common;
 using BM.Services.ModelTransfer;
 using BM.Services.ReturnServices;
-using BM.Services.ShortMessages;
-using BM.Services.Users;
 using System;
 using System.Web.Http;
+using BM.Services.Data.BurialPoint;
+using BM.Services.Data.ShortMessages;
+using BM.Services.Data.Users;
 using Android = BM.Api.Models.Android;
-using Sms = BM.Services.ShortMessages.Sms;
+using Sms = BM.Services.Data.ShortMessages.Sms;
 using User = BM.Api.Models.User;
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BM.Data.Domain;
 using BM.Services.Common;
-using BM.Services.Logs;
+using BM.Services.Data.Logs;
 using HtmlAgilityPack;
 
 namespace BM.Services.WebData.Dream

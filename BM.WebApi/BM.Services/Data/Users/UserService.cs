@@ -1,13 +1,13 @@
-﻿using BM.Data.Domain;
-using BM.Services.Common;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using BM.Services.Logs;
+using BM.Data.Domain;
+using BM.Services.Common;
+using BM.Services.Data.Logs;
 using BM.Services.Security;
 
-namespace BM.Services.Users
+namespace BM.Services.Data.Users
 {
     public static class UserService
     {

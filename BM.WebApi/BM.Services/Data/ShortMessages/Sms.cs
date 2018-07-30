@@ -1,11 +1,10 @@
-﻿using Aliyun.Acs.Core;
+﻿using System;
+using Aliyun.Acs.Core;
 using Aliyun.Acs.Core.Exceptions;
 using Aliyun.Acs.Core.Profile;
 using Aliyun.Acs.Dysmsapi.Model.V20170525;
-using System;
 
-
-namespace BM.Services.ShortMessages
+namespace BM.Services.Data.ShortMessages
 {
     /// <summary>
     /// 阿里云短信类

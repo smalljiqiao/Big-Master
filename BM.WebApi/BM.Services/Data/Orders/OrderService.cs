@@ -1,32 +1,34 @@
 ﻿using System;
 using BM.Data.Domain;
-using BM.Services.Logs;
+using BM.Services.Data.Logs;
 
-namespace BM.Services.BurialPoint
+namespace BM.Services.Data.Orders
 {
     /// <summary>
-    /// 埋点服务类
+    /// 订单服务类
     /// </summary>
-    public static class BpService
+    public static class OrderService
     {
         /// <summary>
-        /// 记录
+        /// 新增订单
         /// </summary>
-        /// <param name="remark"></param>
-        public static void Use(string remark)
+        /// <param name="orderModel"></param>
+        /// <returns></returns>
+        public static bool Insert(Order orderModel)
         {
             try
             {
-                var bPModel = new BM.Data.Domain.BurialPoint { Remark = remark };
-
                 var db = new DbEntities();
-                db.BurialPoint.Add(bPModel);
+                db.Order.Add(orderModel);
                 db.SaveChanges();
             }
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
+                return false;
             }
+
+            return true;
         }
     }
 }
