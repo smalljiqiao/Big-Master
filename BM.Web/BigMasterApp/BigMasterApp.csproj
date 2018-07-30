@@ -302,9 +302,6 @@
     <Content Include="Content\images\guishenlei.png" />
     <Content Include="Content\images\huodonglei.png" />
     <Content Include="Content\images\indexBack.jpg" />
-    <Content Include="Content\images\indexItem1.png" />
-    <Content Include="Content\images\indexItem2.png" />
-    <Content Include="Content\images\indexItem3.png" />
     <Content Include="Content\images\jianzhulei.png" />
     <Content Include="Content\images\lock.png" />
     <Content Include="Content\images\mineBack.jpg" />

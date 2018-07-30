@@ -24,8 +24,22 @@
         .commLineHeight{line-height:0.7rem}
         .backGray{background-color:#EAEAEA}
         img{width:20px !important }
+        #eightfate {font-size:18px!important}
+
+        #fiveXing{font-size:18px}
+        #fiveXing table:nth-child(2) tr:nth-child(4){display:none}
+
+        #eightWord{font-size:18px!important}
+        #eightWord img{display:none}
+
+        #eightLove {font-size:18px!important}
         #eightLove img {display:none}
+
+        #eightMoney {font-size:18px!important}
         #eightMoney img{display:none}
+
+        #eightHealth {font-size:18px!important}
+        #eightHealth strong{font-size:18px}
         #eightHealth img{display:none}
         #eightHealth p:last-child{display:none}
         
@@ -38,7 +52,7 @@
     <div class="payback-know-content ">
         <div class="layui-tab layui-tab-card" style="margin:0px">
             <ul class="layui-tab-title">
-                <li class="layui-this">八字命盘</li>
+                <li class="layui-this">八字论命</li>
                 <li>五行分析</li>
                 <li>八字分析</li>
                 <li>八字算命爱情</li>
@@ -75,7 +89,7 @@
             doPost(bmApI.fortunEightGoodWord.forecast, query, function (data) {
                 if (data.ReturnCode.Code == 0) {
                     var content = data.Content;
-                    $("#eightfate").html(content.Natal);
+                    $("#eightfate").html(content.Fate);
                     $("#fiveXing").html(content.Five);
                     $("#eightWord").html(content.Destiny);
                     $("#eightLove").html(content.Love);
@@ -83,6 +97,7 @@
                     $("#eightHealth").html(content.Healthy);
                     $("#eightLove table").removeAttr("width");
                     $("#eightMoney table").removeAttr("width");
+                    $("#eightWord table").removeAttr("width");
                 }
                 else {
                     layer.msg(data.ReturnCode.Message);
