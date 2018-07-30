@@ -41,13 +41,14 @@ namespace BM.Services.Data.Users
         }
 
         /// <summary>
-        /// 用户注册
+        /// 用户注册（根据UserId补充信息）
         /// </summary>
+        /// <param name="UserId">用户ID</param>
         /// <param name="phone">手机号码</param>
         /// <param name="password">登录密码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static User Register(string phone, string password, ReturnCode returnCode)
+        public static User Register(string userId, string phone, string password, ReturnCode returnCode)
         {
             var db = new DbEntities();
 
@@ -70,10 +71,23 @@ namespace BM.Services.Data.Users
                     var salt = EncryptionService.CreateSaltKey(6);
                     var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                    userInfo = new User { Phone = phone, Password = password, Salt = salt, SaltPassword = saltPassword };
+                    userInfo = GetUserByUserId(userId, returnCode);
 
-                    db.User.Add(userInfo);
-                    db.SaveChanges();
+                    if (returnCode.Code != default(int))
+                    {
+                        returnCode.Code = -1;
+                        return null;
+                    }
+                    else
+                    {
+                        userInfo.Phone = phone;
+                        userInfo.Password = password;
+                        userInfo.Salt = salt;
+                        userInfo.SaltPassword = saltPassword;
+
+                        db.Entry<User>(userInfo).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -222,8 +236,8 @@ namespace BM.Services.Data.Users
                 var db = new DbEntities();
 
                 var query = from d in db.User
-                    where d.UserId == userIdGuid
-                    select d;
+                            where d.UserId == userIdGuid
+                            select d;
 
                 user = query.FirstOrDefault();
             }

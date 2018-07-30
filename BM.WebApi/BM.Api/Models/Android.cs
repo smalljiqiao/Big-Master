@@ -12,10 +12,5 @@ namespace BM.Api.Models
         /// </summary>
         [Required]
         public string AndroidId { get; set; }
-
-        /// <summary>
-        ///用户ID
-        /// </summary>
-        public string UserId { get; set; }
     }
 }

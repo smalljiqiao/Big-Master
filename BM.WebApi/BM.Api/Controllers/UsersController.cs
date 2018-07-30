@@ -183,6 +183,13 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
+            //安卓ID为空
+            if (string.IsNullOrEmpty(userModel.Android))
+            {
+                returnCode.Code = 1885;
+                return new Return { ReturnCode = returnCode };
+            }
+
             //密码为空
             if (string.IsNullOrEmpty(userModel.Password))
             {
@@ -246,7 +253,16 @@ namespace BM.Api.Controllers
                 return new Return { ReturnCode = returnCode };
             }
 
-            var userInfo = UserService.Register(userModel.Phone, userModel.Password, returnCode);
+            var androidInfo = AndroidService.GetByAndroidId(userModel.Android, returnCode);
+
+            //查询UserID过程中出现错误
+            if (returnCode.Code != default(int))
+            {
+                returnCode.Code = -1;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            var userInfo = UserService.Register(androidInfo.UserId.ToString(), userModel.Phone, userModel.Password, returnCode);
 
             //注册过程中出现错误
             if (returnCode.Code != default(int))
