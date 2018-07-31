@@ -31,12 +31,12 @@ namespace BM.Core.Domain.Logs
         /// 性别 值为1时是男性，为2时是女性，为0时是未知 对应八字详批和宝宝取名
         /// </summary>
 
-        public byte DSex { get; set; }
+        public byte? DSex { get; set; }
 
         /// <summary>
         /// 出生日期 yyyy-MM-dd HH
         /// </summary>
-        public DateTime DBirthDay { get; set; }
+        public DateTime? DBirthDay { get; set; }
 
         #endregion
 
@@ -50,12 +50,12 @@ namespace BM.Core.Domain.Logs
         /// <summary>
         /// 性别
         /// </summary>
-        public byte BSex { get; set; }
+        public byte? BSex { get; set; }
 
         /// <summary>
         /// 出生日期 yyyy-MM-dd HH-mm-ss
         /// </summary>
-        public DateTime BBirthDay { get; set; }
+        public DateTime? BBirthDay { get; set; }
 
         /// <summary>
         /// 省份
@@ -79,7 +79,7 @@ namespace BM.Core.Domain.Logs
         /// <summary>
         /// 八字合婚男方出生日期 yyyy-MM-dd 
         /// </summary>
-        public DateTime MManBirthDay { get; set; }
+        public DateTime? MManBirthDay { get; set; }
 
         /// <summary>
         /// 八字合婚男方时辰
@@ -94,7 +94,7 @@ namespace BM.Core.Domain.Logs
         /// <summary>
         /// 八字合婚女方出生日期 yyyy-MM-dd 
         /// </summary>
-        public DateTime MWomanBirthDay { get; set; }
+        public DateTime? MWomanBirthDay { get; set; }
 
         /// <summary>
         /// 八字合婚女方时辰
