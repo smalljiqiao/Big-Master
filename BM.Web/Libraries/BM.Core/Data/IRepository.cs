@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using BM.Core.Domain;
 
 namespace BM.Core.Data
 {

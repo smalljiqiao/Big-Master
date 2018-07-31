@@ -1,26 +1,57 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BM.Core.Domain.Users
 {
+    /// <summary>
+    /// 用户信息类
+    /// </summary>
     public class User : BaseEntity
     {
-        public User()
-        {
-            this.CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-        }
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public Guid UserId { get; set; }
 
+        /// <summary>
+        /// 手机号码
+        /// </summary>
+        [Phone]
         public string Phone { get; set; }
 
-        public string Nickname { get; set; }
+        /// <summary>
+        /// 用户默认名称，六位纯数字
+        /// </summary>
+        public string DefaultName { get; set; }
 
+        /// <summary>
+        /// 昵称
+        /// </summary>
+        public string NickName { get; set; }
+
+        /// <summary>
+        /// 邮箱
+        /// </summary>
         public string Email { get; set; }
 
+        /// <summary>
+        /// 密码明文
+        /// </summary>
         public string Password { get; set; }
 
+        /// <summary>
+        /// 密码盐值
+        /// </summary>
         public string Salt { get; set; }
 
+        /// <summary>
+        /// 密码密文
+        /// </summary>
         public string SaltPassword { get; set; }
 
-        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 注册时间 代码生成
+        /// </summary>
+        public DateTime? RegisterTime { get; set; }
     }
 }

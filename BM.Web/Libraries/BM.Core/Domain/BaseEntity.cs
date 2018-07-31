@@ -1,4 +1,4 @@
-﻿namespace BM.Core
+﻿namespace BM.Core.Domain
 {
     /// <summary>
     /// 表基类

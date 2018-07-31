@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "周公解梦";
-    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot() + "images/readDreamBanner.jpg";
+    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/7ef43a5387b647a7ba2077fe564813ec.jpg";
 }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
@@ -21,19 +21,19 @@
 
     <div class="mt20">
         <div class="flex-box mt15">
-            <div class="flex-cont" onclick="showDetail('人物类')"><img src="~/Content/images/renwulei.png" /><div>人物类</div></div>
-            <div class="flex-cont" onclick="showDetail('自然类')"><img src="~/Content/images/ziranlei.png" /><div>自然类</div></div>
-            <div class="flex-cont" onclick="showDetail('动物类')"><img src="~/Content/images/dongwulei.png" /><div>动物类</div></div>
+            <div class="flex-cont" onclick="window.location.href='ReadDreamItem?key=人物类'"><img src="~/Content/images/renwulei.png" /><div>人物类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/ziranlei.png" /><div>自然类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/dongwulei.png" /><div>动物类</div></div>
         </div>
         <div class="flex-box mt20">
-            <div class="flex-cont" onclick="showDetail('建筑类')"><img src="~/Content/images/jianzhulei.png" /><div>建筑类</div></div>
-            <div class="flex-cont" onclick="showDetail('鬼神类')"><img src="~/Content/images/guishenlei.png" /><div>鬼神类</div></div>
-            <div class="flex-cont" onclick="showDetail('活动类')"><img src="~/Content/images/huodonglei.png" /><div>活动类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/jianzhulei.png" /><div>人物类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/guishenlei.png" /><div>自然类</div></div>
+            <div class="flex-cont"><img src="~/Content/images/huodonglei.png" /><div>动物类</div></div>
         </div>
         <div class="flex-box mt20">
-        <div class="flex-cont" onclick="showDetail('生活类')"><img src="~/Content/images/shenghuolei.png" /><div>生活类</div></div>
-        <div class="flex-cont" onclick="showDetail('植物类')"><img src="~/Content/images/zhiwulei.png" /><div>植物类</div></div>
-        <div class="flex-cont" onclick="showDetail('物品类')"><img src="~/Content/images/wupinlei.png" /><div>物品类</div></div>
+        <div class="flex-cont"><img src="~/Content/images/shenghuolei.png" /><div>人物类</div></div>
+        <div class="flex-cont"><img src="~/Content/images/zhiwulei.png" /><div>自然类</div></div>
+        <div class="flex-cont"><img src="~/Content/images/wupinlei.png" /><div>动物类</div></div>
     </div>
         <div class="flex-box mt20">
             <div class="flex-cont"><img src="~/Content/images/qitalei.png" /> <div>其他类</div> </div>
@@ -43,16 +43,5 @@
     </div>
    
 </div>
-@section scripts{
-<script type="text/javascript">
-    function showDetail(key) {
-        window.location.href = "ReadDreamItem?key=" + key;
-    }
-
-
-    </script>    
-
-}
-
 
 

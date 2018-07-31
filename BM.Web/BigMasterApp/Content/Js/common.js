@@ -36,22 +36,30 @@ var hb = {
             dataType: "json",
             url: url,
             data: data,
+            xhrFields: {
+                "Access-Control-Allow-Origin": '*',
+                withCredentials: true
+            },
             success: function (res) {
                 callback(res);
             }
         }, false, false);
 }
       function doPost(url, data, callback) {
-          $.request({
-            type: "post",
+        $.request({
+            type: "GET",
             dataType: "json",
             url: url,
             data: JSON.stringify(data),
+            xhrFields: {
+                "Access-Control-Allow-Origin": '*',
+                withCredentials: true
+            },
             success: function (res) {
                 callback(res);
             }
-          }, false, false);
-      }
+        }, false, false);
+}
       (function ($) {
         /**请求数据
         *loding:是否遮罩
@@ -59,9 +67,20 @@ var hb = {
         *ajax参数
         **/
         $.request = function (config, loding, checkLogin) {
-           
+            if (config.xhrFields == undefined) {
+                config.xhrFields = {
+                    "Access-Control-Allow-Origin": '*',
+                    withCredentials: true,
+                };
+            }
             if (config.contentType == undefined) {
                 config.contentType = "application/json";
+            }
+            var accessToken = "";
+            if (accessToken != null && accessToken != undefined && accessToken.length > 0) {
+                config.headers = {
+                    Authorization: 'Bearer ' + accessToken
+                };
             }
             $.ajax(config);
         };
@@ -82,22 +101,13 @@ var hb = {
           document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
       }
 
-      function bm_setlocalStorage(key, keyValue) {
-          localStorage.setItem(key, keyValue);
-      }
-      function bm_getlocalStorage(key) {
-          return localStorage.getItem(key);
-      }
-
-
-
       //读取cookies 
       function bm_getCookie(name) {
-          //var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-          //if (arr = document.cookie.match(reg))
-          //    return unescape(arr[2]);
-          //else
-          //    return null;
+          var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+          if (arr = document.cookie.match(reg))
+              return unescape(arr[2]);
+          else
+              return null;
       }
 
       //删除cookies 

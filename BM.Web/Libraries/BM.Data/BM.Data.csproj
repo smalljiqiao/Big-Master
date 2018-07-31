@@ -56,13 +56,16 @@
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Mapping\Business\BPriceMap.cs" />
     <Compile Include="Mapping\Business\BTypeMap.cs" />
+    <Compile Include="Mapping\Data\DreamData\DreamDetailMap.cs" />
+    <Compile Include="Mapping\Data\DreamData\DreamTitleMap.cs" />
     <Compile Include="Mapping\Localization\CodeMessageMap.cs" />
     <Compile Include="Mapping\Logs\BurialPointMap.cs" />
     <Compile Include="Mapping\Logs\LogMap.cs" />
     <Compile Include="Mapping\Logs\SearchMap.cs" />
     <Compile Include="Mapping\Orders\OrderMap.cs" />
     <Compile Include="Mapping\Orders\OrderSearchMap.cs" />
-    <Compile Include="Mapping\Users\AndroidInfoMap.cs" />
+    <Compile Include="Mapping\ShortMessage\SmsMap.cs" />
+    <Compile Include="Mapping\Users\AndroidMap.cs" />
     <Compile Include="Mapping\Users\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerDataProvider.cs" />

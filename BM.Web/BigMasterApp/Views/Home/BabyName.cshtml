@@ -1,39 +1,30 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "宝宝取名";
-    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot()+"images/babybanner.jpg";
+    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetAbsoluteUriSite(this.Context.Request)+":55765/Content/images/babybanner.jpg";
 }
 @section Styles{
     <style type="text/css">
          body{background-color:#fcf6f5 !important}
         .babyNameColor{color:#b72948;font-weight:600;font-family:"Microsoft YaHei"}
-        .babyNameContent{padding:0.123333rem 0.47rem 0.8rem 0.47rem; background-color:#fcf6f5}
+        .babyNameContent{margin:0.1rem 0.51rem 0rem 0.51rem;background-color:#fcf6f5}
         .babyNameContent .userMess{border-bottom:1px solid #fdcecf;line-height:0.8rem;}
         .babyNameContent .userMess input {background-color:transparent}
-
-        .babyMess li {line-height:1rem !important}
+        ul li {line-height:1rem !important}
         .babyNameContent .userMess .iMan{border:1px solid #d4d4d4;border-radius:50%;line-height:0.93rem ;width:0.85rem;height:0.85rem; display:inline-block!important;}
        .emI{}
         .check_on {background-color:#fd7e98}
         .babyNameContent .userMess .topdiv{width:3rem !important}
         .submitBtn{line-height:0.9rem;width:100%;background:url(../Content/images/babybtn.png) no-repeat center;border-radius:1rem;}
-        .masterTop{ background:url(..//Content/images/babymastertop.png);background-size:100% 100%;margin:auto;height:0.95rem;line-height:0.95rem}
-   .chooseTeacherMakeName{min-height:2rem;background-color:#fde9e6 }
-    .chooseTeacherMakeName ul{padding:0rem 0.3rem}
-    .chooseTeacherMakeName .teacherImg{width:35%!important}
-    .chooseTeacherMakeName .teType{font-family:"微软雅黑"!important;font-size:16px !important}
-    .chooseTeacherMakeName .teacherImg img{width:2rem}
-    .chooseTeacherMakeName .teacherDesc{padding-left:0.2rem}
-    .teacherBtn{background-color:#e3443e;padding:0.045rem; border-radius:6px;width:3rem !important}
-    .pd08{padding:0.08rem 0rem}
+        .masterTop{ background:url(..//Content/images/babymastertop.png);background-size:100% 100%;margin:auto;height:0.8rem;line-height:0.8rem}
     </style>
     }
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
 
-<div class="babyNameContent">
+<div class="babyNameContent pd20">
     <div class="mb10">
-        <ul class="mt15 babyMess">
+        <ul class="mt15">
             <li class="flex-box pd5x0 rem18  userMess">
                 <div class="flex-cont tal babyNameColor topdiv">宝宝姓氏</div><div class="flex-cont tal"><input value=""  placeholder="请输入姓氏" /></div> </li>
 
@@ -42,39 +33,40 @@
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
                 <div class="flex-cont tal babyNameColor topdiv">出生日期</div><div class="flex-cont tal"><input id="manDate" class="rem14 pd5x10  costomerInput" value="" data-toid-date="date" name="input_date" placeholder="日期选择不带时辰" readonly="readonly" data-type="1" data-date="1983-6-3" />
-                 <input type="hidden" id="date" name="date"></div>
+      <input type="hidden" id="date" name="date"></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
                 <div class="flex-cont tal babyNameColor topdiv">出生时辰</div>
                 <div class="flex-cont tal">
                    <form class="layui-form">
                       <select name="city" lay-verify="required">
-                        <option value="0" selected="">时辰不详</option>
-                        <option value="24">子 00:00-00:59</option>
-                        <option value="1">丑 01:00-01:59</option>
-                        <option value="2">丑 02:00-02:59</option>
-                        <option value="3">寅 03:00-03:59</option>
-                        <option value="4">寅 04:00-04:59</option>
-                        <option value="5">卯 05:00-05:59</option>
-                        <option value="6">卯 06:00-06:59</option>
-                        <option value="7">辰 07:00-07:59</option>
-                        <option value="8">辰 08:00-08:59</option>
-                        <option value="9">巳 09:00-09:59</option>
-                        <option value="10">巳 10:00-10:59</option>
-                        <option value="11">午 11:00-11:59</option>
-                        <option value="12">午 12:00-12:59</option>
-                        <option value="13">未 13:00-13:59</option>
-                        <option value="14">未 14:00-14:59</option>
-                        <option value="15">申 15:00-15:59</option>
-                        <option value="16">申 16:00-16:59</option>
-                        <option value="17">酉 17:00-17:59</option>
-                        <option value="18">酉 18:00-18:59</option>
-                        <option value="19">戌 19:00-19:59</option>
-                        <option value="20">戌 20:00-20:59</option>
-                        <option value="21">亥 21:00-21:59</option>
-                        <option value="22">亥 22:00-22:59</option>
-                        <option value="23">子 23:00-23:59</option>
-                    </select>
+                                                                               <option value="0" selected="">时辰不详</option>
+                                                                               <option value="24">子 00:00-00:59</option>
+                                                                               <option value="1">丑 01:00-01:59</option>
+                                                                               <option value="2">丑 02:00-02:59</option>
+                                                                               <option value="3">寅 03:00-03:59</option>
+                                                                               <option value="4">寅 04:00-04:59</option>
+                                                                               <option value="5">卯 05:00-05:59</option>
+                                                                               <option value="6">卯 06:00-06:59</option>
+                                                                               <option value="7">辰 07:00-07:59</option>
+                                                                               <option value="8">辰 08:00-08:59</option>
+                                                                               <option value="9">巳 09:00-09:59</option>
+                                                                               <option value="10">巳 10:00-10:59</option>
+                                                                               <option value="11">午 11:00-11:59</option>
+                                                                               <option value="12">午 12:00-12:59</option>
+                                                                               <option value="13">未 13:00-13:59</option>
+                                                                               <option value="14">未 14:00-14:59</option>
+                                                                               <option value="15">申 15:00-15:59</option>
+                                                                               <option value="16">申 16:00-16:59</option>
+                                                                               <option value="17">酉 17:00-17:59</option>
+                                                                               <option value="18">酉 18:00-18:59</option>
+                                                                               <option value="19">戌 19:00-19:59</option>
+                                                                               <option value="20">戌 20:00-20:59</option>
+                                                                               <option value="21">亥 21:00-21:59</option>
+                                                                               <option value="22">亥 22:00-22:59</option>
+                                                                               <option value="23">子 23:00-23:59</option>
+
+                                                                           </select>
                     </form></div>
             </li>
             <li class="flex-box pd5x0 rem18 userMess">
@@ -85,63 +77,16 @@
         <div class="mt20"><button class="rem16 submitBtn tac mb10 c-fff" onclick="window.location.href='@Url.Content("~/PayFile/BabyNamePay")'">申请起名</button></div>
        
 
-        <div class="mt20 chooseTeacherMakeName">
+        <div class="mt20">
             <div class="masterTop c-fff rem15 pd0x10">大师取名</div>
             <ul>
-                <li class="flex-box pd10x0">
-                    <div class="flex-cont teacherImg ag-self ">
-                        <img class="" src="~/Content/images/baby.png" />
-                    </div>
-                    <div class="flex-cont teacherDesc">
-                        <div class="flex-box  pd08 teType">
-                            <div class="flex-cont tal rem16">金牌专家</div>
-                            <div class="flex-cont tar rem16 c-red">288元</div>
-                        </div>
-                        <p class="tal"> 大师简介：自幼研习古代传统文化，十余年起名经验，精通姓名学文化，熟知五行、生肖、生辰分析</p>
-                        <div class="flex-box pd08">
-                            <div class="flex-cont teacherBtn c-fff ">服务说明</div>
-                            <div class="flex-cont tar ag-self"><input type="radio" name="chooseTeacher" /> 邀请老师</div>
-                        </div>
-                    </div>
+                <li>
+
+
                 </li>
-                <li class="tac rem16">1.提交取名信息，三个工作日内即可获得（一般1~2天）
-                    <br />
-                2.金牌专家自幼研习古代传统文化，精通姓名学文化，
-                从事民间起名工作十余年，积累了丰富的起名经验，
-                致力为您提供满意的服务。</li>
-                <li class="flex-box pd10x0">
-                    <div class="flex-cont teacherImg ag-self ">
-                        <img class="" src="~/Content/images/baby.png" />
-                    </div>
-                    <div class="flex-cont teacherDesc">
-                        <div class="flex-box  pd08 teType">
-                            <div class="flex-cont tal rem16">砖石专家</div>
-                            <div class="flex-cont tar rem16 c-red" >388元</div>
-                        </div>
-                        <p class="tal"> 大师简介：三十余年起名经验，精通周易姓名学文化，熟知生辰八字命理学，擅长古代诗词文学起名，用户起名满意度99%</p>
-                        <div class="flex-box pd08">
-                            <div class="flex-cont teacherBtn c-fff ">服务说明</div>
-                            <div class="flex-cont tar ag-self"><input type="radio" name="chooseTeacher" /> 邀请老师</div>
-                        </div>
-                    </div>
-                </li>
-                <li class="flex-box pd10x0">
-                    <div class="flex-cont teacherImg ag-self ">
-                        <img class="" src="~/Content/images/baby.png" />
-                    </div>
-                    <div class="flex-cont teacherDesc">
-                        <div class="flex-box  pd08 teType">
-                            <div class="flex-cont tal rem16">皇冠专家</div>
-                            <div class="flex-cont tar rem16 c-red" >698元</div>
-                        </div>
-                        <p class="tal">大师简介:专业八字大运分析师,三十年权威起名经验，熟知生辰八字命理学，亲笔测算 判断精准，近百万用户一致好评</p>
-                        <div class="flex-box pd08">
-                            <div class="flex-cont teacherBtn c-fff ">服务说明</div>
-                            <div class="flex-cont tar ag-self"><input type="radio" name="chooseTeacher" /> 邀请老师</div>
-                        </div>
-                    </div>
-                </li>
+
             </ul>
+
         </div>
     </div>
 

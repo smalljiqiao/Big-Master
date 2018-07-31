@@ -1,7 +1,6 @@
-﻿using BM.Core.Domain.Users;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using BM.Core.Domain.Users;
 
 namespace BM.Core.Domain.Orders
 {
@@ -11,17 +10,19 @@ namespace BM.Core.Domain.Orders
     public class Order : BaseEntity
     {
         /// <summary>
-        /// 手机号码
-        /// </summary>
-        [Phone]
-        [Column("Phone", Order = 1)]
-        public string Phone { get; set; }
-
-        /// <summary>
         /// 订单ID
         /// </summary>
-        [Display(Name = "Description here")]
         public Guid OrderId { get; set; }
+
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public Guid UserId { get; set; }
+
+        /// <summary>
+        /// 安卓ID
+        /// </summary>
+        public string AndroidId { get; set; }
 
         /// <summary>
         /// 订单类型
@@ -43,12 +44,19 @@ namespace BM.Core.Domain.Orders
         /// </summary>
         public DateTime? CreateTime { get; set; }
 
-        //外键关联User表
-        public virtual User User { get; set; }
+        /// <summary>
+        /// 主键关联OrderSearch表 一对一关系
+        /// </summary>
+        public OrderSearch OrderSearch { get; set; }
 
         /// <summary>
-        /// 一对一关系外键关联OrderSearch表
+        /// 外键关联User表
         /// </summary>
-        public virtual OrderSearch OrderSearch { get; set; }
+        public User User { get; set; }
+
+        /// <summary>
+        /// 外键关联Android表
+        /// </summary>
+        public Android Android { get; set; }
     }
 }

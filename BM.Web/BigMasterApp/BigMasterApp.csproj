@@ -158,6 +158,10 @@
     <Content Include="Content\BaseJs\FlexReset.js" />
     <Content Include="Content\BaseJs\jeDate\rui-datepicker.css" />
     <Content Include="Content\BaseJs\jeDate\rui-datepicker.js" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedate.css" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedate.png" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.svg" />
+    <Content Include="Content\BaseJs\jeDate\jedate.js" />
     <Content Include="Content\BaseJs\layer\layer.js" />
     <Content Include="Content\BaseJs\layer\layui\css\layui.css" />
     <Content Include="Content\BaseJs\layer\layui\css\layui.mobile.css" />
@@ -302,6 +306,9 @@
     <Content Include="Content\images\guishenlei.png" />
     <Content Include="Content\images\huodonglei.png" />
     <Content Include="Content\images\indexBack.jpg" />
+    <Content Include="Content\images\indexItem1.png" />
+    <Content Include="Content\images\indexItem2.png" />
+    <Content Include="Content\images\indexItem3.png" />
     <Content Include="Content\images\jianzhulei.png" />
     <Content Include="Content\images\lock.png" />
     <Content Include="Content\images\mineBack.jpg" />
@@ -354,6 +361,9 @@
     <Content Include="Content\iconfont\iconfont.eot" />
     <Content Include="Content\iconfont\iconfont.ttf" />
     <Content Include="Content\iconfont\iconfont.woff" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.eot" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.ttf" />
+    <Content Include="Content\BaseJs\jeDate\skin\jedatefont.woff" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.eot" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.ttf" />
     <Content Include="Content\BaseJs\layer\layui\font\iconfont.woff" />
@@ -374,6 +384,7 @@
     <Content Include="Views\Home\Mine.cshtml" />
     <Content Include="Views\Home\RegisterUpsetPwd.cshtml" />
     <Content Include="Views\Shared\_PartialBottom.cshtml" />
+    <Content Include="Views\Layer\EightGoodWordPartReselt.cshtml" />
     <Content Include="Views\PayResult\EightGoodWordResult.cshtml" />
     <Content Include="Views\PayFile\EightMarryPay.cshtml" />
     <Content Include="Views\ResultPart\EightGoodFate.cshtml" />
@@ -394,7 +405,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55765</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

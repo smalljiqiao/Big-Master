@@ -81,6 +81,8 @@
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\Business\BType.cs" />
+    <Compile Include="Domain\Data\Dream\DreamDetail.cs" />
+    <Compile Include="Domain\Data\Dream\DreamTitle.cs" />
     <Compile Include="Domain\Localization\CodeMessage.cs" />
     <Compile Include="Domain\Logs\BurialPoint.cs" />
     <Compile Include="Domain\Logs\Log.cs" />
@@ -88,7 +90,8 @@
     <Compile Include="Domain\Orders\Order.cs" />
     <Compile Include="Domain\Orders\OrderSearch.cs" />
     <Compile Include="Domain\Business\BPrice.cs" />
-    <Compile Include="Domain\Users\AndroidInfo.cs" />
+    <Compile Include="Domain\ShortMessage\Sms.cs" />
+    <Compile Include="Domain\Users\Android.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\BMEngine.cs" />

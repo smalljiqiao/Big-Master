@@ -1,7 +1,5 @@
-﻿using BM.Core.Domain.Users;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BM.Core.Domain.Logs
 {
@@ -16,7 +14,6 @@ namespace BM.Core.Domain.Logs
         /// 手机号码
         /// </summary>
         [Phone]
-        [Column("Phone", Order = 1)]
         public string Phone { get; set; }
 
         /// <summary>
@@ -38,10 +35,5 @@ namespace BM.Core.Domain.Logs
         /// 生成时间
         /// </summary>
         public DateTime? CreateTime { get; set; }
-
-        /// <summary>
-        /// 外键关联User表
-        /// </summary>
-        public virtual User User { get; set; }
     }
 }
