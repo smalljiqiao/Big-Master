@@ -60,8 +60,9 @@ namespace BM.Api.Controllers
 
                 isBind = !string.IsNullOrEmpty(userInfoMap.Phone);
 
-                //忽略密码
+                //忽略密码和用户ID
                 userInfoMap.Password = null;
+                userInfoMap.UserId = null;
 
                 returnDic = new Dictionary<string, object> { { "IsBind", isBind }, { "User", userInfoMap } };
 
@@ -111,8 +112,9 @@ namespace BM.Api.Controllers
             //是否绑定手机号码
             isBind = !string.IsNullOrEmpty(userInfoMap.Phone);
 
-            //忽略密码
+            //忽略密码和用户ID
             userInfoMap.Password = null;
+            userInfoMap.UserId = null;
 
             returnDic = new Dictionary<string, object> { { "IsBind", isBind }, { "User", userInfoMap } };
 
@@ -183,6 +185,7 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
+            #region 检查必须字段是否为空
             //安卓ID为空
             if (string.IsNullOrEmpty(userModel.Android))
             {
@@ -203,7 +206,9 @@ namespace BM.Api.Controllers
                 returnCode.Code = 1994;
                 return new Return { ReturnCode = returnCode };
             }
+            #endregion
 
+            #region 短信验证
             var sms = UserService.GetSmsByPhone(userModel.Phone, returnCode);
 
             //数据库执行出错
@@ -252,7 +257,9 @@ namespace BM.Api.Controllers
                 returnCode.Code = -1;
                 return new Return { ReturnCode = returnCode };
             }
+            #endregion
 
+            #region 验证该安卓ID是否被记录
             var androidInfo = AndroidService.GetByAndroidId(userModel.Android, returnCode);
 
             //查询UserID过程中出现错误
@@ -262,7 +269,27 @@ namespace BM.Api.Controllers
                 return new Return { ReturnCode = returnCode };
             }
 
-            var userInfo = UserService.Register(androidInfo.UserId.ToString(), userModel.Phone, userModel.Password, returnCode);
+            //该安卓ID不存在Android表中
+            if (androidInfo == null)
+            {
+                returnCode.Code = 1884;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            #endregion
+
+            #region 验证手机号码是否已注册
+            var userInfo = UserService.GetUserByPhone(userModel.Phone, returnCode);
+
+            //该手机号码已注册
+            if (userInfo != null)
+            {
+                returnCode.Code = 1998;
+                return new Return { ReturnCode = returnCode };
+            }
+            #endregion
+
+            userInfo = UserService.Register(androidInfo.UserId.ToString(), userModel.Phone, userModel.Password, returnCode);
 
             //注册过程中出现错误
             if (returnCode.Code != default(int))
@@ -293,15 +320,29 @@ namespace BM.Api.Controllers
         {
             var returnCode = new ReturnCode();
 
+            #region 检查必需字段是否为空
+
+            //密码为空
             if (string.IsNullOrEmpty(userModel.Password))
             {
                 returnCode.Code = 1997;
                 return new Return { ReturnCode = returnCode };
             }
 
+            //安卓ID为空
+            if (string.IsNullOrEmpty(userModel.Android))
+            {
+                returnCode.Code = 1885;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            #endregion
+
+            #region 检查用户登录信息是否正确
+
             var userInfo = UserService.GetUserByPhone(userModel.Phone, returnCode, new DbEntities());
 
-            //注册过程中出现错误
+            //获取用户信息过程中出现错误
             if (returnCode.Code != default(int))
             {
                 return new Return { ReturnCode = returnCode };
@@ -320,6 +361,52 @@ namespace BM.Api.Controllers
                 returnCode.Code = 1999;
                 return new Return { ReturnCode = returnCode };
             }
+
+            #endregion
+
+            #region 检查安卓ID是否更换，若更换了，使用旧UserId替换新UserId
+
+            var nowUserId = userInfo.UserId.ToString();
+
+            //获取用户的UserId为空，系统错误但不抛出
+            if (string.IsNullOrEmpty(nowUserId))
+            {
+                returnCode.Code = 1883;
+            }
+
+            //获取登录时安卓ID对应的安卓信息
+            var androidInfo = AndroidService.GetByAndroidId(userModel.Android, returnCode);
+
+            var oldUserId = androidInfo.UserId.ToString();
+
+            //获取过程中出现错误
+            if (returnCode.Code != default(int))
+            {
+                returnCode.Code = -1;
+                return new Return { ReturnCode = returnCode };
+            }
+
+            //获取登录时安卓ID对应的UserId为空，系统错误但不抛出
+            if (string.IsNullOrEmpty(oldUserId))
+            {
+                returnCode.Code = 1882;
+            }
+
+            //新旧UserId不一致，使用旧UserId替换新UserId
+            if (nowUserId != oldUserId)
+            {
+                userInfo.UserId = Guid.Parse(oldUserId);
+                UserService.ChangeUesrId(oldUserId, nowUserId, returnCode); //替换UserID
+                UserService.DeleteByUserId(nowUserId, returnCode);  //删除User
+
+                //修改UserId过程出现问题，系统错误，但不抛出
+                if (returnCode.Code != default(int))
+                {
+                    return new Return { ReturnCode = returnCode };
+                }
+            }
+
+            #endregion
 
             //将User数据库模型类转换为页面模型类
             var user = ModelTransfer.Mapper(userInfo, new User());

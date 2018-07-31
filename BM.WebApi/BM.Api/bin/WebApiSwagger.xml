@@ -583,7 +583,7 @@
         </member>
         <member name="M:BM.Api.Controllers.UsersController.AndroidId(BM.Api.Models.Android)">
             <summary>
-            更新安卓ID
+            写入安卓ID
             </summary>
             <param name="android">安卓信息对象</param>
             <returns></returns>
@@ -632,11 +632,6 @@
             <summary>
             安卓ID
             </summary>
-        </member>
-        <member name="P:BM.Api.Models.Android.UserId">
-             <summary>
-            用户ID
-             </summary>
         </member>
         <member name="T:BM.Api.Models.BabyName">
             <summary>

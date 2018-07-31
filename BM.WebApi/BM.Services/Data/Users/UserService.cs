@@ -43,7 +43,7 @@ namespace BM.Services.Data.Users
         /// <summary>
         /// 用户注册（根据UserId补充信息）
         /// </summary>
-        /// <param name="UserId">用户ID</param>
+        /// <param name="userId">用户ID</param>
         /// <param name="phone">手机号码</param>
         /// <param name="password">登录密码</param>
         /// <param name="returnCode">返回码对象</param>
@@ -52,42 +52,26 @@ namespace BM.Services.Data.Users
         {
             var db = new DbEntities();
 
-            var userInfo = GetUserByPhone(phone, returnCode, db);
+            var userInfo = GetUserByUserId(userId, returnCode, db);
             if (returnCode.Code != default(int))
             {
                 return null;
             }
             else
             {
-                //该手机号码已注册
-                if (userInfo != null)
-                {
-                    returnCode.Code = 1998;
-                    return null;
-                }
-
                 try
                 {
                     var salt = EncryptionService.CreateSaltKey(6);
                     var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                    userInfo = GetUserByUserId(userId, returnCode);
+                    userInfo.Phone = phone;
+                    userInfo.Password = password;
+                    userInfo.Salt = salt;
+                    userInfo.SaltPassword = saltPassword;
+                    userInfo.RegisterTime = DateTime.Now;
 
-                    if (returnCode.Code != default(int))
-                    {
-                        returnCode.Code = -1;
-                        return null;
-                    }
-                    else
-                    {
-                        userInfo.Phone = phone;
-                        userInfo.Password = password;
-                        userInfo.Salt = salt;
-                        userInfo.SaltPassword = saltPassword;
-
-                        db.Entry<User>(userInfo).State = EntityState.Modified;
-                        db.SaveChanges();
-                    }
+                    db.Entry<User>(userInfo).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
                 catch (Exception ex)
                 {
@@ -191,18 +175,91 @@ namespace BM.Services.Data.Users
         }
 
         /// <summary>
+        /// 修改用户ID
+        /// </summary>
+        /// <param name="userId">新用户ID</param>
+        /// <param name="userIdReplaced">需要被替换的用户ID</param>
+        /// <param name="returnCode">返回码对象</param>
+        /// <returns></returns>
+        public static User ChangeUesrId(string userId, string userIdReplaced, ReturnCode returnCode)
+        {
+            var db = new DbEntities();
+
+            var userInfo = GetUserByUserId(userIdReplaced, returnCode, db);
+
+            if (returnCode.Code != default(int))
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    userInfo.UserId = Guid.Parse(userId);
+                    db.Entry<User>(userInfo).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    returnCode.Code = -1;
+                    LogService.InsertLog(ex);
+                    return null;
+                }
+            }
+
+            return userInfo;
+        }
+
+        /// <summary>
+        /// 删除User
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <param name="returnCode">返回码对象</param>
+        /// <returns></returns>
+        public static bool DeleteByUserId(string userId, ReturnCode returnCode)
+        {
+            var db = new DbEntities();
+
+            var userInfo = GetUserByUserId(userId, returnCode);
+
+            if (returnCode.Code != default(int))
+            {
+                return false;
+            }
+
+            if (userInfo != null)
+            {
+                try
+                {
+                    db.User.Remove(userInfo);
+                }
+                catch (Exception ex)
+                {
+                    //这里错误并不抛出，不影响后续操作
+                    LogService.InsertLog(ex);
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// 根据手机号码获取用户信息
+        /// 因为Phone字段添加了唯一性约束，所以也能保证查询数据的唯一性。
         /// </summary>
         /// <param name="phone">手机号码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <param name="db">数据库上下文，因为使用不同数据库上下文操作会出错，所以增加这个参数</param>
         /// <returns>User对象，根据returnCode是否为空判断系统是否出错</returns>
-        public static User GetUserByPhone(string phone, ReturnCode returnCode, DbEntities db)
+        public static User GetUserByPhone(string phone, ReturnCode returnCode, DbEntities db = null)
         {
             User user;
 
             try
             {
+                if (db == null)
+                    db = new DbEntities();
+
                 var query = from d in db.User
                             where d.Phone == phone
                             select d;
@@ -225,7 +282,7 @@ namespace BM.Services.Data.Users
         /// <param name="userId"></param>
         /// <param name="returnCode"></param>
         /// <returns></returns>
-        public static User GetUserByUserId(string userId, ReturnCode returnCode)
+        public static User GetUserByUserId(string userId, ReturnCode returnCode, DbEntities db = null)
         {
             User user;
 
@@ -233,7 +290,8 @@ namespace BM.Services.Data.Users
             {
                 var userIdGuid = Guid.Parse(userId);
 
-                var db = new DbEntities();
+                if (db == null)
+                    db = new DbEntities();
 
                 var query = from d in db.User
                             where d.UserId == userIdGuid

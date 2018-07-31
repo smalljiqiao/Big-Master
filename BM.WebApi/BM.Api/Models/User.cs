@@ -11,7 +11,7 @@ namespace BM.Api.Models
         /// <summary>
         /// 用户ID
         /// </summary>
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         /// <summary>
         /// 手机号码
