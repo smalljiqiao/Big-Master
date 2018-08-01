@@ -27,5 +27,8 @@ namespace BM.Data.Domain
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? CreateTime { get; set; }
+
+        [StringLength(1)]
+        public string IsDelete { get; set; }
     }
 }

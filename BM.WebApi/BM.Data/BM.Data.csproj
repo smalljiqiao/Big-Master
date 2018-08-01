@@ -61,15 +61,26 @@
     <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderSearch.cs" />
+    <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\Search.cs" />
     <Compile Include="Domain\Sms.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Global\GlobalConst.cs" />
+    <Compile Include="Migrations\201808010946380_PiontAddDelete.cs" />
+    <Compile Include="Migrations\201808010946380_PiontAddDelete.Designer.cs">
+      <DependentUpon>201808010946380_PiontAddDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808010946380_PiontAddDelete.resx">
+      <DependentUpon>201808010946380_PiontAddDelete.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

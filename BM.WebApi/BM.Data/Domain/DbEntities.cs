@@ -25,6 +25,7 @@ namespace BM.Data.Domain
         public virtual DbSet<Search> Search { get; set; }
         public virtual DbSet<Sms> Sms { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Product> Pruduct { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
