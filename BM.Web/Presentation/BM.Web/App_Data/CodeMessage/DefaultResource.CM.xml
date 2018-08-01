@@ -9,6 +9,26 @@
     <Message>请求成功</Message>
   </CodeMessage>
   <CodeMessage>
+    <Code>1882</Code>
+    <Message>登录过程中获取该安卓ID的UserID为空，系统错误，但这里不抛出，因为后续影响不大</Message>
+  </CodeMessage>
+  <CodeMessage>
+    <Code>1883</Code>
+    <Message>登录过程中获取该账户UserId为空，系统错误，但这里不抛出，因为后续影响不大</Message>
+  </CodeMessage>
+  <CodeMessage>
+    <Code>1884</Code>
+    <Message>该安卓ID还没进行记录操作</Message>
+  </CodeMessage>
+  <CodeMessage>
+    <Code>1885</Code>
+    <Message>安卓ID为空</Message>
+  </CodeMessage>
+  <CodeMessage>
+    <Code>1886</Code>
+    <Message>更新安卓ID失败</Message>
+  </CodeMessage>
+  <CodeMessage>
     <Code>1887</Code>
     <Message>目前短信验证码一次1条/分钟，5条/小时 ，累计10条/天，请检查你是否超过发送限制</Message>
   </CodeMessage>

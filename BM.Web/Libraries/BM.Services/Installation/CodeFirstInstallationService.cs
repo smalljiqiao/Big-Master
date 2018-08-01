@@ -50,10 +50,15 @@ namespace BM.Services.Installation
             var cmd = "ALTER TABLE [Log] ADD CONSTRAINT DF_LogId_Log DEFAULT(NEWID()) FOR LogId;" +
                       "ALTER TABLE [Log] ADD CONSTRAINT DF_CreateTime_Log DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [Search] ADD CONSTRAINT DF_SearchId_Search DEFAULT(NEWID()) FOR SearchId;" +
+                      "ALTER TABLE [Search] ADD CONSTRAINT DF_UserId_Search DEFAULT(NEWID()) FOR UserId;" +
                       "ALTER TABLE [Search] ADD CONSTRAINT DF_CreateTime_Search DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [Order] ADD CONSTRAINT DF_OrderId_Order DEFAULT(NEWID()) FOR OrderId;" +
+                      "ALTER TABLE [Order] ADD CONSTRAINT DF_UserId_Order DEFAULT(NEWID()) FOR UserId;" +
+                      "ALTER TABLE [Order] ADD CONSTRAINT DF_PayState_Order DEFAULT('UnPay') FOR PayState;" +
                       "ALTER TABLE [Order] ADD CONSTRAINT DF_CreateTime_Order DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [OrderSearch] ADD CONSTRAINT DF_OrderId_OrderSearch DEFAULT(NEWID()) FOR OrderId;" +
+                      "ALTER TABLE [User] ADD CONSTRAINT DF_UserId_User DEFAULT(NEWID()) FOR UserId;" +
+                      "ALTER TABLE [Android] ADD CONSTRAINT DF_UserId_Android DEFAULT(NEWID()) FOR UserId;" +
                       "ALTER TABLE [Android] ADD CONSTRAINT DF_CreateTime_Android DEFAULT(GETDATE()) FOR CreateTime;" +
                       "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_BpId_BurialPoint DEFAULT(NEWID()) FOR BpId;" +
                       "ALTER TABLE [BurialPoint] ADD CONSTRAINT DF_CreateTime_BurialPoint DEFAULT(GETDATE()) FOR CreateTime;" +
@@ -72,7 +77,8 @@ namespace BM.Services.Installation
             var cmd = "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
                       "ALTER TABLE [OrderSearch] ADD CONSTRAINT [CK_OrderSearch_BSex] CHECK (BSex = 0 OR BSex = 1 OR BSex = 2);" +
                       "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_DSex] CHECK (DSex = 0 OR DSex = 1 OR DSex = 2);" +
-                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_BSex] CHECK (BSex = 0 OR DSex = 1 OR BSex = 2);";
+                      "ALTER TABLE [Search] ADD CONSTRAINT [CK_Search_BSex] CHECK (BSex = 0 OR DSex = 1 OR BSex = 2);" +
+                      "ALTER TABLE [User] ADD CONSTRAINT [UN_Phone] UNIQUE (Phone);"; //User Table Phone Property Unique
 
             _idbContext.ExecuteSqlCommand(cmd);
         }
