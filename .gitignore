@@ -21,6 +21,9 @@ DevelopLog.txt
 #忽略Release文件夹
 Release
 
+#忽略bin文件夹
+bin
+
 #忽略追踪文件列表 避免泄露数据库连接字符串
 #\BM.WebApi\BM.Data\App.config
 #\BM.WebApi\BM.Api\Web.config
