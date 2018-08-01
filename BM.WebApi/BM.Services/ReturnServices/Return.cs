@@ -8,6 +8,14 @@ namespace BM.Services.ReturnServices
     public sealed class Return
     {
         /// <summary>
+        /// Ctor
+        /// </summary>
+        public Return()
+        {
+            this.ReturnCode = new ReturnCode();
+        }
+
+        /// <summary>
         /// 返回码对象
         /// </summary>
         public ReturnCode ReturnCode { get; set; }

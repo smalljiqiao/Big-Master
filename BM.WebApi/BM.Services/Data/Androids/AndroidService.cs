@@ -16,24 +16,14 @@ namespace BM.Services.Data.Androids
         /// </summary>
         /// <param name="androidId">安卓ID</param>
         /// <returns>true:success;false:failure</returns>
-        public static bool Insert(string androidId)
+        public static void Insert(string androidId)
         {
-            try
-            {
-                var db = new DbEntities();
+            var db = new DbEntities();
 
-                var androidInfo = new Android { AndroidId = androidId };
+            var androidInfo = new Android { AndroidId = androidId };
 
-                db.Android.Add(androidInfo);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                LogService.InsertLog(ex);
-                return false;
-            }
-
-            return true;
+            db.Android.Add(androidInfo);
+            db.SaveChanges();
         }
 
 
@@ -41,28 +31,16 @@ namespace BM.Services.Data.Androids
         /// 根据安卓ID获取安卓信息
         /// </summary>
         /// <param name="androidId">安卓ID</param>
-        /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static Android GetByAndroidId(string androidId, ReturnCode returnCode)
+        public static Android GetByAndroidId(string androidId)
         {
-            Android android;
+            var db = new DbEntities();
 
-            try
-            {
-                var db = new DbEntities();
+            var query = from d in db.Android
+                        where d.AndroidId == androidId
+                        select d;
 
-                var query = from d in db.Android
-                            where d.AndroidId == androidId
-                            select d;
-
-                android = query.FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                returnCode.Code = -1;
-                LogService.InsertLog(ex);
-                return null;
-            }
+            var android = query.FirstOrDefault();
 
             return android;
         }

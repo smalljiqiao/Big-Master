@@ -5,6 +5,7 @@ using System.Linq;
 using BM.Data.Domain;
 using BM.Services.Common;
 using BM.Services.Data.Logs;
+using BM.Services.ReturnServices;
 using BM.Services.Security;
 
 namespace BM.Services.Data.Users
@@ -17,27 +18,18 @@ namespace BM.Services.Data.Users
         /// <param name="userId">用户ID</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static User Insert(string userId, ReturnCode returnCode)
+        public static User Insert(string userId)
         {
             //用户默认名称
             var defaultBame = CommonHelper.CreateCode();
 
-            try
-            {
-                var db = new DbEntities();
-                var userInfo = new User { UserId = Guid.Parse(userId), DefaultName = defaultBame };
+            var db = new DbEntities();
+            var userInfo = new User { UserId = Guid.Parse(userId), DefaultName = defaultBame };
 
-                db.User.Add(userInfo);
-                db.SaveChanges();
+            db.User.Add(userInfo);
+            db.SaveChanges();
 
-                return userInfo;
-            }
-            catch (Exception ex)
-            {
-                returnCode.Code = -1;
-                LogService.InsertLog(ex);
-                return null;
-            }
+            return userInfo;
         }
 
         /// <summary>
@@ -48,40 +40,28 @@ namespace BM.Services.Data.Users
         /// <param name="password">登录密码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static User Register(string userId, string phone, string password, ReturnCode returnCode)
+        public static Return Register(string userId, string phone, string password)
         {
+            var resultReturn = new Return();
+
             var db = new DbEntities();
 
-            var userInfo = GetUserByUserId(userId, returnCode, db);
-            if (returnCode.Code != default(int))
-            {
-                return null;
-            }
-            else
-            {
-                try
-                {
-                    var salt = EncryptionService.CreateSaltKey(6);
-                    var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
+            var userInfo = GetUserByUserId(userId, db);
 
-                    userInfo.Phone = phone;
-                    userInfo.Password = password;
-                    userInfo.Salt = salt;
-                    userInfo.SaltPassword = saltPassword;
-                    userInfo.RegisterTime = DateTime.Now;
+            var salt = EncryptionService.CreateSaltKey(6);
+            var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
 
-                    db.Entry<User>(userInfo).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    LogService.InsertLog(ex);
-                    returnCode.Code = -1;
-                    return null;
-                }
-            }
+            userInfo.Phone = phone;
+            userInfo.Password = password;
+            userInfo.Salt = salt;
+            userInfo.SaltPassword = saltPassword;
+            userInfo.RegisterTime = DateTime.Now;
 
-            return userInfo;
+            db.Entry<User>(userInfo).State = EntityState.Modified;
+            db.SaveChanges();
+
+            resultReturn.Content = userInfo;
+            return resultReturn;
         }
 
         /// <summary>
@@ -91,44 +71,34 @@ namespace BM.Services.Data.Users
         /// <param name="password">新密码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static User ChangePassword(string phone, string password, ReturnCode returnCode)
+        public static Return ChangePassword(string phone, string password)
         {
+            var resultReturn = new Return();
+
             var db = new DbEntities();
 
-            var userInfo = GetUserByPhone(phone, returnCode, db);
-            if (returnCode.Code != default(int))
+            var userInfo = GetUserByPhone(phone, db);
+
+            //该手机号码还没注册
+            if (userInfo == null)
             {
-                return null;
-            }
-            else
-            {
-                if (userInfo == null)
-                {
-                    returnCode.Code = 1996;
-                    return null;
-                }
-
-                try
-                {
-                    var salt = EncryptionService.CreateSaltKey(6);
-                    var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
-
-                    userInfo.Password = password;
-                    userInfo.SaltPassword = saltPassword;
-                    userInfo.Salt = salt;
-
-                    db.Entry<User>(userInfo).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    LogService.InsertLog(ex);
-                    returnCode.Code = -1;
-                    return null;
-                }
+                resultReturn.ReturnCode.Code = 1996;
+                return resultReturn;
             }
 
-            return userInfo;
+            var salt = EncryptionService.CreateSaltKey(6);
+            var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
+
+            userInfo.Password = password;
+            userInfo.SaltPassword = saltPassword;
+            userInfo.Salt = salt;
+
+            db.Entry<User>(userInfo).State = EntityState.Modified;
+            db.SaveChanges();
+
+            resultReturn.Content = userInfo;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -139,39 +109,29 @@ namespace BM.Services.Data.Users
         /// <param name="nickname">用户昵称</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static User ChangeN0E(string phone, string email, string nickname, ReturnCode returnCode)
+        public static Return ChangeN0E(string phone, string email, string nickname)
         {
+            var resultReturn = new Return();
+
             var db = new DbEntities();
 
-            var userInfo = GetUserByPhone(phone, returnCode, db);
-            if (returnCode.Code != default(int))
-            {
-                return null;
-            }
-            else
-            {
-                if (userInfo == null)
-                {
-                    returnCode.Code = 1996;
-                    return null;
-                }
+            var userInfo = GetUserByPhone(phone, db);
 
-                try
-                {
-                    userInfo.Email = email;
-                    userInfo.NickName = nickname;
-                    db.Entry<User>(userInfo).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    LogService.InsertLog(ex);
-                    returnCode.Code = -1;
-                    return null;
-                }
+            //该手机号码还没注册
+            if (userInfo == null)
+            {
+                resultReturn.ReturnCode.Code = 1996;
+                return resultReturn;
             }
 
-            return userInfo;
+            userInfo.Email = email;
+            userInfo.NickName = nickname;
+            db.Entry<User>(userInfo).State = EntityState.Modified;
+            db.SaveChanges();
+
+            resultReturn.Content = userInfo;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -181,63 +141,38 @@ namespace BM.Services.Data.Users
         /// <param name="userIdReplaced">需要被替换的用户ID</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static User ChangeUesrId(string userId, string userIdReplaced, ReturnCode returnCode)
+        public static Return ChangeUesrId(string userId, string userIdReplaced)
         {
+            var resultReturn = new Return();
+
             var db = new DbEntities();
 
-            var userInfo = GetUserByUserId(userIdReplaced, returnCode, db);
+            var userInfo = GetUserByUserId(userIdReplaced, db);
 
-            if (returnCode.Code != default(int))
-            {
-                return null;
-            }
-            else
-            {
-                try
-                {
-                    userInfo.UserId = Guid.Parse(userId);
-                    db.Entry<User>(userInfo).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    returnCode.Code = -1;
-                    LogService.InsertLog(ex);
-                    return null;
-                }
-            }
 
-            return userInfo;
+            userInfo.UserId = Guid.Parse(userId);
+            db.Entry<User>(userInfo).State = EntityState.Modified;
+            db.SaveChanges();
+
+            resultReturn.Content = userInfo;
+
+            return resultReturn;
         }
 
         /// <summary>
         /// 删除User
         /// </summary>
         /// <param name="userId">用户ID</param>
-        /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static bool DeleteByUserId(string userId, ReturnCode returnCode)
+        public static bool DeleteByUserId(string userId)
         {
             var db = new DbEntities();
 
-            var userInfo = GetUserByUserId(userId, returnCode);
-
-            if (returnCode.Code != default(int))
-            {
-                return false;
-            }
+            var userInfo = GetUserByUserId(userId);
 
             if (userInfo != null)
             {
-                try
-                {
-                    db.User.Remove(userInfo);
-                }
-                catch (Exception ex)
-                {
-                    //这里错误并不抛出，不影响后续操作
-                    LogService.InsertLog(ex);
-                }
+                db.User.Remove(userInfo);
             }
 
             return true;
@@ -251,27 +186,16 @@ namespace BM.Services.Data.Users
         /// <param name="returnCode">返回码对象</param>
         /// <param name="db">数据库上下文，因为使用不同数据库上下文操作会出错，所以增加这个参数</param>
         /// <returns>User对象，根据returnCode是否为空判断系统是否出错</returns>
-        public static User GetUserByPhone(string phone, ReturnCode returnCode, DbEntities db = null)
+        public static User GetUserByPhone(string phone, DbEntities db = null)
         {
-            User user;
+            if (db == null)
+                db = new DbEntities();
 
-            try
-            {
-                if (db == null)
-                    db = new DbEntities();
+            var query = from d in db.User
+                        where d.Phone == phone
+                        select d;
 
-                var query = from d in db.User
-                            where d.Phone == phone
-                            select d;
-
-                user = query.FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                returnCode.Code = -1;
-                LogService.InsertLog(ex);
-                return null;
-            }
+            var user = query.FirstOrDefault();
 
             return user;
         }
@@ -282,57 +206,23 @@ namespace BM.Services.Data.Users
         /// <param name="userId"></param>
         /// <param name="returnCode"></param>
         /// <returns></returns>
-        public static User GetUserByUserId(string userId, ReturnCode returnCode, DbEntities db = null)
+        public static User GetUserByUserId(string userId, DbEntities db = null)
         {
-            User user;
+            var userIdGuid = Guid.Parse(userId);
 
-            try
-            {
-                var userIdGuid = Guid.Parse(userId);
+            if (db == null)
+                db = new DbEntities();
 
-                if (db == null)
-                    db = new DbEntities();
+            var query = from d in db.User
+                        where d.UserId == userIdGuid
+                        select d;
 
-                var query = from d in db.User
-                            where d.UserId == userIdGuid
-                            select d;
+            var user = query.FirstOrDefault();
 
-                user = query.FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                returnCode.Code = -1;
-                LogService.InsertLog(ex);
-                return null;
-            }
 
             return user;
         }
 
-        /// <summary>
-        /// 获取短信验证码
-        /// </summary>
-        /// <param name="phone">手机号码</param>
-        /// <param name="returnCode">返回码对象</param>
-        /// <returns></returns>
-        public static Sms GetSmsByPhone(string phone, ReturnCode returnCode)
-        {
-            try
-            {
-                var db = new DbEntities();
 
-                var query = from d in db.Sms
-                            where d.Phone == phone
-                            select d;
-
-                return query.FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                returnCode.Code = -1;
-                LogService.InsertLog(ex);
-                return null;
-            }
-        }
     }
 }

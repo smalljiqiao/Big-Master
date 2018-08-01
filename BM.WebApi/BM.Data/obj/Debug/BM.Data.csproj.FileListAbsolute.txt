@@ -20,4 +20,3 @@ D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Data\obj\Debug\BM.Data.csproj
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Data\obj\Debug\BM.Data.csproj.CopyComplete
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Data\obj\Debug\BM.Data.dll
 D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Data\obj\Debug\BM.Data.pdb
-D:\NETProject\BigMaster\Dev\BigMaster\BM.WebApi\BM.Data\obj\Debug\BM.Data.csprojAssemblyReference.cache

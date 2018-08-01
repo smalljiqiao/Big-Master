@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Androids\AndroidService.cs" />
+    <Compile Include="Data\BaseResult.cs" />
     <Compile Include="Data\BurialPoint\BpService.cs" />
     <Compile Include="Caching\Extension.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Data\Orders\OrderService.cs" />
     <Compile Include="Data\ShortMessages\Sms.cs" />
     <Compile Include="Data\ShortMessages\SmsService.cs" />
+    <Compile Include="Data\Users\ChangePasswordResult.cs" />
     <Compile Include="Data\Users\UserService.cs" />
     <Compile Include="Localization\LocalizationService.cs" />
     <Compile Include="ModelTransfer\ModelTransfer.cs" />
