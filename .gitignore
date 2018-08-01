@@ -4,3 +4,10 @@
 #忽略packages文件夹
 BM.WebApi/packages
 BM.Web/packages
+
+#忽略bin文件夹
+bin
+
+#忽略开发日志
+DevelopLog.txt
+
