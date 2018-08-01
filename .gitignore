@@ -9,8 +9,8 @@ BM.Web/packages
 bin
 
 #忽略Debug和Release文件夹
-obj/Debug
-obj/Release
+/obj/Debug
+/obj/Release
 
 #忽略开发日志
 DevelopLog.txt
