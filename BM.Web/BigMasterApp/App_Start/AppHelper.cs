@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -20,6 +21,21 @@ namespace BigMasterApp.App_Start
               .Append("://")
               .Append(request.Url.Host)
               .ToString();
+        }
+        /// <summary>
+        /// 图片服务器地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetImgServiceRoot() {
+          return  ConfigurationManager.AppSettings["imgServiceRoot"];
+        }
+        /// <summary>
+        /// 接口地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetApiServiceRoot()
+        {
+            return ConfigurationManager.AppSettings["apiServiceRoot"];
         }
     }
 

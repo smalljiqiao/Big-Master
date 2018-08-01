@@ -3,7 +3,7 @@
     ViewBag.Title = "八字详批测算结果";
 }
 @Html.Partial("_PartialHead")
-@section Styles{
+@section Styles{  
     <style type="text/css">
         .payContent{background-color:#f5f2e6;min-height:88vh;padding-bottom:1rem}
         .payContent .payCount{border-bottom:2px solid #eaeaea}
@@ -23,6 +23,26 @@
         .customerStayContentButton{width:80%;background-color:#e4625b;border-radius:0.12rem;margin:auto}
         .commLineHeight{line-height:0.7rem}
         .backGray{background-color:#EAEAEA}
+        img{width:20px !important }
+        #eightfate {font-size:18px!important}
+
+        #fiveXing{font-size:18px}
+        #fiveXing table:nth-child(2) tr:nth-child(4){display:none}
+
+        #eightWord{font-size:18px!important}
+        #eightWord img{display:none}
+
+        #eightLove {font-size:18px!important}
+        #eightLove img {display:none}
+
+        #eightMoney {font-size:18px!important}
+        #eightMoney img{display:none}
+
+        #eightHealth {font-size:18px!important}
+        #eightHealth strong{font-size:18px}
+        #eightHealth img{display:none}
+        #eightHealth p:last-child{display:none}
+        
     </style>
 }
 <link href="~/Content/BaseJs/layer/mobile/need/layer.css" rel="stylesheet" />
@@ -30,48 +50,74 @@
 <script src="~/Content/BaseJs/layer/layer.js"></script>
 <div>
     <div class="payback-know-content ">
-        <ul>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self  pd5x10 tal">八字命盘</strong>
-                <div class="flex-cont ag-self tar"><img onclick="showDetail('八字命盘','EightGoodFate')" class="pd0x10" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">五行分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('五行分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字分析</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10" onclick="showDetail('八字分析','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命爱情</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命爱情','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命财运</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命财运','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-            <li class="flex-box backGray item tac">
-                <strong class="flex-cont ag-self pd5x10 tal">八字算命健康</strong>
-                <div class="flex-cont ag-self tar"><img class="pd0x10"onclick="showDetail('八字算命健康','EightGoodFate')" src="~/Content/images/more.png" /></div>
-            </li>
-        </ul>
+        <div class="layui-tab layui-tab-card" style="margin:0px">
+            <ul class="layui-tab-title">
+                <li class="layui-this">八字论命</li>
+                <li>五行分析</li>
+                <li>八字分析</li>
+                <li>八字算命爱情</li>
+                <li>八字算命财运</li>
+                <li>八字算命健康</li>
+            </ul>
+            <div class="layui-tab-content" style="min-height:100vh">
+                <div class="layui-tab-item layui-show" id="eightfate">
+                    
+                </div>
+                <div class="layui-tab-item" id="fiveXing">2</div>
+                <div class="layui-tab-item" id="eightWord">3</div>
+                <div class="layui-tab-item" id="eightLove">4</div>
+                <div class="layui-tab-item" id="eightMoney">5</div>
+                <div class="layui-tab-item" id="eightHealth">6</div>
+            </div>
+        </div>
     </div>
 
 </div>
-<script type="text/javascript">
-    function showDetail(title,url) {
-        //iframe层
-        layer.open({
-            type: 2,
-            title: title,
-            shadeClose: true,
-            shade: 0.8,
-            area: ['90%', '80%'],
-            content: global_site_root +"ResultPart/"+ url //iframe的url
-        }); 
-    }
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function (){
+            init();
+        })
+
+        function init() {
+            var key = getQueryString("orderId");
+            var query = {
+                UserName: "大傻逼",
+                BirthDay: "2018-07-27T02:06:03.236Z",
+                IsMan: true
+            };
+            doPost(bmApI.fortunEightGoodWord.forecast, query, function (data) {
+                if (data.ReturnCode.Code == 0) {
+                    var content = data.Content;
+                    $("#eightfate").html(content.Fate);
+                    $("#fiveXing").html(content.Five);
+                    $("#eightWord").html(content.Destiny);
+                    $("#eightLove").html(content.Love);
+                    $("#eightMoney").html(content.Money);
+                    $("#eightHealth").html(content.Healthy);
+                    $("#eightLove table").removeAttr("width");
+                    $("#eightMoney table").removeAttr("width");
+                    $("#eightWord table").removeAttr("width");
+                }
+                else {
+                    layer.msg(data.ReturnCode.Message);
+                }
+            });
+        }
+
+        function showDetail(title, url) {
+            //iframe层
+            layer.open({
+                type: 2,
+                title: title,
+                shadeClose: true,
+                shade: 0.8,
+                area: ['90%', '80%'],
+                content: global_site_root + "ResultPart/" + url //iframe的url
+            });
+        }
 
 </script>
+    }
 
 
