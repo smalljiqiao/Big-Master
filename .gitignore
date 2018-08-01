@@ -2,16 +2,6 @@
 ssh
 ssh.pub
 
-#忽BM.WebApi/packages文件夹
-BM.WebApi/packages
-
-#忽略BM.Web
-BM.Web/BigMasterApp/obj/*
-BM.Web/BigMasterApp/bin/
-BM.Web/packages/
-BM.Web/BigMasterApp/obj/
-BM.Web/BigMasterApp/Properties/
-
 #忽略开发日志文件
 DevelopLog.txt
 
@@ -23,6 +13,18 @@ Release
 
 #忽略bin文件夹
 *.dll
+
+#忽BM.WebApi/packages文件夹
+BM.WebApi/packages
+
+#忽略BM.Web
+BM.Web/BigMasterApp/obj/*
+BM.Web/BigMasterApp/bin/
+BM.Web/packages/
+BM.Web/BigMasterApp/obj/
+BM.Web/BigMasterApp/Properties/
+
+
 
 #忽略追踪文件列表 避免泄露数据库连接字符串
 #\BM.WebApi\BM.Data\App.config
