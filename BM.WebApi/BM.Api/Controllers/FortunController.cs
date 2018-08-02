@@ -5,6 +5,7 @@ using BM.Services.ReturnServices;
 using System;
 using System.IO;
 using System.Web.Http;
+using BM.Services.Data.Logs;
 
 namespace BM.Api.Controllers
 {
@@ -24,11 +25,22 @@ namespace BM.Api.Controllers
         {
             var resultReturn = new Return();
 
-            var dic = Services.WebData.DetailedBatch.Handler.GetHtml(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
+            try
+            {
+                var dic = Services.WebData.DetailedBatch.Handler.GetHtml(detBaModel.UserName,
+                    Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
 
-            resultReturn.Content = dic;
+                resultReturn.Content = dic;
 
-            return resultReturn;
+                return resultReturn;
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                resultReturn.ReturnCode.Code = -1;
+                resultReturn.Content = null;
+                return resultReturn;
+            }
         }
 
         /// <summary>
@@ -38,16 +50,26 @@ namespace BM.Api.Controllers
         /// <returns></returns>
         [ModelValid]
         [Route("api/fortun/babyname")]
-        public object BabyName(BabyName babyName)
+        public Return BabyName(BabyName babyName)
         {
             var resultReturn = new Return();
 
-            var dic = Services.WebData.BabyName.Handler.GetHtml(babyName.Surname, babyName.BirthDay, babyName.IsMan,
-                babyName.Province, babyName.City, babyName.NameType);
+            try
+            {
+                var dic = Services.WebData.BabyName.Handler.GetHtml(babyName.Surname, babyName.BirthDay, babyName.IsMan,
+                    babyName.Province, babyName.City, babyName.NameType);
 
-            resultReturn.Content = dic;
+                resultReturn.Content = dic;
 
-            return resultReturn;
+                return resultReturn;
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                resultReturn.ReturnCode.Code = -1;
+                resultReturn.Content = null;
+                return resultReturn;
+            }
         }
 
         /// <summary>
@@ -57,16 +79,26 @@ namespace BM.Api.Controllers
         /// <returns></returns>
         [ModelValid]
         [Route("api/fortun/marriage")]
-        public object Marriage(Marriage marriage)
+        public Return Marriage(Marriage marriage)
         {
             var resultReturn = new Return();
 
-            var dic = Services.WebData.Marriage.Handler.GetHtml(marriage.ManName, marriage.ManBirthDay,
-                marriage.ManTime, marriage.WomanName, marriage.WomanBirthDay, marriage.WomanTime);
+            try
+            {
+                var dic = Services.WebData.Marriage.Handler.GetHtml(marriage.ManName, marriage.ManBirthDay,
+                    marriage.ManTime, marriage.WomanName, marriage.WomanBirthDay, marriage.WomanTime);
 
-            resultReturn.Content = dic;
+                resultReturn.Content = dic;
 
-            return resultReturn;
+                return resultReturn;
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                resultReturn.ReturnCode.Code = -1;
+                resultReturn.Content = null;
+                return resultReturn;
+            }
         }
 
         /// <summary>
@@ -79,11 +111,21 @@ namespace BM.Api.Controllers
         {
             var resultReturn = new Return();
 
-            var dic = Services.WebData.Dream.Handler.Title();
+            try
+            {
+                var dic = Services.WebData.Dream.Handler.Title();
 
-            resultReturn.Content = dic;
+                resultReturn.Content = dic;
 
-            return resultReturn;
+                return resultReturn;
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                resultReturn.ReturnCode.Code = -1;
+                resultReturn.Content = null;
+                return resultReturn;
+            }
         }
 
         /// <summary>
@@ -93,19 +135,29 @@ namespace BM.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/fortun/dream/detail")]
-        public object DreamDetail(int dreamId)
+        public Return DreamDetail(int dreamId)
         {
             var resultReturn = new Return();
 
-            var detail = Services.WebData.Dream.Handler.Detail(dreamId);
-
-            if (detail == "")
+            try
             {
-                resultReturn.ReturnCode.Code = 2999;
+                var detail = Services.WebData.Dream.Handler.Detail(dreamId);
+
+                if (detail == "")
+                {
+                    resultReturn.ReturnCode.Code = 2999;
+                    return resultReturn;
+                }
+
+                resultReturn.Content = detail;
+            }
+            catch (Exception ex)
+            {
+                LogService.InsertLog(ex);
+                resultReturn.ReturnCode.Code = -1;
+                resultReturn.Content = null;
                 return resultReturn;
             }
-
-            resultReturn.Content = detail;
 
             return resultReturn;
         }
