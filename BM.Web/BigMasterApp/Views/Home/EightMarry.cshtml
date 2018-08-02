@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "八字合婚";
-    ViewBag.BannerImg = "http://img.haibuo.com/UpLoadImgs/5bdc37cb080a4eb79696bfb3dbe78405.jpg";
+    ViewBag.BannerImg = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot() + "images/eightMarrybanner.jpg";
+    var imgRoot = BigMasterApp.App_Start.AppHelper.GetImgServiceRoot();
 }
 
 <style>
@@ -16,7 +17,9 @@
      .colMap{height:1.43rem;align-self:center;line-height:1.43rem; background:url(..//Content/images/colMap.png);background-size:100% 100%}
           .moreMess .MM-content .MM-item div{width:1rem;height:3.65rem}
      .moreMess .conText{width:0.5rem; margin:0 auto;position:relative;top:0.8rem}
-
+     .backBox{background-color:#faddaf}
+     .functionBottom{padding:0.012rem 0.2rem 0.3rem 0.2rem;font-size:16px}
+     .topPadding{padding-top:0.3rem}
 </style>
 @Html.Partial("_PartialHead")
 @Html.Partial("_PartialBanner")
@@ -148,28 +151,28 @@
     <div class="forecastFun ">
         <div class="tac rem16 mb13 c-fff mt15 colMap">测算内容对你有什么帮助</div>
         <div class="flex-box item mb20">
-            <div class="flex-cont mr10 ">
-                <div class="rem18 mb5 top">精准推断默契</div>
-                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1，，则前者占据的剩余空间将比其他项多一倍。</div>
-                <img class="fun-img" src="~/Content/images/couple.png" />
+            <div class="flex-cont mr10 backBox">
+                <div class="rem18  top topPadding">为您锦上添花</div>
+                <img class="fun-img" src="@string.Format("{0}{1}",imgRoot,"images/eightMarry1.png")" />
+               <div class="functionBottom">千金难买是良缘<br />锦上添花合八字</div>
             </div>
-            <div class="flex-cont">
-                <div class="rem18 mb5 top">精准分析旺夫</div>
-                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1其他项目都为他项多一倍。</div>
-                <img class="fun-img" src="~/Content/images/couple.png" />
+            <div class="flex-cont mr10 backBox">
+                <div class="rem18  top topPadding">剔除不幸爱情</div>
+                <img class="fun-img" src="@string.Format("{0}{1}",imgRoot,"images/eightMarry2.png")" />
+                <div class="functionBottom">影响双方完美成婚<br />的因素一一详解</div>
             </div>
             
         </div>
         <div class="flex-box item mt15">
-            <div class="flex-cont mr10 ">
-                <div class="rem18 mb5 top">精准测算情深</div>
-                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1，，则前者占据的剩余空间将比其他项多一倍。</div>
-                <img class="fun-img" src="~/Content/images/couple.png" />
+            <div class="flex-cont mr10 backBox">
+                <div class="rem18  top topPadding">婚后生活预测</div>
+                <img class="fun-img" src="@string.Format("{0}{1}",imgRoot,"images/eightMarry3.png")" />
+                <div class="functionBottom">未来不完美因素<br />可以提前预知</div>
             </div>
-            <div class="flex-cont">
-                <div class="rem18 mb5 top">精准测算子女</div>
-                <div class="rem15 c-fff FFcontent">如果所有项目的flex-grow属性都为1其他项目都为他项多一倍。</div>
-                <img class="fun-img" src="~/Content/images/couple.png" />
+            <div class="flex-cont mr10 backBox">
+                <div class="rem18  top topPadding">感情助旺有方</div>
+                <img class="fun-img" src="@string.Format("{0}{1}",imgRoot,"images/eightMarry4.png")" />
+                <div class="functionBottom">专业老师指导方法<br />所有不利都可化解</div>
             </div>
         </div>
 

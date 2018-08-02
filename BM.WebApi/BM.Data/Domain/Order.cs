@@ -14,6 +14,9 @@ namespace BM.Data.Domain
 
         public Guid UserId { get; set; }
 
+        [StringLength(50)]
+        public string ProductId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string AndroidId { get; set; }
