@@ -224,6 +224,7 @@
     <Compile Include="Attributes\ModelValidAttribute.cs" />
     <Compile Include="BMModelBinders\ModelValidationBinder.cs" />
     <Compile Include="BMModelBinders\StringTrimModelBinder.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FortunController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />

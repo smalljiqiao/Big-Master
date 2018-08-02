@@ -5,12 +5,16 @@ using System.Linq;
 using BM.Data.Domain;
 using BM.Services.Common;
 using BM.Services.Data.Logs;
+using BM.Services.Infrastructure;
 using BM.Services.ReturnServices;
 using BM.Services.Security;
 
 namespace BM.Services.Data.Users
 {
-    public static class UserService
+    /// <summary>
+    /// 用户服务类
+    /// </summary>
+    public class UserService : BaseDataService
     {
         /// <summary>
         /// 初次更新用户表
@@ -18,12 +22,11 @@ namespace BM.Services.Data.Users
         /// <param name="userId">用户ID</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static User Insert(string userId)
+        public User Insert(string userId)
         {
             //用户默认名称
             var defaultBame = CommonHelper.CreateCode();
 
-            var db = new DbEntities();
             var userInfo = new User { UserId = Guid.Parse(userId), DefaultName = defaultBame };
 
             db.User.Add(userInfo);
@@ -40,13 +43,11 @@ namespace BM.Services.Data.Users
         /// <param name="password">登录密码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static Return Register(string userId, string phone, string password)
+        public Return Register(string userId, string phone, string password)
         {
             var resultReturn = new Return();
 
-            var db = new DbEntities();
-
-            var userInfo = GetUserByUserId(userId, db);
+            var userInfo = GetUserByUserId(userId);
 
             var salt = EncryptionService.CreateSaltKey(6);
             var saltPassword = EncryptionService.CreatePasswordHash(password, salt);
@@ -71,13 +72,11 @@ namespace BM.Services.Data.Users
         /// <param name="password">新密码</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static Return ChangePassword(string phone, string password)
+        public Return ChangePassword(string phone, string password)
         {
             var resultReturn = new Return();
 
-            var db = new DbEntities();
-
-            var userInfo = GetUserByPhone(phone, db);
+            var userInfo = GetUserByPhone(phone);
 
             //该手机号码还没注册
             if (userInfo == null)
@@ -109,13 +108,11 @@ namespace BM.Services.Data.Users
         /// <param name="nickname">用户昵称</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns>user对象，根据codeMessage是否为空判断系统是否出错</returns>
-        public static Return ChangeN0E(string phone, string email, string nickname)
+        public Return ChangeN0E(string phone, string email, string nickname)
         {
             var resultReturn = new Return();
 
-            var db = new DbEntities();
-
-            var userInfo = GetUserByPhone(phone, db);
+            var userInfo = GetUserByPhone(phone);
 
             //该手机号码还没注册
             if (userInfo == null)
@@ -141,13 +138,11 @@ namespace BM.Services.Data.Users
         /// <param name="userIdReplaced">需要被替换的用户ID</param>
         /// <param name="returnCode">返回码对象</param>
         /// <returns></returns>
-        public static Return ChangeUesrId(string userId, string userIdReplaced)
+        public Return ChangeUesrId(string userId, string userIdReplaced)
         {
             var resultReturn = new Return();
 
-            var db = new DbEntities();
-
-            var userInfo = GetUserByUserId(userIdReplaced, db);
+            var userInfo = GetUserByUserId(userIdReplaced);
 
 
             userInfo.UserId = Guid.Parse(userId);
@@ -164,10 +159,8 @@ namespace BM.Services.Data.Users
         /// </summary>
         /// <param name="userId">用户ID</param>
         /// <returns></returns>
-        public static bool DeleteByUserId(string userId)
+        public bool DeleteByUserId(string userId)
         {
-            var db = new DbEntities();
-
             var userInfo = GetUserByUserId(userId);
 
             if (userInfo != null)
@@ -186,11 +179,8 @@ namespace BM.Services.Data.Users
         /// <param name="returnCode">返回码对象</param>
         /// <param name="db">数据库上下文，因为使用不同数据库上下文操作会出错，所以增加这个参数</param>
         /// <returns>User对象，根据returnCode是否为空判断系统是否出错</returns>
-        public static User GetUserByPhone(string phone, DbEntities db = null)
+        public User GetUserByPhone(string phone)
         {
-            if (db == null)
-                db = new DbEntities();
-
             var query = from d in db.User
                         where d.Phone == phone
                         select d;
@@ -206,19 +196,15 @@ namespace BM.Services.Data.Users
         /// <param name="userId"></param>
         /// <param name="returnCode"></param>
         /// <returns></returns>
-        public static User GetUserByUserId(string userId, DbEntities db = null)
+        public User GetUserByUserId(string userId)
         {
             var userIdGuid = Guid.Parse(userId);
-
-            if (db == null)
-                db = new DbEntities();
 
             var query = from d in db.User
                         where d.UserId == userIdGuid
                         select d;
 
             var user = query.FirstOrDefault();
-
 
             return user;
         }

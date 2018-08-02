@@ -1,17 +1,12 @@
 ﻿using BM.Api.Attributes;
-using BM.Data.Domain;
 using BM.Services.Common;
+using BM.Services.Data.BurialPoint;
+using BM.Services.Data.Logs;
 using BM.Services.ModelTransfer;
 using BM.Services.ReturnServices;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Web.Http;
-using BM.Services.Data.Androids;
-using BM.Services.Data.BurialPoint;
-using BM.Services.Data.Logs;
-using BM.Services.Data.ShortMessages;
-using BM.Services.Data.Users;
 using Android = BM.Api.Models.Android;
 using Sms = BM.Services.Data.ShortMessages.Sms;
 using User = BM.Api.Models.User;
@@ -19,12 +14,11 @@ using User = BM.Api.Models.User;
 
 namespace BM.Api.Controllers
 {
-
     /// <summary>
     /// 用户信息接口
     /// </summary>
 
-    public class UsersController : ApiController
+    public class UsersController : BaseController
     {
         /// <summary>
         /// 写入安卓ID
@@ -73,7 +67,7 @@ namespace BM.Api.Controllers
                 userInfoMap.Password = null;
                 userInfoMap.UserId = null;
 
-                var returnDic = new Dictionary<string, object> {{"IsBind", isBind}, {"User", userInfoMap}};
+                var returnDic = new Dictionary<string, object> { { "IsBind", isBind }, { "User", userInfoMap } };
 
                 resultReturn.Content = returnDic;
                 return resultReturn;

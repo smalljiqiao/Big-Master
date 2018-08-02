@@ -1,25 +1,20 @@
-﻿using System;
+﻿using BM.Data.Domain;
 using System.Linq;
-using BM.Data.Domain;
-using BM.Services.Common;
-using BM.Services.Data.Logs;
 
 namespace BM.Services.Data.Androids
 {
     /// <summary>
     /// 安卓信息服务类
     /// </summary>
-    public static class AndroidService
+    public class AndroidService : BaseDataService
     {
         /// <summary>
         /// 初次更新Android Table
         /// </summary>
         /// <param name="androidId">安卓ID</param>
         /// <returns>true:success;false:failure</returns>
-        public static void Insert(string androidId)
+        public void Insert(string androidId)
         {
-            var db = new DbEntities();
-
             var androidInfo = new Android { AndroidId = androidId };
 
             db.Android.Add(androidInfo);
@@ -32,10 +27,8 @@ namespace BM.Services.Data.Androids
         /// </summary>
         /// <param name="androidId">安卓ID</param>
         /// <returns></returns>
-        public static Android GetByAndroidId(string androidId)
+        public Android GetByAndroidId(string androidId)
         {
-            var db = new DbEntities();
-
             var query = from d in db.Android
                         where d.AndroidId == androidId
                         select d;
