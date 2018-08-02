@@ -128,7 +128,13 @@ namespace BM.Services.WebData.BabyName
 
                 var aArr = divArr[2].SelectNodes("div//ul//li//a");
 
-                sList.AddRange(from a in aArr where a != null && string.IsNullOrEmpty(a.InnerText) select a.InnerText.Replace(".", "").Trim());
+                foreach (var a in aArr)
+                {
+                    if (a != null && !string.IsNullOrEmpty(a.InnerText))
+                    {
+                        sList.Add(a.InnerText.Replace("·", "").Trim());
+                    }
+                }
             }
 
             var dic = new Dictionary<string, object>

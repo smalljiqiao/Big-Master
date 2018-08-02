@@ -29,7 +29,7 @@ namespace BM.Services.WebData.Marriage
         {
             //TODO VALID time 
 
-            timeMan = timeWoman = "不清楚";
+            //timeMan = timeWoman = "不清楚";
 
             var yearMan = birthDayMan.Year;
             var monthMan = birthDayMan.Month.ToString().Length == 1
