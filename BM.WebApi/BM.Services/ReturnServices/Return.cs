@@ -24,5 +24,14 @@ namespace BM.Services.ReturnServices
         /// 返回内容
         /// </summary>
         public object Content { get; set; }
+
+        /// <summary>
+        /// 设置为系统错误
+        /// </summary>
+        public void SetWrong()
+        {
+            this.ReturnCode.Code = -1;
+            this.Content = null;
+        }
     }
 }

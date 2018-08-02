@@ -37,8 +37,7 @@ namespace BM.Api.Controllers
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
-                resultReturn.ReturnCode.Code = -1;
-                resultReturn.Content = null;
+                resultReturn.SetWrong();
                 return resultReturn;
             }
         }
@@ -66,8 +65,7 @@ namespace BM.Api.Controllers
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
-                resultReturn.ReturnCode.Code = -1;
-                resultReturn.Content = null;
+                resultReturn.SetWrong();
                 return resultReturn;
             }
         }
@@ -95,8 +93,7 @@ namespace BM.Api.Controllers
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
-                resultReturn.ReturnCode.Code = -1;
-                resultReturn.Content = null;
+                resultReturn.SetWrong();
                 return resultReturn;
             }
         }
@@ -122,8 +119,7 @@ namespace BM.Api.Controllers
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
-                resultReturn.ReturnCode.Code = -1;
-                resultReturn.Content = null;
+                resultReturn.SetWrong();
                 return resultReturn;
             }
         }
@@ -154,8 +150,7 @@ namespace BM.Api.Controllers
             catch (Exception ex)
             {
                 LogService.InsertLog(ex);
-                resultReturn.ReturnCode.Code = -1;
-                resultReturn.Content = null;
+                resultReturn.SetWrong();
                 return resultReturn;
             }
 
