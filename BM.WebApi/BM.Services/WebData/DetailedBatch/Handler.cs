@@ -580,7 +580,6 @@ namespace BM.Services.WebData.DetailedBatch
             return resultDic;
         }
 
-
         /// <summary>
         /// 解析HTML,返回Html
         /// </summary>
@@ -588,7 +587,7 @@ namespace BM.Services.WebData.DetailedBatch
         /// <param name="birthDay">出生日期</param>
         /// <param name="isMan">是否为男性</param>
         /// <returns></returns>
-        public static object GetHtml(string userName, DateTime birthDay, bool isMan = true)
+        public static Dictionary<string, object> GetHtml(string userName, DateTime birthDay, bool isMan = true)
         {
             var html = Html(userName, birthDay, isMan);
             if (string.IsNullOrEmpty(html))
@@ -599,11 +598,9 @@ namespace BM.Services.WebData.DetailedBatch
 
             var title = string.Empty; //标题
 
-
             var fHtml = ""; //八字命盘HTML
 
             var sHtml = ""; //八字论命HTML
-           
 
             var tHtml = ""; //五行分析
             var tScript = ""; //五行分析Script

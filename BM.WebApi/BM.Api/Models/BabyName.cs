@@ -28,6 +28,12 @@ namespace BM.Api.Models
         public DateTime BirthDay { get; set; }
 
         /// <summary>
+        /// 是否为男性 true:yes false:women
+        /// </summary>
+        [Required]
+        public bool IsMan { get; set; }
+
+        /// <summary>
         /// 省份
         /// </summary>
         [Required]

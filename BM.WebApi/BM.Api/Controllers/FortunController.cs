@@ -11,7 +11,7 @@ namespace BM.Api.Controllers
     /// <summary>
     /// 算命信息接口与（Fortunetelling）
     /// </summary>
-    public class FortunController : ApiController
+    public class FortunController : BaseController
     {
         /// <summary>
         /// 八字详批信息
@@ -20,17 +20,15 @@ namespace BM.Api.Controllers
         /// <returns></returns>
         [ModelValid]
         [Route("api/fortun/detailbatch")]
-        public object DetailedBatch(DetailedBatch detBaModel)
+        public Return DetailedBatch(DetailedBatch detBaModel)
         {
-            var returnCode = new ReturnCode();
+            var resultReturn = new Return();
 
-            var obj = Services.WebData.DetailedBatch.Handler.GetHtml(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
+            var dic = Services.WebData.DetailedBatch.Handler.GetHtml(detBaModel.UserName, Convert.ToDateTime(detBaModel.BirthDay), detBaModel.IsMan);
 
-            return new Return
-            {
-                ReturnCode = returnCode,
-                Content = obj
-            };
+            resultReturn.Content = dic;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -42,9 +40,14 @@ namespace BM.Api.Controllers
         [Route("api/fortun/babyname")]
         public object BabyName(BabyName babyName)
         {
-            var returnCode = new ReturnCode();
+            var resultReturn = new Return();
 
-            return returnCode;
+            var dic = Services.WebData.BabyName.Handler.GetHtml(babyName.Surname, babyName.BirthDay, babyName.IsMan,
+                babyName.Province, babyName.City, babyName.NameType);
+
+            resultReturn.Content = dic;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -56,9 +59,14 @@ namespace BM.Api.Controllers
         [Route("api/fortun/marriage")]
         public object Marriage(Marriage marriage)
         {
-            var returnCode = new ReturnCode();
+            var resultReturn = new Return();
 
-            return returnCode;
+            var dic = Services.WebData.Marriage.Handler.GetHtml(marriage.ManName, marriage.ManBirthDay,
+                marriage.ManTime, marriage.WomanName, marriage.WomanBirthDay, marriage.WomanTime);
+
+            resultReturn.Content = dic;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -67,17 +75,15 @@ namespace BM.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/fortun/dream/title")]
-        public object DreamTitle()
+        public Return DreamTitle()
         {
-            var returnCode = new ReturnCode();
+            var resultReturn = new Return();
 
             var dic = Services.WebData.Dream.Handler.Title();
 
-            return new Return
-            {
-                ReturnCode = returnCode,
-                Content = dic
-            };
+            resultReturn.Content = dic;
+
+            return resultReturn;
         }
 
         /// <summary>
@@ -89,29 +95,19 @@ namespace BM.Api.Controllers
         [Route("api/fortun/dream/detail")]
         public object DreamDetail(int dreamId)
         {
-            var returnCode = new ReturnCode();
-
-            var sw = new StreamWriter(@"D:\test.txt", true);
-            sw.WriteLine("Start:" + DateTime.Now);
+            var resultReturn = new Return();
 
             var detail = Services.WebData.Dream.Handler.Detail(dreamId);
 
-            sw.WriteLine("End:" + DateTime.Now);
-            sw.Dispose();
-            sw.Close();
-
             if (detail == "")
             {
-                returnCode.Code = 2999;
-                return returnCode;
+                resultReturn.ReturnCode.Code = 2999;
+                return resultReturn;
             }
 
+            resultReturn.Content = detail;
 
-            return new Return
-            {
-                ReturnCode = returnCode,
-                Content = detail
-            };
+            return resultReturn;
         }
     }
 }
