@@ -74,7 +74,8 @@
             //    centeredSlides: true, //设定为true时，活动块会居中，而不是默认状态下的居左。
             //    grabCursor: true,
             //})
-            var loginResult = bm_getCookie("loginUser");
+            var loginResult = bm_getCookie("loginData");
+            console.log(loginResult);
             if (loginResult == null || loginResult == undefined) {
                 recordAndroidId();
             }
@@ -89,7 +90,7 @@
             doPost(bmApI.user.recordAndrodid, query, function (data) {
                 if (data.ReturnCode.Code == 0) {
                     var loginMess = JSON.stringify(data);
-                    bm_setCookie("loginUser", loginMess);
+                    bm_setCookie("loginData", loginMess);
                 }
                 else {
                 }

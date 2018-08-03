@@ -58,6 +58,18 @@
 </div>
 @Html.Partial("_PartialBottom")
 
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var logindata = bm_getCookie("loginData");
+            if (!logindata) {
+
+            }
+        })
+    </script>
+    
+    }
+
 
 
 
